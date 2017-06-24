@@ -1,9 +1,43 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
-import registerServiceWorker from './registerServiceWorker';
+
+import { Provider } from "react-redux"
+import { Container } from 'semantic-ui-react'
+
+import createHistory from 'history/createBrowserHistory'
+
+// import { ConnectedRouter, routerReducer, routerMiddleware, push } from 'react-router-redux'
+
+import { Router, Route } from 'react-router'
+
+import Layout from "./components/layout"
+import Nav from "./components/nav"
+import New from "./components/new"
+import store from "./store"
+
 import './semantic/dist/semantic.min.css';
 import './index.css';
 
-ReactDOM.render(<App />, document.getElementById('root'));
-registerServiceWorker();
+const app = document.getElementById('root')
+
+ReactDOM.render(
+  <Provider store={store}>
+    <div>
+
+      <Router history={createHistory()}>
+        <div>
+          <Nav />
+
+          <Container text className='mainContainer'>
+            <Route exact path="/" component={Layout}/>
+            <Route path="/new" component={New}/>
+          </Container>
+        </div>
+      </Router>
+    </div>
+  </Provider>,
+  app
+);
+
+// import registerServiceWorker from './registerServiceWorker';
+// registerServiceWorker();
