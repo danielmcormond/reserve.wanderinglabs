@@ -3,97 +3,34 @@ import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import { fetchAvailabilityRequests } from "../actions/availabilityRequestsActions"
 
-const colors = ['Red', 'Orange', 'Yellow', 'Green', 'Blue', 'Indigo', 'Violet'];
+import { Input } from 'semantic-ui-react'
+
+import RequestFormSteps from './requestFormSteps'
+import RequestFormStep1 from './requestFormStep1'
+import RequestFormStep2 from './requestFormStep2'
+import RequestFormStep3 from './requestFormStep3'
+import RequestFormStep4 from './requestFormStep4'
+
+@connect((store) => {
+  return {
+    currentStep: store.requestForm
+  };
+})
+
 
 class RequestForm extends Component {
 
   render() {
-    const { handleSubmit, load, pristine, reset, submitting } = this.props;
+    const { handleSubmit, load, pristine, reset, submitting, currentStep } = this.props;
 
     return (
       <form onSubmit={handleSubmit}>
-        <div>
-          <button type="button" >Load Account</button>
-        </div>
-        <div>
-          <label>First Name</label>
-          <div>
-            <Field
-              name="facility_id"
-              component="input"
-              type="text"
-              placeholder="First Name"
-            />
-          </div>
-        </div>
-        <div>
-          <label>Last Name</label>
-          <div>
-            <Field
-              name="id"
-              component="input"
-              type="text"
-              placeholder="Last Name"
-            />
-          </div>
-        </div>
-        <div>
-          <label>Age</label>
-          <div>
-            <Field name="age" component="input" type="number" placeholder="Age" />
-          </div>
-        </div>
-        <div>
-          <label>Sex</label>
-          <div>
-            <label>
-              <Field name="sex" component="input" type="radio" value="male" />
-              {' '}
-              Male
-            </label>
-            <label>
-              <Field name="sex" component="input" type="radio" value="female" />
-              {' '}
-              Female
-            </label>
-          </div>
-        </div>
-        <div>
-          <label>Favorite Color</label>
-          <div>
-            <Field name="favoriteColor" component="select">
-              <option value="">Select a color...</option>
-              {colors.map(colorOption => (
-                <option value={colorOption} key={colorOption}>
-                  {colorOption}
-                </option>
-              ))}
-            </Field>
-          </div>
-        </div>
-        <div>
-          <label htmlFor="employed">Employed</label>
-          <div>
-            <Field
-              name="employed"
-              id="employed"
-              component="input"
-              type="checkbox"
-            />
-          </div>
-        </div>
-        <div>
-          <label>Bio</label>
-          <div>
-            <Field name="bio" component="textarea" />
-          </div>
-        </div>
-        <div>
-          <button type="submit" disabled={pristine || submitting}>Submit</button>
-          <button type="button" disabled={pristine || submitting} onClick={reset}>
-            Undo Changes
-          </button>
-        </div>
+        <RequestFormSteps />
+        { currentStep === 1 && <RequestFormStep1 /> }
+        { currentStep === 2 && <RequestFormStep2 /> }
+        { currentStep === 3 && <RequestFormStep3 /> }
+        { currentStep === 4 && <RequestFormStep4 /> }
+
       </form>
     );
   }

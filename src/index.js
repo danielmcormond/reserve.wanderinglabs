@@ -28,7 +28,7 @@ ReactDOM.render(
         <div>
           <Nav />
 
-          <Container text className='mainContainer'>
+          <Container className='mainContainer'>
             <Route exact path="/" component={Layout}/>
             <Route path="/new" component={New}/>
           </Container>
