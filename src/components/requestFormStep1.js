@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Field } from 'redux-form';
+import { Control } from 'react-redux-form';
 
 import FacilityLookup from './facilityLookup'
 
@@ -10,11 +10,10 @@ export default class RequestFormStep1 extends Component {
       <div>
         <label>Facility</label>
         <div>
-          <Field name="facility_id" component="input" />
-        </div>
-
-        <div>
-          <FacilityLookup />
+          <Control
+            model="user.firstName"
+            component={FacilityLookup}
+          />
         </div>
       </div>
     )

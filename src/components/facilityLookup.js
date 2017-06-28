@@ -1,14 +1,16 @@
 import _ from 'lodash'
-import faker from 'faker'
 import React, { Component } from 'react'
+import { connect } from "react-redux"
 import { Search, Grid, Header } from 'semantic-ui-react'
 
-const source = _.times(5, () => ({
-  title: faker.company.companyName(),
-  description: faker.company.catchPhrase(),
-  image: faker.internet.avatar(),
-  price: faker.finance.amount(0, 100, 2, '$'),
-}))
+import { fetchFacilities } from "../actions/facilitiesActions"
+
+@connect((store) => {
+  return {
+    facilities: store.facilities.facilities,
+    loading: store.availabilityRequests.fetching,
+  };
+})
 
 export default class FacilityLookup extends Component {
   componentWillMount() {
@@ -20,44 +22,22 @@ export default class FacilityLookup extends Component {
   handleResultSelect = (e, result) => this.setState({ value: result.title })
 
   handleSearchChange = (e, value) => {
-    console.log('value...', value)
-    this.setState({ isLoading: true, value })
-
-    setTimeout(() => {
-      if (this.state.value.length < 1) return this.resetComponent()
-
-      const re = new RegExp(_.escapeRegExp(this.state.value), 'i')
-      const isMatch = (result) => re.test(result.title)
-
-      this.setState({
-        isLoading: false,
-        results: _.filter(source, isMatch),
-      })
-    }, 500)
+    this.setState({ value })
+    this.props.dispatch(fetchFacilities(value))
   }
 
   render() {
-    const { isLoading, value, results } = this.state
+    const { facilities, loading } = this.props;
+    const { value } = this.state
 
     return (
-      <Grid>
-        <Grid.Column width={8}>
-          <Search
-            loading={isLoading}
-            onResultSelect={this.handleResultSelect}
-            onSearchChange={this.handleSearchChange}
-            results={results}
-            value={value}
-            {...this.props}
-          />
-        </Grid.Column>
-        <Grid.Column width={8}>
-          <Header>State</Header>
-          <pre>{JSON.stringify(this.state, null, 2)}</pre>
-          <Header>Options</Header>
-          <pre>{JSON.stringify(source, null, 2)}</pre>
-        </Grid.Column>
-      </Grid>
+      <Search
+        loading={loading}
+        onResultSelect={this.handleResultSelect}
+        onSearchChange={this.handleSearchChange}
+        results={facilities}
+        value={value}
+      />
     )
   };
 };
