@@ -12,3 +12,25 @@ body {
   display: block;
   font-size: 18px;
 }
+
+.DayPicker-Weekday {
+  padding: 1rem;
+}
+
+.navPadded {
+  margin-top: 46px;
+}
+
+.ui.inverted.menu.StepsNav {
+  margin-top: 46px;
+  border-radius: 0;
+}
+
+.ui.search .prompt {
+  border-radius: 0;
+}
+
+input {
+  font: inherit;
+}
+

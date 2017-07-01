@@ -1,16 +1,34 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
-
+import { Icon, Menu } from 'semantic-ui-react'
 
 export default class Nav extends Component {
   render() {
     return (
-      <div className="ui fixed inverted menu">
-        <div className="ui container">
-          <Link to="/" className="header item">Reserve</Link>
-          <Link to="/new" className="item">New</Link>
-        </div>
-      </div>
+      <Menu
+        inverted
+        fixed='top'
+        color='green'
+      >
+        <Menu.Item
+          header
+          name='home'
+          as={Link}
+          to='/'
+          header
+        >
+          Reserve
+        </Menu.Item>
+        <Menu.Item
+          name='new'
+          as={Link}
+          to='/new'
+          header
+          position='right'
+        >
+          <Icon name='plus' />
+        </Menu.Item>
+      </Menu>
     );
   }
 }

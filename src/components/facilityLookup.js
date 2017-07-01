@@ -37,6 +37,8 @@ export default class FacilityLookup extends Component {
         onSearchChange={this.handleSearchChange}
         results={facilities}
         value={value}
+        size='large'
+        fluid
       />
     )
   };

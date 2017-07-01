@@ -15,8 +15,10 @@ import Nav from "./components/nav"
 import New from "./components/new"
 import store from "./store"
 
+import './normalize.css';
 import './semantic/dist/semantic.min.css';
 import './index.css';
+
 
 const app = document.getElementById('root')
 
@@ -27,11 +29,8 @@ ReactDOM.render(
       <Router history={createHistory()}>
         <div>
           <Nav />
-
-          <Container className='mainContainer'>
-            <Route exact path="/" component={Layout}/>
-            <Route path="/new" component={New}/>
-          </Container>
+          <Route exact path="/" component={Layout}/>
+          <Route path="/new" component={New}/>
         </div>
       </Router>
     </div>

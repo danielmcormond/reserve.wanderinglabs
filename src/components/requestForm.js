@@ -7,7 +7,6 @@ import { fetchAvailabilityRequests } from "../actions/availabilityRequestsAction
 
 import { Input } from 'semantic-ui-react'
 
-import RequestFormSteps from './requestFormSteps'
 import RequestFormStep1 from './requestFormStep1'
 import RequestFormStep2 from './requestFormStep2'
 import RequestFormStep3 from './requestFormStep3'
@@ -27,7 +26,6 @@ class RequestForm extends Component {
 
     return (
       <Form model="testForm">
-        <RequestFormSteps />
         { currentStep === 1 && <RequestFormStep1 /> }
         { currentStep === 2 && <RequestFormStep2 /> }
         { currentStep === 3 && <RequestFormStep3 /> }
