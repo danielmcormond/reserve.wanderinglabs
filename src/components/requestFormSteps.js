@@ -31,7 +31,7 @@ export default class RequestFormSteps extends Component {
     const { currentStep } = this.props;
 
     return (
-      <div className='navPadded'>
+      <div>
         <Menu
           inverted
           className='StepsNavMenu mobile only'

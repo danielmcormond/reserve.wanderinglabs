@@ -9,7 +9,7 @@ import { routerMiddleware } from 'react-router-redux'
 
 import reducer from "./reducers"
 
-const history = createHistory()
+import { history } from './utils/history'
 
 const middleware = applyMiddleware(promise(), thunk, logger, routerMiddleware(history))
 

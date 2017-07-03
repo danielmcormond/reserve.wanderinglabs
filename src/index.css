@@ -4,10 +4,6 @@ body {
   font-family: sans-serif;
 }
 
-.mainContainer {
-  margin-top: 50px;
-}
-
 .DayPicker {
   display: block;
   font-size: 18px;
@@ -34,3 +30,6 @@ input {
   font: inherit;
 }
 
+.topPadded {
+  padding-top: 12px;
+}
