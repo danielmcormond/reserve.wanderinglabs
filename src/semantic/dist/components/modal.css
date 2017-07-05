@@ -206,13 +206,13 @@
     margin: 0em 0em 0em -425px;
   }
 }
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 992px) {
   .ui.modal {
     width: 900px;
     margin: 0em 0em 0em -450px;
   }
 }
-@media only screen and (min-width: 1920px) {
+@media only screen and (min-width: 992px) {
   .ui.modal {
     width: 950px;
     margin: 0em 0em 0em -475px;
@@ -442,13 +442,13 @@
     margin: 0em 0em 0em -340px;
   }
 }
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 992px) {
   .ui.small.modal {
     width: 720px;
     margin: 0em 0em 0em -360px;
   }
 }
-@media only screen and (min-width: 1920px) {
+@media only screen and (min-width: 992px) {
   .ui.small.modal {
     width: 760px;
     margin: 0em 0em 0em -380px;
@@ -477,13 +477,13 @@
     margin: 0em 0em 0em -510px;
   }
 }
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 992px) {
   .ui.large.modal {
     width: 1080px;
     margin: 0em 0em 0em -540px;
   }
 }
-@media only screen and (min-width: 1920px) {
+@media only screen and (min-width: 992px) {
   .ui.large.modal {
     width: 1140px;
     margin: 0em 0em 0em -570px;

@@ -181,7 +181,7 @@ input::selection {
 }
 
 /* Computer / Desktop / iPad Landscape */
-@media only screen and (min-width: 992px) and (max-width: 1199px) {
+@media only screen and (min-width: 992px) and (max-width: 991px) {
   [class*="mobile only"]:not(.computer),
   [class*="tablet only"]:not(.computer),
   [class*="computer hidden"],
@@ -193,7 +193,7 @@ input::selection {
 }
 
 /* Large Monitor */
-@media only screen and (min-width: 1200px) and (max-width: 1919px) {
+@media only screen and (min-width: 992px) and (max-width: 991px) {
   [class*="mobile only"]:not([class*="large screen"]),
   [class*="tablet only"]:not([class*="large screen"]),
   [class*="computer only"]:not([class*="large screen"]),
@@ -205,7 +205,7 @@ input::selection {
 }
 
 /* Widescreen Monitor */
-@media only screen and (min-width: 1920px) {
+@media only screen and (min-width: 992px) {
   [class*="mobile only"]:not([class*="widescreen"]),
   [class*="tablet only"]:not([class*="widescreen"]),
   [class*="computer only"]:not([class*="widescreen"]),

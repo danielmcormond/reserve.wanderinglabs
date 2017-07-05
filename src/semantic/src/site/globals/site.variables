@@ -3,3 +3,5 @@
 *******************************/
 
 @green          : #77b57a;
+@largeMonitorBreakpoint      : @computerBreakpoint;
+@widescreenMonitorBreakpoint : @computerBreakpoint;

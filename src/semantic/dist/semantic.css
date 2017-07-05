@@ -251,7 +251,7 @@ input::selection {
 
 /* Computer / Desktop / iPad Landscape */
 
-@media only screen and (min-width: 992px) and (max-width: 1199px) {
+@media only screen and (min-width: 992px) and (max-width: 991px) {
   [class*="mobile only"]:not(.computer),
   [class*="tablet only"]:not(.computer),
   [class*="computer hidden"],
@@ -264,7 +264,7 @@ input::selection {
 
 /* Large Monitor */
 
-@media only screen and (min-width: 1200px) and (max-width: 1919px) {
+@media only screen and (min-width: 992px) and (max-width: 991px) {
   [class*="mobile only"]:not([class*="large screen"]),
   [class*="tablet only"]:not([class*="large screen"]),
   [class*="computer only"]:not([class*="large screen"]),
@@ -277,7 +277,7 @@ input::selection {
 
 /* Widescreen Monitor */
 
-@media only screen and (min-width: 1920px) {
+@media only screen and (min-width: 992px) {
   [class*="mobile only"]:not([class*="widescreen"]),
   [class*="tablet only"]:not([class*="widescreen"]),
   [class*="computer only"]:not([class*="widescreen"]),
@@ -4335,7 +4335,7 @@ input::selection {
 
 /* Small Monitor */
 
-@media only screen and (min-width: 992px) and (max-width: 1199px) {
+@media only screen and (min-width: 992px) and (max-width: 991px) {
   .ui.container {
     width: 933px;
     margin-left: auto !important;
@@ -4357,23 +4357,23 @@ input::selection {
 
 /* Large Monitor */
 
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 992px) {
   .ui.container {
-    width: 1127px;
+    width: 919px;
     margin-left: auto !important;
     margin-right: auto !important;
   }
 
   .ui.grid.container {
-    width: calc( 1127px  +  2rem ) !important;
+    width: calc( 919px  +  2rem ) !important;
   }
 
   .ui.relaxed.grid.container {
-    width: calc( 1127px  +  3rem ) !important;
+    width: calc( 919px  +  3rem ) !important;
   }
 
   .ui.very.relaxed.grid.container {
-    width: calc( 1127px  +  5rem ) !important;
+    width: calc( 919px  +  5rem ) !important;
   }
 }
 
@@ -16990,7 +16990,7 @@ ol.ui.horizontal.list li:before,
   }
 }
 
-@media only screen and (min-width: 992px) and (max-width: 1199px) {
+@media only screen and (min-width: 992px) and (max-width: 991px) {
   .ui.page.grid {
     width: auto;
     margin-left: 0em;
@@ -17000,7 +17000,7 @@ ol.ui.horizontal.list li:before,
   }
 }
 
-@media only screen and (min-width: 1200px) and (max-width: 1919px) {
+@media only screen and (min-width: 992px) and (max-width: 991px) {
   .ui.page.grid {
     width: auto;
     margin-left: 0em;
@@ -17010,7 +17010,7 @@ ol.ui.horizontal.list li:before,
   }
 }
 
-@media only screen and (min-width: 1920px) {
+@media only screen and (min-width: 992px) {
   .ui.page.grid {
     width: auto;
     margin-left: 0em;
@@ -17657,7 +17657,7 @@ ol.ui.horizontal.list li:before,
 
 /* Large Monitor Sizing Combinations */
 
-@media only screen and (min-width: 1200px) and (max-width: 1919px) {
+@media only screen and (min-width: 992px) and (max-width: 991px) {
   .ui.grid > .row > [class*="one wide large screen"].column,
   .ui.grid > .column.row > [class*="one wide large screen"].column,
   .ui.grid > [class*="one wide large screen"].column,
@@ -17773,7 +17773,7 @@ ol.ui.horizontal.list li:before,
 
 /* Widescreen Sizing Combinations */
 
-@media only screen and (min-width: 1920px) {
+@media only screen and (min-width: 992px) {
   .ui.grid > .row > [class*="one wide widescreen"].column,
   .ui.grid > .column.row > [class*="one wide widescreen"].column,
   .ui.grid > [class*="one wide widescreen"].column,
@@ -18983,7 +18983,7 @@ ol.ui.horizontal.list li:before,
 
 /* Computer Only Hide */
 
-@media only screen and (min-width: 992px) and (max-width: 1199px) {
+@media only screen and (min-width: 992px) and (max-width: 991px) {
   .ui[class*="mobile only"].grid.grid.grid:not(.computer),
   .ui.grid.grid.grid > [class*="mobile only"].row:not(.computer),
   .ui.grid.grid.grid > [class*="mobile only"].column:not(.computer),
@@ -19015,7 +19015,7 @@ ol.ui.horizontal.list li:before,
 
 /* Large Screen Only Hide */
 
-@media only screen and (min-width: 1200px) and (max-width: 1919px) {
+@media only screen and (min-width: 992px) and (max-width: 991px) {
   .ui[class*="mobile only"].grid.grid.grid:not(.computer),
   .ui.grid.grid.grid > [class*="mobile only"].row:not(.computer),
   .ui.grid.grid.grid > [class*="mobile only"].column:not(.computer),
@@ -19040,7 +19040,7 @@ ol.ui.horizontal.list li:before,
 
 /* Widescreen Only Hide */
 
-@media only screen and (min-width: 1920px) {
+@media only screen and (min-width: 992px) {
   .ui[class*="mobile only"].grid.grid.grid:not(.computer),
   .ui.grid.grid.grid > [class*="mobile only"].row:not(.computer),
   .ui.grid.grid.grid > [class*="mobile only"].column:not(.computer),
@@ -27722,7 +27722,7 @@ select.ui.dropdown {
   }
 }
 
-@media only screen and (min-width: 1920px) {
+@media only screen and (min-width: 992px) {
   .ui.selection.dropdown .menu {
     max-height: 24.8em;
   }
@@ -27926,7 +27926,7 @@ select.ui.dropdown {
   }
 }
 
-@media only screen and (min-width: 1920px) {
+@media only screen and (min-width: 992px) {
   .ui.search.dropdown .menu {
     max-height: 24.8em;
   }
@@ -28461,7 +28461,7 @@ select.ui.dropdown {
   }
 }
 
-@media only screen and (min-width: 1920px) {
+@media only screen and (min-width: 992px) {
   .ui.scrolling.dropdown .menu,
   .ui.dropdown .scrolling.menu {
     max-height: 24em;
@@ -29158,14 +29158,14 @@ select.ui.dropdown {
   }
 }
 
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 992px) {
   .ui.modal {
     width: 900px;
     margin: 0em 0em 0em -450px;
   }
 }
 
-@media only screen and (min-width: 1920px) {
+@media only screen and (min-width: 992px) {
   .ui.modal {
     width: 950px;
     margin: 0em 0em 0em -475px;
@@ -29426,14 +29426,14 @@ select.ui.dropdown {
   }
 }
 
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 992px) {
   .ui.small.modal {
     width: 720px;
     margin: 0em 0em 0em -360px;
   }
 }
 
-@media only screen and (min-width: 1920px) {
+@media only screen and (min-width: 992px) {
   .ui.small.modal {
     width: 760px;
     margin: 0em 0em 0em -380px;
@@ -29467,14 +29467,14 @@ select.ui.dropdown {
   }
 }
 
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 992px) {
   .ui.large.modal {
     width: 1080px;
     margin: 0em 0em 0em -540px;
   }
 }
 
-@media only screen and (min-width: 1920px) {
+@media only screen and (min-width: 992px) {
   .ui.large.modal {
     width: 1140px;
     margin: 0em 0em 0em -570px;

@@ -33,3 +33,12 @@ input {
 .topPadded {
   padding-top: 12px;
 }
+
+
+@media only screen and (max-width: 767px) {
+  .ui.menu > .ui.container {
+    width: 100% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}

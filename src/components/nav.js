@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux"
 import { Link } from 'react-router-dom'
-import { Icon, Menu } from 'semantic-ui-react'
+import { Container, Icon, Menu } from 'semantic-ui-react'
 
 @connect((store) => {
   return {
@@ -12,47 +12,19 @@ export default class Nav extends Component {
   render() {
     const { isAuthenticated } = this.props;
     return (
-      <Menu
-        inverted
-        fixed='top'
-        color='green'
-      >
-        <Menu.Item
-          header
-          name='home'
-          as={Link}
-          to='/'
-          header
-        >
-          Reserve
-        </Menu.Item>
-
-        { isAuthenticated &&
-          <Menu.Item name='sessionDestroy' as={Link} to='/sign-out'>
-            Sign Out
-          </Menu.Item>
-        }
-        { isAuthenticated &&
-          <Menu.Item as={Link} to='/edit'>
-            Account
-          </Menu.Item>
-        }
-        { !!!isAuthenticated &&
-          <Menu.Item name='sessionNew' as={Link} to='/sign-in'>
-            Sign In
-          </Menu.Item>
-        }
-
-        <Menu.Item
-          name='new'
-          as={Link}
-          to='/new'
-          header
-          position='right'
-        >
-          <Icon name='plus' />
-        </Menu.Item>
-      </Menu>
+        <Menu fixed='top' inverted color='green' size='large'>
+          <Container>
+            <Menu.Item as={Link} to={ isAuthenticated ? '/settings' : '/sign-in'} position='left' fitted='horizontally' icon>
+              <Icon name='settings' />
+            </Menu.Item>
+            <Menu.Item header name='home' as={Link} to='/'>
+              Wandering Labs :: Reserve
+            </Menu.Item>
+            <Menu.Item name='new' as={Link} to='/new' position='right' fitted='horizontally'>
+              <Icon name='plus' />
+            </Menu.Item>
+          </Container>
+        </Menu>
     );
   }
 }
