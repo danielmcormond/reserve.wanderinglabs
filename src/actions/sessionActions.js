@@ -24,7 +24,7 @@ export function sessionCreate(token) {
 
         dispatch(sessionSuccess(response.data.auth_token));
 
-        history.replace('/edit');
+        history.replace('/settings');
         dispatch(setFlashMessage('logged in', 'success'));
       })
       .catch(function (error) {

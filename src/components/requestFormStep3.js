@@ -1,23 +1,36 @@
 import React, { Component } from 'react';
 import { Control } from 'react-redux-form';
-import { Input } from 'semantic-ui-react'
+import { Dropdown, Grid, Input } from 'semantic-ui-react'
 
+import SelectType from './inputs/selectType'
 import SemanticInput from './semanticInput'
 
 export default class RequestFormStep3 extends Component {
-
   render() {
     return (
-      <div>
-        <label>Options</label>
-        <div>
+      <Grid>
+        <Grid.Column mobile='16'>
+          <label>Site Type</label>
+          <div>
+            <Control
+              model="request.type"
+              component={SelectType}
+            />
+          </div>
+        </Grid.Column>
+        <Grid.Column mobile='8'>
           <Control
-            model="user.firstName"
+            model="request.length"
             component={SemanticInput}
           />
-          <Input size='huge' placeholder='Search...' />
-        </div>
-      </div>
+        </Grid.Column>
+        <Grid.Column mobile='8'>
+          <Control
+            model="request.length"
+            component={SemanticInput}
+          />
+        </Grid.Column>
+      </Grid>
     )
   };
 };

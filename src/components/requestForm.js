@@ -3,10 +3,6 @@ import { connect } from 'react-redux';
 // import { Field, reduxForm } from 'redux-form';
 import { Form } from 'react-redux-form';
 
-import { fetchAvailabilityRequests } from "../actions/availabilityRequestsActions"
-
-import { Input } from 'semantic-ui-react'
-
 import RequestFormStep1 from './requestFormStep1'
 import RequestFormStep2 from './requestFormStep2'
 import RequestFormStep3 from './requestFormStep3'
@@ -22,7 +18,7 @@ import RequestFormStep4 from './requestFormStep4'
 class RequestForm extends Component {
 
   render() {
-    const { handleSubmit, load, pristine, reset, submitting, currentStep } = this.props;
+    const { currentStep } = this.props;
 
     return (
       <Form model="testForm">

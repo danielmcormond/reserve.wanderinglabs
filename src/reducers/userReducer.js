@@ -20,7 +20,8 @@ export default function reducer(state={
           user: action.payload,
         }
       }
+      default: {
+        return {...state};
+      }
     }
-
-    return state
 }

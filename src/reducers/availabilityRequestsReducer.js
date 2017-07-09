@@ -20,7 +20,8 @@ export default function reducer(state={
           ars: action.payload,
         }
       }
+      default: {
+        return state;
+      }
     }
-
-    return state
 }

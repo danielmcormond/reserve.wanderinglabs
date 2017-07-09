@@ -53,7 +53,7 @@ ReactDOM.render(
               <Route exact path="/sign-in/:token" component={SessionCreate}/>
               <Route exact path="/sign-out" component={SessionDestroy}/>
 
-              <Route exact path="/edit" component={requireAuth(UserSettings)}/>
+              <Route exact path="/settings" component={requireAuth(UserSettings)}/>
             </Container>
           </div>
         </div>

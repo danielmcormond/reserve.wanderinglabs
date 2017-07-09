@@ -14,7 +14,7 @@ export default class Nav extends Component {
     return (
         <Menu fixed='top' inverted color='green' size='large'>
           <Container>
-            <Menu.Item as={Link} to={ isAuthenticated ? '/settings' : '/sign-in'} position='left' fitted='horizontally' icon>
+            <Menu.Item as={Link} to={ isAuthenticated ? '/settings' : '/sign-in'} fitted='horizontally' icon>
               <Icon name='settings' />
             </Menu.Item>
             <Menu.Item header name='home' as={Link} to='/'>

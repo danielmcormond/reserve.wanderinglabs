@@ -23,9 +23,6 @@ export default function requireAuth(Component) {
     checkAuth() {
 
       if ( ! this.props.isAuthenticated) {
-        const location = this.props.location;
-        const redirect = location.pathname + location.search;
-
         history.replace('/');
         this.props.dispatch(setFlashMessage('Not authed', 'error'))
       }

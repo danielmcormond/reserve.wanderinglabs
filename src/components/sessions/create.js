@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Control, Form } from 'react-redux-form';
-import { Button, Input } from 'semantic-ui-react'
 
 import { sessionCreate } from "../../actions/sessionActions"
 

@@ -1,7 +1,7 @@
 import _ from 'lodash'
 import React, { Component } from 'react'
 import { connect } from "react-redux"
-import { Search, Grid, Header } from 'semantic-ui-react'
+import { Search } from 'semantic-ui-react'
 
 import { fetchFacilities } from "../actions/facilitiesActions"
 
@@ -37,8 +37,9 @@ export default class FacilityLookup extends Component {
         onSearchChange={this.handleSearchChange}
         results={facilities}
         value={value}
-        size='large'
+        size='huge'
         fluid
+        className='facilitySearch'
       />
     )
   };

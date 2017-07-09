@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import { Container, Divider } from 'semantic-ui-react'
+
 import RequestForm from './requestForm';
 import RequestFormSteps from './requestFormSteps'
-import { Container } from 'semantic-ui-react'
+import RequestFormStepButtons from './requestFormStepButtons'
 
 export default class New extends Component {
   render() {
@@ -10,6 +12,10 @@ export default class New extends Component {
         <RequestFormSteps />
         <Container>
           <RequestForm />
+        </Container>
+        <Divider hidden />
+        <Container>
+          <RequestFormStepButtons/>
         </Container>
       </div>
     );

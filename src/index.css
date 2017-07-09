@@ -14,16 +14,20 @@ body {
 }
 
 .navPadded {
-  margin-top: 46px;
+  margin-top: 120px;
 }
 
-.ui.inverted.menu.StepsNav {
-  margin-top: 46px;
+.ui.menu.StepsNavMenu {
+  top: 49px;
   border-radius: 0;
 }
 
 .ui.search .prompt {
   border-radius: 0;
+}
+
+.facilitySearch > .input {
+  width: 100% !important;
 }
 
 input {
@@ -41,4 +45,9 @@ input {
     margin-left: auto !important;
     margin-right: auto !important;
   }
+}
+
+
+.ui.selection.dropdown .menu {
+  max-height: none !important;
 }

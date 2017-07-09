@@ -22,7 +22,7 @@ export default class UserSettings extends Component {
 
     return (
       <div>
-        <Header as='h1'>{user.email}</Header>
+        <Header as='h5'>Account Settings: {user.email}</Header>
         <Menu color='green'>
         { isAuthenticated &&
           <Menu.Item name='sessionDestroy' as={Link} to='/sign-out'>
@@ -30,7 +30,7 @@ export default class UserSettings extends Component {
           </Menu.Item>
         }
         { isAuthenticated &&
-          <Menu.Item as={Link} to='/edit'>
+          <Menu.Item as={Link} to='/settings'>
             Account
           </Menu.Item>
         }

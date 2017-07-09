@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 
-import SemanticInput from './semanticInput'
-
 import DayPicker, { DateUtils } from 'react-day-picker';
 import moment from 'moment';
 
