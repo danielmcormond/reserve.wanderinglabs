@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
-import { Input } from 'semantic-ui-react'
+import { Form } from 'semantic-ui-react'
 
 export default class SematicInput extends Component {
   render() {
     return (
-      <Input fluid placeholder='Search...' />
+      <Form.Input fluid {...this.props} />
     );
   }
 }
-
-// <Form.Input fluid label='Label here' />

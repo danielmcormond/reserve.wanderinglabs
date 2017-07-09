@@ -13,13 +13,17 @@ import user from "./userReducer"
 
 
 const initialUserState = {
-  firstName: '',
-  lastName: ''
+  length: '45',
+  type: '',
+  electric: '30 amp',
+  water: false,
+  sewer: false,
+  email: '',
 };
 
 export default combineReducers({
   router: routerReducer,
-  testForm: combineForms({ user: initialUserState, }, 'testForm'),
+  testForm: combineForms(initialUserState, 'testForm'),
   sessionForm: combineForms({ user: { email: '' }, }, 'sessionForm'),
   availabilityRequests,
   facilities,
