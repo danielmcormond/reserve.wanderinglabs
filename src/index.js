@@ -7,7 +7,7 @@ import { Container } from 'semantic-ui-react'
 import { Route } from 'react-router'
 import { ConnectedRouter } from 'react-router-redux'
 
-import Layout from "./components/layout"
+import Requests from "./components/requests"
 import Nav from "./components/nav"
 import FlashMessage from "./components/flashMessage"
 import New from "./components/new"
@@ -47,7 +47,7 @@ ReactDOM.render(
 
             <Container className="topPadded">
               <FlashMessage />
-              <Route exact path="/" component={Layout}/>
+              <Route exact path="/" component={Requests}/>
 
               <Route exact path="/sign-in" component={SessionNew}/>
               <Route exact path="/sign-in/:token" component={SessionCreate}/>
