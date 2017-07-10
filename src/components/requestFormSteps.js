@@ -49,6 +49,7 @@ export default class RequestFormSteps extends Component {
             </Menu.Item>
           </Container>
         </Menu>
+        <div className="NavPushed" />
       </div>
     )
   };

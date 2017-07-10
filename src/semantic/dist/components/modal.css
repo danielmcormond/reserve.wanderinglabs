@@ -227,7 +227,7 @@
   .ui.modal > .close {
     top: 1.4192rem;
     right: 1rem;
-    color: #212121;
+    color: #444444;
   }
 }
 
@@ -315,7 +315,7 @@
   right: 1.5rem;
 }
 .ui.inverted.dimmer > .basic.modal {
-  color: #212121;
+  color: #444444;
 }
 .ui.inverted.dimmer > .ui.basic.modal > .header {
   color: rgba(0, 0, 0, 0.85);
@@ -407,7 +407,7 @@
 .ui.fullscreen.modal > .close {
   top: 1.4192rem;
   right: 1rem;
-  color: #212121;
+  color: #444444;
 }
 
 /*--------------

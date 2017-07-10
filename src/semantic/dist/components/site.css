@@ -30,7 +30,7 @@ body {
   font-family: 'Roboto', 'Helvetica Neue', Arial, Helvetica, sans-serif;
   font-size: 13px;
   line-height: 1.33;
-  color: #212121;
+  color: #444444;
   font-smoothing: antialiased;
 }
 
@@ -134,17 +134,17 @@ a:hover {
 textarea::-webkit-selection,
 input::-webkit-selection {
   background-color: rgba(100, 100, 100, 0.4);
-  color: #212121;
+  color: #444444;
 }
 textarea::-moz-selection,
 input::-moz-selection {
   background-color: rgba(100, 100, 100, 0.4);
-  color: #212121;
+  color: #444444;
 }
 textarea::selection,
 input::selection {
   background-color: rgba(100, 100, 100, 0.4);
-  color: #212121;
+  color: #444444;
 }
 
 

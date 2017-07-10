@@ -12,6 +12,7 @@ export default class Nav extends Component {
   render() {
     const { isAuthenticated } = this.props;
     return (
+      <div>
         <Menu fixed='top' inverted color='green' size='large'>
           <Container>
             <Menu.Item as={Link} to={ isAuthenticated ? '/settings' : '/sign-in'} fitted='horizontally' icon>
@@ -25,6 +26,8 @@ export default class Nav extends Component {
             </Menu.Item>
           </Container>
         </Menu>
+        <div className="NavPushed" />
+      </div>
     );
   }
 }

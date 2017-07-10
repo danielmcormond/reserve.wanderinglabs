@@ -29,6 +29,7 @@ export default class Requests extends Component {
   render() {
     const { ars, loading } = this.props;
     const mappedArs = ars.map(ar =>
+
       <List.Item key={ar.uuid} onClick={() => this.clickedItem(ar.uuid)} >
         <List.Content floated='right'>
           <Label circular color='green' key='green' size='large'>2</Label>

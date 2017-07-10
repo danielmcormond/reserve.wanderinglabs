@@ -185,7 +185,7 @@
   max-width: auto;
   font-size: 1em;
   line-height: 1.33;
-  color: #212121;
+  color: #444444;
 }
 
 /*--------------
@@ -248,7 +248,7 @@
   color: rgba(0, 0, 0, 0.4);
 }
 .ui.items > .item .meta > a:not(.ui):hover {
-  color: #212121;
+  color: #444444;
 }
 
 /*--------------

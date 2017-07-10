@@ -1,7 +1,7 @@
 /*******************************
      User Global Variables
 *******************************/
-
+@textColor : #444444;
 @green          : #77b57a;
 @largeMonitorBreakpoint      : @computerBreakpoint;
 @widescreenMonitorBreakpoint : @computerBreakpoint;

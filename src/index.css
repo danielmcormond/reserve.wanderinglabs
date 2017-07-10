@@ -4,6 +4,14 @@ body {
   font-family: sans-serif;
 }
 
+.NavPushed {
+  height: 50px;
+}
+
+.mainContainer {
+  padding-top: 12px;
+}
+
 .DayPicker {
   display: block;
   font-size: 18px;
@@ -11,10 +19,6 @@ body {
 
 .DayPicker-Weekday {
   padding: 1rem;
-}
-
-.navPadded {
-  margin-top: 60px;
 }
 
 .ui.menu.StepsNavMenu {
@@ -33,11 +37,6 @@ body {
 input {
   font: inherit;
 }
-
-.topPadded {
-  padding-top: 12px;
-}
-
 
 @media only screen and (max-width: 767px) {
   .ui.menu > .ui.container {
