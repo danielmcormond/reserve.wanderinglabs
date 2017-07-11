@@ -12,7 +12,6 @@ export function fetchAvailabilityRequests() {
       })
   }
 }
-
 export function fetchAvailabilityRequest(uuid) {
   return function(dispatch) {
     // TODO: Access state availabilityRequests.ars to see if ar is already in memory.

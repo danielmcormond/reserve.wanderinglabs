@@ -4,6 +4,7 @@ import { Container } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
 import { fetchAvailabilityRequest } from "../actions/availabilityRequestsActions"
+import AvailabilityMatches from './availabilityMatches'
 
 @connect((store) => {
   return {
@@ -20,9 +21,12 @@ export default class Request extends Component {
     const { ar, loading } = this.props;
 
     return (
-      <Container>
-        HW - {ar.uuid}
-      </Container>
+      <div>
+        <Container>
+          HW - {ar.uuid}
+        </Container>
+        <AvailabilityMatches {...this.props}/>
+      </div>
     );
   }
 }

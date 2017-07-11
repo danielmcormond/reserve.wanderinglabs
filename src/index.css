@@ -50,3 +50,9 @@ input {
 .ui.selection.dropdown .menu {
   max-height: none !important;
 }
+
+
+table.ui.table.availabilityMatches {
+  border: none;
+  background: inherit;
+}
