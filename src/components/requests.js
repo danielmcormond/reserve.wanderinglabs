@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from "react-redux"
 import { Label, List } from 'semantic-ui-react'
 
+import DateFormat from './utils/dateFormat'
 import { fetchAvailabilityRequests } from "../actions/availabilityRequestsActions"
 import { history } from '../utils/history';
 
@@ -32,11 +33,15 @@ export default class Requests extends Component {
 
       <List.Item key={ar.uuid} onClick={() => this.clickedItem(ar.uuid)} >
         <List.Content floated='right'>
-          <Label circular color='green' key='green' size='large'>2</Label>
+          <Label circular color={ar.matches_availabile_count > 0 ? 'green' : 'gray'} size='large'>
+            {ar.matches_availabile_count}
+          </Label>
         </List.Content>
         <List.Content>
           <List.Header>{ar.facility.name}</List.Header>
-          {ar.date_start}
+          <DateFormat format="MM/DD" date={ar.date_start} />
+            &nbsp;to&nbsp;
+          <DateFormat format="MM/DD/YYYY" date={ar.date_end} />
         </List.Content>
       </List.Item>
     );
@@ -46,6 +51,7 @@ export default class Requests extends Component {
         <List selection divided size='large' relaxed='very'>
           {mappedArs}
         </List>
+        {!!!mappedArs.length && '<h3>No Requests found</h3>' }
       </div>
     );
   }

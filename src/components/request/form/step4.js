@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Control } from 'react-redux-form';
 
-import SemanticInput from './semanticInput'
+import SemanticInput from '../../semanticInput'
 
 export default class RequestFormStep4 extends Component {
 

@@ -19,10 +19,11 @@ export default class RequestHeader extends Component {
       <div>
         <Menu fixed='top' color='green' className='StepsNavMenu'>
           <Container>
-            <Menu.Item as={Link} to='/' fitted='horizontally'>
+            <Menu.Item as={Link} to='/'>
               <Icon name='chevron left'/>
+              BACK
             </Menu.Item>
-            <Menu.Item as={Link} to='/'  name='home' header>
+            <Menu.Item as={Link} to='/' name='home' header>
               {ar.facility.name}
             </Menu.Item>
           </Container>

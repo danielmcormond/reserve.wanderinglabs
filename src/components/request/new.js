@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { Container, Divider } from 'semantic-ui-react'
 
-import RequestForm from './requestForm';
-
-import RequestFormStepButtons from './requestFormStepButtons'
+import RequestForm from './form/index';
+import RequestFormStepButtons from './form/stepButtons'
 
 export default class New extends Component {
   render() {

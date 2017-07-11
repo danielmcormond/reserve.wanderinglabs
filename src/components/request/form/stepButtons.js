@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
-import { formStepInc, formStepDec, formStepGo } from '../actions/requestFormActions'
+import { formStepInc, formStepDec, formStepGo } from '../../../actions/requestFormActions'
 
 import { Button, Grid, Icon } from 'semantic-ui-react'
 

@@ -13,3 +13,21 @@ export function fetchAvailabilityMatches(uuid) {
       })
   }
 }
+
+export function fetchAvailabilityMatch(id, from) {
+  return function(dispatch) {
+    dispatch({type: "FETCH_MATCH"});
+    axios.post(`http://wl.dev/availability_matches/${id}/click.json`, { from })
+      .then((response) => {
+        // if (response.data.available === true) {
+        //   window.location(response.data.reserve_url);
+        // }
+        // else {
+          dispatch({type: "FETCH_MATCH_FULFILLED", payload: response.data})
+        //}
+      })
+      .catch((err) => {
+        dispatch({type: "FETCH_MATCH_REJECTED", payload: err})
+      })
+  }
+}

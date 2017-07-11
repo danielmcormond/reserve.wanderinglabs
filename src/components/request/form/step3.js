@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { Control } from 'react-redux-form';
 import { Dropdown, Grid, Input } from 'semantic-ui-react'
 
-import SemanticCheckbox from './inputs/checkbox'
-import SelectType from './inputs/selectType'
-import SemanticInput from './semanticInput'
+import SemanticCheckbox from '../../inputs/checkbox'
+import SelectType from '../../inputs/selectType'
+import SemanticInput from '../../semanticInput'
 
 export default class RequestFormStep3 extends Component {
   render() {

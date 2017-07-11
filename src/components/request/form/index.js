@@ -3,10 +3,10 @@ import { connect } from 'react-redux';
 // import { Field, reduxForm } from 'redux-form';
 import { Form } from 'react-redux-form';
 
-import RequestFormStep1 from './requestFormStep1'
-import RequestFormStep2 from './requestFormStep2'
-import RequestFormStep3 from './requestFormStep3'
-import RequestFormStep4 from './requestFormStep4'
+import RequestFormStep1 from './step1'
+import RequestFormStep2 from './step2'
+import RequestFormStep3 from './step3'
+import RequestFormStep4 from './step4'
 
 @connect((store) => {
   return {

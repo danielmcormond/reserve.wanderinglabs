@@ -56,3 +56,23 @@ table.ui.table.availabilityMatches {
   border: none;
   background: inherit;
 }
+
+
+.ui.progress {
+  border-radius: 0;
+  margin: 0;
+  z-index: 102;
+}
+
+.ui.progress .bar {
+  border-radius: 0;
+}
+
+.ui.progress:first-child {
+  margin: 0;
+}
+
+.ui.menu .item.MenuPremium {
+  padding-top: 1em;
+  padding-bottom: 1em;
+}

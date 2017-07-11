@@ -3,6 +3,7 @@ import { connect } from "react-redux"
 import { Button, Header, Table } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
+import DateFormat from './utils/dateFormat'
 import { fetchAvailabilityMatches } from "../actions/availabilityMatchesActions"
 
 @connect((store) => {
@@ -26,8 +27,10 @@ export default class AvailabilityMatches extends Component {
         <Table.Cell>
           <Header size='tiny'>
             <Header.Content>
-              {ar.avail_date}
-              <Header.Subheader>Thursday</Header.Subheader>
+              <DateFormat format="MM/DD" date={ar.avail_date}/>
+              <Header.Subheader>
+                <DateFormat format="dddd" date={ar.avail_date}/>
+              </Header.Subheader>
             </Header.Content>
           </Header>
         </Table.Cell>
@@ -38,12 +41,7 @@ export default class AvailabilityMatches extends Component {
           {ar.site.site_num}
         </Table.Cell>
         <Table.Cell textAlign='right'>
-          <Button fluid
-            color='green'
-            content='Reserve'
-            as={Link}
-            to={`reserve/${ar.id}`}
-          />
+          {!!ar.available && <Button fluid color='green' content='Reserve' as={Link} to={`/w/${ar.short}`} />}
         </Table.Cell>
       </Table.Row>
       );
@@ -52,8 +50,10 @@ export default class AvailabilityMatches extends Component {
     return (
       <div>
         <Header as='h5'>
-          Found Availabilities
+          Found Availabilities: {mappedArs.length }
         </Header>
+
+        {!!!mappedArs.length && '<h3>No Requests found</h3>' }
 
         <Table unstackable className='availabilityMatches'>
           <Table.Header>
