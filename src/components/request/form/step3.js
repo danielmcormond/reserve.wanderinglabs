@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Control } from 'react-redux-form';
-import { Dropdown, Grid, Input } from 'semantic-ui-react'
+import { Grid } from 'semantic-ui-react'
 
 import SemanticCheckbox from '../../inputs/checkbox'
 import SelectType from '../../inputs/selectType'

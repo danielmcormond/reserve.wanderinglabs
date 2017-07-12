@@ -8,8 +8,7 @@ import { fetchAvailabilityMatches } from "../actions/availabilityMatchesActions"
 
 @connect((store) => {
   return {
-    matches: store.availabilityMatches.matches,
-    loading: store.availabilityRequests.fetching,
+    matches: store.availabilityMatches.matches
   };
 })
 export default class AvailabilityMatches extends Component {
@@ -20,7 +19,7 @@ export default class AvailabilityMatches extends Component {
 
 
   render() {
-    const { matches, loading } = this.props;
+    const { matches } = this.props;
     const mappedArs = matches.map(ar => {
       return (
       <Table.Row key={ar.id}>

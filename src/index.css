@@ -83,3 +83,7 @@ table.ui.table.availabilityMatches {
 .ui.link.inverted.menu .item:hover {
   background: inherit;
 }
+
+.ui.dropdown:not(.button)>.default.text {
+  color: inherit;
+}

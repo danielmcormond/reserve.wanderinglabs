@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux"
 import { Link } from 'react-router-dom'
-import { Container, Icon, Label, Menu } from 'semantic-ui-react'
+import { Container, Icon, Menu } from 'semantic-ui-react'
 
 @connect((store) => {
   return {
@@ -14,6 +14,7 @@ export default class Nav extends Component {
     return (
       <div>
         <Menu fixed='top' inverted color='green' size='large'>
+          <Container>
             <Menu.Item as={Link} to={ isAuthenticated ? '/settings' : '/sign-in'} icon>
               <Icon name='settings' />
             </Menu.Item>
@@ -23,6 +24,7 @@ export default class Nav extends Component {
             <Menu.Item name='new' as={Link} to='/new' position='right'>
               <Icon name='plus' />
             </Menu.Item>
+          </Container>
         </Menu>
         <div className="NavPushed" />
       </div>

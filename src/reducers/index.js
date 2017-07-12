@@ -14,7 +14,12 @@ import user from "./userReducer"
 
 
 const initialAvailabilityRequestFormState = {
-  facilityId: '',
+  step1: {
+    facilityId: '',
+  },
+  step2: {},
+  step3: {},
+  step4: {},
   length: '45',
   type: '',
   electric: '30 amp',

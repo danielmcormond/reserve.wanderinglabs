@@ -10,7 +10,7 @@ import { ConnectedRouter } from 'react-router-redux'
 import MatchReserve from "./components/matchReserve"
 import Request from "./components/request"
 import RequestFormSteps from './components/request/form/steps'
-import RequestHeader from "./components/requestHeader"
+// import RequestHeader from "./components/requestHeader"
 import Requests from "./components/requests"
 import Nav from "./components/nav"
 import Loading from "./components/loading"

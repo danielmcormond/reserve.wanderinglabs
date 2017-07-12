@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from "react-redux"
 import { Button, Divider, Grid, Header, Icon, List } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
-import moment from 'moment';
+// import moment from 'moment';
 
 import DateFormat from './utils/dateFormat'
 
@@ -12,8 +12,7 @@ import AvailabilityMatches from './availabilityMatches'
 
 @connect((store) => {
   return {
-    ar: store.availabilityRequests.ar,
-    loading: store.availabilityRequests.fetching,
+    ar: store.availabilityRequests.ar
   };
 })
 export default class Request extends Component {
@@ -21,9 +20,8 @@ export default class Request extends Component {
     this.props.dispatch(fetchAvailabilityRequest(this.props.match.params.uuid))
   }
 
-
   render() {
-    const { ar, loading } = this.props;
+    const { ar } = this.props;
 
     return (
       <div>

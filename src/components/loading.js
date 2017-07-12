@@ -12,11 +12,16 @@ export default class Loading extends Component {
   render() {
     const { loading } = this.props;
 
-    return (
-      <div>
-        { loading && <Progress percent='100' size='tiny' color='green' active /> }
-      </div>
+    return(
+      <div></div>
     );
+
+    // TODO FIX JUMPING
+    // return (
+    //   <div>
+    //     { loading && <Progress percent='100' size='tiny' color='green' active autoSuccess /> }
+    //   </div>
+    // );
   }
 }
 

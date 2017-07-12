@@ -9,8 +9,7 @@ import { history } from '../utils/history';
 
 @connect((store) => {
   return {
-    ars: store.availabilityRequests.ars,
-    loading: store.availabilityRequests.fetching,
+    ars: store.availabilityRequests.ars
   };
 })
 export default class Requests extends Component {
@@ -28,7 +27,7 @@ export default class Requests extends Component {
   }
 
   render() {
-    const { ars, loading } = this.props;
+    const { ars } = this.props;
     const mappedArs = ars.map(ar =>
 
       <List.Item key={ar.uuid} onClick={() => this.clickedItem(ar.uuid)} >
