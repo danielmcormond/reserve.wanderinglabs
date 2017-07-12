@@ -7,7 +7,9 @@ export function fetchFacilities(value) {
       .then((response) => {
         const mappedData = response.data.map((facility) => {
           return {
-            title: facility.name
+            key: facility.id,
+            text: facility.name,
+            value: facility.id
           }
         })
         dispatch({type: "FETCH_FACILITIES_FULFILLED", payload: mappedData})

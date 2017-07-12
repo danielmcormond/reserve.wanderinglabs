@@ -12,15 +12,6 @@ body {
   padding-top: 12px;
 }
 
-.DayPicker {
-  display: block;
-  font-size: 18px;
-}
-
-.DayPicker-Weekday {
-  padding: 1rem;
-}
-
 .ui.menu.StepsNavMenu {
   top: 49px;
   border-radius: 0;
@@ -75,4 +66,20 @@ table.ui.table.availabilityMatches {
 .ui.menu .item.MenuPremium {
   padding-top: 1em;
   padding-bottom: 1em;
+}
+
+.ui.table tr td:first-child, .ui.table tr th:first-child {
+  padding-left: 0;
+}
+
+.ui.table tr td:last-child, .ui.table tr th:last-child {
+  padding-right: 0;
+}
+
+
+.ui.inverted.menu .dropdown.item:hover,
+.ui.inverted.menu .link.item:hover,
+.ui.inverted.menu a.item:hover,
+.ui.link.inverted.menu .item:hover {
+  background: inherit;
 }

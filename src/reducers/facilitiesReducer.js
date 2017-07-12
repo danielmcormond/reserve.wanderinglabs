@@ -1,5 +1,7 @@
 export default function reducer(state={
     facilities: [],
+    facilityLookup: '',
+    search: true,
     fetching: false,
     fetched: false,
     error: null,
@@ -18,6 +20,13 @@ export default function reducer(state={
           fetching: false,
           fetched: true,
           facilities: action.payload,
+        }
+      }
+      case "SET_FACILITY_LOOKUP": {
+        return {
+          ...state,
+          search: false,
+          facilityLookup: action.payload,
         }
       }
       default: {

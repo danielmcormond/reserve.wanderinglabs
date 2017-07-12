@@ -21,7 +21,7 @@ class RequestForm extends Component {
     const { currentStep } = this.props;
 
     return (
-      <Form model="testForm">
+      <Form model="availabilityRequestForm">
         { currentStep === 1 && <RequestFormStep1 /> }
         { currentStep === 2 && <RequestFormStep2 /> }
         { currentStep === 3 && <RequestFormStep3 /> }

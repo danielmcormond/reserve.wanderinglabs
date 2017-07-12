@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux"
-import { Button, Header, Table } from 'semantic-ui-react'
+import { Button, Divider, Header, Icon, Table } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
 import DateFormat from './utils/dateFormat'
@@ -24,7 +24,7 @@ export default class AvailabilityMatches extends Component {
     const mappedArs = matches.map(ar => {
       return (
       <Table.Row key={ar.id}>
-        <Table.Cell>
+        <Table.Cell textAlign='left'>
           <Header size='tiny'>
             <Header.Content>
               <DateFormat format="MM/DD" date={ar.avail_date}/>
@@ -49,8 +49,15 @@ export default class AvailabilityMatches extends Component {
 
     return (
       <div>
-        <Header as='h5'>
-          Found Availabilities: {mappedArs.length }
+        <Divider hidden />
+        <Header size='tiny'>
+          <Icon name='calendar' />
+          <Header.Content>
+            Availabilities
+            <Header.Subheader>
+              {mappedArs.length} still available
+            </Header.Subheader>
+          </Header.Content>
         </Header>
 
         {!!!mappedArs.length && '<h3>No Requests found</h3>' }
@@ -58,7 +65,7 @@ export default class AvailabilityMatches extends Component {
         <Table unstackable className='availabilityMatches'>
           <Table.Header>
             <Table.Row>
-              <Table.HeaderCell>Arrival Date</Table.HeaderCell>
+              <Table.HeaderCell textAlign='left'>Arrive</Table.HeaderCell>
               <Table.HeaderCell textAlign='center' >Nights</Table.HeaderCell>
               <Table.HeaderCell textAlign='center'>Site #</Table.HeaderCell>
 

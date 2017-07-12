@@ -10,12 +10,7 @@ export default class RequestFormStep1 extends Component {
     return (
       <div>
         <Header as='h4'>Campground or Facility to reserve at:</Header>
-        <div>
-          <Control
-            model="user.firstName"
-            component={FacilityLookup}
-          />
-        </div>
+        <FacilityLookup />
       </div>
     )
   };

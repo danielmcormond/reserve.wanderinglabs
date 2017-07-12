@@ -49,7 +49,6 @@ ReactDOM.render(
           <Nav />
            <Route path="/new" component={RequestFormSteps} />
 
-
           <Container className="mainContainer">
             <FlashMessage />
 

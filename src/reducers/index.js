@@ -13,18 +13,22 @@ import session from "./sessionReducer"
 import user from "./userReducer"
 
 
-const initialUserState = {
+const initialAvailabilityRequestFormState = {
+  facilityId: '',
   length: '45',
   type: '',
   electric: '30 amp',
   water: false,
   sewer: false,
   email: '',
+  dateStart: null,
+  dateEnd: null,
+  stayLength: '',
 };
 
 export default combineReducers({
   router: routerReducer,
-  testForm: combineForms(initialUserState, 'testForm'),
+  availabilityRequestForm: combineForms(initialAvailabilityRequestFormState, 'availabilityRequestForm'),
   sessionForm: combineForms({ user: { email: '' }, }, 'sessionForm'),
   availabilityMatches,
   availabilityRequests,

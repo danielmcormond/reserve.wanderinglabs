@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux"
-import { Divider, Grid, Header, Icon, List } from 'semantic-ui-react'
+import { Button, Divider, Grid, Header, Icon, List } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import moment from 'moment';
 
@@ -36,10 +36,11 @@ export default class Request extends Component {
             </Header.Subheader>
           </Header.Content>
         </Header>
+        <Divider hidden />
 
-        <Grid columns={2} divided>
-          <Grid.Row>
-            <Grid.Column>
+        <Grid>
+          <Grid.Row divided>
+            <Grid.Column verticalAlign='middle' tablet='8' computer='4' mobile='8'>
               <List size='medium' relaxed>
                 <List.Item>
                   <List.Header>Arriving between</List.Header>
@@ -57,12 +58,15 @@ export default class Request extends Component {
                   {ar.checked_count}
                 </List.Item>
               </List>
+
+              <Button fluid color='green' content='Go Premium' positive size='tiny' as={Link} to={`/w/${ar.short}`} />
+
             </Grid.Column>
-            <Grid.Column>
+            <Grid.Column verticalAlign='middle' tablet='8' computer='4' mobile='8'>
               <List size='medium' relaxed>
                 <List.Item>
                   <List.Header>Status</List.Header>
-                  <Header as='span' color='green'>{ar.status}Active</Header>
+                  {ar.status}Active
                 </List.Item>
                 <List.Item>
                   <List.Header>Checked Count</List.Header>
@@ -74,11 +78,20 @@ export default class Request extends Component {
                 </List.Item>
 
               </List>
+
+              <Button fluid color='orange' content='Cancel' negative size='tiny' as={Link} to={`/w/${ar.short}`} />
+            </Grid.Column>
+            <Grid.Column only='computer' computer='8'>
+              <Header size='large' color='green'>Premium Membership</Header>
+              <p>
+                Become a premium member by sending a few bucks our way and we will upgrade your request to never pause; plus we will check Reserve America for you even more frequently.
+              </p>
+              <p>
+                Any amount will get you premium status. Send what you think this service is worth.
+              </p>
             </Grid.Column>
           </Grid.Row>
         </Grid>
-
-        <Divider/>
 
         <AvailabilityMatches {...this.props}/>
       </div>

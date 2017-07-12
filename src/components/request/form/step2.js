@@ -1,55 +1,76 @@
 import React, { Component } from 'react';
-
+import { connect } from 'react-redux';
 import DayPicker, { DateUtils } from 'react-day-picker';
 import moment from 'moment';
+import { Grid, Header, Label, Icon } from 'semantic-ui-react';
+import { actions, Control } from 'react-redux-form';
 
-import 'react-day-picker/lib/style.css';
+import SemanticInput from '../../semanticInput'
 
+import '../../../dayPicker.css';
 
-export default class RequestFormStep2 extends Component {
-  state = {
-    from: null,
-    to: null,
+@connect((store) => {
+  return {
+    dateStart: store.availabilityRequestForm.dateStart,
+    dateEnd: store.availabilityRequestForm.dateEnd,
   };
+})
+export default class RequestFormStep2 extends Component {
+
   handleDayClick = day => {
-    const range = DateUtils.addDayToRange(day, this.state);
-    this.setState(range);
+    const range = DateUtils.addDayToRange(day, {from: this.props.dateStart, to: this.props.dateEnd});
+    this.props.dispatch(actions.change('availabilityRequestForm.dateStart', range.from))
+    this.props.dispatch(actions.change('availabilityRequestForm.dateEnd', range.to))
   };
   handleResetClick = e => {
     e.preventDefault();
-    this.setState({
-      from: null,
-      to: null,
-    });
+    this.props.dispatch(actions.change('availabilityRequestForm.dateStart', null))
+    this.props.dispatch(actions.change('availabilityRequestForm.dateEnd', null))
   };
 
   render() {
-    const { from, to } = this.state;
+    const { dateStart, dateEnd } = this.props;
 
     return (
-      <div className="RangeExample">
-        {!from && !to && <p>Please select the <strong>first day</strong>.</p>}
-        {from && !to && <p>Please select the <strong>last day</strong>.</p>}
-        {from &&
-          to &&
-          <p>
-            You chose from
-            {' '}
-            {moment(from).format('L')}
-            {' '}
-            to
-            {' '}
-            {moment(to).format('L')}
-            .
-            {' '}<a href="." onClick={this.handleResetClick}>Reset</a>
-          </p>}
-        <DayPicker
-          numberOfMonths={1}
-          selectedDays={[from, { from, to }]}
-          onDayClick={this.handleDayClick}
-          fixedWeeks
-        />
-      </div>
+      <Grid>
+        <Grid.Column computer='8' tablet='16' mobile='16'>
+          <Header size="tiny">
+          {!dateStart && !dateEnd && <span>Select the <strong>first day</strong> you are available to arrive.</span>}
+          {dateStart && !dateEnd && <span>Select the <strong>last day</strong> you are available to arrive.</span>}
+          {dateStart && dateEnd &&
+            <div>
+              Arriving any day between:
+
+              <Label>
+                <Icon name='calendar' />
+                {moment(dateStart).format('L')}
+                {' '}
+                -
+                {' '}
+                {moment(dateEnd).format('L')}
+                <Icon name='delete' onClick={this.handleResetClick}/>
+              </Label>
+            </div>
+          }
+          </Header>
+          <DayPicker
+            numberOfMonths={1}
+            selectedDays={[dateStart, { from: dateStart, to: dateEnd }]}
+            onDayClick={this.handleDayClick}
+            fixedWeeks
+            pagedNavigation
+          />
+        </Grid.Column>
+        <Grid.Column computer='8' tablet='16' mobile='16'>
+          <Control
+            model=".stayLength"
+            component={SemanticInput}
+            controlProps={{
+              label: 'Length of stay (in days)'
+            }}
+          />
+        </Grid.Column>
+      </Grid>
     )
   };
 };

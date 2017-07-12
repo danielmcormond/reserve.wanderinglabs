@@ -1,46 +1,60 @@
 import _ from 'lodash'
 import React, { Component } from 'react'
 import { connect } from "react-redux"
-import { Search } from 'semantic-ui-react'
+import { Dropdown } from 'semantic-ui-react'
+import { actions, Errors } from 'react-redux-form';
 
-import { fetchFacilities } from "../actions/facilitiesActions"
+import { fetchFacilities, setFacility } from "../actions/facilitiesActions"
 
 @connect((store) => {
   return {
     facilities: store.facilities.facilities,
-    loading: store.availabilityRequests.fetching,
+    facilityId: store.availabilityRequestForm.facilityId,
+    loading: store.facilities.fetching,
   };
 })
-
 export default class FacilityLookup extends Component {
-  componentWillMount() {
-    this.resetComponent()
+  handleChange = (e, value) => {
+    this.props.dispatch(actions.change('availabilityRequestForm.facilityId', value.value))
   }
 
-  resetComponent = () => this.setState({ isLoading: false, results: [], value: '' })
-
-  handleResultSelect = (e, result) => this.setState({ value: result.title })
-
   handleSearchChange = (e, value) => {
-    this.setState({ value })
     this.props.dispatch(fetchFacilities(value))
   }
 
   render() {
-    const { facilities, loading } = this.props;
-    const { value } = this.state
+    const { facilities, loading, facilityId } = this.props;
 
     return (
-      <Search
-        loading={loading}
-        onResultSelect={this.handleResultSelect}
-        onSearchChange={this.handleSearchChange}
-        results={facilities}
-        value={value}
-        size='huge'
-        fluid
-        className='facilitySearch'
-      />
+      <div>
+        <Dropdown
+          fluid
+          search
+          value={facilityId}
+          placeholder='Search...'
+          options={facilities}
+          selection
+          onChange={this.handleChange}
+          onSearchChange={this.handleSearchChange}
+        />
+      </div>
     )
   };
 };
+
+
+//         <Dropdown selection text='State' labeled icon='filter'  button className='icon' defaultValue='AL' options={stateOptions} />
+//     const stateOptions = [ { key: 'AL', value: 'AL', text: 'Alabama' }, { key: 'AL1', value: 'AL1', text: 'Alabama1' } ]
+
+
+// const mappedOptions = facilities.map(facility => {
+//   return (
+//     <Dropdown.Item key={facility.key} value={facility.key} onClick={this.handleChange}>
+//       {facility.text}
+//     </Dropdown.Item>
+//   )
+// });
+
+// <Dropdown.Menu scrolling={false}>
+//   {mappedOptions}
+// </Dropdown.Menu>
