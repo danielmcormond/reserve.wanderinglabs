@@ -8,9 +8,11 @@ import { Route } from 'react-router'
 import { ConnectedRouter } from 'react-router-redux'
 
 import MatchReserve from "./components/matchReserve"
-import Request from "./components/request"
+
+import RequestShow from "./components/request/show"
 import RequestFormSteps from './components/request/form/steps'
 import RequestForm from './components/request/form/index'
+
 // import RequestHeader from "./components/requestHeader"
 import Requests from "./components/requests"
 import Nav from "./components/nav"
@@ -55,7 +57,8 @@ ReactDOM.render(
 
             <Route exact path="/" component={Requests}/>
             <Route path="/new" component={RequestForm} />
-            <Route path="/:uuid([a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12})" component={Request}/>
+            <Route path="/:uuid([a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12})" component={RequestShow}/>
+            <Route path="/:status([ca]{1})/:uuid([a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12})" component={RequestShow}/>
 
             <Route exact path="/:from([wet]{1})/:id" component={MatchReserve} />
 

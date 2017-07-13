@@ -4,10 +4,10 @@ import { Button, Divider, Grid, Header, Icon, List } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 // import moment from 'moment';
 
-import DateFormat from './utils/dateFormat'
+import DateFormat from '../utils/dateFormat'
 
-import { fetchAvailabilityRequest } from "../actions/availabilityRequestsActions"
-import AvailabilityMatches from './availabilityMatches'
+import { fetchAvailabilityRequest, updateAvailabilityRequest } from "../../actions/availabilityRequestsActions"
+import AvailabilityMatches from '../availabilityMatches'
 
 
 @connect((store) => {
@@ -15,9 +15,40 @@ import AvailabilityMatches from './availabilityMatches'
     ar: store.availabilityRequests.ar
   };
 })
-export default class Request extends Component {
+export default class RequestShow extends Component {
   componentWillMount() {
-    this.props.dispatch(fetchAvailabilityRequest(this.props.match.params.uuid))
+    console.log('params', this.props.match.params);
+    if (this.props.match.params.status !== undefined) {
+      this.props.dispatch(updateAvailabilityRequest(this.props.match.params.uuid, this.props.match.params.status))
+    } else {
+      this.props.dispatch(fetchAvailabilityRequest(this.props.match.params.uuid))
+    }
+  }
+
+  // TODO: refactor a better solution.. componentWillMount does not rerun when route calls same component again (click cancel button)
+  componentWillReceiveProps(newProps) {
+    if ((newProps.match.params.status !== undefined) && (newProps.match.params.status !== this.props.match.params.status)) {
+      this.props.dispatch(updateAvailabilityRequest(newProps.match.params.uuid, newProps.match.params.status))
+    }
+    else if (newProps.match.params.uuid !== this.props.match.params.uuid) {
+      this.props.dispatch(fetchAvailabilityRequest(newProps.match.params.uuid))
+    }
+  }
+
+  get statusButtonProps() {
+    // TODO: Refactor.. ugly and check if dates in past.
+    if (this.props.ar.status === 'active') {
+      return { content: 'Cancel', to: `/c/${this.props.ar.uuid}`, color: 'orange', negative: true }
+    }
+    else if (this.props.ar.status === 'canceled') {
+      return { content: 'Activate', to: `/a/${this.props.ar.uuid}`, color: 'green' }
+    }
+    else if (this.props.ar.status === 'paused') {
+      return { content: 'UnPause', to: `/a/${this.props.ar.uuid}`, color: 'orange' }
+    }
+    else {
+      return { content: 'Create New', to: '/new' }
+    }
   }
 
   render() {
@@ -57,14 +88,14 @@ export default class Request extends Component {
                 </List.Item>
               </List>
 
-              <Button fluid color='green' content='Go Premium' positive size='tiny' as={Link} to={`/w/${ar.short}`} />
+              <Button as={Link} to={`/w/${ar.uuid}`} fluid color='green' content='Go Premium' positive size='tiny'  />
 
             </Grid.Column>
             <Grid.Column verticalAlign='middle' tablet='8' computer='4' mobile='8'>
               <List size='medium' relaxed>
                 <List.Item>
                   <List.Header>Status</List.Header>
-                  {ar.status}Active
+                  {ar.status}
                 </List.Item>
                 <List.Item>
                   <List.Header>Checked Count</List.Header>
@@ -77,7 +108,8 @@ export default class Request extends Component {
 
               </List>
 
-              <Button fluid color='orange' content='Cancel' negative size='tiny' as={Link} to={`/w/${ar.short}`} />
+              <Button as={Link} fluid size='tiny' {...this.statusButtonProps} />
+
             </Grid.Column>
             <Grid.Column only='computer' computer='8'>
               <Header size='large' color='green'>Premium Membership</Header>

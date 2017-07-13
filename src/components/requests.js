@@ -1,29 +1,26 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux"
 import { Label, List } from 'semantic-ui-react'
+import { push } from 'react-router-redux'
 
 import DateFormat from './utils/dateFormat'
 import { fetchAvailabilityRequests } from "../actions/availabilityRequestsActions"
-import { history } from '../utils/history';
-
 
 @connect((store) => {
   return {
-    ars: store.availabilityRequests.ars
+    ars: store.availabilityRequests.ars,
+    fetched: store.availabilityRequests.fetched
   };
 })
 export default class Requests extends Component {
-
   componentWillMount() {
-    this.props.dispatch(fetchAvailabilityRequests())
-  }
-
-  fetchAvailabilityRequests() {
-    this.props.dispatch(fetchAvailabilityRequests())
+    if (this.props.fetched === false) {
+      this.props.dispatch(fetchAvailabilityRequests())
+    }
   }
 
   clickedItem(uuid) {
-    history.replace(`/${uuid}`);
+    this.props.dispatch(push(`/${uuid}`));
   }
 
   render() {

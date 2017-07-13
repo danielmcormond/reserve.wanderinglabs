@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { formStepInc, formStepDec, formStepGo } from '../../../actions/requestFormActions'
+import { formStepInc, formStepDec } from '../../../actions/requestFormActions'
 import { Container, Icon, Menu } from 'semantic-ui-react'
 
 @connect((store) => {
@@ -10,11 +10,6 @@ import { Container, Icon, Menu } from 'semantic-ui-react'
 })
 
 export default class RequestFormSteps extends Component {
-
-  goStep(step) {
-    this.props.dispatch(formStepGo(step))
-  }
-
   nextStep() {
     this.props.dispatch(formStepInc())
   }

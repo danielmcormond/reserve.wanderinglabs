@@ -21,6 +21,7 @@ export function formSubmit(values) {
       .then((response) => {
         dispatch({type: "FETCH_AR_FULFILLED", payload: response.data})
         dispatch(formStepGo(1))
+        dispatch({type: "ARS_RESET"})
 
         dispatch(push(`/${response.data.uuid}`));
         dispatch(setFlashMessage('Success!! We will email you if a site becomes available.', 'success'))
