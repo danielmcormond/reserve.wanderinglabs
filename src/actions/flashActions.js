@@ -1,4 +1,4 @@
-export const FLASH_MESSAGE = 'FLASH_MESSAGE';
+export const FLASH_MESSAGE = "FLASH_MESSAGE";
 
 export function setFlashMessage(message, style) {
   return {
@@ -7,5 +7,5 @@ export function setFlashMessage(message, style) {
       message,
       style
     }
-  }
-};
+  };
+}
