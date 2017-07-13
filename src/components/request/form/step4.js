@@ -9,7 +9,7 @@ export default class RequestFormStep4 extends Component {
     return (
       <div>
         <Control
-          model=".email"
+          model=".step4.email"
           component={SemanticInput}
           controlProps={{
             label: 'Email Address'

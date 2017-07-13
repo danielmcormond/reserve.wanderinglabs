@@ -1,17 +1,17 @@
 import axios from "axios";
 
-import { history } from '../utils/history';
+import { push } from 'react-router-redux'
 import { setFlashMessage } from '../actions/flashActions';
 
 export function sessionNew(email) {
   return dispatch =>
     axios.post('http://wl.dev/login_tokens', { email })
       .then(function (response) {
-        history.replace('/');
+        dispatch(push('/'));
         dispatch(setFlashMessage('Being emailed', 'success'))
       })
       .catch(function (error) {
-        history.replace('/');
+        dispatch(push('/'));
         dispatch(setFlashMessage('Email not found. Create a new request.', 'error'))
       });
 }
@@ -24,11 +24,11 @@ export function sessionCreate(token) {
 
         dispatch(sessionSuccess(response.data.auth_token));
 
-        history.replace('/settings');
+        dispatch(push('/settings'));
         dispatch(setFlashMessage('logged in', 'success'));
       })
       .catch(function (error) {
-        history.replace('/sign-in');
+        dispatch(push('/sign-in'));
         dispatch(setFlashMessage('Bad Token', 'error'))
       });
 }
@@ -37,7 +37,7 @@ export function sessionDestroy(token) {
   return function(dispatch) {
     localStorage.setItem('token', null);
     dispatch(sessionSuccess(null));
-    history.replace('/');
+    dispatch(push('/'));
     dispatch(setFlashMessage('logged out', 'success'));
   }
 }

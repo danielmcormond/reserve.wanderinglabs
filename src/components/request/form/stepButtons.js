@@ -33,7 +33,7 @@ export default class RequestFormStepButtons extends Component {
       <Grid>
           <Grid.Column tablet='5' computer='3' mobile='7'>
             { currentStep !== 1 &&
-              <Button color='green' fluid onClick={() => this.prevStep()} >
+              <Button  as='a' color='green' fluid onClick={() => this.prevStep()} >
                 <Icon name='chevron left' />
                 Previous Step
               </Button>
@@ -44,13 +44,13 @@ export default class RequestFormStepButtons extends Component {
           </Grid.Column>
           <Grid.Column tablet='5' computer='3' mobile='7'>
             { currentStep !== 4 &&
-              <Button color='green' fluid onClick={() => this.nextStep()} >
+              <Button  as='a' color='green' fluid onClick={() => this.nextStep()} >
                 Next Step
                 <Icon name='chevron right' />
               </Button>
             }
             { currentStep === 4 &&
-              <Button color='green' fluid positive onClick={() => this.nextStep()} >
+              <Button color='green' fluid positive >
                 Submit Request
               </Button>
             }

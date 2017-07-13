@@ -14,14 +14,14 @@ export default class RequestFormStep3 extends Component {
           <label>Site Type</label>
           <div>
             <Control
-              model=".type"
+              model=".step3.type"
               component={SelectType}
             />
           </div>
         </Grid.Column>
         <Grid.Column mobile='8'>
           <Control
-            model=".length"
+            model=".step3.length"
             component={SemanticInput}
             controlProps={{
               label: 'Length'
@@ -30,7 +30,7 @@ export default class RequestFormStep3 extends Component {
         </Grid.Column>
         <Grid.Column mobile='8'>
           <Control.text
-            model=".electric"
+            model=".step3.electric"
             component={SemanticInput}
             controlProps={{
               label: 'Electric'
@@ -42,7 +42,7 @@ export default class RequestFormStep3 extends Component {
           <Grid>
             <Grid.Column width='16'>
               <Control.checkbox
-                model=".water"
+                model=".step3.water"
                 component={SemanticCheckbox}
                 controlProps={{
                   label: 'Water'
@@ -51,7 +51,7 @@ export default class RequestFormStep3 extends Component {
             </Grid.Column>
             <Grid.Column width='16'>
               <Control.checkbox
-                model=".sewer"
+                model=".step3.sewer"
                 component={SemanticCheckbox}
                 controlProps={{
                   label: 'Sewer'

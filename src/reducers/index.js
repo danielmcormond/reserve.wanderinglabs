@@ -17,18 +17,22 @@ const initialAvailabilityRequestFormState = {
   step1: {
     facilityId: '',
   },
-  step2: {},
-  step3: {},
-  step4: {},
-  length: '45',
-  type: '',
-  electric: '30 amp',
-  water: false,
-  sewer: false,
-  email: '',
-  dateStart: null,
-  dateEnd: null,
-  stayLength: '',
+  step2: {
+    dateStart: null,
+    dateEnd: null,
+    stayLength: '',
+  },
+  step3: {
+    length: '45',
+    type: '',
+    electric: '30 amp',
+    water: false,
+    sewer: false,
+  },
+  step4: {
+    email: '',
+  },
+
 };
 
 export default combineReducers({

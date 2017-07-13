@@ -32,7 +32,7 @@ export default class Requests extends Component {
 
       <List.Item key={ar.uuid} onClick={() => this.clickedItem(ar.uuid)} >
         <List.Content floated='right'>
-          <Label circular color={ar.matches_availabile_count > 0 ? 'green' : 'gray'} size='large'>
+          <Label circular color={ar.matches_availabile_count > 0 ? 'green' : 'grey'} size='large'>
             {ar.matches_availabile_count}
           </Label>
         </List.Content>

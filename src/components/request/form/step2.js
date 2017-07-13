@@ -11,21 +11,21 @@ import '../../../dayPicker.css';
 
 @connect((store) => {
   return {
-    dateStart: store.availabilityRequestForm.dateStart,
-    dateEnd: store.availabilityRequestForm.dateEnd,
+    dateStart: store.availabilityRequestForm.step2.dateStart,
+    dateEnd: store.availabilityRequestForm.step2.dateEnd,
   };
 })
 export default class RequestFormStep2 extends Component {
 
   handleDayClick = day => {
     const range = DateUtils.addDayToRange(day, {from: this.props.dateStart, to: this.props.dateEnd});
-    this.props.dispatch(actions.change('availabilityRequestForm.dateStart', range.from))
-    this.props.dispatch(actions.change('availabilityRequestForm.dateEnd', range.to))
+    this.props.dispatch(actions.change('availabilityRequestForm.step2.dateStart', range.from))
+    this.props.dispatch(actions.change('availabilityRequestForm.step2.dateEnd', range.to))
   };
   handleResetClick = e => {
     e.preventDefault();
-    this.props.dispatch(actions.change('availabilityRequestForm.dateStart', null))
-    this.props.dispatch(actions.change('availabilityRequestForm.dateEnd', null))
+    this.props.dispatch(actions.change('availabilityRequestForm.step2.dateStart', null))
+    this.props.dispatch(actions.change('availabilityRequestForm.step2.dateEnd', null))
   };
 
   render() {
@@ -39,9 +39,7 @@ export default class RequestFormStep2 extends Component {
           {dateStart && !dateEnd && <span>Select the <strong>last day</strong> you are available to arrive.</span>}
           {dateStart && dateEnd &&
             <div>
-              Arriving any day between:
-
-              <Label>
+              <Label size='large'>
                 <Icon name='calendar' />
                 {moment(dateStart).format('L')}
                 {' '}
@@ -63,7 +61,7 @@ export default class RequestFormStep2 extends Component {
         </Grid.Column>
         <Grid.Column computer='8' tablet='16' mobile='16'>
           <Control
-            model=".stayLength"
+            model=".step2.stayLength"
             component={SemanticInput}
             controlProps={{
               label: 'Length of stay (in days)'
