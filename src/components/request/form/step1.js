@@ -1,29 +1,30 @@
-import React, { Component } from 'react';
-import _ from 'lodash'
-import { connect } from "react-redux"
-import { Dropdown, Header, Label } from 'semantic-ui-react'
-import { actions, Errors } from 'react-redux-form';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { Dropdown, Header, Label } from "semantic-ui-react";
+import { actions, Errors } from "react-redux-form";
 
-import { fetchFacilities } from "../../../actions/facilitiesActions"
-import { formStepValidate } from '../../../actions/requestFormActions'
+import { fetchFacilities } from "../../../actions/facilitiesActions";
+import { formStepValidate } from "../../../actions/requestFormActions";
 
-@connect((store) => {
+@connect(store => {
   return {
     facilities: store.facilities.facilities,
     step1: store.availabilityRequestForm.step1,
     step1Valid: store.availabilityRequestForm.forms.step1.$form.valid,
-    loading: store.facilities.fetching,
+    loading: store.facilities.fetching
   };
 })
 export default class RequestFormStep1 extends Component {
   handleChange = (e, value) => {
-    this.props.dispatch(actions.change('availabilityRequestForm.step1.facilityId', value.value))
-    this.props.dispatch(formStepValidate()) // Get rid of errors upon selection
-  }
+    this.props.dispatch(
+      actions.change("availabilityRequestForm.step1.facilityId", value.value)
+    );
+    this.props.dispatch(formStepValidate()); // Get rid of errors upon selection
+  };
 
   handleSearchChange = (e, value) => {
-    this.props.dispatch(fetchFacilities(value))
-  }
+    this.props.dispatch(fetchFacilities(value));
+  };
 
   render() {
     const { facilities, step1, step1Valid } = this.props;
@@ -31,14 +32,14 @@ export default class RequestFormStep1 extends Component {
 
     return (
       <div>
-        <Header as='h4'>Campground or Facility to reserve at:</Header>
+        <Header as="h4">Campground or Facility to reserve at:</Header>
 
         <Dropdown
           error={!!!step1Valid}
           fluid
           search
           value={facilityId}
-          placeholder='Search...'
+          placeholder="Search..."
           options={facilities}
           selection
           onChange={this.handleChange}
@@ -47,19 +48,20 @@ export default class RequestFormStep1 extends Component {
         <Errors
           model="availabilityRequestForm.step1.facilityId"
           messages={{
-            required: 'You must select a campground',
+            required: "You must select a campground"
           }}
-          component={(props) => <Label basic color='green' pointing>{props.children}</Label> }
+          component={props =>
+            <Label basic color="green" pointing>
+              {props.children}
+            </Label>}
         />
-
       </div>
-    )
-  };
-};
+    );
+  }
+}
 
 //         <Dropdown selection text='State' labeled icon='filter'  button className='icon' defaultValue='AL' options={stateOptions} />
 //     const stateOptions = [ { key: 'AL', value: 'AL', text: 'Alabama' }, { key: 'AL1', value: 'AL1', text: 'Alabama1' } ]
-
 
 // const mappedOptions = facilities.map(facility => {
 //   return (

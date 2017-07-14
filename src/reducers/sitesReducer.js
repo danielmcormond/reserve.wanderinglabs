@@ -1,8 +1,6 @@
 export default function reducer(
   state = {
-    facilities: [],
-    facilityLookup: "",
-    search: true,
+    sites: [],
     fetching: false,
     fetched: false,
     error: null
@@ -10,25 +8,18 @@ export default function reducer(
   action
 ) {
   switch (action.type) {
-    case "FETCH_FACILITIES": {
+    case "FETCH_SITES": {
       return { ...state, fetching: true };
     }
-    case "FETCH_FACILITIES_REJECTED": {
+    case "FETCH_SITES_REJECTED": {
       return { ...state, fetching: false, error: action.payload };
     }
-    case "FETCH_FACILITIES_FULFILLED": {
+    case "FETCH_SITES_FULFILLED": {
       return {
         ...state,
         fetching: false,
         fetched: true,
-        facilities: action.payload
-      };
-    }
-    case "SET_FACILITY_LOOKUP": {
-      return {
-        ...state,
-        search: false,
-        facilityLookup: action.payload
+        sites: action.payload
       };
     }
     default: {

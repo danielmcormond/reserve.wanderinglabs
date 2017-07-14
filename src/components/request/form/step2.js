@@ -1,31 +1,41 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import DayPicker, { DateUtils } from 'react-day-picker';
-import moment from 'moment';
-import { Grid, Header, Label, Icon } from 'semantic-ui-react';
-import { actions, Control } from 'react-redux-form';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import DayPicker, { DateUtils } from "react-day-picker";
+import moment from "moment";
+import { Grid, Header, Label, Icon } from "semantic-ui-react";
+import { actions, Control } from "react-redux-form";
 
-import SemanticInput from '../../semanticInput'
+import SemanticInput from "../../semanticInput";
+import RequestFormStep2ArrivalDays from "./step2ArrivalDays";
+import "../../../dayPicker.css";
 
-import '../../../dayPicker.css';
-
-@connect((store) => {
+@connect(store => {
   return {
     dateStart: store.availabilityRequestForm.step2.dateStart,
-    dateEnd: store.availabilityRequestForm.step2.dateEnd,
+    dateEnd: store.availabilityRequestForm.step2.dateEnd
   };
 })
 export default class RequestFormStep2 extends Component {
-
   handleDayClick = day => {
-    const range = DateUtils.addDayToRange(day, {from: this.props.dateStart, to: this.props.dateEnd});
-    this.props.dispatch(actions.change('availabilityRequestForm.step2.dateStart', range.from))
-    this.props.dispatch(actions.change('availabilityRequestForm.step2.dateEnd', range.to))
+    const range = DateUtils.addDayToRange(day, {
+      from: this.props.dateStart,
+      to: this.props.dateEnd
+    });
+    this.props.dispatch(
+      actions.change("availabilityRequestForm.step2.dateStart", range.from)
+    );
+    this.props.dispatch(
+      actions.change("availabilityRequestForm.step2.dateEnd", range.to)
+    );
   };
   handleResetClick = e => {
     e.preventDefault();
-    this.props.dispatch(actions.change('availabilityRequestForm.step2.dateStart', null))
-    this.props.dispatch(actions.change('availabilityRequestForm.step2.dateEnd', null))
+    this.props.dispatch(
+      actions.change("availabilityRequestForm.step2.dateStart", null)
+    );
+    this.props.dispatch(
+      actions.change("availabilityRequestForm.step2.dateEnd", null)
+    );
   };
 
   render() {
@@ -33,23 +43,30 @@ export default class RequestFormStep2 extends Component {
 
     return (
       <Grid>
-        <Grid.Column computer='8' tablet='16' mobile='16'>
+        <Grid.Column computer="8" tablet="16" mobile="16">
           <Header size="tiny">
-          {!dateStart && !dateEnd && <span>Select the <strong>first day</strong> you are available to arrive.</span>}
-          {dateStart && !dateEnd && <span>Select the <strong>last day</strong> you are available to arrive.</span>}
-          {dateStart && dateEnd &&
-            <div>
-              <Label size='large'>
-                <Icon name='calendar' />
-                {moment(dateStart).format('L')}
-                {' '}
-                -
-                {' '}
-                {moment(dateEnd).format('L')}
-                <Icon name='delete' onClick={this.handleResetClick}/>
-              </Label>
-            </div>
-          }
+            {!dateStart &&
+              !dateEnd &&
+              <span>
+                Select the <strong>first day</strong> you are available to
+                arrive.
+              </span>}
+            {dateStart &&
+              !dateEnd &&
+              <span>
+                Select the <strong>last day</strong> you are available to
+                arrive.
+              </span>}
+            {dateStart &&
+              dateEnd &&
+              <div>
+                <Label size="large">
+                  <Icon name="calendar" />
+                  {moment(dateStart).format("L")} -{" "}
+                  {moment(dateEnd).format("L")}
+                  <Icon name="delete" onClick={this.handleResetClick} />
+                </Label>
+              </div>}
           </Header>
           <DayPicker
             numberOfMonths={1}
@@ -59,16 +76,20 @@ export default class RequestFormStep2 extends Component {
             pagedNavigation
           />
         </Grid.Column>
-        <Grid.Column computer='8' tablet='16' mobile='16'>
+        <Grid.Column computer="8" tablet="16" mobile="16">
           <Control
             model=".step2.stayLength"
             component={SemanticInput}
             controlProps={{
-              label: 'Length of stay (in days)'
+              label: "Length of stay (in days)"
             }}
           />
         </Grid.Column>
+        <Grid.Column computer="8" tablet="16" mobile="16">
+          <label>Only arrive on specific weekdays:</label>
+          <RequestFormStep2ArrivalDays />
+        </Grid.Column>
       </Grid>
-    )
-  };
-};
+    );
+  }
+}
