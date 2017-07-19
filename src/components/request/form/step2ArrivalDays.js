@@ -33,7 +33,7 @@ export default class RequestFormStep2ArrivalDays extends Component {
         multiple
         search
         upward
-        placeholder="Limit arrival to certain days."
+        placeholder="Click to select"
         value={arrivalDays}
         options={daysOptions}
         onChange={this.handleChange}

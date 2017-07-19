@@ -1,13 +1,12 @@
-import axios from "axios";
 import _ from "lodash";
 
+import reserveApi from "../utils/axios";
 import store from "../store";
 
 export function fetchAvailabilityRequests() {
   return function(dispatch) {
     dispatch({ type: "FETCH_ARS" });
-    axios
-      .get("http://wl.dev/availability_requests.json")
+    reserveApi({ method: "get", url: "/availability_requests.json" })
       .then(response => {
         dispatch({ type: "FETCH_ARS_FULFILLED", payload: response.data });
       })
@@ -27,8 +26,7 @@ export function fetchAvailabilityRequest(uuid) {
       console.log("cached");
       dispatch({ type: "FETCH_AR_FULFILLED", payload: cachedAr });
     } else {
-      axios
-        .get(`http://wl.dev/availability_requests/${uuid}.json`)
+      reserveApi({ method: "get", url: `/availability_requests/${uuid}.json` })
         .then(response => {
           dispatch({ type: "FETCH_AR_FULFILLED", payload: response.data });
         })
@@ -50,8 +48,11 @@ export function updateAvailabilityRequest(uuid, codedStatus) {
     } else if (codedStatus === "a") {
       status = "active";
     }
-    axios
-      .put(`http://wl.dev/availability_requests/${uuid}.json`, { status })
+    reserveApi({
+      method: "put",
+      url: `/availability_requests/${uuid}.json`,
+      data: { status }
+    })
       .then(response => {
         dispatch({ type: "FETCH_AR_FULFILLED", payload: response.data });
         dispatch({ type: "ARS_RESET" });

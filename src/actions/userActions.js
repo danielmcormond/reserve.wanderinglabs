@@ -1,14 +1,12 @@
-import axios from "axios";
-import store from "../store";
+import reserveApi from "../utils/axios";
 
 export function userSettings() {
   return function(dispatch) {
-    let token = store.getState().session.token;
-    axios.defaults.headers.common["Authorization"] = `Token token=${token}`;
-
     dispatch({ type: "FETCH_USER" });
-    axios
-      .get("http://wl.dev/users")
+    reserveApi({
+      method: "get",
+      url: "/users"
+    })
       .then(function(response) {
         dispatch({ type: "FETCH_USER_FULFILLED", payload: response.data });
       })

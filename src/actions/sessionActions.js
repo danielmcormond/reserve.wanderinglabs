@@ -1,12 +1,15 @@
-import axios from "axios";
-
 import { push } from "react-router-redux";
+
+import reserveApi from "../utils/axios";
 import { setFlashMessage } from "../actions/flashActions";
 
 export function sessionNew(email) {
   return dispatch =>
-    axios
-      .post("http://wl.dev/login_tokens", { email })
+    reserveApi({
+      method: "post",
+      url: "/login_tokens",
+      data: { email }
+    })
       .then(function(response) {
         dispatch(push("/"));
         dispatch(setFlashMessage("Being emailed", "success"));
@@ -21,8 +24,11 @@ export function sessionNew(email) {
 
 export function sessionCreate(token) {
   return dispatch =>
-    axios
-      .post("http://wl.dev/sessions", { token })
+    reserveApi({
+      method: "post",
+      url: "/sessions",
+      data: { token }
+    })
       .then(function(response) {
         localStorage.setItem("token", response.data.auth_token);
 

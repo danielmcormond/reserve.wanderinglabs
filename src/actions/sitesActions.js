@@ -1,13 +1,15 @@
 import _ from "lodash";
-import axios from "axios";
 
+import reserveApi from "../utils/axios";
 import store from "../store";
 
 export function fetchSites(facilityId, value, ids) {
   return function(dispatch) {
     dispatch({ type: "FETCH_SITES" });
-    axios
-      .get(`http://wl.dev/facilities/${facilityId}/sites.json?q=${value}`)
+    reserveApi({
+      method: "get",
+      url: `/facilities/${facilityId}/sites.json?q=${value}`
+    })
       .then(response => {
         // This is required as currently selected must be in <Dropdown options>
         let selectedSites = _.filter(store.getState().sites.sites, site => {

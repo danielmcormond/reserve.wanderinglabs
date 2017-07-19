@@ -1,10 +1,12 @@
-import axios from "axios";
+import reserveApi from "../utils/axios";
 
 export function fetchFacilities(value) {
   return function(dispatch) {
     dispatch({ type: "FETCH_FACILITIES" });
-    axios
-      .get(`http://wl.dev/facilities.json?q=${value}`)
+    reserveApi({
+      method: "get",
+      url: `/facilities.json?q=${value}`
+    })
       .then(response => {
         const mappedData = response.data.map(facility => {
           return {

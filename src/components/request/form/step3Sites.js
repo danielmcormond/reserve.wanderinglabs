@@ -8,14 +8,14 @@ import { fetchSites } from "../../../actions/sitesActions";
 @connect(store => {
   return {
     sites: store.sites.sites,
-    siteIds: store.availabilityRequestForm.step3.sites,
+    siteIds: store.availabilityRequestForm.step3.siteIds,
     facilityId: store.availabilityRequestForm.step1.facilityId
   };
 })
 export default class RequestFormStep1 extends Component {
   handleChange = (e, value) => {
     this.props.dispatch(
-      actions.change("availabilityRequestForm.step3.sites", value.value)
+      actions.change("availabilityRequestForm.step3.siteIds", value.value)
     );
   };
 

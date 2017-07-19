@@ -35,7 +35,6 @@ export default class RequestFormStep1 extends Component {
         <Header as="h4">Campground or Facility to reserve at:</Header>
 
         <Dropdown
-          error={!!!step1Valid}
           fluid
           search
           value={facilityId}

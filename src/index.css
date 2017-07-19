@@ -85,5 +85,5 @@ table.ui.table.availabilityMatches {
 }
 
 .ui.dropdown:not(.button)>.default.text {
-  color: inherit;
+  color: #aaa;
 }

@@ -1,8 +1,8 @@
 import { actions } from "react-redux-form";
-import axios from "axios";
 import { push } from "react-router-redux";
 import { setFlashMessage } from "../actions/flashActions";
 
+import reserveApi from "../utils/axios";
 import store from "../store";
 
 export function formSubmit(values) {
@@ -15,12 +15,17 @@ export function formSubmit(values) {
       date_end: values.step2.dateEnd,
       stay_length: values.step2.stayLength,
       email: values.step4.email,
-      sewer: values.step3.sewer
+      sewer: values.step3.sewer,
+      specific_site_ids: values.step3.siteIds,
+      arrival_days: values.step2.arrivalDays
     };
-    axios
-      .post(`http://wl.dev/availability_requests.json`, {
+    reserveApi({
+      method: "post",
+      url: `http://wl.dev/availability_requests.json`,
+      data: {
         availability_request: apiValues
-      })
+      }
+    })
       .then(response => {
         dispatch({ type: "FETCH_AR_FULFILLED", payload: response.data });
         dispatch(formStepGo(1));
@@ -82,6 +87,12 @@ export function formStepValidate() {
         })
       );
     } else if (current_step === 2) {
+      dispatch(
+        actions.validateFields("availabilityRequestForm.step2", {
+          dateStart: { required: val => val },
+          stayLength: { required: val => val && val > 0 }
+        })
+      );
     }
   };
 }
