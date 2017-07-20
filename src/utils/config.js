@@ -12,13 +12,15 @@ function configLoader(env = processEnv) {
     // envConfig = require("../config/test.js");
     envConfig = require("../config/development.js");
   } else if (env === "production") {
+    console.log('yes production')
     envConfig = require("../config/production.js");
   } else {
     throw new Error({ message: `NODE_ENV ${env} not found` });
   }
 
+  console.log('config...envConfig', envConfig)
   const config = merge({ env }, defaultConfig, envConfig);
-
+  console.log('config...', config)
   return config;
 }
 
