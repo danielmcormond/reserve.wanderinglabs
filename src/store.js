@@ -1,14 +1,26 @@
-import { applyMiddleware, createStore } from "redux"
+import { applyMiddleware, createStore } from "redux";
 
-import { logger } from 'redux-logger'
-import thunk from "redux-thunk"
-import promise from "redux-promise-middleware"
-import { routerMiddleware } from 'react-router-redux'
+import thunk from "redux-thunk";
+import promise from "redux-promise-middleware";
+import { routerMiddleware } from "react-router-redux";
 
-import reducer from "./reducers"
+import reducer from "./reducers";
 
-import { history } from './utils/history'
+import { history } from "./utils/history";
 
-const middleware = applyMiddleware(promise(), thunk, logger, routerMiddleware(history))
+const middlewares = [];
 
-export default createStore(reducer, middleware)
+if (process.env.NODE_ENV === "development") {
+  const { logger } = require("redux-logger");
+
+  middlewares.push(logger);
+}
+
+const middleware = applyMiddleware(
+  promise(),
+  thunk,
+  ...middlewares,
+  routerMiddleware(history)
+);
+
+export default createStore(reducer, middleware);
