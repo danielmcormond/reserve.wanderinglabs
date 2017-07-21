@@ -27,8 +27,23 @@ export default class RequestFormStep1 extends Component {
   };
 
   render() {
-    const { facilities, step1, step1Valid } = this.props;
+    const { facilities, step1 } = this.props;
     const facilityId = step1.facilityId;
+
+    const facilitiesOptions = facilities.map(facility => {
+      return {
+        key: facility.key,
+        text: facility.name,
+        value: facility.id,
+        content: (
+          <Header
+            as="h6"
+            content={facility.name}
+            subheader={facility.sub_name}
+          />
+        )
+      };
+    });
 
     return (
       <div>
@@ -39,7 +54,7 @@ export default class RequestFormStep1 extends Component {
           search
           value={facilityId}
           placeholder="Search..."
-          options={facilities}
+          options={facilitiesOptions}
           selection
           onChange={this.handleChange}
           onSearchChange={this.handleSearchChange}

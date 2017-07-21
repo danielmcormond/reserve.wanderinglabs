@@ -8,14 +8,7 @@ export function fetchFacilities(value) {
       url: `/facilities.json?q=${value}`
     })
       .then(response => {
-        const mappedData = response.data.map(facility => {
-          return {
-            key: facility.id,
-            text: facility.name,
-            value: facility.id
-          };
-        });
-        dispatch({ type: "FETCH_FACILITIES_FULFILLED", payload: mappedData });
+        dispatch({ type: "FETCH_FACILITIES_FULFILLED", payload: response.data });
       })
       .catch(err => {
         dispatch({ type: "FETCH_FACILITIES_REJECTED", payload: err });
