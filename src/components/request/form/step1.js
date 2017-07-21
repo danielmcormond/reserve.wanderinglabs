@@ -37,7 +37,7 @@ export default class RequestFormStep1 extends Component {
         value: facility.id,
         content: (
           <Header
-            as="h6"
+            as="h5"
             content={facility.name}
             subheader={facility.sub_name}
           />
@@ -57,6 +57,7 @@ export default class RequestFormStep1 extends Component {
           options={facilitiesOptions}
           selection
           onChange={this.handleChange}
+          noResultsMessage={null}
           onSearchChange={this.handleSearchChange}
         />
         <Errors

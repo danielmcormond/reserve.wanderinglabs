@@ -39,6 +39,7 @@ input {
 
 
 .ui.selection.dropdown .menu {
+  padding: 0;
   max-height: none !important;
 }
 
