@@ -53,7 +53,11 @@ ReactDOM.render(
           <Container className="mainContainer">
             <FlashMessage />
 
-            <Route exact path="/" component={Requests} />
+            <Route
+              exact
+              path="/"
+              component={requireAuth(Requests, RequestForm)}
+            />
             <Route path="/new" component={RequestForm} />
             <Route
               path="/:uuid([a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12})"
@@ -73,7 +77,7 @@ ReactDOM.render(
             <Route
               exact
               path="/settings"
-              component={requireAuth(UserSettings)}
+              component={requireAuth(UserSettings, SessionNew)}
             />
           </Container>
         </div>

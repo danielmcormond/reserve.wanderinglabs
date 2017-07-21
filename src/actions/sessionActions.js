@@ -31,11 +31,9 @@ export function sessionCreate(token) {
     })
       .then(function(response) {
         localStorage.setItem("token", response.data.auth_token);
-
         dispatch(sessionSuccess(response.data.auth_token));
-
-        dispatch(push("/settings"));
-        dispatch(setFlashMessage("logged in", "success"));
+        dispatch(push("/"));
+        // dispatch(setFlashMessage("logged in", "success"));
       })
       .catch(function(error) {
         dispatch(push("/sign-in"));
@@ -45,7 +43,7 @@ export function sessionCreate(token) {
 
 export function sessionDestroy(token) {
   return function(dispatch) {
-    localStorage.setItem("token", null);
+    localStorage.removeItem("token");
     dispatch(sessionSuccess(null));
     dispatch(push("/"));
     dispatch(setFlashMessage("logged out", "success"));
