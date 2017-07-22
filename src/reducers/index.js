@@ -24,11 +24,12 @@ const initialAvailabilityRequestFormState = {
     arrivalDays: []
   },
   step3: {
-    length: "45",
+    length: "",
     type: "",
-    electric: "30 amp",
+    electric: "",
     water: false,
     sewer: false,
+    pullthru: false,
     sites: []
   },
   step4: {

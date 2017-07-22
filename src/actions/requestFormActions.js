@@ -16,6 +16,11 @@ export function formSubmit(values) {
       stay_length: values.step2.stayLength,
       email: values.step4.email,
       sewer: values.step3.sewer,
+      water: values.step3.water,
+      pullthru: values.step3.pullthru,
+      min_length: values.step3.length,
+      min_electric: values.step3.electric,
+      site_type: values.step3.type,
       specific_site_ids: values.step3.siteIds,
       arrival_days: values.step2.arrivalDays
     };

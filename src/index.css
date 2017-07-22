@@ -2,6 +2,11 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  background-color: #cccccc;
+}
+
+#root {
+  background-color: #ffffff;
 }
 
 .NavPushed {
@@ -9,7 +14,21 @@ body {
 }
 
 .mainContainer {
+  min-height: 400px;
   padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+.footer {
+  background-color: #cccccc;
+}
+
+.footerMenuRight {
+  text-align: right;
+}
+
+.ui.vertical.menu {
+  width: auto;
 }
 
 .ui.menu.StepsNavMenu {

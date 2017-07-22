@@ -15,6 +15,7 @@ import RequestForm from "./components/request/form/index";
 
 // import RequestHeader from "./components/requestHeader"
 import Requests from "./components/requests";
+import Footer from "./components/footer";
 import Nav from "./components/nav";
 import Loading from "./components/loading";
 import FlashMessage from "./components/flashMessage";
@@ -30,7 +31,7 @@ import store from "./store";
 
 import { history } from "./utils/history";
 
-import "./normalize.css";
+// import "./normalize.css";
 import "./semantic/dist/semantic.min.css";
 import "./index.css";
 
@@ -80,6 +81,7 @@ ReactDOM.render(
               component={requireAuth(UserSettings, SessionNew)}
             />
           </Container>
+          <Footer />
         </div>
       </ConnectedRouter>
     </div>

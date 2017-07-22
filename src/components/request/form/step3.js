@@ -1,20 +1,95 @@
 import React, { Component } from "react";
-import { Control } from "react-redux-form";
-import { Grid } from "semantic-ui-react";
+import { connect } from "react-redux";
+import { actions, Control } from "react-redux-form";
+import { Dropdown, Grid } from "semantic-ui-react";
 
 import SemanticCheckbox from "../../inputs/checkbox";
 import SelectType from "../../inputs/selectType";
 import SemanticInput from "../../semanticInput";
 import RequestFormStep3Sites from "./step3Sites";
 
+const siteTypeOptions = [
+  {
+    text: "RV Sites",
+    description: "Only sites suitable for RV's",
+    value: "rv_sites"
+  },
+  {
+    text: "Tent or RV Sites",
+    description: "You can tent in an RV site",
+    value: "tent_or_rv_sites"
+  },
+  {
+    text: "Tent Only Sites",
+    description: "No RV's",
+    value: "tent_sites"
+  },
+  {
+    text: "Group Sites",
+    description: "You and your friends",
+    value: "group_sites"
+  }
+];
+
+const electricOptions = [
+  {
+    text: "No preference",
+    value: ""
+  },
+  {
+    text: "15 amps or more",
+    value: "15"
+  },
+  {
+    text: "20 amps or more",
+    value: "20"
+  },
+  {
+    text: "30 amps or more",
+    value: "30"
+  },
+  {
+    text: "50 amp service",
+    value: "50"
+  }
+];
+
+@connect(store => {
+  return {
+    type: store.availabilityRequestForm.step3.type,
+    electric: store.availabilityRequestForm.step3.electric
+  };
+})
 export default class RequestFormStep3 extends Component {
+  handleSiteTypeClick = (e, data) => {
+    e.preventDefault();
+    this.props.dispatch(
+      actions.change("availabilityRequestForm.step3.type", data.value)
+    );
+  };
+
+  handleElectricClick = (e, data) => {
+    e.preventDefault();
+    this.props.dispatch(
+      actions.change("availabilityRequestForm.step3.electric", data.value)
+    );
+  };
+
   render() {
+    const { type, electric } = this.props;
+
     return (
       <Grid>
         <Grid.Column mobile="16">
           <label>Site Type</label>
           <div>
-            <Control model=".step3.type" component={SelectType} />
+            <Dropdown
+              fluid
+              selection
+              options={siteTypeOptions}
+              onChange={this.handleSiteTypeClick}
+              value={type}
+            />
           </div>
         </Grid.Column>
         <Grid.Column mobile="8">
@@ -22,23 +97,26 @@ export default class RequestFormStep3 extends Component {
             model=".step3.length"
             component={SemanticInput}
             controlProps={{
-              label: "Length"
+              label: "Minimum site Length:"
             }}
           />
         </Grid.Column>
         <Grid.Column mobile="8">
-          <Control.text
-            model=".step3.electric"
-            component={SemanticInput}
-            controlProps={{
-              label: "Electric"
-            }}
-          />
+          <label>Electric</label>
+          <div>
+            <Dropdown
+              fluid
+              selection
+              options={electricOptions}
+              onChange={this.handleElectricClick}
+              value={electric}
+            />
+          </div>
         </Grid.Column>
 
-        <Grid.Column mobile="8">
+        <Grid.Column mobile="16" computer="8" tablet="8">
           <Grid>
-            <Grid.Column width="16">
+            <Grid.Column width="4">
               <Control.checkbox
                 model=".step3.water"
                 component={SemanticCheckbox}
@@ -47,12 +125,21 @@ export default class RequestFormStep3 extends Component {
                 }}
               />
             </Grid.Column>
-            <Grid.Column width="16">
+            <Grid.Column width="4">
               <Control.checkbox
                 model=".step3.sewer"
                 component={SemanticCheckbox}
                 controlProps={{
                   label: "Sewer"
+                }}
+              />
+            </Grid.Column>
+            <Grid.Column width="4">
+              <Control.checkbox
+                model=".step3.pullthru;"
+                component={SemanticCheckbox}
+                controlProps={{
+                  label: "PullThru"
                 }}
               />
             </Grid.Column>

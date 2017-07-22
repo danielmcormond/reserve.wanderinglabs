@@ -75,6 +75,9 @@ export default class RequestFormStep2 extends Component {
             onDayClick={this.handleDayClick}
             fixedWeeks
             pagedNavigation
+            modifiers={{
+              disabled: { before: new Date() }
+            }}
           />
           <Errors
             model="availabilityRequestForm.step2.dateStart"

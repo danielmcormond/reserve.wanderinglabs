@@ -3,6 +3,6 @@ import { Checkbox } from "semantic-ui-react";
 
 export default class SemanticCheckbox extends Component {
   render() {
-    return <Checkbox toggle {...this.props} />;
+    return <Checkbox {...this.props} />;
   }
 }

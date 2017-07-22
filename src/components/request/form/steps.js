@@ -1,55 +1,58 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { formStepInc, formStepDec } from '../../../actions/requestFormActions'
-import { Container, Icon, Menu } from 'semantic-ui-react'
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { formStepInc, formStepDec } from "../../../actions/requestFormActions";
+import { Container, Icon, Menu } from "semantic-ui-react";
 
-@connect((store) => {
+@connect(store => {
   return {
-    currentStep: store.requestForm
+    currentStep: store.requestForm,
+    isAuthenticated: store.session.isAuthenticated
   };
 })
-
 export default class RequestFormSteps extends Component {
   nextStep() {
-    this.props.dispatch(formStepInc())
+    this.props.dispatch(formStepInc());
   }
 
   prevStep() {
-    this.props.dispatch(formStepDec())
+    this.props.dispatch(formStepDec());
+  }
+
+  get lastStep() {
+    return this.props.isAuthenticated ? 3 : 4;
   }
 
   render() {
     const { currentStep } = this.props;
 
     const step_titles = [
-      '_padding_',
-      'Location',
-      'Dates',
-      'Options',
-      'Notifications',
+      "_padding_",
+      "Location",
+      "Dates",
+      "Options",
+      "Notifications"
     ];
 
     return (
       <div>
-        <Menu fixed='top' color='green' className='StepsNavMenu'>
+        <Menu fixed="top" color="green" className="StepsNavMenu">
           <Container>
             <Menu.Item onClick={() => this.prevStep()}>
-              <Icon name='chevron left'/>
+              <Icon name="chevron left" />
             </Menu.Item>
-            <Menu.Item name='home' header>
-              Step {currentStep} of 4: {step_titles[currentStep]}
+            <Menu.Item name="home" header>
+              Step {currentStep} of {this.lastStep}: {step_titles[currentStep]}
             </Menu.Item>
-            <Menu.Item position='right' onClick={() => this.nextStep()}>
-              <Icon name='chevron right' />
+            <Menu.Item position="right" onClick={() => this.nextStep()}>
+              <Icon name="chevron right" />
             </Menu.Item>
           </Container>
         </Menu>
         <div className="NavPushed" />
       </div>
-    )
-  };
-};
-
+    );
+  }
+}
 
 // <Step.Group fluid className='mobile hidden'>
 //   <Step active={currentStep === 1} title='Where' description='Bahia Honda' onClick={() => this.goStep(1)} />
