@@ -17,6 +17,7 @@ import RequestForm from "./components/request/form/index";
 import Requests from "./components/requests";
 import Footer from "./components/footer";
 import Nav from "./components/nav";
+import Facility from "./components/facility";
 import Loading from "./components/loading";
 import FlashMessage from "./components/flashMessage";
 
@@ -70,6 +71,9 @@ ReactDOM.render(
             />
 
             <Route exact path="/:from([wet]{1})/:id" component={MatchReserve} />
+
+            <Route exact path="/f/:id" component={Facility} />
+
 
             <Route exact path="/sign-in" component={SessionNew} />
             <Route exact path="/sign-in/:token" component={SessionCreate} />

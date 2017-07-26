@@ -26,7 +26,7 @@ export function formSubmit(values) {
     };
     reserveApi({
       method: "post",
-      url: `http://wl.dev/availability_requests.json`,
+      url: "/availability_requests.json",
       data: {
         availability_request: apiValues
       }

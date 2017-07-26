@@ -4,7 +4,6 @@ import { actions, Control } from "react-redux-form";
 import { Dropdown, Grid } from "semantic-ui-react";
 
 import SemanticCheckbox from "../../inputs/checkbox";
-import SelectType from "../../inputs/selectType";
 import SemanticInput from "../../semanticInput";
 import RequestFormStep3Sites from "./step3Sites";
 
@@ -12,22 +11,27 @@ const siteTypeOptions = [
   {
     text: "RV Sites",
     description: "Only sites suitable for RV's",
-    value: "rv_sites"
+    value: "rv"
   },
   {
     text: "Tent or RV Sites",
     description: "You can tent in an RV site",
-    value: "tent_or_rv_sites"
+    value: "tent_or_rv"
   },
   {
     text: "Tent Only Sites",
     description: "No RV's",
-    value: "tent_sites"
+    value: "tent"
   },
   {
     text: "Group Sites",
     description: "You and your friends",
-    value: "group_sites"
+    value: "group"
+  },
+  {
+    text: "Other",
+    description: "Cabins, Day Use, etc",
+    value: "other"
   }
 ];
 

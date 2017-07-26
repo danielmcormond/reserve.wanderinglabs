@@ -7,6 +7,7 @@ import availabilityMatches from "./availabilityMatchesReducer";
 import availabilityRequests from "./availabilityRequestsReducer";
 import facilities from "./facilitiesReducer";
 import sites from "./sitesReducer";
+import groupedAvailabilities from "./groupedAvailabilitiesReducer";
 
 import requestForm from "./requestFormReducer";
 import flash from "./flashReducer";
@@ -48,6 +49,7 @@ export default combineReducers({
   availabilityRequests,
   facilities,
   flash,
+  groupedAvailabilities,
   requestForm,
   session,
   sites,
