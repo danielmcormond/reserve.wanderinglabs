@@ -19,13 +19,12 @@
       Menu
 ---------------*/
 
-@import url(https://fonts.googleapis.com/css?family=Roboto);
 .ui.menu {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   margin: 1rem 0em;
-  font-family: 'Roboto', Arial, sans-serif;
+  font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
   background: #FFFFFF;
   font-weight: normal;
   border: 1px solid rgba(34, 36, 38, 0.15);

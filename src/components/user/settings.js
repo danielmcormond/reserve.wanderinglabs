@@ -1,48 +1,53 @@
-import React, { Component } from 'react';
-import { connect } from "react-redux"
-import { Header, Menu } from 'semantic-ui-react'
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { Container, Grid, Header, Menu } from "semantic-ui-react";
 
-import { Link } from 'react-router-dom'
-import { userSettings } from "../../actions/userActions"
+import { Link } from "react-router-dom";
+import { userSettings } from "../../actions/userActions";
 
-@connect((store) => {
+import Premium from "./premium.js";
+
+@connect(store => {
   return {
     isAuthenticated: store.session.isAuthenticated,
     user: store.user.user
   };
 })
 export default class UserSettings extends Component {
-
   componentWillMount() {
-    this.props.dispatch(userSettings())
+    this.props.dispatch(userSettings());
   }
 
   render() {
     const { user, isAuthenticated } = this.props;
 
     return (
-      <div>
-        <Header as='h5'>Account Settings: {user.email}</Header>
-        <Menu color='green'>
-        { isAuthenticated &&
-          <Menu.Item name='sessionDestroy' as={Link} to='/sign-out'>
-            Sign Out
-          </Menu.Item>
-        }
-        { isAuthenticated &&
-          <Menu.Item as={Link} to='/settings'>
-            Account
-          </Menu.Item>
-        }
-        { !!!isAuthenticated &&
-          <Menu.Item name='sessionNew' as={Link} to='/sign-in'>
-            Sign In
-          </Menu.Item>
-        }
-        </Menu>
-
-      </div>
+      <Container>
+        <Grid>
+          <Grid.Column computer="8" tablet="8" mobile="16">
+            <Header as="h5">
+              Account Settings: {user.email}
+            </Header>
+            <Menu color="green">
+              {isAuthenticated &&
+                <Menu.Item name="sessionDestroy" as={Link} to="/sign-out">
+                  Sign Out
+                </Menu.Item>}
+              {isAuthenticated &&
+                <Menu.Item as={Link} to="/settings">
+                  Account
+                </Menu.Item>}
+              {!!!isAuthenticated &&
+                <Menu.Item name="sessionNew" as={Link} to="/sign-in">
+                  Sign In
+                </Menu.Item>}
+            </Menu>
+          </Grid.Column>
+          <Grid.Column computer="8" tablet="8" mobile="16">
+            <Premium />
+          </Grid.Column>
+        </Grid>
+      </Container>
     );
   }
 }
-
