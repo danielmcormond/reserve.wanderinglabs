@@ -23,13 +23,7 @@ export default class MatchReserve extends Component {
     const { availabilityMatch } = this.props;
 
     if (availabilityMatch.available === true) {
-      window.location.href = availabilityMatch.reserve_url;
-      // return(
-      //   <div>
-      //     <h3>Redirect... {availabilityMatch.id}</h3>
-      //     <p>{availabilityMatch.reserve_url}</p>
-      //   </div>
-      // )
+      // window.location.href = availabilityMatch.reserve_url;
     }
     return (
       <div>

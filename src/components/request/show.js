@@ -11,6 +11,7 @@ import {
   updateAvailabilityRequest
 } from "../../actions/availabilityRequestsActions";
 import AvailabilityMatches from "../availabilityMatches";
+import Premium from "../user/premium.js";
 
 @connect(store => {
   return {
@@ -82,91 +83,92 @@ export default class RequestShow extends Component {
 
     return (
       <div>
-        <Header as="h5">
-          <Icon name="marker" />
-          <Header.Content>
-            {ar.facility.name}
-            <Header.Subheader>Zion National Park</Header.Subheader>
-          </Header.Content>
-        </Header>
-        <Divider hidden />
-
         <Grid>
-          <Grid.Row divided>
-            <Grid.Column
-              verticalAlign="middle"
-              tablet="8"
-              computer="4"
-              mobile="8"
-            >
-              <List size="medium" relaxed>
-                <List.Item>
-                  <List.Header>Arriving between</List.Header>
-                  <DateFormat format="MM/DD" date={ar.date_start} />
-                  &nbsp;to&nbsp;
-                  <DateFormat format="MM/DD/YYYY" date={ar.date_end} />
-                </List.Item>
-                <List.Item>
-                  <List.Header>Stay Length</List.Header>
-                  <List.Description>
-                    {ar.stay_length} days
-                  </List.Description>
-                </List.Item>
+          <Grid.Column computer="8" tablet="8" mobile="16">
+            <Header as="h3">
+              <Icon name="marker" />
+              <Header.Content>
+                {ar.facility.name}
+                <Header.Subheader>{ar.facility.sub_name}</Header.Subheader>
+              </Header.Content>
+            </Header>
+            <Divider hidden />
 
-                <List.Item>
-                  <List.Header>Checked Count</List.Header>
-                  {ar.checked_count}
-                </List.Item>
-              </List>
+            <Grid>
+              <Grid.Row divided>
+                <Grid.Column
+                  verticalAlign="middle"
+                  tablet="8"
+                  computer="8"
+                  mobile="8"
+                >
+                  <List size="medium" relaxed>
+                    <List.Item>
+                      <List.Header>Arriving between</List.Header>
+                      <DateFormat format="MM/DD" date={ar.date_start} />
+                      &nbsp;to&nbsp;
+                      <DateFormat format="MM/DD/YYYY" date={ar.date_end} />
+                    </List.Item>
+                    <List.Item>
+                      <List.Header>Stay Length</List.Header>
+                      <List.Description>
+                        {ar.stay_length} days
+                      </List.Description>
+                    </List.Item>
 
-              <Button
-                as={Link}
-                to={`/w/${ar.uuid}`}
-                fluid
-                color="green"
-                content="Go Premium"
-                positive
-                size="tiny"
-              />
-            </Grid.Column>
-            <Grid.Column
-              verticalAlign="middle"
-              tablet="8"
-              computer="4"
-              mobile="8"
-            >
-              <List size="medium" relaxed>
-                <List.Item>
-                  <List.Header>Status</List.Header>
-                  {ar.status}
-                </List.Item>
-                <List.Item>
-                  <List.Header>Checked Count</List.Header>
-                  {ar.checked_count}
-                </List.Item>
-                <List.Item>
-                  <List.Header>Last Checked</List.Header>
-                  <DateFormat format="MM/DD/YYYY HH:mm" date={ar.checked_at} />
-                </List.Item>
-              </List>
+                    <List.Item>
+                      <List.Header>Checked Count</List.Header>
+                      {ar.checked_count}
+                    </List.Item>
+                  </List>
 
-              <Button as={Link} fluid size="tiny" {...this.statusButtonProps} />
-            </Grid.Column>
-            <Grid.Column only="computer" computer="8">
-              <Header size="large" color="green">
-                Premium Membership
-              </Header>
-              <p>
-                Become a premium member by sending a few bucks our way and we
-                will upgrade your request to never pause; plus we will check
-                Reserve America for you even more frequently.
-              </p>
-              <p>
-                Any amount will get you premium status. Send what you think this
-                service is worth.
-              </p>
-            </Grid.Column>
-          </Grid.Row>
+                  <Button
+                    as={Link}
+                    to={`/w/${ar.uuid}`}
+                    fluid
+                    color="green"
+                    content="Go Premium"
+                    positive
+                    size="tiny"
+                  />
+                </Grid.Column>
+                <Grid.Column
+                  verticalAlign="middle"
+                  tablet="8"
+                  computer="8"
+                  mobile="8"
+                >
+                  <List size="medium" relaxed>
+                    <List.Item>
+                      <List.Header>Status</List.Header>
+                      {ar.status}
+                    </List.Item>
+                    <List.Item>
+                      <List.Header>Checked Count</List.Header>
+                      {ar.checked_count}
+                    </List.Item>
+                    <List.Item>
+                      <List.Header>Last Checked</List.Header>
+                      <DateFormat
+                        format="MM/DD/YYYY HH:mm"
+                        date={ar.checked_at}
+                      />
+                    </List.Item>
+                  </List>
+
+                  <Button
+                    as={Link}
+                    fluid
+                    size="tiny"
+                    {...this.statusButtonProps}
+                  />
+                </Grid.Column>
+              </Grid.Row>
+            </Grid>
+          </Grid.Column>
+          <Grid.Column only="computer" computer="8">
+            <Premium />
+          </Grid.Column>
         </Grid>
 
         <AvailabilityMatches {...this.props} />

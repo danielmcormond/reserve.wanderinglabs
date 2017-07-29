@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Label, List, Loader } from "semantic-ui-react";
+import { Grid, Header, Icon, Label, List, Loader } from "semantic-ui-react";
 import { push } from "react-router-redux";
 
+import Premium from "./user/premium.js";
 import DateFormat from "./utils/dateFormat";
 import { fetchAvailabilityRequests } from "../actions/availabilityRequestsActions";
 
@@ -47,12 +48,21 @@ export default class Requests extends Component {
     );
 
     return (
-      <div>
-        <List selection divided size="large" relaxed="very">
-          {mappedArs}
-        </List>
-        <Loader active={fetching} size="big" />
-      </div>
+      <Grid>
+        <Grid.Column computer="8" tablet="8" mobile="16">
+          <Header as="h4">
+            <Icon name="list layout" />
+            <Header.Content>Your requests:</Header.Content>
+          </Header>
+          <List selection divided size="large" relaxed="very">
+            {mappedArs}
+          </List>
+          <Loader active={fetching} size="big" />
+        </Grid.Column>
+        <Grid.Column computer="8" tablet="8" mobile="16">
+          <Premium />
+        </Grid.Column>
+      </Grid>
     );
   }
 }
