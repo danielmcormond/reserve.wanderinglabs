@@ -49,7 +49,7 @@ export default class RequestFormStep1Facility extends Component {
 
     return (
       <div>
-        <Header as="h4">Campground or Facility to reserve at:</Header>
+        <Header as="h4" content="Campground or Facility to reserve at:" />
 
         <Dropdown
           fluid
