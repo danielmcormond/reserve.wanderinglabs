@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Button, Grid, Icon } from "semantic-ui-react";
+import { Button, Divider, Icon } from "semantic-ui-react";
 
-import { formStepInc, formStepDec } from "../../../actions/requestFormActions";
+import { formStepInc } from "../../../actions/requestFormActions";
 
 @connect(store => {
   return {
@@ -15,10 +15,6 @@ export default class RequestFormStepButtons extends Component {
     this.props.dispatch(formStepInc());
   }
 
-  prevStep() {
-    this.props.dispatch(formStepDec());
-  }
-
   get lastStep() {
     return this.props.isAuthenticated ? 3 : 4;
   }
@@ -27,27 +23,23 @@ export default class RequestFormStepButtons extends Component {
     const { currentStep } = this.props;
 
     return (
-      <Grid>
-        <Grid.Column tablet="5" computer="3" mobile="7">
-          {currentStep !== 1 &&
-            <Button as="a" color="green" fluid onClick={() => this.prevStep()}>
-              <Icon name="chevron left" />
-              Previous Step
-            </Button>}
-        </Grid.Column>
-        <Grid.Column tablet="6" computer="10" mobile="2" />
-        <Grid.Column tablet="5" computer="3" mobile="7">
-          {currentStep !== this.lastStep &&
-            <Button as="a" color="green" fluid onClick={() => this.nextStep()}>
-              Next Step
-              <Icon name="chevron right" />
-            </Button>}
-          {currentStep === this.lastStep &&
-            <Button color="green" fluid positive>
-              Submit Request
-            </Button>}
-        </Grid.Column>
-      </Grid>
+      <div>
+        <Divider hidden />
+        {currentStep !== this.lastStep &&
+          <Button
+            as="a"
+            color="green"
+            floated="right"
+            onClick={() => this.nextStep()}
+          >
+            Next Step
+            <Icon name="chevron right" />
+          </Button>}
+        {currentStep === this.lastStep &&
+          <Button color="green" floated="right">
+            Submit Request
+          </Button>}
+      </div>
     );
   }
 }

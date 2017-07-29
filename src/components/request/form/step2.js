@@ -5,6 +5,7 @@ import moment from "moment";
 import { Grid, Header, Label, Icon } from "semantic-ui-react";
 import { actions, Control, Errors } from "react-redux-form";
 
+import RequestFormStepButtons from "./stepButtons";
 import SemanticInput from "../../semanticInput";
 import RequestFormStep2ArrivalDays from "./step2ArrivalDays";
 import "../../../dayPicker.css";
@@ -112,6 +113,10 @@ export default class RequestFormStep2 extends Component {
         <Grid.Column computer="8" tablet="16" mobile="16">
           <label>Only arrive on specific weekdays (optional):</label>
           <RequestFormStep2ArrivalDays />
+        </Grid.Column>
+
+        <Grid.Column computer="16" tablet="16" mobile="16">
+          <RequestFormStepButtons />
         </Grid.Column>
       </Grid>
     );

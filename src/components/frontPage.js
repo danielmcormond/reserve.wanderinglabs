@@ -53,7 +53,9 @@ export default class FrontPage extends Component {
         <Divider hidden />
         <Grid>
           <Grid.Column computer="8" tablet="8" mobile="16">
-            <RequestFormStep1Facility />
+            <div className="field">
+              <RequestFormStep1Facility />
+            </div>
             <Button
               as="a"
               color="green"

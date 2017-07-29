@@ -30,7 +30,7 @@
   border: 1px solid rgba(34, 36, 38, 0.15);
   box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
-  min-height: 3.28571429em;
+  min-height: 2.57142857em;
 }
 .ui.menu:after {
   content: '';
@@ -85,7 +85,7 @@
       -ms-user-select: none;
           user-select: none;
   background: none;
-  padding: 1.14285714em 1.14285714em;
+  padding: 0.78571429em 0.78571429em;
   text-transform: none;
   color: #444444;
   font-weight: normal;
@@ -195,7 +195,7 @@
   margin: 0em;
   background: '';
   text-transform: normal;
-  font-weight: bold;
+  font-weight: inherit;
 }
 .ui.vertical.menu .item > .header:not(.ui) {
   margin: 0em 0em 0.5em;
@@ -557,11 +557,11 @@ Floated Menu / Item
 /*--- Sub Menu ---*/
 
 .ui.vertical.menu .item > .menu {
-  margin: 0.5em -1.14285714em 0em;
+  margin: 0.5em -0.78571429em 0em;
 }
 .ui.vertical.menu .menu .item {
   background: none;
-  padding: 0.5em 1.33333333em;
+  padding: 0.5em 0.91666667em;
   font-size: 0.85714286em;
   color: rgba(0, 0, 0, 0.5);
 }
@@ -617,7 +617,7 @@ Floated Menu / Item
   border-left: 1px solid transparent;
   border-right: 1px solid transparent;
   border-top: 2px solid transparent;
-  padding: 1.14285714em 1.42857143em;
+  padding: 0.78571429em 1.42857143em;
   color: #444444;
 }
 .ui.tabular.menu .item:before {
@@ -767,7 +767,7 @@ Floated Menu / Item
 /* Active */
 .ui.pagination.menu .active.item {
   border-top: none;
-  padding-top: 1.14285714em;
+  padding-top: 0.78571429em;
   background-color: rgba(0, 0, 0, 0.05);
   color: rgba(0, 0, 0, 0.95);
   box-shadow: none;
@@ -875,7 +875,7 @@ Floated Menu / Item
 }
 .ui.vertical.secondary.menu .item:not(.dropdown) > .menu > .item {
   margin: 0em;
-  padding: 0.5em 1.33333333em;
+  padding: 0.5em 0.91666667em;
 }
 
 /*---------------------
@@ -1611,14 +1611,14 @@ Floated Menu / Item
 .ui.horizontally.fitted.menu .item,
 .ui.horizontally.fitted.menu .item .menu .item,
 .ui.menu .horizontally.fitted.item {
-  padding-top: 1.14285714em;
-  padding-bottom: 1.14285714em;
+  padding-top: 0.78571429em;
+  padding-bottom: 0.78571429em;
 }
 .ui.vertically.fitted.menu .item,
 .ui.vertically.fitted.menu .item .menu .item,
 .ui.menu .vertically.fitted.item {
-  padding-left: 1.14285714em;
-  padding-right: 1.14285714em;
+  padding-left: 0.78571429em;
+  padding-right: 0.78571429em;
 }
 
 /*--------------
@@ -1994,3 +1994,7 @@ Floated Menu / Item
          Site Overrides
 *******************************/
 
+.ui.menu .header.item,
+.ui.vertical.menu .header.item {
+  font-size: 1.25rem;
+}

@@ -1,23 +1,17 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
-import { Dropdown, Grid, Header, Label } from "semantic-ui-react";
-import { actions, Errors } from "react-redux-form";
+import { Grid } from "semantic-ui-react";
 
-import { fetchFacilities } from "../../../actions/facilitiesActions";
-import { formStepValidate } from "../../../actions/requestFormActions";
-
+import RequestFormStepButtons from "./stepButtons";
 import Premium from "../../user/premium.js";
 import RequestFormStep1Facility from "./step1Facility.js";
 
-@connect(store => {
-  return {};
-})
 export default class RequestFormStep1 extends Component {
   render() {
     return (
       <Grid>
         <Grid.Column computer="8" tablet="8" mobile="16">
           <RequestFormStep1Facility />
+          <RequestFormStepButtons />
         </Grid.Column>
         <Grid.Column computer="8" tablet="8" mobile="16">
           <Premium />

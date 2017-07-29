@@ -37,14 +37,14 @@ export default class RequestFormSteps extends Component {
       <div>
         <Menu fixed="top" color="green" className="StepsNavMenu">
           <Container>
-            <Menu.Item onClick={() => this.prevStep()}>
+            <Menu.Item
+              disabled={currentStep === 1}
+              onClick={() => this.prevStep()}
+            >
               <Icon name="chevron left" />
             </Menu.Item>
             <Menu.Item name="home" header>
               Step {currentStep} of {this.lastStep}: {step_titles[currentStep]}
-            </Menu.Item>
-            <Menu.Item position="right" onClick={() => this.nextStep()}>
-              <Icon name="chevron right" />
             </Menu.Item>
           </Container>
         </Menu>

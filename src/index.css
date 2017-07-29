@@ -4,10 +4,6 @@ body {
   background-color: #ffffff;
 }
 
-#root {
-  // background-color: #ffffff;
-}
-
 .NavPushed {
   height: 50px;
 }
@@ -18,9 +14,6 @@ body {
   padding-bottom: 12px;
 }
 
-.footer {
-
-}
 .footerDisclaimer {
   color: #ccc;
 }
@@ -34,8 +27,9 @@ body {
 }
 
 .ui.menu.StepsNavMenu {
-  top: 49px;
+  top: 46px;
   border-radius: 0;
+  box-shadow: none;
 }
 
 .ui.search .prompt {

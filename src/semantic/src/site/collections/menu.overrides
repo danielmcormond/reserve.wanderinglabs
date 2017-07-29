@@ -1,3 +1,8 @@
 /*******************************
          Site Overrides
 *******************************/
+
+.ui.menu .header.item,
+.ui.vertical.menu .header.item {
+  font-size: 1.25rem;
+}

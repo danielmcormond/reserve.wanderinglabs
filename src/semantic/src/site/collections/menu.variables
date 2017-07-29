@@ -1,3 +1,7 @@
 /*******************************
     User Variable Overrides
 *******************************/
+
+@itemHorizontalPadding: @relativeMini;
+@itemVerticalPadding: @relativeMini;
+@headerWeight: inherit;

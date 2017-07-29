@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { actions, Control } from "react-redux-form";
 import { Dropdown, Grid } from "semantic-ui-react";
 
+import RequestFormStepButtons from "./stepButtons";
 import SemanticCheckbox from "../../inputs/checkbox";
 import SemanticInput from "../../semanticInput";
 import RequestFormStep3Sites from "./step3Sites";
@@ -153,6 +154,10 @@ export default class RequestFormStep3 extends Component {
         <Grid.Column mobile="16">
           <label>Only Specific Sites:</label>
           <RequestFormStep3Sites />
+        </Grid.Column>
+
+        <Grid.Column computer="16" tablet="16" mobile="16">
+          <RequestFormStepButtons />
         </Grid.Column>
       </Grid>
     );
