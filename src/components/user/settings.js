@@ -37,7 +37,7 @@ export default class UserSettings extends Component {
             <Header as="h4">
               <Icon name="id badge" color="green" />
               <Header.Content>
-                {user.email} - {user.premium_until}
+                {user.email}
               </Header.Content>
             </Header>
             <Menu color="green">

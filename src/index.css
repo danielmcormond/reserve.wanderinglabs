@@ -1,11 +1,11 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: #cccccc;
+  background-color: #ffffff;
 }
 
 #root {
-  background-color: #ffffff;
+  // background-color: #ffffff;
 }
 
 .NavPushed {
@@ -19,7 +19,10 @@ body {
 }
 
 .footer {
-  background-color: #cccccc;
+
+}
+.footerDisclaimer {
+  color: #ccc;
 }
 
 .footerMenuRight {

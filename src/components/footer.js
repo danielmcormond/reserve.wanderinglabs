@@ -1,7 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { Container, Divider, Grid, Icon, Menu } from "semantic-ui-react";
+import {
+  Container,
+  Divider,
+  Grid,
+  Icon,
+  Menu,
+  Segment
+} from "semantic-ui-react";
 
 @connect(store => {
   return {
@@ -13,8 +20,8 @@ export default class Footer extends Component {
     const { isAuthenticated } = this.props;
     return (
       <div className="footer">
-        <Divider hidden />
         <Container>
+          <Divider />
           <Grid>
             <Grid.Column computer="4" tablet="4" mobile="16">
               <Menu text vertical>
@@ -26,8 +33,19 @@ export default class Footer extends Component {
                 </Menu.Item>
               </Menu>
             </Grid.Column>
-            <Grid.Column computer="8" tablet="8" mobile="16">
-              Disclaimer etc
+            <Grid.Column computer="8" tablet="8" mobile="16" textAlign="center">
+              <Segment basic size="mini">
+                <p>
+                  <a href="http://wanderinglabs.com">Wandering Labs</a> is a
+                  creation of{" "}
+                  <a href="https://github.com/tiwatson">Tim Watson</a>
+                </p>
+                <p className="footerDisclaimer">
+                  Wandering Labs is not affiliated with, maintained by, or in
+                  any way officially connected with Recreation.gov, Reserve
+                  America, or Active Network.
+                </p>
+              </Segment>
             </Grid.Column>
             <Grid.Column computer="4" tablet="4" mobile="16">
               <Menu text vertical className="footerMenuRight">
