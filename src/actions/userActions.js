@@ -35,6 +35,7 @@ export function paymentSuccess(data) {
       }
     })
       .then(function(response) {
+        dispatch({ type: "FETCH_USER_FULFILLED", payload: response.data });
         dispatch({ type: "PAYMENT_FULFILLED", payload: response.data });
       })
       .catch(function(error) {

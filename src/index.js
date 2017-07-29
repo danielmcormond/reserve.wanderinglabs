@@ -39,7 +39,7 @@ import "./index.css";
 const app = document.getElementById("root");
 
 const token = localStorage.getItem("token");
-if (token) {
+if (token && token !== "null") {
   store.dispatch({ type: "SESSION_SUCCESS", payload: { token } });
 }
 

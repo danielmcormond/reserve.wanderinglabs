@@ -1,11 +1,20 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Container, Grid, Header, Menu } from "semantic-ui-react";
+import {
+  Container,
+  Divider,
+  Grid,
+  Header,
+  Icon,
+  Menu
+} from "semantic-ui-react";
 
 import { Link } from "react-router-dom";
 import { userSettings } from "../../actions/userActions";
 
 import Premium from "./premium.js";
+import UserEmail from "./email.js";
+import UserTxt from "./txt.js";
 
 @connect(store => {
   return {
@@ -25,8 +34,11 @@ export default class UserSettings extends Component {
       <Container>
         <Grid>
           <Grid.Column computer="8" tablet="8" mobile="16">
-            <Header as="h5">
-              Account Settings: {user.email}
+            <Header as="h4">
+              <Icon name="id badge" color="green" />
+              <Header.Content>
+                {user.email} - {user.premium_until}
+              </Header.Content>
             </Header>
             <Menu color="green">
               {isAuthenticated &&
@@ -42,6 +54,11 @@ export default class UserSettings extends Component {
                   Sign In
                 </Menu.Item>}
             </Menu>
+
+            <UserEmail />
+            <Divider hidden />
+            <UserTxt />
+
           </Grid.Column>
           <Grid.Column computer="8" tablet="8" mobile="16">
             <Premium />

@@ -27,7 +27,8 @@ export default function reducer(
         ...state,
         fetching: false,
         fetched: true,
-        user: action.payload
+        user: action.payload,
+        premium: action.payload.premium
       };
     }
     default: {
