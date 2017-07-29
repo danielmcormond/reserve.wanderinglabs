@@ -17,6 +17,7 @@ import RequestForm from "./components/request/form/index";
 import Requests from "./components/requests";
 import Footer from "./components/footer";
 import Nav from "./components/nav";
+import FrontPage from "./components/frontPage";
 import Facility from "./components/facility";
 import Loading from "./components/loading";
 import FlashMessage from "./components/flashMessage";
@@ -58,7 +59,7 @@ ReactDOM.render(
             <Route
               exact
               path="/"
-              component={requireAuth(Requests, RequestForm)}
+              component={requireAuth(Requests, FrontPage)}
             />
             <Route path="/new" component={RequestForm} />
             <Route

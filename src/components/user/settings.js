@@ -58,7 +58,6 @@ export default class UserSettings extends Component {
             <UserEmail />
             <Divider hidden />
             <UserTxt />
-
           </Grid.Column>
           <Grid.Column computer="8" tablet="8" mobile="16">
             <Premium />
