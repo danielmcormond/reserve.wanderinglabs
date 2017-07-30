@@ -39,13 +39,11 @@ export default class FrontPage extends Component {
         <p>
           Start typing the name of the campground you want to stay at. Next
           select a date range and the number of nights you would like to stay.
-        </p>
-        <p>
+          <br />
           For example you could request a stay at Bahia Honda State Park in
           Florida for 5 consecutive nights anytime between January 1 and March
           1.
-        </p>
-        <p>
+          <br />
           We will check the reservation website every few minutes to see if any
           sites become available. If any do, we will email you.
         </p>

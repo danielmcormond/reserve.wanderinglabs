@@ -30,7 +30,6 @@ export function sessionCreate(token) {
       data: { token }
     })
       .then(function(response) {
-        localStorage.setItem("token", response.data.auth_token);
         dispatch(sessionSuccess(response.data.auth_token));
         dispatch(push("/"));
         // dispatch(setFlashMessage("logged in", "success"));
@@ -51,6 +50,7 @@ export function sessionDestroy(token) {
 }
 
 export function sessionSuccess(token) {
+  localStorage.setItem("token", token);
   return {
     type: "SESSION_SUCCESS",
     payload: {

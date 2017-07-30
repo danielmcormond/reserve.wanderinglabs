@@ -28,6 +28,7 @@ export default class RequestFormStep2ArrivalDays extends Component {
     ];
     return (
       <Dropdown
+        className="big"
         selection
         fluid
         multiple

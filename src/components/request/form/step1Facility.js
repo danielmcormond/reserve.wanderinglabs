@@ -52,6 +52,7 @@ export default class RequestFormStep1Facility extends Component {
         <Header as="h4" content="Campground or Facility to reserve at:" />
 
         <Dropdown
+          className="big"
           fluid
           search
           value={facilityId}
@@ -76,18 +77,3 @@ export default class RequestFormStep1Facility extends Component {
     );
   }
 }
-
-//         <Dropdown selection text='State' labeled icon='filter'  button className='icon' defaultValue='AL' options={stateOptions} />
-//     const stateOptions = [ { key: 'AL', value: 'AL', text: 'Alabama' }, { key: 'AL1', value: 'AL1', text: 'Alabama1' } ]
-
-// const mappedOptions = facilities.map(facility => {
-//   return (
-//     <Dropdown.Item key={facility.key} value={facility.key} onClick={this.handleChange}>
-//       {facility.text}
-//     </Dropdown.Item>
-//   )
-// });
-
-// <Dropdown.Menu scrolling={false}>
-//   {mappedOptions}
-// </Dropdown.Menu>

@@ -30,6 +30,8 @@ import UserSettings from "./components/user/settings";
 import requireAuth from "./components/sessions/authenticated";
 import AvailabilityImports from "./components/availabilityImports";
 
+import { userSettings } from "./actions/userActions";
+
 import store from "./store";
 
 import { history } from "./utils/history";
@@ -43,6 +45,7 @@ const app = document.getElementById("root");
 const token = localStorage.getItem("token");
 if (token && token !== "null") {
   store.dispatch({ type: "SESSION_SUCCESS", payload: { token } });
+  store.dispatch(userSettings());
 }
 
 ReactDOM.render(

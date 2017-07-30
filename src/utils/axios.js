@@ -8,7 +8,6 @@ var instance = axios.create({
 
 export const reserveApi = options => {
   let token = store.getState().session.token;
-  console.log("GET TOKEN FROM STATE", token);
   Object.assign(options, {
     headers: {
       Authorization: token ? `Token token=${token}` : ""

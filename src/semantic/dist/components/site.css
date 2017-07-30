@@ -154,6 +154,9 @@ input::selection {
 .ui.inverted.menu.StepsNavMenu {
   border-radius: 0;
 }
+.ui.big.dropdown {
+  font-size: 1.28571429em;
+}
 
 /* Mobile */
 @media only screen and (max-width: 767px) {

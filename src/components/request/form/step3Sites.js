@@ -30,6 +30,7 @@ export default class RequestFormStep1 extends Component {
 
     return (
       <Dropdown
+        className="big"
         selection
         fluid
         multiple

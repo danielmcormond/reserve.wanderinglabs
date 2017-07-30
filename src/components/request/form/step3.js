@@ -89,6 +89,7 @@ export default class RequestFormStep3 extends Component {
           <label>Site Type</label>
           <div>
             <Dropdown
+              className="big"
               fluid
               selection
               options={siteTypeOptions}
@@ -110,6 +111,7 @@ export default class RequestFormStep3 extends Component {
           <label>Electric</label>
           <div>
             <Dropdown
+              className="big"
               fluid
               selection
               options={electricOptions}

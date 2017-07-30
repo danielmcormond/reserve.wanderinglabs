@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Grid, Header, Icon, Loader, Table } from "semantic-ui-react";
+import { Link } from "react-router-dom";
 
 import DateFormat from "./utils/dateFormat";
 import { fetchAvailabilityImports } from "../actions/availabilityImportsActions";
@@ -27,12 +28,11 @@ export default class AvailabilityImports extends Component {
           <Table.Cell textAlign="left">
             <Header size="tiny">
               <Header.Content>
-                {log.facility.name}
+                <Link to={`/f/${log.facility.id}`}>
+                  {log.facility.name}
+                </Link>
                 <Header.Subheader>
-                  <DateFormat
-                    format="MM/DD/YY HH:mm:dd"
-                    date={log.created_at}
-                  />
+                  <DateFormat format="MM/DD/YY h:m:ss" date={log.created_at} />
                 </Header.Subheader>
               </Header.Content>
             </Header>
