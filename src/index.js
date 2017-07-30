@@ -28,6 +28,7 @@ import SessionDestroy from "./components/sessions/destroy";
 
 import UserSettings from "./components/user/settings";
 import requireAuth from "./components/sessions/authenticated";
+import AvailabilityImports from "./components/availabilityImports";
 
 import store from "./store";
 
@@ -75,6 +76,8 @@ ReactDOM.render(
 
             <Route exact path="/f/:id" component={Facility} />
 
+            <Route exact path="/log" component={AvailabilityImports} />
+            <Route exact path="/log/:id" component={AvailabilityImports} />
 
             <Route exact path="/sign-in" component={SessionNew} />
             <Route exact path="/sign-in/:token" component={SessionCreate} />
