@@ -7,14 +7,11 @@ import { Container } from "semantic-ui-react";
 import { Route } from "react-router";
 import { ConnectedRouter } from "react-router-redux";
 
-import MatchReserve from "./components/matchReserve";
-
-import RequestShow from "./components/request/show";
-import RequestFormSteps from "./components/request/form/steps";
+import RequestAll from "./components/request/all";
 import RequestForm from "./components/request/form/index";
+import RequestFormSteps from "./components/request/form/steps";
+import RequestShow from "./components/request/show";
 
-// import RequestHeader from "./components/requestHeader"
-import Requests from "./components/requests";
 import Footer from "./components/footer";
 import Nav from "./components/nav";
 import FrontPage from "./components/frontPage";
@@ -29,6 +26,8 @@ import SessionDestroy from "./components/sessions/destroy";
 import UserSettings from "./components/user/settings";
 import requireAuth from "./components/sessions/authenticated";
 import AvailabilityImports from "./components/availabilityImports";
+import AvailabilityMatchClick from "./components/availabilityMatchClick";
+
 
 import { userSettings } from "./actions/userActions";
 
@@ -63,7 +62,7 @@ ReactDOM.render(
             <Route
               exact
               path="/"
-              component={requireAuth(Requests, FrontPage)}
+              component={requireAuth(RequestAll, FrontPage)}
             />
             <Route path="/new" component={RequestForm} />
             <Route
@@ -75,7 +74,7 @@ ReactDOM.render(
               component={RequestShow}
             />
 
-            <Route exact path="/:from([wet]{1})/:id" component={MatchReserve} />
+            <Route exact path="/:from([wet]{1})/:id" component={AvailabilityMatchClick} />
 
             <Route exact path="/f/:id" component={Facility} />
 

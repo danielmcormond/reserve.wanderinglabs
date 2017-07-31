@@ -1,3 +1,9 @@
 /*******************************
     User Variable Overrides
 *******************************/
+
+@selectionVisibleBorderColor : @green;
+@selectionActiveHoverBorderColor : @green;
+
+@selectionVisibleBoxShadow : none;
+@selectionActiveHoverBoxShadow : none;

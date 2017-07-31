@@ -49,10 +49,8 @@ export default class RequestFormStep1Facility extends Component {
 
     return (
       <div>
-        <Header as="h4" content="Campground or Facility to reserve at:" />
-
+        <label>Campground or Facility to reserve at:</label>
         <Dropdown
-          className="big"
           fluid
           search
           value={facilityId}

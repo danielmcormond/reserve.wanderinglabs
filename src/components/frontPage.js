@@ -26,7 +26,7 @@ export default class FrontPage extends Component {
   render() {
     return (
       <div>
-        <Header as="h1">
+        <Header as="h1" color="green">
           <Header.Content>
             Campground Full?
             <Header.Subheader>
@@ -36,33 +36,39 @@ export default class FrontPage extends Component {
           </Header.Content>
         </Header>
 
-        <p>
-          Start typing the name of the campground you want to stay at. Next
-          select a date range and the number of nights you would like to stay.
-          <br />
-          For example you could request a stay at Bahia Honda State Park in
-          Florida for 5 consecutive nights anytime between January 1 and March
-          1.
-          <br />
-          We will check the reservation website every few minutes to see if any
-          sites become available. If any do, we will email you.
-        </p>
-
         <Divider hidden />
         <Grid>
           <Grid.Column computer="8" tablet="8" mobile="16">
-            <div className="field">
-              <RequestFormStep1Facility />
+            <div className="ui big form">
+              <div className="field">
+                <RequestFormStep1Facility />
+              </div>
+
+              <Button
+                as="a"
+                color="green"
+                floated="right"
+                onClick={() => this.nextStep()}
+              >
+                Next Step
+                <Icon name="chevron right" />
+              </Button>
             </div>
-            <Button
-              as="a"
-              color="green"
-              floated="right"
-              onClick={() => this.nextStep()}
-            >
-              Next Step
-              <Icon name="chevron right" />
-            </Button>
+
+
+            <div className="frontPageInstructions">
+              <br />
+              <p>
+                For example you could request a stay at Bahia Honda State Park
+                in Florida for 5 consecutive nights anytime between January 1
+                and March 1.
+              </p>
+              <p>
+                We will check the reservation website every few minutes and if a
+                site becomes available we will email you.
+              </p>
+              <p>It will then be up to you to make the actual reservation.</p>
+            </div>
           </Grid.Column>
           <Grid.Column computer="8" tablet="8" mobile="16">
             <Premium />

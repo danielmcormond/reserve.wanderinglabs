@@ -151,6 +151,11 @@ input::selection {
          Site Overrides
 *******************************/
 
+.frontPageInstructions {
+  clear: both;
+  font-size: 1.14285714rem;
+  color: rgba(0, 0, 0, 0.6);
+}
 .ui.inverted.menu.StepsNavMenu {
   border-radius: 0;
 }

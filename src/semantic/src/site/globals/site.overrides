@@ -2,6 +2,12 @@
          Site Overrides
 *******************************/
 
+.frontPageInstructions {
+  clear: both;
+  font-size: @large;
+  color: rgba(0,0,0,.6);
+}
+
 .ui.inverted.menu.StepsNavMenu {
   border-radius: 0;
 }
@@ -29,4 +35,3 @@
     display: none !important;
   }
 }
-

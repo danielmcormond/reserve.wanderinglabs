@@ -3,9 +3,9 @@ import { connect } from "react-redux";
 import { Grid, Header, Icon, Label, List, Loader } from "semantic-ui-react";
 import { push } from "react-router-redux";
 
-import Premium from "./user/premium.js";
-import DateFormat from "./utils/dateFormat";
-import { fetchAvailabilityRequests } from "../actions/availabilityRequestsActions";
+import Premium from "../user/premium.js";
+import DateFormat from "../utils/dateFormat";
+import { fetchAvailabilityRequests } from "../../actions/availabilityRequestsActions";
 
 @connect(store => {
   return {
@@ -14,7 +14,7 @@ import { fetchAvailabilityRequests } from "../actions/availabilityRequestsAction
     fetched: store.availabilityRequests.fetched
   };
 })
-export default class Requests extends Component {
+export default class RequestAll extends Component {
   componentWillMount() {
     if (this.props.fetched === false) {
       this.props.dispatch(fetchAvailabilityRequests());

@@ -40,10 +40,17 @@ export default class AvailabilityMatches extends Component {
             </Header>
           </Table.Cell>
           <Table.Cell textAlign="center" collapsing>
-            {ar.length}
+            <Header size="tiny" content={ar.length} />
           </Table.Cell>
           <Table.Cell textAlign="center">
-            {ar.site.site_num}
+            <Header size="tiny">
+              <Header.Content>
+                {ar.site.site_num}
+                <Header.Subheader>
+                  {ar.site.site_type2}
+                </Header.Subheader>
+              </Header.Content>
+            </Header>
           </Table.Cell>
           <Table.Cell textAlign="right">
             {!!ar.available &&

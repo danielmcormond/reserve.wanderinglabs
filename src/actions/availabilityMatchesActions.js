@@ -2,7 +2,6 @@ import reserveApi from "../utils/axios";
 
 export function fetchAvailabilityMatches(uuid) {
   return function(dispatch) {
-    // TODO: Access state availabilityRequests.ars to see if ar is already in memory.
     dispatch({ type: "FETCH_MATCHES" });
     reserveApi({
       method: "get",
@@ -26,12 +25,7 @@ export function fetchAvailabilityMatch(id, from) {
       date: { from }
     })
       .then(response => {
-        // if (response.data.available === true) {
-        //   window.location(response.data.reserve_url);
-        // }
-        // else {
         dispatch({ type: "FETCH_MATCH_FULFILLED", payload: response.data });
-        //}
       })
       .catch(err => {
         dispatch({ type: "FETCH_MATCH_REJECTED", payload: err });
