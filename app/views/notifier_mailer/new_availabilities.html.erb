@@ -1,0 +1,92 @@
+<style>
+  .availHeader {
+    color: #a3a3a3;
+    font-weight: bold;
+    font-size: 85%;
+  }
+
+  .availTable {
+    width: 100%;
+    margin-bottom: 12px;
+  }
+
+  .availTable > tr > td {
+    font-size: 85%;
+  }
+
+  .link {
+    color: #77b57a;
+    text-decoration: none;
+    line-height: 2;
+    font-size: 108%;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  .availTitle {
+    font-weight: bold;
+    font-size: 16px;
+    Margin-bottom: 0px;
+  }
+</style>
+
+
+
+<h2>We found a possible campsite... Be quick and reserve it now!!</h2>
+<p>
+  You asked us to look for
+  <%= @availability_request.stay_length -%> nights sometime between
+  <%= @availability_request.date_start -%> and <%= @availability_request.date_end -%>.
+</p>
+
+<table class="availTable">
+  <% [false, true].each do |bool| %>
+    <% next unless @availability_request.available_matches(bool).count.positive? %>
+    <tr>
+      <td colspan=4>
+        <h4 class="availTitle"><%= bool ? 'Previously notified but still available:' : 'Just recently available:' %></h4>
+      </td>
+    </tr>
+    <%= render partial: 'new_availabilities_header_row' %>
+
+    <% @availability_request.available_matches(bool).limit(25).each do |am| %>
+      <%= render partial: 'new_availabilities_item', locals: { am: am } %>
+    <% end %>
+    <% if @availability_request.available_matches(bool).count > 25 %>
+      <tr>
+        <td colspan=4>
+          <h4 class="availTitle" style="text-align: center">Only showing 25 of <%= @availability_request.available_matches(bool).count -%> total.</h4>
+          <table border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
+            <tbody>
+              <tr>
+                <td align="center">
+                  <table border="0" cellpadding="0" cellspacing="0">
+                    <tbody>
+                      <tr>
+                        <td> <a href="<%= ENV['RESERVE_URL'] -%>/<%= @availability_request.uuid -%>" target="_blank">View all availabilities</a> </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    <% end %>
+  <% end %>
+</table>
+
+<h4>
+This is just a notification. You have not yet made a reservation.</h4>
+<p>
+Act fast as someone else may reserve the site before you can. (It may already be re-booked)
+</p>
+<p>
+I got a reservation! Stop Notifications | No longer looking. Stop Notifications
+</p>
+<p>
+You can review this request and all your campsite requests at:
+</p>
+<p>
+  <a href="<%= ENV['RESERVE_URL'] -%>/<%= @availability_request.uuid -%>"><%= ENV['RESERVE_URL'] -%>/<%= @availability_request.uuid -%></a>
+</p>
