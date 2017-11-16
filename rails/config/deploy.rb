@@ -2,8 +2,8 @@
 lock "3.7.2"
 
 set :application, 'rails.reserve.wanderinglabs'
-set :repo_url, 'git@github.com:tiwatson/rails.reserve.wanderinglabs.git'
-
+set :repo_url, 'git@github.com:tiwatson/reserve.wanderinglabs.git'
+set :repo_tree, '/rails'
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
