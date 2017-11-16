@@ -3,7 +3,8 @@ class Site < ApplicationRecord
 
   belongs_to :facility
 
-  enumerize :site_type, in: %i[group tent_walk_in tent other rv], predicates: { prefix: true }
+  enumerize :site_type, in: %i[cabin group tent_walk_in tent other rv], predicates: { prefix: true }
+  enumerize :site_layout, in: %i[back_in pull_thru other], predicates: { prefix: true }
 
   scope :lookup, (->(start) { where('site_num ILIKE ?', "%#{start}%").order('site_num ASC').limit(25) })
 

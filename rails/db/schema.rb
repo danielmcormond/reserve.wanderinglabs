@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170729235845) do
+ActiveRecord::Schema.define(version: 20171116164915) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -156,6 +156,7 @@ ActiveRecord::Schema.define(version: 20170729235845) do
     t.integer "electric"
     t.integer "length"
     t.string "site_type"
+    t.string "site_layout"
     t.index ["facility_id"], name: "index_sites_on_facility_id"
   end
 
