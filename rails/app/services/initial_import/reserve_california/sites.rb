@@ -22,7 +22,7 @@ module InitialImport::ReserveCalifornia
     end
 
     def update_or_create(attrs)
-      facility.sites.where(ext_site_id: attrs[:ext_site_id]).first_or_create(attrs)
+      Site.where(facility_id: facility.id).where(ext_site_id: attrs[:ext_site_id]).first_or_create(attrs)
     end
   end
 end

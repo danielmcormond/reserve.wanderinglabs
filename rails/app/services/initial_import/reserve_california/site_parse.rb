@@ -86,7 +86,7 @@ module InitialImport::ReserveCalifornia
     end
 
     def amenities
-      parsed.css('li').map { |li| [li.children[0].text.strip.parameterize.underscore, li.css('b')[0].text.strip] }.to_h
+      parsed.css('li').map { |li| [li.children[0]&.text&.strip&.parameterize&.underscore, li.css('b')[0]&.text&.strip] }.to_h
     end
 
     def left
