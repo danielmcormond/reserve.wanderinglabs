@@ -26,3 +26,5 @@ module InitialImport::ReserveCalifornia
     end
   end
 end
+
+# InitialImport::ReserveCalifornia::Sites.new(facility).import

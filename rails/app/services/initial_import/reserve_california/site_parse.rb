@@ -26,8 +26,8 @@ module InitialImport::ReserveCalifornia
         ext_site_id: site_id,
         site_num: site_num,
         details: meta,
-        water: amenities['water_hookup'].downcase.include?('Y'),
-        sewer: amenities['sewer_hookup'].downcase.include?('Y'),
+        water: amenities['water_hookup'].downcase.include?('y'),
+        sewer: amenities['sewer_hookup'].downcase.include?('y'),
         electric: electricity_hookup.positive? ? electricity_hookup : nil,
         length: site_length,
         site_type: site_type,
@@ -74,10 +74,10 @@ module InitialImport::ReserveCalifornia
       if site_layout.include?('back')
         :back_in
       elsif site_layout.include?('pull')
-        :pull_thu
+        :pull_thru
       else
         puts "UNKNOWN LAYOUT #{site_layout}"
-        :unknown
+        :other
       end
     end
 
