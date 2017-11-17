@@ -45,7 +45,7 @@ module InitialImport::ReserveCalifornia
     end
 
     def electricity_hookup
-      amenities['electricity_hookup'].scan(/\d+/).first.to_i
+      amenities['electricity_hookup']&.scan(/\d+/).first.to_i
     end
 
     def dpr_site_type

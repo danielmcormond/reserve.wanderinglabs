@@ -28,3 +28,4 @@ module InitialImport::ReserveCalifornia
 end
 
 # InitialImport::ReserveCalifornia::Sites.new(facility).import
+# Facility::ReserveCalifornia.limit(5).each { |facility| InitialImport::ReserveCalifornia::Sites.new(facility).import }
