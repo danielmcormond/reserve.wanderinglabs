@@ -10,4 +10,8 @@ class Facility::RecreationGov < Facility
   def sub_name
     [details['Parent'], details['AddressStateCode']].join(', ')
   end
+
+  def sns_scraper
+    ENV['AWS_SNS_SCRAPER']
+  end
 end

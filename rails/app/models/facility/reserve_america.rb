@@ -10,4 +10,8 @@ class Facility::ReserveAmerica < Facility
   def sub_name
     [agency.name, details['state']].join(', ')
   end
+
+  def sns_scraper
+    ENV['AWS_SNS_SCRAPER']
+  end
 end

@@ -75,7 +75,7 @@ class AvailabilityImports::FromJson
   end
 
   def bucket
-    Rails.env == 'production' ? 'availabilities-prd' : 'availabilities-dev'
+    Rails.env.production? ? 'availabilities-prd' : 'availabilities-dev'
   end
 
   def body

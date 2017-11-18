@@ -6,4 +6,8 @@ class Facility::ReserveCalifornia < Facility
   def sub_name
 
   end
+
+  def sns_scraper
+    ENV['AWS_SNS_SCRAPER_RC']
+  end
 end

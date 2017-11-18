@@ -1,12 +1,12 @@
 class Sns
   require 'aws-sdk'
 
-  def self.publish(message)
+  def self.publish(facility)
     sns = Aws::SNS::Resource.new
-    topic = sns.topic(ENV['AWS_SNS_SCRAPER'])
+    topic = sns.topic(facility.sns_scraper)
     topic.publish(
       subject: 'Test Subject',
-      message: message.to_json
+      message: facility.scraper_details.to_json
     )
   end
 end
