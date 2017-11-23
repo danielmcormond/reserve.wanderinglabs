@@ -4,7 +4,7 @@ class Facility::ReserveCalifornia < Facility
   end
 
   def rc_facility_id
-    details['place_id']
+    details['facility_id']
   end
 
   def sub_name

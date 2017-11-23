@@ -31,8 +31,8 @@ class AvailabilityImports::FromJson
     import.update_attributes(
       history_open: history_open,
       history_filled: history_filled,
-      date_start: Date.strptime(body['startDate'], '%m/%d/%Y'),
-      date_end: Date.strptime(body['endDate'], '%m/%d/%Y')
+      date_start: date_start,
+      date_end: date_end
     )
   end
 
@@ -76,6 +76,14 @@ class AvailabilityImports::FromJson
 
   def bucket
     Rails.env.production? ? 'availabilities-prd' : 'availabilities-dev'
+  end
+
+  def date_start
+    body['startDate'] ? Date.strptime(body['startDate'], '%m/%d/%Y') : Time.now.to_date
+  end
+
+  def date_end
+    body['endDate'] ? Date.strptime(body['endDate'], '%m/%d/%Y') : 6.months.from_now.to_date
   end
 
   def body
