@@ -1,6 +1,10 @@
 class Facility::ReserveCalifornia < Facility
-  def park_id
-    details['park_id']
+  def place_id
+    details['place_id']
+  end
+
+  def rc_facility_id
+    details['place_id']
   end
 
   def sub_name
@@ -9,5 +13,14 @@ class Facility::ReserveCalifornia < Facility
 
   def sns_scraper
     ENV['AWS_SNS_SCRAPER_RC']
+  end
+
+  def scraper_details
+    {
+      facilityId: id,
+      rcFacilityId: rc_facility_id,
+      rcPlaceId: place_id,
+      hash: last_import_hash,
+    }
   end
 end

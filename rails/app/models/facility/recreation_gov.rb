@@ -14,4 +14,15 @@ class Facility::RecreationGov < Facility
   def sns_scraper
     ENV['AWS_SNS_SCRAPER']
   end
+
+  def scraper_details
+    {
+      facilityId: id,
+      contractCode: contract_code,
+      parkId: park_id,
+      startDate: scrape_start.strftime('%m/%d/%Y'),
+      endDate: scrape_end.strftime('%m/%d/%Y'),
+      hash: last_import_hash,
+    }
+  end
 end

@@ -14,17 +14,6 @@ class Facility < ApplicationRecord
     Facility.left_outer_joins(:availability_requests).merge(AvailabilityRequest.active).group('facilities.id')
   end
 
-  def scraper_details
-    {
-      facilityId: id,
-      contractCode: contract_code,
-      parkId: park_id,
-      startDate: scrape_start.strftime('%m/%d/%Y'),
-      endDate: scrape_end.strftime('%m/%d/%Y'),
-      hash: last_import_hash,
-    }
-  end
-
   def scrape_start
     [Time.now.to_date, availability_requests.active.map(&:date_start).sort.first].max
   end
