@@ -3,6 +3,7 @@ class AvailabilityMatchesController < ApplicationController
     availability_request = AvailabilityRequest.find_by_uuid(params[:availability_request_id])
     @availability_matches = availability_request
       .availability_matches
+      .available
       .includes(site: [:facility])
       .order('available DESC, avail_date ASC')
     render json: @availability_matches
