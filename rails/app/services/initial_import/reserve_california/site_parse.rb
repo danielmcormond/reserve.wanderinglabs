@@ -26,8 +26,8 @@ module InitialImport::ReserveCalifornia
         ext_site_id: site_id,
         site_num: site_num,
         details: meta,
-        water: amenities['water_hookup'].downcase.include?('y'),
-        sewer: amenities['sewer_hookup'].downcase.include?('y'),
+        water: amenities['water_hookup']&.downcase&.include?('y') || false,
+        sewer: amenities['sewer_hookup']&.downcase&.include?('y') || false,
         electric: electricity_hookup.positive? ? electricity_hookup : nil,
         length: site_length,
         site_type: site_type,
@@ -49,7 +49,7 @@ module InitialImport::ReserveCalifornia
     end
 
     def dpr_site_type
-      amenities['dpr_site_type'].downcase
+      amenities['dpr_site_type']&.downcase || ''
     end
 
     def site_type
@@ -67,7 +67,7 @@ module InitialImport::ReserveCalifornia
     end
 
     def site_layout
-      left['pull_in_type'].downcase
+      left['pull_in_type']&.downcase || ''
     end
 
     def site_layout_clean
