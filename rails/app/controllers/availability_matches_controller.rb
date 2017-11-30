@@ -12,6 +12,6 @@ class AvailabilityMatchesController < ApplicationController
   def click
     match = AvailabilityMatch.find_by_base62(params[:id])
     RecordClick.new(match, params[:from] || :w).perform
-    render json: match
+    render json: match, show_reserve: true
   end
 end

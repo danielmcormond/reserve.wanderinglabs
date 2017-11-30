@@ -7,6 +7,10 @@ class AvailabilityMatch < ApplicationRecord
   scope :notifiable, (-> { where(notified_at: nil) })
   scope :notified, (-> { where.not(notified_at: nil) })
 
+  def facility
+    site.facility
+  end
+
   def self.find_by_base62(base62)
     id = Base62.decode(base62)
     find(id)
