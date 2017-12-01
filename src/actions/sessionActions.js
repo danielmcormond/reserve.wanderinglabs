@@ -31,6 +31,7 @@ export function sessionCreate(token) {
     })
       .then(function(response) {
         dispatch(sessionSuccess(response.data.auth_token));
+        dispatch({ type: "FETCH_USER_FULFILLED", payload: response.data.user });
         dispatch(push("/"));
         // dispatch(setFlashMessage("logged in", "success"));
       })

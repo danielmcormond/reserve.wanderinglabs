@@ -26,10 +26,10 @@
   outline: none;
   vertical-align: baseline;
   font-style: normal;
-  min-height: 17px;
+  min-height: 23px;
   font-size: 1rem;
-  line-height: 17px;
-  min-width: 17px;
+  line-height: 23px;
+  min-width: 23px;
 }
 
 /* HTML Checkbox */
@@ -42,8 +42,8 @@
   opacity: 0 !important;
   outline: none;
   z-index: 3;
-  width: 17px;
-  height: 17px;
+  width: 23px;
+  height: 23px;
 }
 
 /*--------------
@@ -57,15 +57,15 @@
   display: block;
   padding-left: 1.85714em;
   outline: none;
-  font-size: 1em;
+  font-size: 1.28571429em;
 }
 .ui.checkbox .box:before,
 .ui.checkbox label:before {
   position: absolute;
   top: 0px;
   left: 0px;
-  width: 17px;
-  height: 17px;
+  width: 23px;
+  height: 23px;
   content: '';
   background: #FFFFFF;
   border-radius: 0.21428571rem;
@@ -83,11 +83,11 @@
 .ui.checkbox .box:after,
 .ui.checkbox label:after {
   position: absolute;
-  font-size: 14px;
+  font-size: 18px;
   top: 0px;
   left: 0px;
-  width: 17px;
-  height: 17px;
+  width: 23px;
+  height: 23px;
   text-align: center;
   opacity: 0;
   color: #444444;
@@ -623,3 +623,6 @@
          Site Overrides
 *******************************/
 
+.ui.checkbox.premium label {
+  font-weight: 700;
+}

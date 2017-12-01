@@ -29,12 +29,15 @@ export default class Premium extends Component {
     const amountCheckboxes = amounts.map(a => {
       return (
         <Grid.Column width="4" key={a}>
-          <Checkbox
-            label={`$${a}`}
-            value={a}
-            checked={premiumAmount === a}
-            onChange={this.premiumAmountChange}
-          />
+          <div className="field">
+            <Checkbox
+              className="premium"
+              label={`$${a}`}
+              value={a}
+              checked={premiumAmount === a}
+              onChange={this.premiumAmountChange}
+            />
+          </div>
         </Grid.Column>
       );
     });
@@ -58,13 +61,18 @@ export default class Premium extends Component {
             think this service is worth.
           </p>
 
-          <Grid>
-            {amountCheckboxes}
-          </Grid>
+          <div className="ui big form">
+            <Grid>
+              {amountCheckboxes}
+            </Grid>
+          </div>
 
           <Divider hidden />
-
-          <PaypalButton />
+          <Grid>
+            <Grid.Column width="16" textAlign="center">
+              <PaypalButton />
+            </Grid.Column>
+          </Grid>
         </div>
       );
     }

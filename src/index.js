@@ -11,6 +11,7 @@ import RequestAll from "./components/request/all";
 import RequestForm from "./components/request/form/index";
 import RequestFormSteps from "./components/request/form/steps";
 import RequestShow from "./components/request/show";
+import RequestSuccess from "./components/request/success";
 
 import Footer from "./components/footer";
 import Nav from "./components/nav";
@@ -27,7 +28,6 @@ import UserSettings from "./components/user/settings";
 import requireAuth from "./components/sessions/authenticated";
 import AvailabilityImports from "./components/availabilityImports";
 import AvailabilityMatchClick from "./components/availabilityMatchClick";
-
 
 import { userSettings } from "./actions/userActions";
 
@@ -65,6 +65,8 @@ ReactDOM.render(
               component={requireAuth(RequestAll, FrontPage)}
             />
             <Route path="/new" component={RequestForm} />
+            <Route path="/success" component={RequestSuccess} />
+
             <Route
               path="/:uuid([a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12})"
               component={RequestShow}

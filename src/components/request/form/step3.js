@@ -89,7 +89,6 @@ export default class RequestFormStep3 extends Component {
           <label>Site Type</label>
           <div>
             <Dropdown
-              className="big"
               fluid
               selection
               options={siteTypeOptions}
@@ -99,19 +98,13 @@ export default class RequestFormStep3 extends Component {
           </div>
         </Grid.Column>
         <Grid.Column mobile="8">
-          <Control
-            model=".step3.length"
-            component={SemanticInput}
-            controlProps={{
-              label: "Minimum site Length:"
-            }}
-          />
+          <label>Minimum site Length</label>
+          <Control model=".step3.length" component={SemanticInput} />
         </Grid.Column>
         <Grid.Column mobile="8">
           <label>Electric</label>
           <div>
             <Dropdown
-              className="big"
               fluid
               selection
               options={electricOptions}

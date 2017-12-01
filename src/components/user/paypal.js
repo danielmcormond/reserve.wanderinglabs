@@ -46,6 +46,7 @@ export default class PaypalButton extends React.Component {
     // NB. You can also have many Paypal express checkout buttons on page, just pass in the correct amount and they will work!
     return (
       <PaypalExpressBtn
+        className="PaypalExpressBtn"
         env={env}
         client={client}
         currency={currency}

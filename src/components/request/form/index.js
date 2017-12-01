@@ -23,6 +23,7 @@ class RequestForm extends Component {
 
     return (
       <Form
+        className="ui form big"
         model="availabilityRequestForm"
         onSubmit={values => this.handleSubmit(values)}
       >

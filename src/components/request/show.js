@@ -121,15 +121,6 @@ export default class RequestShow extends Component {
                     </List.Item>
                   </List>
 
-                  <Button
-                    as={Link}
-                    to={`/w/${ar.uuid}`}
-                    fluid
-                    color="green"
-                    content="Go Premium"
-                    positive
-                    size="tiny"
-                  />
                 </Grid.Column>
                 <Grid.Column
                   verticalAlign="middle"
@@ -175,3 +166,13 @@ export default class RequestShow extends Component {
     );
   }
 }
+
+// <Button
+//   as={Link}
+//   to={`/w/${ar.uuid}`}
+//   fluid
+//   color="green"
+//   content="Go Premium"
+//   positive
+//   size="tiny"
+// />

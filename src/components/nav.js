@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { Container, Icon, Menu, Popup } from "semantic-ui-react";
+import { Container, Icon, Menu } from "semantic-ui-react";
 
 @connect(store => {
   return {
@@ -27,7 +27,6 @@ export default class Nav extends Component {
   }
 
   render() {
-    const { isAuthenticated } = this.props;
     return (
       <div>
         <Menu fixed="top" inverted color="green" size="large">

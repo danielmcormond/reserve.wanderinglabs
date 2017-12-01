@@ -28,6 +28,9 @@ export function fetchAvailabilityRequest(uuid) {
     } else {
       reserveApi({ method: "get", url: `/availability_requests/${uuid}.json` })
         .then(response => {
+          if (response.data.premium === true) {
+            dispatch({ type: "SET_PREMIUM" });
+          }
           dispatch({ type: "FETCH_AR_FULFILLED", payload: response.data });
         })
         .catch(err => {

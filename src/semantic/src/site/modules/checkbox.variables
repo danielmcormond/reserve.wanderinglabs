@@ -1,3 +1,7 @@
 /*******************************
     User Variable Overrides
 *******************************/
+
+@checkboxSize: 23px;
+@checkboxCheckFontSize: 18px;
+@labelFontSize: @relativeBig;
