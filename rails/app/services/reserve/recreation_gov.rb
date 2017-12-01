@@ -16,6 +16,6 @@ class Reserve::RecreationGov
 
   def site_url
     arvdate = availability_match.avail_date.strftime('%m/%d/%Y')
-    "https://www.recreation.gov/camping/Watchman_Campground/r/campsiteDetails.do?siteId=#{site.ext_site_id}&contractCode=NRSO&parkId=#{site.facility.details['LegacyFacilityID'].to_i}&offset=0&arvdate=#{arvdate}&lengthOfStay=#{availability_request.stay_length}"
+    "https://www.recreation.gov/camping/#{site.facility.name.gsub(' ', '_')}/r/campsiteDetails.do?siteId=#{site.ext_site_id}&contractCode=NRSO&parkId=#{site.facility.details['LegacyFacilityID'].to_i}&offset=0&arvdate=#{arvdate}&lengthOfStay=#{availability_request.stay_length}"
   end
 end
