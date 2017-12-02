@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171202002535) do
+ActiveRecord::Schema.define(version: 20171202022036) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -103,6 +103,8 @@ ActiveRecord::Schema.define(version: 20171202002535) do
     t.uuid "uuid", default: -> { "uuid_generate_v4()" }, null: false
     t.string "arrival_days", default: [], array: true
     t.boolean "pullthru"
+    t.boolean "site_premium", default: false, null: false
+    t.boolean "ignore_ada", default: false, null: false
     t.index ["facility_id"], name: "index_availability_requests_on_facility_id"
     t.index ["user_id"], name: "index_availability_requests_on_user_id"
     t.index ["uuid"], name: "index_availability_requests_on_uuid", unique: true
@@ -158,6 +160,8 @@ ActiveRecord::Schema.define(version: 20171202002535) do
     t.integer "length"
     t.string "site_type"
     t.string "site_layout"
+    t.boolean "premium", default: false, null: false
+    t.boolean "ada", default: false, null: false
     t.index ["facility_id"], name: "index_sites_on_facility_id"
   end
 

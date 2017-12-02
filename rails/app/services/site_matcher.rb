@@ -11,6 +11,8 @@ class SiteMatcher
     matches = matches.where(sewer: true) if availability_request.sewer?
     matches = matches.electric(availability_request.min_electric) if availability_request.min_electric
     matches = matches.site_length(availability_request.min_length) if availability_request.min_length
+    matches = matches.where(premium: true) if availability_request.site_premium?
+    matches = matches.where(ada: false) if availability_request.ignore_ada?
     matches = matches.where(site_type: site_type) unless site_type.nil?
     matches.pluck(:id)
   end

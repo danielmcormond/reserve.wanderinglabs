@@ -28,7 +28,7 @@ class AvailabilityRequestsController < ApplicationController
   def availability_request_params
     params.require(:availability_request).permit(
       :facility_id, :email, :date_start, :date_end, :stay_length, :sewer, :pullthru, :water, :min_length,
-      :min_electric, :site_type, :arrival_days, :specific_site_ids
+      :min_electric, :site_type, :arrival_days, :specific_site_ids, :site_premium, :ignore_ada
     )
   end
 end

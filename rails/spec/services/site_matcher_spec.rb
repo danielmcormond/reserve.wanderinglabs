@@ -3,9 +3,48 @@ require 'rails_helper'
 RSpec.describe SiteMatcher do
   let(:site_matcher) { SiteMatcher.new(availability_request) }
   let(:facility) { FactoryGirl.create(:facility) }
-  let!(:site) { FactoryGirl.create(:site, facility: facility, ext_site_id: 123, water: true, sewer: false, length: 40, electric: 30, site_type: :rv) }
-  let!(:site2) { FactoryGirl.create(:site, facility: facility, ext_site_id: 124, water: false, sewer: true, length: 40, electric: nil, site_type: :tent) }
-  let!(:site3) { FactoryGirl.create(:site, facility: facility, ext_site_id: 125, water: false, sewer: false, length: 50, electric: 30, site_type: :group) }
+  let!(:site) do
+    FactoryGirl.create(
+      :site,
+      facility: facility,
+      ext_site_id: 123,
+      water: true,
+      sewer: false,
+      length: 40,
+      electric: 30,
+      premium: false,
+      ada: true,
+      site_type: :rv
+    )
+  end
+  let!(:site2) do
+    FactoryGirl.create(
+      :site,
+      facility: facility,
+      ext_site_id: 124,
+      water: false,
+      sewer: true,
+      length: 40,
+      electric: nil,
+      premium: true,
+      ada: true,
+      site_type: :tent
+    )
+  end
+  let!(:site3) do
+    FactoryGirl.create(
+      :site,
+      facility: facility,
+      ext_site_id: 125,
+      water: false,
+      sewer: false,
+      length: 50,
+      electric: 30,
+      premium: true,
+      ada: false,
+      site_type: :group
+    )
+  end
 
   describe '#matching_site_ids' do
     context 'water: true' do
@@ -16,8 +55,7 @@ RSpec.describe SiteMatcher do
 
     context 'water: false' do
       let(:availability_request) { FactoryGirl.create(:availability_request, facility: facility, water: false) }
-      it { expect(site_matcher.matching_site_ids.size).to eq(2) }
-      it { expect(site_matcher.matching_site_ids).to include(site2.id) }
+      it { expect(site_matcher.matching_site_ids.size).to eq(3) }
     end
 
     context 'water: nil' do
@@ -84,6 +122,19 @@ RSpec.describe SiteMatcher do
 
     context 'site_type group' do
       let(:availability_request) { FactoryGirl.create(:availability_request, facility: facility, site_type: :group) }
+      it { expect(site_matcher.matching_site_ids.size).to eq(1) }
+      it { expect(site_matcher.matching_site_ids).to include(site3.id) }
+    end
+
+    context 'premium sites' do
+      let(:availability_request) { FactoryGirl.create(:availability_request, facility: facility, site_premium: true) }
+      it { expect(site_matcher.matching_site_ids.size).to eq(2) }
+      it { expect(site_matcher.matching_site_ids).to include(site2.id) }
+      it { expect(site_matcher.matching_site_ids).to include(site3.id) }
+    end
+
+    context 'ignore ada' do
+      let(:availability_request) { FactoryGirl.create(:availability_request, facility: facility, ignore_ada: true) }
       it { expect(site_matcher.matching_site_ids.size).to eq(1) }
       it { expect(site_matcher.matching_site_ids).to include(site3.id) }
     end

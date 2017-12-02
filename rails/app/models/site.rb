@@ -1,6 +1,6 @@
 class Site < ApplicationRecord
   extend Enumerize
-
+  has_many :availabilities
   belongs_to :facility
 
   enumerize :site_type, in: %i[cabin group tent_walk_in tent other rv], predicates: { prefix: true }
