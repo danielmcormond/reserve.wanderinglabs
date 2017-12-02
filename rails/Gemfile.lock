@@ -1,4 +1,11 @@
 GIT
+  remote: https://github.com/awesome-print/awesome_print.git
+  revision: b95767e16b5db3511b4eae4f0e57a5af0b3e6d80
+  branch: master
+  specs:
+    awesome_print (1.8.0)
+
+GIT
   remote: https://github.com/premailer/actionmailer_inline_css.git
   revision: 7f1774ad9e088f48f5cdc8bb57d1bcfecc69f2a9
   branch: master
@@ -66,7 +73,6 @@ GEM
     airbrussh (1.3.0)
       sshkit (>= 1.6.1, != 1.7.0)
     arel (8.0.0)
-    awesome_print (1.7.0)
     aws-sdk (2.10.21)
       aws-sdk-resources (= 2.10.21)
     aws-sdk-core (2.10.21)
@@ -305,7 +311,7 @@ PLATFORMS
 DEPENDENCIES
   actionmailer_inline_css!
   active_model_serializers (~> 0.10.0)
-  awesome_print
+  awesome_print!
   aws-sdk (~> 2)
   base62-rb
   bulk_insert
