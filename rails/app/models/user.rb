@@ -1,6 +1,6 @@
 class User < ApplicationRecord
-  has_many :notification_methods
-  has_many :availability_requests
+  has_many :notification_methods, dependent: :destroy
+  has_many :availability_requests, dependent: :destroy
   has_many :payments
 
   validates :email, presence: true, uniqueness: true
