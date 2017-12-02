@@ -5,7 +5,8 @@ module Admin::Reports
 
       items = ::AvailabilityRequest.where('created_at > ?', since).all.map do |a|
         {
-          email: a.user.email,
+          id: a.id,
+          user: "#{a.user_id} :: #{a.user.email}",
           premium: a.user.premium,
           facility: a.facility.name,
           date: "#{a.date_start} - #{a.date_end}",
@@ -17,6 +18,7 @@ module Admin::Reports
         }
       end
       ap(items, indent: 2, index: false, ruby19_syntax: true)
+      ap({ count: items.size }, indent: 2, index: false, ruby19_syntax: true)
       nil
     end
   end
