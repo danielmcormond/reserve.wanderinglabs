@@ -17,6 +17,7 @@ import user from "./userReducer";
 
 const initialAvailabilityRequestFormState = {
   step1: {
+    facility: {},
     facilityId: ""
   },
   step2: {
@@ -27,11 +28,13 @@ const initialAvailabilityRequestFormState = {
   },
   step3: {
     length: "",
-    type: "",
+    type: "rv",
     electric: "",
     water: false,
     sewer: false,
     pullthru: false,
+    sitePremium: false,
+    ignoreAda: false,
     sites: []
   },
   step4: {

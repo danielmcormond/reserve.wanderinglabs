@@ -60,9 +60,14 @@ const electricOptions = [
 ];
 
 @connect(store => {
+  const isReserveCalifornia =
+    store.availabilityRequestForm.step1.facility.type ===
+    "Facility::ReserveCalifornia";
   return {
     type: store.availabilityRequestForm.step3.type,
-    electric: store.availabilityRequestForm.step3.electric
+    electric: store.availabilityRequestForm.step3.electric,
+    sitePremium: store.availabilityRequestForm.step3.sitePremium,
+    isReserveCalifornia: isReserveCalifornia
   };
 })
 export default class RequestFormStep3 extends Component {
@@ -80,8 +85,35 @@ export default class RequestFormStep3 extends Component {
     );
   };
 
+  reserveCalifornia() {
+    return (
+      <Grid.Column mobile="16" computer="8" tablet="8">
+        <Grid>
+          <Grid.Column width="8">
+            <Control.checkbox
+              model=".step3.sitePremium"
+              component={SemanticCheckbox}
+              controlProps={{
+                label: "Only Premium Sites"
+              }}
+            />
+          </Grid.Column>
+
+          <Grid.Column width="8">
+            <Control.checkbox
+              model=".step3.ignoreAda"
+              component={SemanticCheckbox}
+              controlProps={{
+                label: "Don't include ADA Sites"
+              }}
+            />
+          </Grid.Column>
+        </Grid>
+      </Grid.Column>
+    );
+  }
   render() {
-    const { type, electric } = this.props;
+    const { type, electric, isReserveCalifornia } = this.props;
 
     return (
       <Grid>
@@ -145,6 +177,8 @@ export default class RequestFormStep3 extends Component {
             </Grid.Column>
           </Grid>
         </Grid.Column>
+
+        {isReserveCalifornia && this.reserveCalifornia()}
 
         <Grid.Column mobile="16">
           <label>Only Specific Sites:</label>

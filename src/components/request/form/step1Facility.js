@@ -1,12 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Dropdown, Grid, Header, Label } from "semantic-ui-react";
-import { actions, Errors } from "react-redux-form";
+import { Dropdown, Header, Label } from "semantic-ui-react";
+import { Errors } from "react-redux-form";
 
 import { fetchFacilities } from "../../../actions/facilitiesActions";
-import { formStepValidate } from "../../../actions/requestFormActions";
-
-import Premium from "../../user/premium.js";
+import { formSetFacility } from "../../../actions/requestFormActions";
 
 @connect(store => {
   return {
@@ -18,10 +16,7 @@ import Premium from "../../user/premium.js";
 })
 export default class RequestFormStep1Facility extends Component {
   handleChange = (e, value) => {
-    this.props.dispatch(
-      actions.change("availabilityRequestForm.step1.facilityId", value.value)
-    );
-    this.props.dispatch(formStepValidate()); // Get rid of errors upon selection
+    this.props.dispatch(formSetFacility(value.value));
   };
 
   handleSearchChange = (e, value) => {
@@ -34,7 +29,7 @@ export default class RequestFormStep1Facility extends Component {
 
     const facilitiesOptions = facilities.map(facility => {
       return {
-        key: facility.key,
+        key: facility.id,
         text: facility.name,
         value: facility.id,
         content: (

@@ -1,3 +1,4 @@
+import _ from "lodash";
 import { actions } from "react-redux-form";
 import { push } from "react-router-redux";
 import { setFlashMessage } from "../actions/flashActions";
@@ -20,6 +21,8 @@ export function formSubmit(values) {
       pullthru: values.step3.pullthru,
       min_length: values.step3.length,
       min_electric: values.step3.electric,
+      site_premium: values.step3.sitePremium,
+      ignore_ada: values.step2.ignoreAda,
       site_type: values.step3.type,
       specific_site_ids: values.step3.siteIds,
       arrival_days: values.step2.arrivalDays
@@ -78,6 +81,21 @@ export function formStepGo(step) {
       `step${current_step}`
     ].$form.valid;
     stepValid && dispatch({ type: "FORM_STEP_GO", payload: step });
+    stepValid && window.scrollTo(0, 0);
+  };
+}
+
+export function formSetFacility(facilityId) {
+  return function(dispatch) {
+    let facilities = store.getState().facilities.facilities;
+    let facility = _.find(facilities, { id: facilityId });
+    dispatch(
+      actions.change("availabilityRequestForm.step1.facilityId", facilityId)
+    );
+    dispatch(
+      actions.change("availabilityRequestForm.step1.facility", facility)
+    );
+    dispatch(formStepValidate()); // Get rid of errors upon selection
   };
 }
 

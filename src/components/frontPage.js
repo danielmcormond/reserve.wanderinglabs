@@ -38,7 +38,7 @@ export default class FrontPage extends Component {
 
         <Divider hidden />
         <Grid>
-          <Grid.Column computer="8" tablet="8" mobile="16">
+          <Grid.Column computer="16" tablet="16" mobile="16">
             <div className="ui big form">
               <div className="field">
                 <RequestFormStep1Facility />
@@ -54,8 +54,10 @@ export default class FrontPage extends Component {
                 <Icon name="chevron right" />
               </Button>
             </div>
-
-
+          </Grid.Column>
+          </Grid>
+          <Grid>
+            <Grid.Column computer="8" tablet="8" mobile="16">
             <div className="frontPageInstructions">
               <br />
               <p>
