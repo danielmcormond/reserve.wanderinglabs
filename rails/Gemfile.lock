@@ -244,6 +244,9 @@ GEM
       redis (~> 3.3)
       resque (~> 1.26)
       rufus-scheduler (~> 3.2)
+    resque-sentry (1.2.0)
+      resque (>= 1.18.0)
+      sentry-raven (>= 0.4.6)
     rspec-core (3.6.0)
       rspec-support (~> 3.6.0)
     rspec-expectations (3.6.0)
@@ -340,6 +343,7 @@ DEPENDENCIES
   rb-readline
   resque
   resque-scheduler
+  resque-sentry
   rspec-rails (~> 3.5)
   sentry-raven
   shoulda-matchers!
