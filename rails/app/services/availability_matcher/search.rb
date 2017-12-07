@@ -53,7 +53,7 @@ module AvailabilityMatcher
     # end
 
     def site_ids
-      availability_request.site_ids.join(', ')
+      availability_request.site_ids.size.positive? ? availability_request.site_ids.join(', ') : '0'
     end
   end
 end
