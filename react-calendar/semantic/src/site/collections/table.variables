@@ -1,0 +1,9 @@
+/*******************************
+    User Variable Overrides
+*******************************/
+@headerFontWeight : 100;
+
+@cellVerticalPadding: .5em;
+@cellHorizontalPadding: .5em;
+@border: none;
+@headerBackground: none;

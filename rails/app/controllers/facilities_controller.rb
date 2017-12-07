@@ -4,6 +4,11 @@ class FacilitiesController < ApplicationController
     render json: @facilities
   end
 
+  def active
+    @facilities = Facility.active_facilities
+    render json: @facilities
+  end
+
   def grouped_availabilities
     @facility = Facility.find(params[:id])
     avails = Facilities::Stats.new(@facility, 1).search

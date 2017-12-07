@@ -4,7 +4,7 @@ class AvailabilityMatchSerializer < ActiveModel::Serializer
   belongs_to :site
 
   def short
-    Base62.encode(object.id)
+    Base62.encode(object.id) if object.id
   end
 
   def reserve
