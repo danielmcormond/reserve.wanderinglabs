@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171202022036) do
+ActiveRecord::Schema.define(version: 20171209083622) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-  enable_extension "uuid-ossp"
   enable_extension "citext"
+  enable_extension "uuid-ossp"
 
   create_table "agencies", force: :cascade do |t|
     t.string "name"
@@ -122,6 +122,7 @@ ActiveRecord::Schema.define(version: 20171202022036) do
     t.string "last_import_hash"
     t.integer "sites_count", default: 0
     t.string "status"
+    t.datetime "last_scrape_attempt"
     t.index ["agency_id"], name: "index_facilities_on_agency_id"
   end
 
