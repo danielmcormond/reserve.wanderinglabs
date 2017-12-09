@@ -30,4 +30,12 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  enumerize:
+    availability_request:
+      site_type:
+        rv: "RV Sites"
+        group: "Group Sites"
+        tent_walk_in: 'Walk in tent sites'
+        tent: 'Tent only sites'
+        other: 'Other site types'
+        rv_tent: 'RV or Tent Sites'

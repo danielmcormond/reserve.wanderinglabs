@@ -33,7 +33,7 @@
 <p>
   This confirms that we are now checking over and over in hopes of finding you a campsite at
   <%= @availability_request.facility.name -%> for <%= @availability_request.stay_length -%> nights sometime between
-  <%= @availability_request.date_start -%> and <%= @availability_request.date_end -%>.
+  <%= @availability_request.date_start -%> and <%= @availability_request.date_end -%> filtering on <%= @availability_request_serialized.summary %>
 </p>
 
 <h4>Review:</h4>
@@ -46,10 +46,6 @@ You can check in on this request using the link below. It will show the last tim
 
 
 <h4>No longer looking for a campsite?</h4>
-<p>
-We want to be as kind to Reserve America as possible, so please cancel this request if it is no longer needed.
-</p>
-
 
 <table border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
   <tbody>
