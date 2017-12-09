@@ -20,9 +20,13 @@ Rails.application.routes.draw do
   end
 
   resources :facilities, only: %i[index] do
+    collection do
+      get :active
+    end
     resources :availabilities do
       collection do
         post :import
+        get :calendar
       end
     end
     resources :sites, only: %i[index]

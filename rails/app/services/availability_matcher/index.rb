@@ -26,11 +26,13 @@ module AvailabilityMatcher
     end
 
     def mark_unavailable
-      AvailabilityMatcher::Unavailable.new(availability_request, available_matches.map(&:id)).mark
+      AvailabilityMatcher::Unavailable.new(availability_request, available_matches(true).map(&:id)).mark
     end
 
-    def available_matches
-      @_available_matches ||= AvailabilityMatcher::Finder.new(import, availability_request).matching_availabilities
+    def available_matches(do_save = false)
+      @_available_matches ||= AvailabilityMatcher::Finder.new(
+        import, availability_request
+      ).matching_availabilities(do_save)
     end
   end
 end

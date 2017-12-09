@@ -1,0 +1,28 @@
+{
+  "name": "react-calendar",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "axios": "^0.17.1",
+    "lodash.find": "^4.6.0",
+    "moment": "^2.19.3",
+    "moment-range": "^3.0.3",
+    "qs": "^6.5.1",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "semantic-ui-react": "^0.77.0"
+  },
+  "devDependencies": {
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-prettier": "^2.3.1",
+    "prettier": "^1.8.2",
+    "react-scripts": "1.0.17",
+    "semantic-ui": "^2.2.13"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
