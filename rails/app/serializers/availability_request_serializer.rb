@@ -19,7 +19,7 @@ class AvailabilityRequestSerializer < ActiveModel::Serializer
 
   def summary
     params = []
-    params.push(object.site_type.text)
+    params.push(object.site_type.text) if object.site_type
     params.push('Water') if object.water?
     params.push('Sewer') if object.sewer?
     params.push("#{object.min_electric} amps or more") if object.min_electric?

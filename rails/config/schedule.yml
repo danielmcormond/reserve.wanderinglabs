@@ -1,4 +1,4 @@
 Scrape:
-  every: '10m'
+  every: '1m'
 Stats:
   every: '30m'

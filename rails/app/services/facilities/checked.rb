@@ -14,6 +14,7 @@ module Facilities
     end
 
     def mark_as
+      facility.update_attribute(:last_scrape_attempt, Time.now)
       facility.availability_requests.active.update_all('checked_count = checked_count + 1, checked_at = NOW()')
     end
   end
