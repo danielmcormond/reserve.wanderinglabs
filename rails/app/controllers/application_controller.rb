@@ -10,7 +10,7 @@ class ApplicationController < ActionController::API
 
   def login_required
     return true if user_signed_in?
-    render json: { errors: [{ detail: 'Access denied' }] }, status: 401
+    render json: { errors: [{ detail: 'Access denied...' }] }, status: 401
   end
 
   def set_current_user

@@ -73,7 +73,9 @@ class Filter extends Component {
 
   componentDidMount() {
     this.setState({ loaded: false });
-    axios.get("http://wl.dev/facilities/active.json").then(res => {
+    const base = 'http://api-reserve-beta.wanderinglabs.com' // http://wl.dev'
+
+    axios.get(`${base}/facilities/active.json`).then(res => {
       const facilities = res.data;
       this.setState({ facilities, loaded: true });
     });

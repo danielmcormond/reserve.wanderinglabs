@@ -28,9 +28,11 @@ class Calendar extends Component {
       min_electric: this.props.filterForm.electric
     };
 
+    const base = 'http://api-reserve-beta.wanderinglabs.com' // http://wl.dev'
+
     axios
       .get(
-        `http://wl.dev/facilities/${
+        `${base}/facilities/${
           facilityId
         }/availabilities/calendar.json?${qs.stringify({
           availability_request: params
