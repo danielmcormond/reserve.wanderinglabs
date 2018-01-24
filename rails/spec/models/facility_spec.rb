@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Facility, type: :model do
-  describe '#scrape_start' do
-    let(:facility) { FactoryGirl.create(:facility, booking_window: 182) }
+  let(:facility) { FactoryGirl.create(:facility, booking_window: 182) }
 
+  describe '#scrape_start' do
     context 'start ago' do
       let!(:ar) { FactoryGirl.create(:availability_request, facility: facility, date_start: 1.week.ago, date_end: 2.months.from_now) }
       let!(:ar2) { FactoryGirl.create(:availability_request, facility: facility, date_start: 1.month.from_now, date_end: 2.months.from_now) }
@@ -21,9 +21,7 @@ RSpec.describe Facility, type: :model do
     end
   end
 
-  describe '#scrape_start' do
-    let(:facility) { FactoryGirl.create(:facility, booking_window: 182) }
-
+  describe '#scrape_end' do
     context 'end less booking' do
       let!(:ar) { FactoryGirl.create(:availability_request, facility: facility, date_start: 1.week.ago, date_end: 2.months.from_now) }
       let!(:ar2) { FactoryGirl.create(:availability_request, facility: facility, date_start: 1.month.from_now, date_end: 3.months.from_now) }
@@ -38,6 +36,12 @@ RSpec.describe Facility, type: :model do
       it 'is booking window' do
         expect(facility.scrape_end.to_s).to eq(facility.booking_end.to_s)
       end
+    end
+  end
+
+  describe '#toogle_premium_scrape' do
+    it 'switches false to true' do
+      expect { facility.toggle_premium_scrape }.to change { facility.premium_scrape }.to(true)
     end
   end
 end

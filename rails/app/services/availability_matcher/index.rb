@@ -1,5 +1,6 @@
 module AvailabilityMatcher
   class Index
+    @queue = :matcher
     attr_reader :availability_request, :import
 
     def initialize(import, availability_request)
@@ -7,15 +8,23 @@ module AvailabilityMatcher
       @availability_request = availability_request
     end
 
-    def self.perform(import)
+    def self.call(import, ar)
+      new(import, ar).call
+    end
+
+    def self.perform(import_id, premium = false)
+      import = AvailabilityImport.find(import_id)
       facility = import.facility
       facility.availability_requests.active.each do |ar|
-        new(import, ar).perform
+        next if premium && ar.user.premium != true
+        call(import, ar)
       end
+      return nil unless premium
+      Resque.enqueue_in(11.minutes, AvailabilityMatcher::Index, import_id)
       nil
     end
 
-    def perform
+    def call
       mark_unavailable
       notify
       nil

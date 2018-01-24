@@ -27,16 +27,16 @@ RSpec.describe AvailabilityMatcher::Finder do
     end
 
     it 'has two matches' do
-      expect(finder.matching_availabilities.size).to be(2)
+      expect(finder.matching_availabilities(true).size).to be(2)
     end
 
     it 'creates match / does not duplicate previous' do
-      expect { finder.matching_availabilities }.to change { AvailabilityMatch.count }.by(1)
+      expect { finder.matching_availabilities(true) }.to change { AvailabilityMatch.count }.by(1)
     end
 
     it 'does not duplicate matches' do
-      expect { finder.matching_availabilities }.to change { AvailabilityMatch.count }.by(1)
-      expect { finder.matching_availabilities }.to change { AvailabilityMatch.count }.by(0)
+      expect { finder.matching_availabilities(true) }.to change { AvailabilityMatch.count }.by(1)
+      expect { finder.matching_availabilities(true) }.to change { AvailabilityMatch.count }.by(0)
     end
   end
 end

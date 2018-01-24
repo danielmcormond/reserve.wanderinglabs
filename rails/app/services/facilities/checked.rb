@@ -9,13 +9,28 @@ module Facilities
       new(facility).mark_as
     end
 
+    def self.mark_as(facility)
+      new(facility).mark_as
+    end
+
     def initialize(facility)
       @facility = facility
     end
 
     def mark_as
-      facility.update_attribute(:last_scrape_attempt, Time.now)
-      facility.availability_requests.active.update_all('checked_count = checked_count + 1, checked_at = NOW()')
+      facility.update_attributes(last_scrape_attempt: Time.now, premium_scrape: !facility.premium_scrape)
+
+      # TODO: UGLY...
+      ids = if facility.premium_scrape
+              facility.availability_requests.active.premium.pluck(:id)
+            else
+              facility.availability_requests.active.pluck(:id)
+            end
+      AvailabilityRequest.where(id: ids).update_all('checked_count = checked_count + 1, checked_at = NOW()')
+    end
+
+    def scope
+      facility.availability_requests.active
     end
   end
 end
