@@ -5,6 +5,10 @@ class AvailabilityImports::FromJson
     @import = import
   end
 
+  def self.perform(import)
+    new(import).perform
+  end
+
   def perform
     history_open = []
     update_ids = []

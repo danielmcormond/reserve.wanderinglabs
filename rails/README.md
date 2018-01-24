@@ -28,3 +28,15 @@ Everyone Scrape
     - exit as normal
 
 
+----
+
+Facility has premium_scrape:boolean
+  - toggle it every pre scrape
+  - update checked counts/date separately
+
+Import -
+  - if facility premium_scrape is true
+    - match just premium
+    - Resque Schedual all for 11mins
+  - else
+    - match all

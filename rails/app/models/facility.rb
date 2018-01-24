@@ -29,4 +29,8 @@ class Facility < ApplicationRecord
   def cache_sites_count
     update_attribute(:sites_count, sites.count)
   end
+
+  def toggle_premium_scrape
+    update_attribute(:premium_scrape, !premium_scrape)
+  end
 end

@@ -10,13 +10,7 @@ class AvailabilityImports::Index
   end
 
   def perform
-    if import_needed?
-      import = AvailabilityImport.create(facility: facility, run_id: run_id)
-
-      AvailabilityImports::FromJson.new(import).perform
-      AvailabilityMatcher::Index.perform(import.reload)
-    end
-
+    parse_and_match if import_needed?
     update_facility
   end
 
@@ -24,10 +18,19 @@ class AvailabilityImports::Index
     facility.last_import_hash != hash
   end
 
+  def parse_and_match
+    AvailabilityImports::FromJson.perform(import)
+    AvailabilityMatcher::Index.perform(import.id, facility.premium_scrape)
+  end
+
   def update_facility
     facility.last_import_hash = hash
     facility.last_import = Time.now
     facility.save
+  end
+
+  def import
+    @_import ||= AvailabilityImport.create(facility: facility, run_id: run_id)
   end
 
   def self.perform(facility_id, import, hash)

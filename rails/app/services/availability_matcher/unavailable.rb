@@ -8,7 +8,6 @@ module AvailabilityMatcher
     end
 
     def mark
-      puts "NO LONGER - #{no_longer_avail.count}"
       no_longer_avail.update_all(available: false, unavailable_at: Time.now)
     end
 

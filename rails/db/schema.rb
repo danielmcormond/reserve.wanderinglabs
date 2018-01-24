@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171209083622) do
+ActiveRecord::Schema.define(version: 20171209204035) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -123,6 +123,7 @@ ActiveRecord::Schema.define(version: 20171209083622) do
     t.integer "sites_count", default: 0
     t.string "status"
     t.datetime "last_scrape_attempt"
+    t.boolean "premium_scrape", default: false, null: false
     t.index ["agency_id"], name: "index_facilities_on_agency_id"
   end
 
