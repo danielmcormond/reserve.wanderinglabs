@@ -16,7 +16,7 @@ module AvailabilityMatcher
       import = AvailabilityImport.find(import_id)
       facility = import.facility
       facility.availability_requests.active.each do |ar|
-        next if premium && ar.user.premium != true
+        next if premium && ar.user&.premium != true
         call(import, ar)
       end
       return nil unless premium
