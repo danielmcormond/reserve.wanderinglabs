@@ -1,0 +1,32 @@
+<table>
+  <tr>
+    <td>
+      <p><b>Hi there,</b></p>
+      <p>Your current request for a campsite reservation has been paused. We do this every 1,000 attempts (a little over a week) to save resources. If you still are looking for a campsite just click the button below and we will get right back on checking for an open reservation.</p>
+
+      <h3 class="button">
+        <a href='<%= ENV['RESERVE_URL'] -%>/a/<%= @availability_request.uuid -%>'>Yes. Keep Checking for me!!</a>
+      </h3>
+      <br/>
+
+      <h4>Never get paused again!</h4>
+      <p>Become a premium member by sending a few bucks our way and we will never pause your requests again. Plus we will check Reserve America for you even more frequently. </p>
+      <p>Any amount will get you premium status. Send what you think this service is worth.</p>
+
+      <h3 class="button">
+        <a href='<%= ENV['RESERVE_URL'] -%>/a/<%= @availability_request.uuid -%>'>Go Premium!!</a>
+      </h3>
+      <br/>
+
+      <h4>Review your request:</h4>
+      <p>
+        <%= @availability_request.facility.name -%> for <%= @availability_request.stay_length -%> nights sometime between
+        <%= @availability_request.date_start -%> and <%= @availability_request.date_end -%> filtering on <%= @availability_request_serialized.summary %>
+      </p>
+      <p>
+      <a href='<%= ENV['RESERVE_URL'] -%>/a/<%= @availability_request.uuid -%>'><%= ENV['RESERVE_URL'] -%>/<%= @availability_request.uuid -%></a>
+      </p>
+
+    </td>
+  </tr>
+</table>

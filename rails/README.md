@@ -10,28 +10,6 @@ ssh deploy@192.34.56.219
 
 Facility has premium_scrape:boolean
   - toggle it every pre scrape
-  - send boolean to scraper
-  - update checked counts/date separately
-
-
-Premium Scrape
-  - No changes.. exits as normal
-  - changes: Return true (premium) flag back to rails api
-    - only match on premium
-    - set facility match_non_prem_on_next
-
-Everyone Scrape
-  - has changes proceed as normal,
-  - no changes + match_non_on_next
-    - rails api call -> match_non_prem
-  - no changes + no match_non_on_next
-    - exit as normal
-
-
-----
-
-Facility has premium_scrape:boolean
-  - toggle it every pre scrape
   - update checked counts/date separately
 
 Import -

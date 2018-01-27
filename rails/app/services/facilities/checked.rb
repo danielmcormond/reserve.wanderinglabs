@@ -27,10 +27,7 @@ module Facilities
               facility.availability_requests.active.pluck(:id)
             end
       AvailabilityRequest.where(id: ids).update_all('checked_count = checked_count + 1, checked_at = NOW()')
-    end
-
-    def scope
-      facility.availability_requests.active
+      AvailabilityRequests::Pause.call(facility) unless facility.premium_scrape
     end
   end
 end

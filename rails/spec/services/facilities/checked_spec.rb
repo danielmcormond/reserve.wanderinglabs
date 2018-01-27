@@ -43,6 +43,12 @@ RSpec.describe Facilities::Checked do
       expect { checked.mark_as }.to change { availability_request2.reload.checked_count }.by(1)
       expect { checked.mark_as }.to change { availability_request2.reload.checked_count }.by(1)
     end
+
+    it 'calls pause service when not premium' do
+      expect(AvailabilityRequests::Pause).to receive(:call).with(facility)
+      checked.mark_as
+      checked.mark_as
+    end
   end
 
   describe '.mark_as' do

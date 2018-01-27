@@ -11,6 +11,13 @@ class NotifierMailer < ApplicationMailer
     mail(to: notification_method.param, subject: "Campsite Availability Request Confirmed: #{@availability_request.facility.name}")
   end
 
+  def paused(availability_request)
+    @availability_request = availability_request
+    @availability_request_serialized = AvailabilityRequestSerializer.new(availability_request)
+    @user = availability_request.user
+    mail(to: @user.email, subject: "Request Paused - Action Required: #{availability_request.facility.name}")
+  end
+
   def user_token(user)
     @user = user
     mail(to: user.email, subject: 'WanderingLabs::Reserve login token')

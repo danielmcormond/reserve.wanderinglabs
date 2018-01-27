@@ -14,6 +14,7 @@ class AvailabilityRequest < ApplicationRecord
   scope :active, (-> { where(status: :active).where('date_end > ?', Time.now.to_date) })
 
   scope :premium, (-> { includes(:user).where(users: { premium: true }) })
+  scope :not_premium, (-> { includes(:user).where(users: { premium: false }) })
 
   after_create :welcome_email
 
