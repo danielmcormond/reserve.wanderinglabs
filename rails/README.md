@@ -5,6 +5,8 @@ sudo nano /etc/systemd/system/resque.service
 sudo systemctl restart resque && sudo systemctl restart resque-scheduler
 ssh deploy@192.34.56.219
 
+# locally
+ssh-add
 
 * Premium Scrape Plan *
 
