@@ -99,52 +99,17 @@ export default class availabilityMatchClick extends Component {
           <Header.Content>Reserve California</Header.Content>
           <Header.Subheader>
             The new Reserve California website is not user friendly and thus we
-            are unable to link directly to an open availability. It is nearly
-            impossible to even link directly to a state park. We came up with
-            the following 3 steps which seems to be the easiest way.
+            are unable to link directly to an open availability. It is
+            impossible to even link directly to a state park. You will have to
+            search for the state park and open site yourself. We wish we could
+            do more.
           </Header.Subheader>
         </Header>
-
-        <Header
-          as="h4"
-          content="Step 1: Open an active visitor session"
-          subheader="Reserve California needs to track you. Opening their homepage is enough."
-        />
-
         <Button
           color="green"
           content="Open Reserve California home page"
           as="a"
           href={availabilityMatch.reserve.default_url}
-          target="reserveCalifornia"
-        />
-
-        <Header
-          as="h4"
-          content="Step 2: Set location, date and number of nights"
-          subheader="Tell Reserve California when and where you want to stay"
-        />
-
-        <form
-          method="post"
-          action={availabilityMatch.reserve.default_url}
-          target="reserveCalifornia"
-        >
-          {mappedPost}
-          <Button color="green" content="Search" />
-        </form>
-
-        <Header
-          as="h4"
-          content="Step 3: Reservation Page"
-          subheader="Use the page from step 2 to find the open site OR use the button below to view a site specific page. This page is normally used as a popup on Reserve California. Calling it directly removes all styling and make it rather unappealing and confusing. Clicking the 'Reserve Unit' button near the top _should_ add the correct reservation to the shopping cart. Please double check!"
-        />
-
-        <Button
-          color="green"
-          content="Site Specific Reservation Page - (Warning: Unstyled)"
-          as="a"
-          href={availabilityMatch.reserve.site_url}
           target="reserveCalifornia"
         />
       </div>
@@ -167,3 +132,46 @@ export default class availabilityMatchClick extends Component {
 }
 
 //         {availabilityMatch.available === true && this.redirecting()}
+
+// <Header
+//   as="h4"
+//   content="Step 1: Open an active visitor session"
+//   subheader="Reserve California needs to track you. Opening their homepage is enough."
+// />
+
+// <Button
+//   color="green"
+//   content="Open Reserve California home page"
+//   as="a"
+//   href={availabilityMatch.reserve.default_url}
+//   target="reserveCalifornia"
+// />
+
+// <Header
+//   as="h4"
+//   content="Step 2: Set location, date and number of nights"
+//   subheader="Tell Reserve California when and where you want to stay"
+// />
+
+// <form
+//   method="post"
+//   action={availabilityMatch.reserve.default_url}
+//   target="reserveCalifornia"
+// >
+//   {mappedPost}
+//   <Button color="green" content="Search" />
+// </form>
+
+// <Header
+//   as="h4"
+//   content="Step 3: Reservation Page"
+//   subheader="Use the page from step 2 to find the open site OR use the button below to view a site specific page. This page is normally used as a popup on Reserve California. Calling it directly removes all styling and make it rather unappealing and confusing. Clicking the 'Reserve Unit' button near the top _should_ add the correct reservation to the shopping cart. Please double check!"
+// />
+
+// <Button
+//   color="green"
+//   content="Site Specific Reservation Page - (Warning: Unstyled)"
+//   as="a"
+//   href={availabilityMatch.reserve.site_url}
+//   target="reserveCalifornia"
+// />

@@ -55,11 +55,10 @@ export default class FrontPage extends Component {
               </Button>
             </div>
           </Grid.Column>
-          </Grid>
-          <Grid>
-            <Grid.Column computer="8" tablet="8" mobile="16">
+        </Grid>
+        <Grid>
+          <Grid.Column computer="8" tablet="8" mobile="16">
             <div className="frontPageInstructions">
-              <br />
               <p>
                 For example you could request a stay at Bahia Honda State Park
                 in Florida for 5 consecutive nights anytime between January 1

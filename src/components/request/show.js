@@ -116,8 +116,12 @@ export default class RequestShow extends Component {
                     </List.Item>
 
                     <List.Item>
-                      <List.Header>Checked Count</List.Header>
-                      {ar.checked_count}
+                      <List.Header>Filters</List.Header>
+                      {ar.summary}
+                    </List.Item>
+                    <List.Item>
+                      <List.Header>Matching Site Count</List.Header>
+                      {ar.site_count}
                     </List.Item>
                   </List>
 

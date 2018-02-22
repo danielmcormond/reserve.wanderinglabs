@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import PaypalExpressBtn from "react-paypal-express-checkout";
 
-import { paymentSuccess } from "../../actions/userActions"
+import { paymentSuccess } from "../../actions/userActions";
 
 @connect(store => {
   return {
@@ -30,12 +30,14 @@ export default class PaypalButton extends React.Component {
       // => sometimes it may take about 0.5 second for everything to get set, or for the button to appear
     };
 
-    let env = "sandbox"; // you can set here to 'production' for production
+    let env = "production"; // you can set here to 'production' for production
     let currency = "USD"; // or you can set this value from your props or state
 
     const client = {
-      sandbox: "AaoKUckTip-ExcrlptmKarrQpOek0xDorQqEs9I9VyYoM1ozhNsPa8QZmgp_UEitynINt1Wt4ncWtYeU",
-      production: "YOUR-PRODUCTION-APP-ID"
+      sandbox:
+        "AaoKUckTip-ExcrlptmKarrQpOek0xDorQqEs9I9VyYoM1ozhNsPa8QZmgp_UEitynINt1Wt4ncWtYeU",
+      production:
+        "AcqPTM8bCEXwaIc9suZyU33ofPP9LkBXATmMVcqsVireC4QwU7h3eOp4u1-opx0Q-G5LexcUWZbJuyYe"
     };
     // In order to get production's app-ID, you will have to send your app to Paypal for approval first
     // For sandbox app-ID (after logging into your developer account, please locate the "REST API apps" section, click "Create App"):
