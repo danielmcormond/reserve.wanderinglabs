@@ -12,7 +12,7 @@ module AvailabilityRequests
 
     def notify
       return unless needed?
-      availability_request.user.notification_methods.each do |nm|
+      availability_request.user.notification_methods.where(active: true).each do |nm|
         notify_for(nm)
         log_notify(nm)
       end
