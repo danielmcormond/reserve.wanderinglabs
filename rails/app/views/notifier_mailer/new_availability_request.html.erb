@@ -67,6 +67,7 @@ You can check in on this request using the link below. It will show the last tim
   <meta itemprop="description" content="Check the status of your request" >
   <div itemprop="potentialAction" itemscope itemtype="http://schema.org/ViewAction" >
     <link itemprop="target" href="<%= ENV['RESERVE_URL'] -%>/<%= @availability_request.uuid -%>" >
+    <link itemprop="url" href="<%= ENV['RESERVE_URL'] -%>/<%= @availability_request.uuid -%>" >
     <meta itemprop="name" content="Check Status" >
   </div>
   <div itemprop="publisher" itemscope itemtype="http://schema.org/Organization" >
