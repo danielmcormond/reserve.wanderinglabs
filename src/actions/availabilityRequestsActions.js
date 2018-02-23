@@ -2,6 +2,7 @@ import _ from "lodash";
 
 import reserveApi from "../utils/axios";
 import store from "../store";
+import { sessionCreateNoRedirect } from "../actions/sessionActions";
 
 export function fetchAvailabilityRequests() {
   return function(dispatch) {
@@ -32,6 +33,7 @@ export function fetchAvailabilityRequest(uuid) {
             dispatch({ type: "SET_PREMIUM" });
           }
           dispatch({ type: "FETCH_AR_FULFILLED", payload: response.data });
+          dispatch(sessionCreateNoRedirect(uuid));
         })
         .catch(err => {
           dispatch({ type: "FETCH_AR_REJECTED", payload: err });

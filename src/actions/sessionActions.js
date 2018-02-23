@@ -41,6 +41,22 @@ export function sessionCreate(token) {
       });
 }
 
+export function sessionCreateNoRedirect(token) {
+  return dispatch =>
+    reserveApi({
+      method: "post",
+      url: "/sessions",
+      data: { token }
+    })
+      .then(function(response) {
+        dispatch(sessionSuccess(response.data.auth_token));
+        dispatch({ type: "FETCH_USER_FULFILLED", payload: response.data.user });
+      })
+      .catch(function(error) {
+        dispatch(setFlashMessage("Bad Token", "error"));
+      });
+}
+
 export function sessionDestroy(token) {
   return function(dispatch) {
     localStorage.removeItem("token");
