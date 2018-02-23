@@ -15,7 +15,7 @@ class Sms
   def send
     msg = client.messages.create(
       from: '+18028515095',
-      to: '+18027306271',
+      to: "+#{notification_method.param}",
       body: availability_request.sms_body
     )
 
