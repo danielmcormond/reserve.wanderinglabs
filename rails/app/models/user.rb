@@ -30,7 +30,7 @@ class User < ApplicationRecord
 
   def init_notification_method
     return if notification_methods.count.positive?
-    notification_methods.create(notification_type: :email, param: email)
+    notification_methods.create(notification_type: :email, param: email, locked: true)
   end
 
   def sms_cache
