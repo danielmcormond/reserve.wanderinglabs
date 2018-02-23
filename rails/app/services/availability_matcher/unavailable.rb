@@ -12,9 +12,11 @@ module AvailabilityMatcher
     end
 
     def no_longer_avail
-      availability_request.availability_matches
-        .available
-        .not_in_list(ids)
+      ids.present? ? scope.not_in_list(ids) : scope
+    end
+
+    def scope
+      availability_request.availability_matches.available
     end
   end
 end
