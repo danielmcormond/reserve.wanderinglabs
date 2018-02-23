@@ -43,3 +43,37 @@ export function paymentSuccess(data) {
       });
   };
 }
+
+export function addNotificationMethod(nmType, data) {
+  return function(dispatch) {
+    let apiValues = {
+      notification_type: nmType,
+      param: data
+    };
+
+    reserveApi({
+      method: "post",
+      url: "/notification_methods",
+      data: {
+        notification_method: apiValues
+      }
+    })
+      .then(function(response) {
+        dispatch({ type: "FETCH_USER_FULFILLED", payload: response.data });
+      })
+      .catch(function(error) {});
+  };
+}
+
+export function deleteNotificationMethod(data) {
+  return function(dispatch) {
+    reserveApi({
+      method: "delete",
+      url: `/notification_methods/${data}`
+    })
+      .then(function(response) {
+        dispatch({ type: "FETCH_USER_FULFILLED", payload: response.data });
+      })
+      .catch(function(error) {});
+  };
+}

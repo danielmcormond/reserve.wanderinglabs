@@ -19,7 +19,8 @@ import UserTxt from "./txt.js";
 @connect(store => {
   return {
     isAuthenticated: store.session.isAuthenticated,
-    user: store.user.user
+    user: store.user.user,
+    premium: store.user.premium
   };
 })
 export default class UserSettings extends Component {
@@ -28,7 +29,7 @@ export default class UserSettings extends Component {
   }
 
   render() {
-    const { user, isAuthenticated } = this.props;
+    const { user, isAuthenticated, premium } = this.props;
 
     return (
       <Container>
@@ -45,19 +46,20 @@ export default class UserSettings extends Component {
                 <Menu.Item name="sessionDestroy" as={Link} to="/sign-out">
                   Sign Out
                 </Menu.Item>}
-              {isAuthenticated &&
-                <Menu.Item as={Link} to="/settings">
-                  Account
-                </Menu.Item>}
+
               {!!!isAuthenticated &&
                 <Menu.Item name="sessionNew" as={Link} to="/sign-in">
                   Sign In
                 </Menu.Item>}
             </Menu>
 
-            <UserEmail />
-            <Divider hidden />
-            <UserTxt />
+            {premium
+              ? <div>
+                  <UserEmail />
+                  <Divider hidden />
+                  <UserTxt />
+                </div>
+              : <p>Premium members can get notified via SMS.</p>}
           </Grid.Column>
           <Grid.Column computer="8" tablet="8" mobile="16">
             <Premium />
@@ -67,3 +69,8 @@ export default class UserSettings extends Component {
     );
   }
 }
+
+// {isAuthenticated &&
+//   <Menu.Item as={Link} to="/settings">
+//     Account
+//   </Menu.Item>}

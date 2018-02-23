@@ -1,6 +1,10 @@
 export default function reducer(
   state = {
-    user: [],
+    user: {
+      notification_methods: [],
+      sms_limit: 0,
+      sms_count: 0
+    },
     premiumAmount: 20,
     premium: false,
     fetching: false,
