@@ -18,7 +18,7 @@ class AvailabilityRequestsController < ApplicationController
 
   def update
     availability_request = AvailabilityRequest.find_by_uuid(params[:id])
-    availability_request.update_attributes(status: params[:status])
+    availability_request.update_attributes(availability_request_params)
     Rails.logger.debug "Errors #{availability_request.errors.to_json}"
     render json: availability_request
   end
@@ -28,7 +28,8 @@ class AvailabilityRequestsController < ApplicationController
   def availability_request_params
     params.require(:availability_request).permit(
       :facility_id, :email, :date_start, :date_end, :stay_length, :sewer, :pullthru, :water, :min_length,
-      :min_electric, :site_type, :site_premium, :ignore_ada, arrival_days: [], specific_site_ids: []
+      :min_electric, :site_type, :site_premium, :ignore_ada, :canceled_found, :notify_sms, :status,
+      arrival_days: [], specific_site_ids: []
     )
   end
 end

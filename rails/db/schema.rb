@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180223031451) do
+ActiveRecord::Schema.define(version: 20180223163024) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -105,6 +105,8 @@ ActiveRecord::Schema.define(version: 20180223031451) do
     t.boolean "pullthru"
     t.boolean "site_premium", default: false, null: false
     t.boolean "ignore_ada", default: false, null: false
+    t.boolean "canceled_found", default: false, null: false
+    t.boolean "notify_sms", default: true, null: false
     t.index ["facility_id"], name: "index_availability_requests_on_facility_id"
     t.index ["user_id"], name: "index_availability_requests_on_user_id"
     t.index ["uuid"], name: "index_availability_requests_on_uuid", unique: true

@@ -32,7 +32,7 @@
 <p>Hi there,</p>
 <p>
   This confirms that we are now checking over and over in hopes of finding you a campsite at
-  <%= @availability_request.facility.name -%> for <%= @availability_request.stay_length -%> nights sometime between
+  <%= @availability_request.facility.name -%> for <%= @availability_request.stay_length -%> nights arriving between
   <%= @availability_request.date_start -%> and <%= @availability_request.date_end -%> filtering on <%= @availability_request_serialized.summary %>
 </p>
 
@@ -65,12 +65,12 @@ You can check in on this request using the link below. It will show the last tim
 
 <div itemscope itemtype="http://schema.org/EmailMessage" >
   <meta itemprop="description" content="Check the status of your request" >
-  <div itemprop="action" itemscope itemtype="http://schema.org/ViewAction" >
-    <link itemprop="url" href="<%= ENV['RESERVE_URL'] -%>/<%= @availability_request.uuid -%>" >
+  <div itemprop="potentialAction" itemscope itemtype="http://schema.org/ViewAction" >
+    <link itemprop="target" href="<%= ENV['RESERVE_URL'] -%>/<%= @availability_request.uuid -%>" >
     <meta itemprop="name" content="Check Status" >
   </div>
   <div itemprop="publisher" itemscope itemtype="http://schema.org/Organization" >
     <meta itemprop="name" content="WanderingLabs" >
-    <link itemprop="url" href="https://reserve.wanderinglabs.com/" >
+    <link itemprop="url" href="<%= ENV['RESERVE_URL'] -%>" >
   </div>
 </div>
