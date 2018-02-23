@@ -42,4 +42,25 @@ class AvailabilityRequest < ApplicationRecord
       NotifierMailer.new_availability_request(self.reload, nm).deliver
     end
   end
+
+  def sms_body
+    alert = []
+    alert << "-- Availability Alert --\n#{serialized[:facility][:name]}"
+    alert << "Date: #{last_match[:avail_date]}"
+    alert << "Nights: #{last_match[:length]}"
+    alert << "Site: #{last_match[:site][:site_num]}"
+    alert << "#{ENV['RESERVE_URL']}/t/#{last_match[:short]}"
+    if available_matches.count > 1
+      alert << "(Plus #{available_matches.count - 1} other options)"
+    end
+    alert.join("\n")
+  end
+
+  def serialized
+    @_a_r_s ||= AvailabilityRequestSerializer.new(self).serializable_hash
+  end
+
+  def last_match
+    @_l_m ||= AvailabilityMatchSerializer.new(available_matches.first).serializable_hash
+  end
 end

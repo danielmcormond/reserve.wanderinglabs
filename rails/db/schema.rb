@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171209204035) do
+ActiveRecord::Schema.define(version: 20180223031451) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -132,6 +132,8 @@ ActiveRecord::Schema.define(version: 20171209204035) do
     t.string "param"
     t.jsonb "details"
     t.string "notification_type"
+    t.boolean "active", default: true, null: false
+    t.boolean "locked", default: false, null: false
     t.index ["user_id"], name: "index_notification_methods_on_user_id"
   end
 
@@ -179,6 +181,8 @@ ActiveRecord::Schema.define(version: 20171209204035) do
     t.boolean "premium", default: false, null: false
     t.date "premium_until"
     t.integer "priority", default: 1000
+    t.integer "sms_limit", default: 25
+    t.integer "sms_count", default: 0
     t.index ["auth_token"], name: "index_users_on_auth_token"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["login_token"], name: "index_users_on_login_token"

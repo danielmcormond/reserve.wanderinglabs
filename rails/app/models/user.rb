@@ -31,4 +31,9 @@ class User < ApplicationRecord
     return if notification_methods.count.positive?
     notification_methods.create(notification_type: :email, param: email)
   end
+
+  def sms_cache
+    count = AvailabilityNotification.where(notification_method_id: notification_methods.map(&:id)).count
+    update_attributes(sms_count: count)
+  end
 end

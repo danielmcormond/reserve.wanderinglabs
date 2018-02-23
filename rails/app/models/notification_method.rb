@@ -4,5 +4,5 @@ class NotificationMethod < ApplicationRecord
   belongs_to :user
   has_many :availability_notifications
 
-  enumerize :notification_type, in: %i[email txt]
+  enumerize :notification_type, in: %i[email sms]
 end

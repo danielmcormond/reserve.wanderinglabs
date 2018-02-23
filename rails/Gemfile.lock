@@ -151,6 +151,7 @@ GEM
     jmespath (1.3.1)
     json (2.0.3)
     jsonapi-renderer (0.1.3)
+    jwt (2.1.0)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -302,6 +303,10 @@ GEM
     thor (0.19.4)
     thread_safe (0.3.6)
     tilt (2.0.8)
+    twilio-ruby (5.6.3)
+      faraday (~> 0.9)
+      jwt (>= 1.5, <= 2.5)
+      nokogiri (>= 1.6, < 2.0)
     tzinfo (1.2.3)
       thread_safe (~> 0.1)
     unf (0.1.4)
@@ -358,6 +363,7 @@ DEPENDENCIES
   slack-notifier
   spring
   spring-watcher-listen (~> 2.0.0)
+  twilio-ruby (~> 5.6.3)
 
 BUNDLED WITH
    1.14.3

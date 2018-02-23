@@ -5,6 +5,10 @@ sudo nano /etc/systemd/system/resque.service
 sudo systemctl restart resque && sudo systemctl restart resque-scheduler
 ssh deploy@192.34.56.219
 
+PGPASSWORD=xxx pg_dump  -x reserve_wanderinglabs -h localhost -U reserve -w  --exclude-table-data=pg_toast.* > dump.sql
+
+scp deploy@192.34.56.219:dump.sql ~/Downloads
+
 # locally
 ssh-add
 
