@@ -11,7 +11,8 @@ class User < ApplicationRecord
     update_attributes(premium: true, premium_until: 1.year.from_now)
   end
 
-  def generate_auth_token
+  def generate_auth_token(force = false)
+    return auth_token if force == false && auth_token.present?
     token = SecureRandom.hex
     update_columns(auth_token: token)
     token

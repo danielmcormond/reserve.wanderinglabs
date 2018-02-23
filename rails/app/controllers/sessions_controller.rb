@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
   before_action :login_required, only: [:destroy]
 
   def create
-    resource = User.where(login_token: params[:token]).first
+    resource = User.where(login_token: params[:token]).first || AvailabilityRequest.where(uuid: params[:token]).first&.user
 
     if resource
       auth_token = resource.generate_auth_token
