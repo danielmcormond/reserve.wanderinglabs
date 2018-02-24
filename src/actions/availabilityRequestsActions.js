@@ -46,17 +46,26 @@ export function updateAvailabilityRequest(uuid, codedStatus) {
   return function(dispatch) {
     dispatch({ type: "UPDATE_AR" });
 
+    let apiValues = {};
+
     // TODO: CLean up
     let status = "active";
     if (codedStatus === "c") {
       status = "canceled";
+      apiValues.status = "canceled";
+    } else if (codedStatus === "g") {
+      status = "canceled";
+      apiValues.status = "canceled";
+      apiValues.canceled_found = true;
     } else if (codedStatus === "a") {
       status = "active";
+      apiValues.status = "active";
     }
+
     reserveApi({
       method: "put",
       url: `/availability_requests/${uuid}.json`,
-      data: { status }
+      data: { availability_request: apiValues }
     })
       .then(response => {
         dispatch({ type: "FETCH_AR_FULFILLED", payload: response.data });

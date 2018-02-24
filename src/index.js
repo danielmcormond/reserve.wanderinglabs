@@ -72,11 +72,15 @@ ReactDOM.render(
               component={RequestShow}
             />
             <Route
-              path="/:status([ca]{1})/:uuid([a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12})"
+              path="/:status([cag]{1})/:uuid([a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12})"
               component={RequestShow}
             />
 
-            <Route exact path="/:from([wet]{1})/:id" component={AvailabilityMatchClick} />
+            <Route
+              exact
+              path="/:from([wet]{1})/:id"
+              component={AvailabilityMatchClick}
+            />
 
             <Route exact path="/f/:id" component={Facility} />
 
