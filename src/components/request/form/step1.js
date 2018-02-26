@@ -8,7 +8,7 @@ import RequestFormStep1Facility from "./step1Facility.js";
 export default class RequestFormStep1 extends Component {
   render() {
     return (
-      <Grid>
+      <Grid padded="vertically">
         <Grid.Column computer="8" tablet="8" mobile="16">
           <RequestFormStep1Facility />
           <RequestFormStepButtons />

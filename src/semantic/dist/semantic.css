@@ -239,6 +239,12 @@ input::selection {
     display: none !important;
   }
 }
+
+@media only screen and (min-width: 992px) {
+  [class*="mobile only"]:not(.computer) {
+    display: none !important;
+  }
+}
 /*!
  * # Semantic UI 2.2.10 - Button
  * http://github.com/semantic-org/semantic-ui/
@@ -437,7 +443,7 @@ input::selection {
 }
 
 .ui.basic.loading.button:not(.inverted):after {
-  border-top-color: #9E9E9E;
+  border-top-color: #2b303b;
 }
 
 /*-------------------
@@ -1810,7 +1816,7 @@ input::selection {
 
 .ui.grey.buttons .button,
 .ui.grey.button {
-  background-color: #9E9E9E;
+  background-color: #2b303b;
   color: #FFFFFF;
   text-shadow: none;
   background-image: -webkit-linear-gradient(transparent, rgba(0, 0, 0, 0.05));
@@ -1823,21 +1829,21 @@ input::selection {
 
 .ui.grey.buttons .button:hover,
 .ui.grey.button:hover {
-  background-color: #ababab;
+  background-color: #363c4a;
   color: #FFFFFF;
   text-shadow: none;
 }
 
 .ui.grey.buttons .button:focus,
 .ui.grey.button:focus {
-  background-color: #b2b2b2;
+  background-color: #3c4353;
   color: #FFFFFF;
   text-shadow: none;
 }
 
 .ui.grey.buttons .button:active,
 .ui.grey.button:active {
-  background-color: #b8b8b8;
+  background-color: #414859;
   color: #FFFFFF;
   text-shadow: none;
 }
@@ -1846,7 +1852,7 @@ input::selection {
 .ui.grey.buttons .active.button:active,
 .ui.grey.active.button,
 .ui.grey.button .active.button:active {
-  background-color: #919191;
+  background-color: #20242c;
   color: #FFFFFF;
   text-shadow: none;
 }
@@ -1855,35 +1861,35 @@ input::selection {
 
 .ui.basic.grey.buttons .button,
 .ui.basic.grey.button {
-  box-shadow: 0px 0px 0px 0px #9E9E9E inset !important;
-  color: #9E9E9E !important;
+  box-shadow: 0px 0px 0px 0px #2b303b inset !important;
+  color: #2b303b !important;
 }
 
 .ui.basic.grey.buttons .button:hover,
 .ui.basic.grey.button:hover {
   background: transparent !important;
-  box-shadow: 0px 0px 0px 1px #ababab inset !important;
-  color: #ababab !important;
+  box-shadow: 0px 0px 0px 1px #363c4a inset !important;
+  color: #363c4a !important;
 }
 
 .ui.basic.grey.buttons .button:focus,
 .ui.basic.grey.button:focus {
   background: transparent !important;
-  box-shadow: 0px 0px 0px 1px #b2b2b2 inset !important;
-  color: #ababab !important;
+  box-shadow: 0px 0px 0px 1px #3c4353 inset !important;
+  color: #363c4a !important;
 }
 
 .ui.basic.grey.buttons .active.button,
 .ui.basic.grey.active.button {
   background: transparent !important;
-  box-shadow: 0px 0px 0px 1px #919191 inset !important;
-  color: #b8b8b8 !important;
+  box-shadow: 0px 0px 0px 1px #20242c inset !important;
+  color: #414859 !important;
 }
 
 .ui.basic.grey.buttons .button:active,
 .ui.basic.grey.button:active {
-  box-shadow: 0px 0px 0px 1px #b8b8b8 inset !important;
-  color: #b8b8b8 !important;
+  box-shadow: 0px 0px 0px 1px #414859 inset !important;
+  color: #414859 !important;
 }
 
 .ui.buttons:not(.vertical) > .basic.grey.button:not(:first-child) {
@@ -4287,7 +4293,7 @@ input::selection {
 
 /* Small Monitor */
 
-@media only screen and (min-width: 992px) and (max-width: 991px) {
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
   .ui.container {
     width: 933px;
     margin-left: auto !important;
@@ -4309,23 +4315,23 @@ input::selection {
 
 /* Large Monitor */
 
-@media only screen and (min-width: 992px) {
+@media only screen and (min-width: 1200px) {
   .ui.container {
-    width: 919px;
+    width: 1127px;
     margin-left: auto !important;
     margin-right: auto !important;
   }
 
   .ui.grid.container {
-    width: calc( 919px  +  2rem ) !important;
+    width: calc( 1127px  +  2rem ) !important;
   }
 
   .ui.relaxed.grid.container {
-    width: calc( 919px  +  3rem ) !important;
+    width: calc( 1127px  +  3rem ) !important;
   }
 
   .ui.very.relaxed.grid.container {
-    width: calc( 919px  +  5rem ) !important;
+    width: calc( 1127px  +  5rem ) !important;
   }
 }
 
@@ -4377,6 +4383,14 @@ input::selection {
 /*******************************
          Site Overrides
 *******************************/
+
+@media only screen and (min-width: 992px) {
+  .ui.mainContainer.container {
+    width: calc(100% - 156px);
+    margin-left: 24px !important;
+    margin-right: 24px !important;
+  }
+}
 /*!
  * # Semantic UI 2.2.10 - Divider
  * http://github.com/semantic-org/semantic-ui/
@@ -5249,15 +5263,15 @@ a.ui.inverted.brown.header:hover {
 /*--- Grey ---*/
 
 .ui.grey.header {
-  color: #9E9E9E !important;
+  color: #2b303b !important;
 }
 
 a.ui.grey.header:hover {
-  color: #ababab !important;
+  color: #363c4a !important;
 }
 
 .ui.grey.dividing.header {
-  border-bottom: 2px solid #9E9E9E;
+  border-bottom: 2px solid #2b303b;
 }
 
 /* Inverted */
@@ -5861,7 +5875,7 @@ i.inverted.circular.brown.icon {
 /* Grey */
 
 i.grey.icon {
-  color: #767676 !important;
+  color: #2b303b !important;
 }
 
 i.inverted.grey.icon {
@@ -5870,7 +5884,7 @@ i.inverted.grey.icon {
 
 i.inverted.bordered.grey.icon,
 i.inverted.circular.grey.icon {
-  background-color: #767676 !important;
+  background-color: #2b303b !important;
   color: #FFFFFF !important;
 }
 
@@ -10146,7 +10160,7 @@ img.ui.bordered.image {
   -webkit-animation-iteration-count: infinite;
   animation-iteration-count: infinite;
   border-radius: 500rem;
-  border-color: #9E9E9E transparent transparent;
+  border-color: #2b303b transparent transparent;
   border-style: solid;
   border-width: 0.2em;
   box-shadow: 0px 0px 0px 1px transparent;
@@ -11635,8 +11649,8 @@ a.ui.basic.brown.label:hover {
 
 .ui.grey.labels .label,
 .ui.grey.label {
-  background-color: #9E9E9E !important;
-  border-color: #9E9E9E !important;
+  background-color: #2b303b !important;
+  border-color: #2b303b !important;
   color: #FFFFFF !important;
 }
 
@@ -11644,8 +11658,8 @@ a.ui.basic.brown.label:hover {
 
 .ui.grey.labels .label:hover,
 a.ui.grey.label:hover {
-  background-color: #ababab !important;
-  border-color: #ababab !important;
+  background-color: #363c4a !important;
+  border-color: #363c4a !important;
   color: #FFFFFF !important;
 }
 
@@ -11666,15 +11680,15 @@ a.ui.grey.label:hover {
 
 .ui.basic.grey.label {
   background-color: #FFFFFF !important;
-  color: #9E9E9E !important;
-  border-color: #9E9E9E !important;
+  color: #2b303b !important;
+  border-color: #2b303b !important;
 }
 
 .ui.basic.grey.labels a.label:hover,
 a.ui.basic.grey.label:hover {
   background-color: #FFFFFF !important;
-  color: #ababab !important;
-  border-color: #ababab !important;
+  color: #363c4a !important;
+  border-color: #363c4a !important;
 }
 
 /*--- Black ---*/
@@ -13128,7 +13142,7 @@ ol.ui.horizontal.list li:before,
   -webkit-animation-iteration-count: infinite;
   animation-iteration-count: infinite;
   border-radius: 500rem;
-  border-color: #9E9E9E transparent transparent;
+  border-color: #2b303b transparent transparent;
   border-style: solid;
   border-width: 0.2em;
   box-shadow: 0px 0px 0px 1px transparent;
@@ -13253,7 +13267,7 @@ ol.ui.horizontal.list li:before,
 }
 
 .ui.inverted.dimmer .ui.loader:after {
-  border-color: #9E9E9E transparent transparent;
+  border-color: #2b303b transparent transparent;
 }
 
 /*******************************
@@ -13929,7 +13943,7 @@ ol.ui.horizontal.list li:before,
   -webkit-animation-iteration-count: infinite;
   animation-iteration-count: infinite;
   border-radius: 500rem;
-  border-color: #9E9E9E rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1);
+  border-color: #2b303b rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1);
   border-style: solid;
   border-width: 0.2em;
   box-shadow: 0px 0px 0px 1px transparent;
@@ -14116,11 +14130,11 @@ ol.ui.horizontal.list li:before,
 /* Grey */
 
 .ui.grey.segment:not(.inverted) {
-  border-top: 2px solid #9E9E9E;
+  border-top: 2px solid #2b303b;
 }
 
 .ui.inverted.grey.segment {
-  background-color: #9E9E9E !important;
+  background-color: #2b303b !important;
   color: #FFFFFF !important;
 }
 
@@ -15672,7 +15686,7 @@ ol.ui.horizontal.list li:before,
   -webkit-animation-iteration-count: infinite;
   animation-iteration-count: infinite;
   border-radius: 500rem;
-  border-color: #9E9E9E rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1);
+  border-color: #2b303b rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1);
   border-style: solid;
   border-width: 0.2em;
   box-shadow: 0px 0px 0px 1px transparent;
@@ -16356,7 +16370,7 @@ ol.ui.horizontal.list li:before,
   }
 }
 
-@media only screen and (min-width: 992px) and (max-width: 991px) {
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
   .ui.page.grid {
     width: auto;
     margin-left: 0em;
@@ -16366,7 +16380,7 @@ ol.ui.horizontal.list li:before,
   }
 }
 
-@media only screen and (min-width: 992px) and (max-width: 991px) {
+@media only screen and (min-width: 1200px) and (max-width: 1919px) {
   .ui.page.grid {
     width: auto;
     margin-left: 0em;
@@ -16376,7 +16390,7 @@ ol.ui.horizontal.list li:before,
   }
 }
 
-@media only screen and (min-width: 992px) {
+@media only screen and (min-width: 1920px) {
   .ui.page.grid {
     width: auto;
     margin-left: 0em;
@@ -17023,7 +17037,7 @@ ol.ui.horizontal.list li:before,
 
 /* Large Monitor Sizing Combinations */
 
-@media only screen and (min-width: 992px) and (max-width: 991px) {
+@media only screen and (min-width: 1200px) and (max-width: 1919px) {
   .ui.grid > .row > [class*="one wide large screen"].column,
   .ui.grid > .column.row > [class*="one wide large screen"].column,
   .ui.grid > [class*="one wide large screen"].column,
@@ -17139,7 +17153,7 @@ ol.ui.horizontal.list li:before,
 
 /* Widescreen Sizing Combinations */
 
-@media only screen and (min-width: 992px) {
+@media only screen and (min-width: 1920px) {
   .ui.grid > .row > [class*="one wide widescreen"].column,
   .ui.grid > .column.row > [class*="one wide widescreen"].column,
   .ui.grid > [class*="one wide widescreen"].column,
@@ -17775,7 +17789,7 @@ ol.ui.horizontal.list li:before,
 .ui.grid > .grey.row,
 .ui.grid > .grey.column,
 .ui.grid > .row > .grey.column {
-  background-color: #9E9E9E !important;
+  background-color: #2b303b !important;
   color: #FFFFFF;
 }
 
@@ -18349,7 +18363,7 @@ ol.ui.horizontal.list li:before,
 
 /* Computer Only Hide */
 
-@media only screen and (min-width: 992px) and (max-width: 991px) {
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
   .ui[class*="mobile only"].grid.grid.grid:not(.computer),
   .ui.grid.grid.grid > [class*="mobile only"].row:not(.computer),
   .ui.grid.grid.grid > [class*="mobile only"].column:not(.computer),
@@ -18381,7 +18395,7 @@ ol.ui.horizontal.list li:before,
 
 /* Large Screen Only Hide */
 
-@media only screen and (min-width: 992px) and (max-width: 991px) {
+@media only screen and (min-width: 1200px) and (max-width: 1919px) {
   .ui[class*="mobile only"].grid.grid.grid:not(.computer),
   .ui.grid.grid.grid > [class*="mobile only"].row:not(.computer),
   .ui.grid.grid.grid > [class*="mobile only"].column:not(.computer),
@@ -18406,7 +18420,7 @@ ol.ui.horizontal.list li:before,
 
 /* Widescreen Only Hide */
 
-@media only screen and (min-width: 992px) {
+@media only screen and (min-width: 1920px) {
   .ui[class*="mobile only"].grid.grid.grid:not(.computer),
   .ui.grid.grid.grid > [class*="mobile only"].row:not(.computer),
   .ui.grid.grid.grid > [class*="mobile only"].column:not(.computer),
@@ -19896,8 +19910,8 @@ Floated Menu / Item
 
 .ui.menu .grey.active.item,
 .ui.grey.menu .active.item {
-  border-color: #9E9E9E !important;
-  color: #9E9E9E !important;
+  border-color: #2b303b !important;
+  color: #2b303b !important;
 }
 
 /*--------------
@@ -20199,7 +20213,7 @@ Floated Menu / Item
 
 .ui.inverted.menu .grey.active.item,
 .ui.inverted.grey.menu {
-  background-color: #9E9E9E;
+  background-color: #2b303b;
 }
 
 .ui.inverted.grey.menu .item:before {
@@ -22011,11 +22025,11 @@ Floated Menu / Item
 /* Grey */
 
 .ui.grey.table {
-  border-top: 0.2em solid #9E9E9E;
+  border-top: 0.2em solid #2b303b;
 }
 
 .ui.inverted.grey.table {
-  background-color: #9E9E9E !important;
+  background-color: #2b303b !important;
   color: #FFFFFF !important;
 }
 
@@ -23993,7 +24007,7 @@ Floated Menu / Item
 .ui.grey.statistics .statistic > .value,
 .ui.statistics .grey.statistic > .value,
 .ui.grey.statistic > .value {
-  color: #9E9E9E;
+  color: #2b303b;
 }
 
 /*--------------
@@ -25546,7 +25560,7 @@ select.ui.dropdown {
   }
 }
 
-@media only screen and (min-width: 992px) {
+@media only screen and (min-width: 1920px) {
   .ui.selection.dropdown .menu {
     max-height: 24.8em;
   }
@@ -25750,7 +25764,7 @@ select.ui.dropdown {
   }
 }
 
-@media only screen and (min-width: 992px) {
+@media only screen and (min-width: 1920px) {
   .ui.search.dropdown .menu {
     max-height: 24.8em;
   }
@@ -25939,7 +25953,7 @@ select.ui.dropdown {
   -webkit-animation-iteration-count: infinite;
   animation-iteration-count: infinite;
   border-radius: 500rem;
-  border-color: #9E9E9E transparent transparent;
+  border-color: #2b303b transparent transparent;
   border-style: solid;
   border-width: 0.2em;
 }
@@ -26285,7 +26299,7 @@ select.ui.dropdown {
   }
 }
 
-@media only screen and (min-width: 992px) {
+@media only screen and (min-width: 1920px) {
   .ui.scrolling.dropdown .menu,
   .ui.dropdown .scrolling.menu {
     max-height: 24em;
@@ -26817,14 +26831,14 @@ select.ui.dropdown {
   }
 }
 
-@media only screen and (min-width: 992px) {
+@media only screen and (min-width: 1200px) {
   .ui.modal {
     width: 900px;
     margin: 0em 0em 0em -450px;
   }
 }
 
-@media only screen and (min-width: 992px) {
+@media only screen and (min-width: 1920px) {
   .ui.modal {
     width: 950px;
     margin: 0em 0em 0em -475px;
@@ -27085,14 +27099,14 @@ select.ui.dropdown {
   }
 }
 
-@media only screen and (min-width: 992px) {
+@media only screen and (min-width: 1200px) {
   .ui.small.modal {
     width: 720px;
     margin: 0em 0em 0em -360px;
   }
 }
 
-@media only screen and (min-width: 992px) {
+@media only screen and (min-width: 1920px) {
   .ui.small.modal {
     width: 760px;
     margin: 0em 0em 0em -380px;
@@ -27126,14 +27140,14 @@ select.ui.dropdown {
   }
 }
 
-@media only screen and (min-width: 992px) {
+@media only screen and (min-width: 1200px) {
   .ui.large.modal {
     width: 1080px;
     margin: 0em 0em 0em -540px;
   }
 }
 
-@media only screen and (min-width: 992px) {
+@media only screen and (min-width: 1920px) {
   .ui.large.modal {
     width: 1140px;
     margin: 0em 0em 0em -570px;
@@ -28467,7 +28481,7 @@ select.ui.dropdown {
 /* Grey */
 
 .ui.grey.progress .bar {
-  background-color: #9E9E9E;
+  background-color: #2b303b;
 }
 
 .ui.grey.inverted.progress .bar {
@@ -28748,7 +28762,7 @@ select.ui.dropdown {
   -webkit-animation-iteration-count: infinite;
   animation-iteration-count: infinite;
   border-radius: 500rem;
-  border-color: #9E9E9E transparent transparent;
+  border-color: #2b303b transparent transparent;
   border-style: solid;
   border-width: 0.2em;
   box-shadow: 0px 0px 0px 1px transparent;
@@ -29260,7 +29274,7 @@ select.ui.dropdown {
   -webkit-animation-iteration-count: infinite;
   animation-iteration-count: infinite;
   border-radius: 500rem;
-  border-color: #9E9E9E transparent transparent;
+  border-color: #2b303b transparent transparent;
   border-style: solid;
   border-width: 0.2em;
   box-shadow: 0px 0px 0px 1px transparent;
@@ -29344,6 +29358,695 @@ select.ui.dropdown {
 .looping.transition {
   -webkit-animation-iteration-count: infinite;
   animation-iteration-count: infinite;
+}
+
+/*******************************
+         Site Overrides
+*******************************/
+/*!
+ * # Semantic UI 2.2.10 - Sidebar
+ * http://github.com/semantic-org/semantic-ui/
+ *
+ *
+ * Released under the MIT license
+ * http://opensource.org/licenses/MIT
+ *
+ */
+
+/*******************************
+            Sidebar
+*******************************/
+
+/* Sidebar Menu */
+
+.ui.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transition: none;
+  transition: none;
+  will-change: transform;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  visibility: hidden;
+  -webkit-overflow-scrolling: touch;
+  height: 100% !important;
+  max-height: 100%;
+  border-radius: 0em !important;
+  margin: 0em !important;
+  overflow-y: auto !important;
+  z-index: 102;
+}
+
+/* GPU Layers for Child Elements */
+
+.ui.sidebar > * {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+/*--------------
+   Direction
+---------------*/
+
+.ui.left.sidebar {
+  right: auto;
+  left: 0px;
+  -webkit-transform: translate3d(-100%, 0, 0);
+  transform: translate3d(-100%, 0, 0);
+}
+
+.ui.right.sidebar {
+  right: 0px !important;
+  left: auto !important;
+  -webkit-transform: translate3d(100%, 0%, 0);
+  transform: translate3d(100%, 0%, 0);
+}
+
+.ui.top.sidebar,
+.ui.bottom.sidebar {
+  width: 100% !important;
+  height: auto !important;
+}
+
+.ui.top.sidebar {
+  top: 0px !important;
+  bottom: auto !important;
+  -webkit-transform: translate3d(0, -100%, 0);
+  transform: translate3d(0, -100%, 0);
+}
+
+.ui.bottom.sidebar {
+  top: auto !important;
+  bottom: 0px !important;
+  -webkit-transform: translate3d(0, 100%, 0);
+  transform: translate3d(0, 100%, 0);
+}
+
+/*--------------
+     Pushable
+---------------*/
+
+.pushable {
+  height: 100%;
+  overflow-x: hidden;
+  padding: 0em !important;
+}
+
+/* Whole Page */
+
+body.pushable {
+  background: #333333 !important;
+}
+
+/* Page Context */
+
+.pushable:not(body) {
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+
+.pushable:not(body) > .ui.sidebar,
+.pushable:not(body) > .fixed,
+.pushable:not(body) > .pusher:after {
+  position: absolute;
+}
+
+/*--------------
+     Fixed
+---------------*/
+
+.pushable > .fixed {
+  position: fixed;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transition: -webkit-transform 500ms ease;
+  transition: -webkit-transform 500ms ease;
+  transition: transform 500ms ease;
+  transition: transform 500ms ease, -webkit-transform 500ms ease;
+  will-change: transform;
+  z-index: 101;
+}
+
+/*--------------
+     Page
+---------------*/
+
+.pushable > .pusher {
+  position: relative;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  overflow: hidden;
+  min-height: 100%;
+  -webkit-transition: -webkit-transform 500ms ease;
+  transition: -webkit-transform 500ms ease;
+  transition: transform 500ms ease;
+  transition: transform 500ms ease, -webkit-transform 500ms ease;
+  z-index: 2;
+}
+
+body.pushable > .pusher {
+  background: #F9F9F9;
+}
+
+/* Pusher should inherit background from context */
+
+.pushable > .pusher {
+  background: inherit;
+}
+
+/*--------------
+     Dimmer
+---------------*/
+
+.pushable > .pusher:after {
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  content: '';
+  background-color: rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+  opacity: 0;
+  -webkit-transition: opacity 500ms;
+  transition: opacity 500ms;
+  will-change: opacity;
+  z-index: 1000;
+}
+
+/*--------------
+    Coupling
+---------------*/
+
+.ui.sidebar.menu .item {
+  border-radius: 0em !important;
+}
+
+/*******************************
+            States
+*******************************/
+
+/*--------------
+     Dimmed
+---------------*/
+
+.pushable > .pusher.dimmed:after {
+  width: 100% !important;
+  height: 100% !important;
+  opacity: 1 !important;
+}
+
+/*--------------
+    Animating
+---------------*/
+
+.ui.animating.sidebar {
+  visibility: visible;
+}
+
+/*--------------
+     Visible
+---------------*/
+
+.ui.visible.sidebar {
+  visibility: visible;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+
+/* Shadow Direction */
+
+.ui.left.visible.sidebar,
+.ui.right.visible.sidebar {
+  box-shadow: 0px 0px 20px rgba(34, 36, 38, 0.15);
+}
+
+.ui.top.visible.sidebar,
+.ui.bottom.visible.sidebar {
+  box-shadow: 0px 0px 20px rgba(34, 36, 38, 0.15);
+}
+
+/* Visible On Load */
+
+.ui.visible.left.sidebar ~ .fixed,
+.ui.visible.left.sidebar ~ .pusher {
+  -webkit-transform: translate3d(260px, 0, 0);
+  transform: translate3d(260px, 0, 0);
+}
+
+.ui.visible.right.sidebar ~ .fixed,
+.ui.visible.right.sidebar ~ .pusher {
+  -webkit-transform: translate3d(-260px, 0, 0);
+  transform: translate3d(-260px, 0, 0);
+}
+
+.ui.visible.top.sidebar ~ .fixed,
+.ui.visible.top.sidebar ~ .pusher {
+  -webkit-transform: translate3d(0, 36px, 0);
+  transform: translate3d(0, 36px, 0);
+}
+
+.ui.visible.bottom.sidebar ~ .fixed,
+.ui.visible.bottom.sidebar ~ .pusher {
+  -webkit-transform: translate3d(0, -36px, 0);
+  transform: translate3d(0, -36px, 0);
+}
+
+/* opposite sides visible forces content overlay */
+
+.ui.visible.left.sidebar ~ .ui.visible.right.sidebar ~ .fixed,
+.ui.visible.left.sidebar ~ .ui.visible.right.sidebar ~ .pusher,
+.ui.visible.right.sidebar ~ .ui.visible.left.sidebar ~ .fixed,
+.ui.visible.right.sidebar ~ .ui.visible.left.sidebar ~ .pusher {
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+
+/*--------------
+       iOS
+---------------*/
+
+/*
+  iOS incorrectly sizes document when content
+  is presented outside of view with 2Dtranslate
+*/
+
+html.ios {
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+/*******************************
+          Variations
+*******************************/
+
+/*--------------
+     Width
+---------------*/
+
+/* Left / Right */
+
+.ui.thin.left.sidebar,
+.ui.thin.right.sidebar {
+  width: 108px;
+}
+
+.ui[class*="very thin"].left.sidebar,
+.ui[class*="very thin"].right.sidebar {
+  width: 60px;
+}
+
+.ui.left.sidebar,
+.ui.right.sidebar {
+  width: 260px;
+}
+
+.ui.wide.left.sidebar,
+.ui.wide.right.sidebar {
+  width: 350px;
+}
+
+.ui[class*="very wide"].left.sidebar,
+.ui[class*="very wide"].right.sidebar {
+  width: 475px;
+}
+
+/* Left Visible */
+
+.ui.visible.thin.left.sidebar ~ .fixed,
+.ui.visible.thin.left.sidebar ~ .pusher {
+  -webkit-transform: translate3d(108px, 0, 0);
+  transform: translate3d(108px, 0, 0);
+}
+
+.ui.visible[class*="very thin"].left.sidebar ~ .fixed,
+.ui.visible[class*="very thin"].left.sidebar ~ .pusher {
+  -webkit-transform: translate3d(60px, 0, 0);
+  transform: translate3d(60px, 0, 0);
+}
+
+.ui.visible.wide.left.sidebar ~ .fixed,
+.ui.visible.wide.left.sidebar ~ .pusher {
+  -webkit-transform: translate3d(350px, 0, 0);
+  transform: translate3d(350px, 0, 0);
+}
+
+.ui.visible[class*="very wide"].left.sidebar ~ .fixed,
+.ui.visible[class*="very wide"].left.sidebar ~ .pusher {
+  -webkit-transform: translate3d(475px, 0, 0);
+  transform: translate3d(475px, 0, 0);
+}
+
+/* Right Visible */
+
+.ui.visible.thin.right.sidebar ~ .fixed,
+.ui.visible.thin.right.sidebar ~ .pusher {
+  -webkit-transform: translate3d(-108px, 0, 0);
+  transform: translate3d(-108px, 0, 0);
+}
+
+.ui.visible[class*="very thin"].right.sidebar ~ .fixed,
+.ui.visible[class*="very thin"].right.sidebar ~ .pusher {
+  -webkit-transform: translate3d(-60px, 0, 0);
+  transform: translate3d(-60px, 0, 0);
+}
+
+.ui.visible.wide.right.sidebar ~ .fixed,
+.ui.visible.wide.right.sidebar ~ .pusher {
+  -webkit-transform: translate3d(-350px, 0, 0);
+  transform: translate3d(-350px, 0, 0);
+}
+
+.ui.visible[class*="very wide"].right.sidebar ~ .fixed,
+.ui.visible[class*="very wide"].right.sidebar ~ .pusher {
+  -webkit-transform: translate3d(-475px, 0, 0);
+  transform: translate3d(-475px, 0, 0);
+}
+
+/*******************************
+          Animations
+*******************************/
+
+/*--------------
+    Overlay
+---------------*/
+
+/* Set-up */
+
+.ui.overlay.sidebar {
+  z-index: 102;
+}
+
+/* Initial */
+
+.ui.left.overlay.sidebar {
+  -webkit-transform: translate3d(-100%, 0%, 0);
+  transform: translate3d(-100%, 0%, 0);
+}
+
+.ui.right.overlay.sidebar {
+  -webkit-transform: translate3d(100%, 0%, 0);
+  transform: translate3d(100%, 0%, 0);
+}
+
+.ui.top.overlay.sidebar {
+  -webkit-transform: translate3d(0%, -100%, 0);
+  transform: translate3d(0%, -100%, 0);
+}
+
+.ui.bottom.overlay.sidebar {
+  -webkit-transform: translate3d(0%, 100%, 0);
+  transform: translate3d(0%, 100%, 0);
+}
+
+/* Animation */
+
+.animating.ui.overlay.sidebar,
+.ui.visible.overlay.sidebar {
+  -webkit-transition: -webkit-transform 500ms ease;
+  transition: -webkit-transform 500ms ease;
+  transition: transform 500ms ease;
+  transition: transform 500ms ease, -webkit-transform 500ms ease;
+}
+
+/* End - Sidebar */
+
+.ui.visible.left.overlay.sidebar {
+  -webkit-transform: translate3d(0%, 0%, 0);
+  transform: translate3d(0%, 0%, 0);
+}
+
+.ui.visible.right.overlay.sidebar {
+  -webkit-transform: translate3d(0%, 0%, 0);
+  transform: translate3d(0%, 0%, 0);
+}
+
+.ui.visible.top.overlay.sidebar {
+  -webkit-transform: translate3d(0%, 0%, 0);
+  transform: translate3d(0%, 0%, 0);
+}
+
+.ui.visible.bottom.overlay.sidebar {
+  -webkit-transform: translate3d(0%, 0%, 0);
+  transform: translate3d(0%, 0%, 0);
+}
+
+/* End - Pusher */
+
+.ui.visible.overlay.sidebar ~ .fixed,
+.ui.visible.overlay.sidebar ~ .pusher {
+  -webkit-transform: none !important;
+  transform: none !important;
+}
+
+/*--------------
+      Push
+---------------*/
+
+/* Initial */
+
+.ui.push.sidebar {
+  -webkit-transition: -webkit-transform 500ms ease;
+  transition: -webkit-transform 500ms ease;
+  transition: transform 500ms ease;
+  transition: transform 500ms ease, -webkit-transform 500ms ease;
+  z-index: 102;
+}
+
+/* Sidebar - Initial */
+
+.ui.left.push.sidebar {
+  -webkit-transform: translate3d(-100%, 0, 0);
+  transform: translate3d(-100%, 0, 0);
+}
+
+.ui.right.push.sidebar {
+  -webkit-transform: translate3d(100%, 0, 0);
+  transform: translate3d(100%, 0, 0);
+}
+
+.ui.top.push.sidebar {
+  -webkit-transform: translate3d(0%, -100%, 0);
+  transform: translate3d(0%, -100%, 0);
+}
+
+.ui.bottom.push.sidebar {
+  -webkit-transform: translate3d(0%, 100%, 0);
+  transform: translate3d(0%, 100%, 0);
+}
+
+/* End */
+
+.ui.visible.push.sidebar {
+  -webkit-transform: translate3d(0%, 0, 0);
+  transform: translate3d(0%, 0, 0);
+}
+
+/*--------------
+    Uncover
+---------------*/
+
+/* Initial */
+
+.ui.uncover.sidebar {
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  z-index: 1;
+}
+
+/* End */
+
+.ui.visible.uncover.sidebar {
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  -webkit-transition: -webkit-transform 500ms ease;
+  transition: -webkit-transform 500ms ease;
+  transition: transform 500ms ease;
+  transition: transform 500ms ease, -webkit-transform 500ms ease;
+}
+
+/*--------------
+   Slide Along
+---------------*/
+
+/* Initial */
+
+.ui.slide.along.sidebar {
+  z-index: 1;
+}
+
+/* Sidebar - Initial */
+
+.ui.left.slide.along.sidebar {
+  -webkit-transform: translate3d(-50%, 0, 0);
+  transform: translate3d(-50%, 0, 0);
+}
+
+.ui.right.slide.along.sidebar {
+  -webkit-transform: translate3d(50%, 0, 0);
+  transform: translate3d(50%, 0, 0);
+}
+
+.ui.top.slide.along.sidebar {
+  -webkit-transform: translate3d(0, -50%, 0);
+  transform: translate3d(0, -50%, 0);
+}
+
+.ui.bottom.slide.along.sidebar {
+  -webkit-transform: translate3d(0%, 50%, 0);
+  transform: translate3d(0%, 50%, 0);
+}
+
+/* Animation */
+
+.ui.animating.slide.along.sidebar {
+  -webkit-transition: -webkit-transform 500ms ease;
+  transition: -webkit-transform 500ms ease;
+  transition: transform 500ms ease;
+  transition: transform 500ms ease, -webkit-transform 500ms ease;
+}
+
+/* End */
+
+.ui.visible.slide.along.sidebar {
+  -webkit-transform: translate3d(0%, 0, 0);
+  transform: translate3d(0%, 0, 0);
+}
+
+/*--------------
+   Slide Out
+---------------*/
+
+/* Initial */
+
+.ui.slide.out.sidebar {
+  z-index: 1;
+}
+
+/* Sidebar - Initial */
+
+.ui.left.slide.out.sidebar {
+  -webkit-transform: translate3d(50%, 0, 0);
+  transform: translate3d(50%, 0, 0);
+}
+
+.ui.right.slide.out.sidebar {
+  -webkit-transform: translate3d(-50%, 0, 0);
+  transform: translate3d(-50%, 0, 0);
+}
+
+.ui.top.slide.out.sidebar {
+  -webkit-transform: translate3d(0%, 50%, 0);
+  transform: translate3d(0%, 50%, 0);
+}
+
+.ui.bottom.slide.out.sidebar {
+  -webkit-transform: translate3d(0%, -50%, 0);
+  transform: translate3d(0%, -50%, 0);
+}
+
+/* Animation */
+
+.ui.animating.slide.out.sidebar {
+  -webkit-transition: -webkit-transform 500ms ease;
+  transition: -webkit-transform 500ms ease;
+  transition: transform 500ms ease;
+  transition: transform 500ms ease, -webkit-transform 500ms ease;
+}
+
+/* End */
+
+.ui.visible.slide.out.sidebar {
+  -webkit-transform: translate3d(0%, 0, 0);
+  transform: translate3d(0%, 0, 0);
+}
+
+/*--------------
+   Scale Down
+---------------*/
+
+/* Initial */
+
+.ui.scale.down.sidebar {
+  -webkit-transition: -webkit-transform 500ms ease;
+  transition: -webkit-transform 500ms ease;
+  transition: transform 500ms ease;
+  transition: transform 500ms ease, -webkit-transform 500ms ease;
+  z-index: 102;
+}
+
+/* Sidebar - Initial  */
+
+.ui.left.scale.down.sidebar {
+  -webkit-transform: translate3d(-100%, 0, 0);
+  transform: translate3d(-100%, 0, 0);
+}
+
+.ui.right.scale.down.sidebar {
+  -webkit-transform: translate3d(100%, 0, 0);
+  transform: translate3d(100%, 0, 0);
+}
+
+.ui.top.scale.down.sidebar {
+  -webkit-transform: translate3d(0%, -100%, 0);
+  transform: translate3d(0%, -100%, 0);
+}
+
+.ui.bottom.scale.down.sidebar {
+  -webkit-transform: translate3d(0%, 100%, 0);
+  transform: translate3d(0%, 100%, 0);
+}
+
+/* Pusher - Initial */
+
+.ui.scale.down.left.sidebar ~ .pusher {
+  -webkit-transform-origin: 75% 50%;
+  transform-origin: 75% 50%;
+}
+
+.ui.scale.down.right.sidebar ~ .pusher {
+  -webkit-transform-origin: 25% 50%;
+  transform-origin: 25% 50%;
+}
+
+.ui.scale.down.top.sidebar ~ .pusher {
+  -webkit-transform-origin: 50% 75%;
+  transform-origin: 50% 75%;
+}
+
+.ui.scale.down.bottom.sidebar ~ .pusher {
+  -webkit-transform-origin: 50% 25%;
+  transform-origin: 50% 25%;
+}
+
+/* Animation */
+
+.ui.animating.scale.down > .visible.ui.sidebar {
+  -webkit-transition: -webkit-transform 500ms ease;
+  transition: -webkit-transform 500ms ease;
+  transition: transform 500ms ease;
+  transition: transform 500ms ease, -webkit-transform 500ms ease;
+}
+
+.ui.visible.scale.down.sidebar ~ .pusher,
+.ui.animating.scale.down.sidebar ~ .pusher {
+  display: block !important;
+  width: 100%;
+  height: 100%;
+  overflow: hidden !important;
+}
+
+/* End */
+
+.ui.visible.scale.down.sidebar {
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+
+.ui.visible.scale.down.sidebar ~ .pusher {
+  -webkit-transform: scale(0.75);
+  transform: scale(0.75);
 }
 
 /*******************************

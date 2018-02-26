@@ -188,7 +188,7 @@
     padding-right: 2em;
   }
 }
-@media only screen and (min-width: 992px) and (max-width: 991px) {
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
   .ui.page.grid {
     width: auto;
     margin-left: 0em;
@@ -197,7 +197,7 @@
     padding-right: 3%;
   }
 }
-@media only screen and (min-width: 992px) and (max-width: 991px) {
+@media only screen and (min-width: 1200px) and (max-width: 1919px) {
   .ui.page.grid {
     width: auto;
     margin-left: 0em;
@@ -206,7 +206,7 @@
     padding-right: 15%;
   }
 }
-@media only screen and (min-width: 992px) {
+@media only screen and (min-width: 1920px) {
   .ui.page.grid {
     width: auto;
     margin-left: 0em;
@@ -757,7 +757,7 @@
 }
 
 /* Large Monitor Sizing Combinations */
-@media only screen and (min-width: 992px) and (max-width: 991px) {
+@media only screen and (min-width: 1200px) and (max-width: 1919px) {
   .ui.grid > .row > [class*="one wide large screen"].column,
   .ui.grid > .column.row > [class*="one wide large screen"].column,
   .ui.grid > [class*="one wide large screen"].column,
@@ -857,7 +857,7 @@
 }
 
 /* Widescreen Sizing Combinations */
-@media only screen and (min-width: 992px) {
+@media only screen and (min-width: 1920px) {
   .ui.grid > .row > [class*="one wide widescreen"].column,
   .ui.grid > .column.row > [class*="one wide widescreen"].column,
   .ui.grid > [class*="one wide widescreen"].column,
@@ -1426,7 +1426,7 @@
 .ui.grid > .grey.row,
 .ui.grid > .grey.column,
 .ui.grid > .row > .grey.column {
-  background-color: #9E9E9E !important;
+  background-color: #2b303b !important;
   color: #FFFFFF;
 }
 
@@ -1924,7 +1924,7 @@
 }
 
 /* Computer Only Hide */
-@media only screen and (min-width: 992px) and (max-width: 991px) {
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
   .ui[class*="mobile only"].grid.grid.grid:not(.computer),
   .ui.grid.grid.grid > [class*="mobile only"].row:not(.computer),
   .ui.grid.grid.grid > [class*="mobile only"].column:not(.computer),
@@ -1952,7 +1952,7 @@
 }
 
 /* Large Screen Only Hide */
-@media only screen and (min-width: 992px) and (max-width: 991px) {
+@media only screen and (min-width: 1200px) and (max-width: 1919px) {
   .ui[class*="mobile only"].grid.grid.grid:not(.computer),
   .ui.grid.grid.grid > [class*="mobile only"].row:not(.computer),
   .ui.grid.grid.grid > [class*="mobile only"].column:not(.computer),
@@ -1974,7 +1974,7 @@
 }
 
 /* Widescreen Only Hide */
-@media only screen and (min-width: 992px) {
+@media only screen and (min-width: 1920px) {
   .ui[class*="mobile only"].grid.grid.grid:not(.computer),
   .ui.grid.grid.grid > [class*="mobile only"].row:not(.computer),
   .ui.grid.grid.grid > [class*="mobile only"].column:not(.computer),

@@ -959,16 +959,16 @@ a.ui.basic.brown.label:hover {
 
 .ui.grey.labels .label,
 .ui.grey.label {
-  background-color: #9E9E9E !important;
-  border-color: #9E9E9E !important;
+  background-color: #2b303b !important;
+  border-color: #2b303b !important;
   color: #FFFFFF !important;
 }
 
 /* Link */
 .ui.grey.labels .label:hover,
 a.ui.grey.label:hover {
-  background-color: #ababab !important;
-  border-color: #ababab !important;
+  background-color: #363c4a !important;
+  border-color: #363c4a !important;
   color: #FFFFFF !important;
 }
 
@@ -986,14 +986,14 @@ a.ui.grey.label:hover {
 /* Basic */
 .ui.basic.grey.label {
   background-color: #FFFFFF !important;
-  color: #9E9E9E !important;
-  border-color: #9E9E9E !important;
+  color: #2b303b !important;
+  border-color: #2b303b !important;
 }
 .ui.basic.grey.labels a.label:hover,
 a.ui.basic.grey.label:hover {
   background-color: #FFFFFF !important;
-  color: #ababab !important;
-  border-color: #ababab !important;
+  color: #363c4a !important;
+  border-color: #363c4a !important;
 }
 
 /*--- Black ---*/

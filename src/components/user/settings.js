@@ -32,15 +32,16 @@ export default class UserSettings extends Component {
     const { user, isAuthenticated, premium } = this.props;
 
     return (
-      <Container>
+      <div>
+        <Header as="h4">
+          <Icon name="id badge" color="green" />
+          <Header.Content>
+            {user.email}
+          </Header.Content>
+        </Header>
         <Grid>
           <Grid.Column computer="8" tablet="8" mobile="16">
-            <Header as="h4">
-              <Icon name="id badge" color="green" />
-              <Header.Content>
-                {user.email}
-              </Header.Content>
-            </Header>
+
             <Menu color="green">
               {isAuthenticated &&
                 <Menu.Item name="sessionDestroy" as={Link} to="/sign-out">
@@ -65,7 +66,7 @@ export default class UserSettings extends Component {
             <Premium />
           </Grid.Column>
         </Grid>
-      </Container>
+      </div>
     );
   }
 }

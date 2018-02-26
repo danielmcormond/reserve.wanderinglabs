@@ -3,8 +3,10 @@
 *******************************/
 @textColor : #444444;
 @green          : #77b57a;
-@largeMonitorBreakpoint      : @computerBreakpoint;
-@widescreenMonitorBreakpoint : @computerBreakpoint;
+@grey           : #2b303b;
+
+// @largeMonitorBreakpoint      : @computerBreakpoint;
+// @widescreenMonitorBreakpoint : @computerBreakpoint;
 
 @fontName          : 'Helvetica Neue';
 @fontFamily        : 'Helvetica Neue', Arial, Helvetica, sans-serif;

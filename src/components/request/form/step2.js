@@ -44,7 +44,7 @@ export default class RequestFormStep2 extends Component {
     const { dateStart, dateEnd } = this.props;
 
     return (
-      <Grid>
+      <Grid padded="vertically">
         <Grid.Column computer="8" tablet="16" mobile="16">
           <Header size="tiny">
             {!dateStart &&
