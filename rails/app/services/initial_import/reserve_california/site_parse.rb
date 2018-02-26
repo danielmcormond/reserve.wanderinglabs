@@ -32,6 +32,7 @@ module InitialImport::ReserveCalifornia
         length: site_length,
         site_type: site_type,
         site_layout: site_layout_clean,
+        premium: amenities['feature_filter_premium']&.downcase&.include?('premium'),
       }
     end
 
