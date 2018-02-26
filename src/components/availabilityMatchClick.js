@@ -86,11 +86,6 @@ export default class availabilityMatchClick extends Component {
     if (availabilityMatch.facility_type !== "Facility::ReserveCalifornia") {
       return;
     }
-    const mappedPost = Object.keys(availabilityMatch.reserve.post).map(key => {
-      let value = availabilityMatch.reserve.post[key];
-      return <input type="hidden" name={key} value={value} />;
-    });
-
     return (
       <div>
         <br />
