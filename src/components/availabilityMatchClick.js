@@ -99,17 +99,15 @@ export default class availabilityMatchClick extends Component {
           <Header.Content>Reserve California</Header.Content>
           <Header.Subheader>
             The new Reserve California website is not user friendly and thus we
-            are unable to link directly to an open availability. It is
-            impossible to even link directly to a state park. You will have to
-            search for the state park and open site yourself. We wish we could
-            do more.
+            are unable to link directly to an open availability. The best we can do is a campground map.
+            The site you are reserving should be shown on the map in green. Click to reserve. Then verify dates and stay length.
           </Header.Subheader>
         </Header>
         <Button
           color="green"
-          content="Open Reserve California home page"
+          content="Reserve Page"
           as="a"
-          href={availabilityMatch.reserve.default_url}
+          href={availabilityMatch.reserve.site_url}
           target="reserveCalifornia"
         />
       </div>
