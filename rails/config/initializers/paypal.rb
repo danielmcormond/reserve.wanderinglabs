@@ -1,6 +1,6 @@
 PayPal::SDK.configure(
-  mode: Rails.env.production? ? 'sandbox' : 'sandbox', # TODO - live - (put keys in env)
-  client_id: 'AaoKUckTip-ExcrlptmKarrQpOek0xDorQqEs9I9VyYoM1ozhNsPa8QZmgp_UEitynINt1Wt4ncWtYeU',
-  client_secret: 'EMCR08BAUwHMuvahmJq8Yu74C3yoa0NwXyHmeTWqKBr5zZMj_KDg5eP-IfBF1EyzOlIeCmW4izPCJwIZ',
+  mode: Rails.env.production? ? 'production' : 'sandbox', # TODO - live - (put keys in env)
+  client_id: ENV['PAYPAL_ID'],
+  client_secret: ENV['PAYPAL_SECRET'],
   ssl_options: {}
 )
