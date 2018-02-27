@@ -94,8 +94,10 @@ export default class availabilityMatchClick extends Component {
           <Header.Content>Reserve California</Header.Content>
           <Header.Subheader>
             The new Reserve California website is not user friendly and thus we
-            are unable to link directly to an open availability. The best we can do is a campground map.
-            The site you are reserving should be shown on the map in green. Click to reserve. Then verify dates and stay length.
+            are unable to link directly to an open availability. The best we can
+            do is a campground map. The site you are reserving should be shown
+            on the map in green. Click to reserve. Then verify dates and stay
+            length.
           </Header.Subheader>
         </Header>
         <Button
