@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { formStepInc, formStepDec } from "../../../actions/requestFormActions";
-import { Container, Icon, Menu } from "semantic-ui-react";
+import { Icon, Header } from "semantic-ui-react";
 
 @connect(store => {
   return {
@@ -35,20 +35,16 @@ export default class RequestFormSteps extends Component {
 
     return (
       <div>
-        <Menu fixed="top" color="green" className="StepsNavMenu">
-          <Container>
-            <Menu.Item
+        <Header as="h4">
+          <Header.Content>
+            <Icon
               disabled={currentStep === 1}
               onClick={() => this.prevStep()}
-            >
-              <Icon name="chevron left" />
-            </Menu.Item>
-            <Menu.Item name="home" header>
-              Step {currentStep} of {this.lastStep}: {step_titles[currentStep]}
-            </Menu.Item>
-          </Container>
-        </Menu>
-        <div className="NavPushed" />
+              name="chevron left"
+            />
+            Step {currentStep} of {this.lastStep}: {step_titles[currentStep]}
+          </Header.Content>
+        </Header>
       </div>
     );
   }

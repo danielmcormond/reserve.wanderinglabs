@@ -9,6 +9,15 @@ import { Container, Icon, Menu } from "semantic-ui-react";
   };
 })
 export default class Nav extends Component {
+  constructor(props) {
+    super(props);
+    this.toggleMenu = this.toggleMenu.bind(this);
+  }
+
+  toggleMenu(e) {
+    this.props.onSidebarToggle();
+  }
+
   menuUser() {
     const { isAuthenticated } = this.props;
     return (
@@ -26,19 +35,33 @@ export default class Nav extends Component {
     );
   }
 
+  menuSidebar() {
+    return (
+      <Menu.Item icon onClick={this.toggleMenu} className="mobile only">
+        <Icon name="sidebar" size="large" />
+      </Menu.Item>
+    );
+  }
+
   render() {
     return (
       <div>
-        <Menu fixed="top" inverted color="green" size="large">
-          <Container>
-            <Menu.Item header name="home" as={Link} to="/">
-              Wandering Labs :: Reserve
-            </Menu.Item>
-            <Menu.Menu position="right">
-              {this.menuUser()}
-              {this.menuNew()}
-            </Menu.Menu>
-          </Container>
+        <Menu
+          fixed="top"
+          inverted
+          color="green"
+          size="large"
+          as={Container}
+          fluid
+        >
+          {this.menuSidebar()}
+          <Menu.Item header name="home" as={Link} to="/">
+            Wandering Labs :: Reserve
+          </Menu.Item>
+          <Menu.Menu position="right">
+            {this.menuUser()}
+            {this.menuNew()}
+          </Menu.Menu>
         </Menu>
         <div className="NavPushed" />
       </div>

@@ -186,7 +186,7 @@
   border-color: rgba(0, 0, 0, 0.1);
 }
 .ui.basic.loading.button:not(.inverted):after {
-  border-top-color: #9E9E9E;
+  border-top-color: #2b303b;
 }
 
 /*-------------------
@@ -1381,7 +1381,7 @@
 
 .ui.grey.buttons .button,
 .ui.grey.button {
-  background-color: #9E9E9E;
+  background-color: #2b303b;
   color: #FFFFFF;
   text-shadow: none;
   background-image: -webkit-linear-gradient(transparent, rgba(0, 0, 0, 0.05));
@@ -1392,19 +1392,19 @@
 }
 .ui.grey.buttons .button:hover,
 .ui.grey.button:hover {
-  background-color: #ababab;
+  background-color: #363c4a;
   color: #FFFFFF;
   text-shadow: none;
 }
 .ui.grey.buttons .button:focus,
 .ui.grey.button:focus {
-  background-color: #b2b2b2;
+  background-color: #3c4353;
   color: #FFFFFF;
   text-shadow: none;
 }
 .ui.grey.buttons .button:active,
 .ui.grey.button:active {
-  background-color: #b8b8b8;
+  background-color: #414859;
   color: #FFFFFF;
   text-shadow: none;
 }
@@ -1412,7 +1412,7 @@
 .ui.grey.buttons .active.button:active,
 .ui.grey.active.button,
 .ui.grey.button .active.button:active {
-  background-color: #919191;
+  background-color: #20242c;
   color: #FFFFFF;
   text-shadow: none;
 }
@@ -1420,31 +1420,31 @@
 /* Basic */
 .ui.basic.grey.buttons .button,
 .ui.basic.grey.button {
-  box-shadow: 0px 0px 0px 0px #9E9E9E inset !important;
-  color: #9E9E9E !important;
+  box-shadow: 0px 0px 0px 0px #2b303b inset !important;
+  color: #2b303b !important;
 }
 .ui.basic.grey.buttons .button:hover,
 .ui.basic.grey.button:hover {
   background: transparent !important;
-  box-shadow: 0px 0px 0px 1px #ababab inset !important;
-  color: #ababab !important;
+  box-shadow: 0px 0px 0px 1px #363c4a inset !important;
+  color: #363c4a !important;
 }
 .ui.basic.grey.buttons .button:focus,
 .ui.basic.grey.button:focus {
   background: transparent !important;
-  box-shadow: 0px 0px 0px 1px #b2b2b2 inset !important;
-  color: #ababab !important;
+  box-shadow: 0px 0px 0px 1px #3c4353 inset !important;
+  color: #363c4a !important;
 }
 .ui.basic.grey.buttons .active.button,
 .ui.basic.grey.active.button {
   background: transparent !important;
-  box-shadow: 0px 0px 0px 1px #919191 inset !important;
-  color: #b8b8b8 !important;
+  box-shadow: 0px 0px 0px 1px #20242c inset !important;
+  color: #414859 !important;
 }
 .ui.basic.grey.buttons .button:active,
 .ui.basic.grey.button:active {
-  box-shadow: 0px 0px 0px 1px #b8b8b8 inset !important;
-  color: #b8b8b8 !important;
+  box-shadow: 0px 0px 0px 1px #414859 inset !important;
+  color: #414859 !important;
 }
 .ui.buttons:not(.vertical) > .basic.grey.button:not(:first-child) {
   margin-left: -1px;

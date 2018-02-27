@@ -87,7 +87,7 @@ export default class RequestFormStep3 extends Component {
 
   reserveCalifornia() {
     return (
-      <Grid.Column mobile="16" computer="8" tablet="8">
+      <Grid.Column mobile="16" computer="8" tablet="8" padded="vertically">
         <Grid>
           <Grid.Column width="8">
             <Control.checkbox

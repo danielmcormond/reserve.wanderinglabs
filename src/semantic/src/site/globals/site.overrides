@@ -35,3 +35,10 @@
     display: none !important;
   }
 }
+
+
+@media only screen and (min-width: @computerBreakpoint) {
+  [class*="mobile only"]:not(.computer) {
+    display: none !important;
+  }
+}

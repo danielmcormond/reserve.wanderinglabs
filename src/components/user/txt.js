@@ -1,12 +1,7 @@
 import _ from "lodash";
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Form, Header, Button, Icon, List, Segment } from "semantic-ui-react";
-
-import { Link } from "react-router-dom";
-import { userSettings } from "../../actions/userActions";
-
-import Premium from "./premium.js";
+import { Form, Header, Icon, List, Segment } from "semantic-ui-react";
 
 import {
   addNotificationMethod,

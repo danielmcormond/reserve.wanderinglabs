@@ -8,7 +8,7 @@ import SemanticInput from "../../semanticInput";
 export default class RequestFormStep4 extends Component {
   render() {
     return (
-      <Grid>
+      <Grid padded="vertically">
         <Grid.Column computer="8" tablet="8" mobile="16">
           <Control
             model=".step4.email"

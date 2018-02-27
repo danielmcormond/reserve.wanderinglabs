@@ -56,7 +56,8 @@
     "api",
     "form",
     "state",
-    "visibility"
+    "visibility",
+    "sidebar"
   ],
   "version": "2.2.10"
 }
