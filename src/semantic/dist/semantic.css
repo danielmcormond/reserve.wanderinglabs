@@ -4390,6 +4390,10 @@ input::selection {
     margin-left: 24px !important;
     margin-right: 24px !important;
   }
+
+  .pushable {
+    min-height: calc(100vh - 46px);
+  }
 }
 /*!
  * # Semantic UI 2.2.10 - Divider

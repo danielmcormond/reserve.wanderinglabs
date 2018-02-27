@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { formStepInc, formStepDec } from "../../../actions/requestFormActions";
-import { Container, Icon, Menu, Header } from "semantic-ui-react";
+import { Icon, Header } from "semantic-ui-react";
 
 @connect(store => {
   return {

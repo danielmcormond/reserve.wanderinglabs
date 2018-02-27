@@ -13,7 +13,6 @@ import RequestFormSteps from "../request/form/steps";
 import RequestShow from "../request/show";
 import RequestSuccess from "../request/success";
 
-import Footer from "./footer";
 import Nav from "./nav";
 import MenuBar from "./menuBar";
 import FrontPage from "../frontPage";
@@ -29,6 +28,9 @@ import UserSettings from "../user/settings";
 import requireAuth from "../sessions/authenticated";
 import AvailabilityImports from "../availabilityImports";
 import AvailabilityMatchClick from "../availabilityMatchClick";
+
+import PagePremium from "../pages/premium";
+import PageAbout from "../pages/about";
 
 @connect(store => {
   return {
@@ -95,12 +97,14 @@ export default class Layout extends Component {
               <Route exact path="/sign-in/:token" component={SessionCreate} />
               <Route exact path="/sign-out" component={SessionDestroy} />
 
+              <Route exact path="/premium" component={PagePremium} />
+              <Route exact path="/about" component={PageAbout} />
+
               <Route
                 exact
                 path="/settings"
                 component={requireAuth(UserSettings, SessionNew)}
               />
-              <Footer />
             </Sidebar.Pusher>
           </Sidebar.Pushable>
         </div>

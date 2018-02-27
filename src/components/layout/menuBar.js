@@ -88,7 +88,7 @@ export default class MenuBar extends Component {
           Go Premium
         </Menu.Item>
 
-        <Menu.Item name="what" as={Link} to="/what">
+        <Menu.Item name="about" as={Link} to="/about">
           <Icon name="info" />
           About
         </Menu.Item>

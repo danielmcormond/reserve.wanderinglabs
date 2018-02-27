@@ -1,13 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import {
-  Container,
-  Divider,
-  Grid,
-  Header,
-  Icon,
-  Menu
-} from "semantic-ui-react";
+import { Divider, Grid, Header, Icon, Menu } from "semantic-ui-react";
 
 import { Link } from "react-router-dom";
 import { userSettings } from "../../actions/userActions";
@@ -41,7 +34,6 @@ export default class UserSettings extends Component {
         </Header>
         <Grid>
           <Grid.Column computer="8" tablet="8" mobile="16">
-
             <Menu color="green">
               {isAuthenticated &&
                 <Menu.Item name="sessionDestroy" as={Link} to="/sign-out">
