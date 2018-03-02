@@ -20687,6 +20687,10 @@ Floated Menu / Item
 .ui.vertical.menu .header.item {
   font-size: 1.25rem;
 }
+
+.ui.menu.fixed {
+  margin: 0 !important;
+}
 /*!
  * # Semantic UI 2.2.10 - Message
  * http://github.com/semantic-org/semantic-ui/

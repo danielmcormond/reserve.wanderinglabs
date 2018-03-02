@@ -6,3 +6,7 @@
 .ui.vertical.menu .header.item {
   font-size: 1.25rem;
 }
+
+.ui.menu.fixed {
+  margin: 0 !important;
+}
