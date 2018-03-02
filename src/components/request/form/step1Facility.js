@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Dropdown, Header, Label } from "semantic-ui-react";
+import { Dropdown, Header, Input, Label } from "semantic-ui-react";
 import { Errors } from "react-redux-form";
 
 import { fetchFacilities } from "../../../actions/facilitiesActions";
@@ -15,46 +15,22 @@ import { formSetFacility } from "../../../actions/requestFormActions";
   };
 })
 export default class RequestFormStep1Facility extends Component {
-  handleChange = (e, value) => {
-    this.props.dispatch(formSetFacility(value.value));
-  };
-
-  handleSearchChange = (e, value) => {
-    this.props.dispatch(fetchFacilities(value));
+  handleSearchChange = (event) => {
+    this.props.dispatch(fetchFacilities(event.target.value));
   };
 
   render() {
-    const { facilities, step1 } = this.props;
+    const { step1 } = this.props;
     const facilityId = step1.facilityId;
-
-    const facilitiesOptions = facilities.map(facility => {
-      return {
-        key: facility.id,
-        text: facility.name,
-        value: facility.id,
-        content: (
-          <Header
-            as="h5"
-            content={facility.name}
-            subheader={facility.sub_name}
-          />
-        )
-      };
-    });
 
     return (
       <div>
         <label>Campground or Facility to reserve at:</label>
-        <Dropdown
+        <Input
           fluid
-          search
-          value={facilityId}
+
           placeholder="Search..."
-          options={facilitiesOptions}
-          selection
-          onChange={this.handleChange}
-          noResultsMessage={null}
-          onSearchChange={this.handleSearchChange}
+          onChange={this.handleSearchChange}
         />
         <Errors
           model="availabilityRequestForm.step1.facilityId"
