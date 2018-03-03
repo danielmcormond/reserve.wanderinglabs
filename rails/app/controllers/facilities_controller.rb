@@ -5,7 +5,7 @@ class FacilitiesController < ApplicationController
     @facilities = @facilities.where(type: filters) unless filters.empty?
 
     if params[:q].present? && @facilities.count < 15
-      @more_facilities = Facility.order('LOWER(parent_name) ASC').limit(15 - @facilities.count)
+      @more_facilities = Facility.order('LOWER(parent_name) ASC, LOWER(name) ASC').limit(15 - @facilities.count)
       @more_facilities = @more_facilities.where('parent_name ILIKE ?', "#{params[:q]}%") if params[:q]
       @more_facilities = @more_facilities.where(type: filters) unless filters.empty?
       @combined_facilities = @facilities + @more_facilities
