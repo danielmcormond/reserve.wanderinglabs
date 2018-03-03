@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { Grid } from "semantic-ui-react";
 
-import RequestFormStepButtons from "./stepButtons";
-import Premium from "../../user/premium.js";
 import RequestFormStep1Facility from "./step1Facility.js";
 import RequestFormStep1Table from "./step1Table.js";
 export default class RequestFormStep1 extends Component {

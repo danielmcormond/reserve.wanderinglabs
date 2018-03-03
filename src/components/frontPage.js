@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Button, Divider, Grid, Header, Icon } from "semantic-ui-react";
-import { push } from "react-router-redux";
 import { Link } from "react-router-dom";
 
 import Premium from "./user/premium.js";
@@ -46,7 +45,6 @@ export default class FrontPage extends Component {
 
             <Button
               fluid
-              as="a"
               color="green"
               floated="right"
               size="huge"

@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Header, Label, List, Icon } from "semantic-ui-react";
-import { Errors } from "react-redux-form";
+import { Header, Icon, List } from "semantic-ui-react";
 
 import {
   formSetFacility,
@@ -11,8 +10,6 @@ import {
 @connect(store => {
   return {
     facilities: store.facilities.facilities,
-    step1: store.availabilityRequestForm.step1,
-    step1Valid: store.availabilityRequestForm.forms.step1.$form.valid,
     loading: store.facilities.fetching
   };
 })
