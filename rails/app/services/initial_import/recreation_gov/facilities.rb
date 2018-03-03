@@ -10,7 +10,9 @@ module InitialImport::RecreationGov
         puts "#{x}: #{data['FacilityName']}"
         facility = agency.facilities.find_or_initialize_by(name: data['FacilityName'])
         details = InitialImport::RecreationGov::FacilityDetails.new(data).details
-        facility.update_attribute(:details, details)
+        if details.keys.sort != facility.details&.keys&.sort
+          facility.update_attribute(:details, details)
+        end
       end
       puts "Now: #{agency.reload.facilities.count}"
       nil

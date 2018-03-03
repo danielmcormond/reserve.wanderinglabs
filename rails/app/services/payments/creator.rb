@@ -1,7 +1,7 @@
 class Payments::Creator
   attr_reader :params, :current_user
   def initialize(params, current_user = nil)
-    @params = params
+    @params = params.deep_symbolize_keys
     @current_user = current_user
   end
 

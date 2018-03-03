@@ -1,7 +1,10 @@
 InitialImport::ReserveAmerica::Agencies.import
+InitialImport::ReserveAmerica::Base.import
 
 
-
+Facility::ReserveAmerica.where('created_at > ?', 1.hour.ago).all.each do |facility|
+  InitialImport::ReserveAmerica::Sites.new(facility).import
+end
 
 ActiveRecord::Base.logger.level = 1
 

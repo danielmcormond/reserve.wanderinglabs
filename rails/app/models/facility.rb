@@ -33,4 +33,12 @@ class Facility < ApplicationRecord
   def toggle_premium_scrape
     update_attribute(:premium_scrape, !premium_scrape)
   end
+
+  def sub_name
+    ''
+  end
+
+  def self.scrape
+    Scrape.new(self).work
+  end
 end
