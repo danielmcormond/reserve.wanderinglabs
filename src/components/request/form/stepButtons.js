@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Button, Divider, Icon } from "semantic-ui-react";
+import { Button, Divider, Icon, Grid } from "semantic-ui-react";
 
 import { formStepInc } from "../../../actions/requestFormActions";
 
@@ -23,23 +23,26 @@ export default class RequestFormStepButtons extends Component {
     const { currentStep } = this.props;
 
     return (
-      <div>
-        <Divider hidden />
-        {currentStep !== this.lastStep &&
-          <Button
-            as="a"
-            color="green"
-            floated="right"
-            onClick={() => this.nextStep()}
-          >
-            Next Step
-            <Icon name="chevron right" />
-          </Button>}
-        {currentStep === this.lastStep &&
-          <Button color="green" floated="right">
-            Submit Request
-          </Button>}
-      </div>
+      <Grid>
+        <Grid.Column floated="right" mobile="16" computer="8" tablet="8">
+          <Divider hidden />
+          {currentStep !== this.lastStep &&
+            <Button
+              as="a"
+              size="large"
+              color="green"
+              fluid
+              onClick={() => this.nextStep()}
+            >
+              Next Step
+              <Icon name="chevron right" />
+            </Button>}
+          {currentStep === this.lastStep &&
+            <Button size="large" color="green" fluid>
+              Submit Request
+            </Button>}
+        </Grid.Column>
+      </Grid>
     );
   }
 }

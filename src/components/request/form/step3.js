@@ -116,7 +116,7 @@ export default class RequestFormStep3 extends Component {
     const { type, electric, isReserveCalifornia } = this.props;
 
     return (
-      <Grid>
+      <Grid style={{ marginTop: ".25em" }}>
         <Grid.Column mobile="16">
           <label>Site Type</label>
           <div>
@@ -130,7 +130,7 @@ export default class RequestFormStep3 extends Component {
           </div>
         </Grid.Column>
         <Grid.Column mobile="8">
-          <label>Minimum site Length</label>
+          <label>Min Site Length</label>
           <Control model=".step3.length" component={SemanticInput} />
         </Grid.Column>
         <Grid.Column mobile="8">

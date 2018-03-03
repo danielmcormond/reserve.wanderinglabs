@@ -91,7 +91,7 @@ export default class RequestFormStep2 extends Component {
               </Label>}
           />
         </Grid.Column>
-        <Grid.Column computer="8" tablet="12" mobile="12">
+        <Grid.Column computer="8" tablet="12" mobile="16">
           <Control
             model=".step2.stayLength"
             component={SemanticInput}
