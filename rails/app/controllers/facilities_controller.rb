@@ -46,9 +46,9 @@ class FacilitiesController < ApplicationController
 
   def filters
     f = []
-    f.push('Facility::ReserveAmerica') if params[:f].include?('reserve_america')
-    f.push('Facility::ReserveCalifornia') if params[:f].include?('reserve_california')
-    f.push('Facility::RecreationGov') if params[:f].include?('recreation_gov')
+    f.push('Facility::ReserveAmerica') if params[:f].present? && params[:f].include?('reserve_america')
+    f.push('Facility::ReserveCalifornia') if params[:f].present? && params[:f].include?('reserve_california')
+    f.push('Facility::RecreationGov') if params[:f].present? && params[:f].include?('recreation_gov')
     f
   end
 end
