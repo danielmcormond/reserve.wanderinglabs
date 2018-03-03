@@ -1,7 +1,8 @@
 export default function reducer(state={
     ars: [],
     ar: {
-      facility: {}
+      facility: {},
+      status: ''
     },
     fetching: false,
     fetched: false,

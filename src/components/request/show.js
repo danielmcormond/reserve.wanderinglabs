@@ -77,6 +77,13 @@ export default class RequestShow extends Component {
     }
   }
 
+  get titleStatus() {
+    return (
+      this.props.ar.status.charAt(0).toUpperCase() +
+      this.props.ar.status.slice(1)
+    );
+  }
+
   render() {
     const { ar } = this.props;
 
@@ -88,7 +95,9 @@ export default class RequestShow extends Component {
               <Icon name="marker" />
               <Header.Content>
                 {ar.facility.name}
-                <Header.Subheader>{ar.facility.sub_name}</Header.Subheader>
+                <Header.Subheader>
+                  {ar.facility.sub_name}
+                </Header.Subheader>
               </Header.Content>
             </Header>
             <Divider hidden />
@@ -101,30 +110,37 @@ export default class RequestShow extends Component {
                   computer="8"
                   mobile="8"
                 >
-                  <List size="medium" relaxed>
+                  <List relaxed>
                     <List.Item>
                       <List.Header>Arriving between</List.Header>
-                      <DateFormat format="MM/DD" date={ar.date_start} />
-                      &nbsp;to&nbsp;
-                      <DateFormat format="MM/DD/YYYY" date={ar.date_end} />
+                      <List.Description>
+                        <DateFormat format="MM/DD/YYYY" date={ar.date_start} />
+                        {" "} & {" "}
+                        <DateFormat format="MM/DD/YYYY" date={ar.date_end} />
+                      </List.Description>
                     </List.Item>
+
                     <List.Item>
                       <List.Header>Stay Length</List.Header>
                       <List.Description>
-                        {ar.stay_length} days
+                        {ar.stay_length} nights
                       </List.Description>
                     </List.Item>
 
                     <List.Item>
                       <List.Header>Filters</List.Header>
-                      {ar.summary}
+                      <List.Description>
+                        {ar.summary}
+                      </List.Description>
                     </List.Item>
+
                     <List.Item>
                       <List.Header>Matching Site Count</List.Header>
-                      {ar.site_count}
+                      <List.Description>
+                        {ar.site_count}
+                      </List.Description>
                     </List.Item>
                   </List>
-
                 </Grid.Column>
                 <Grid.Column
                   verticalAlign="middle"
@@ -135,18 +151,26 @@ export default class RequestShow extends Component {
                   <List size="medium" relaxed>
                     <List.Item>
                       <List.Header>Status</List.Header>
-                      {ar.status}
+                      <List.Description>
+                        {this.titleStatus}
+                      </List.Description>
                     </List.Item>
+
                     <List.Item>
                       <List.Header>Checked Count</List.Header>
-                      {ar.checked_count}
+                      <List.Description>
+                        {ar.checked_count}
+                      </List.Description>
                     </List.Item>
+
                     <List.Item>
                       <List.Header>Last Checked</List.Header>
-                      <DateFormat
-                        format="MM/DD/YYYY HH:mm"
-                        date={ar.checked_at}
-                      />
+                      <List.Description>
+                        <DateFormat
+                          format="M/D/YYYY hh:mm"
+                          date={ar.checked_at}
+                        />
+                      </List.Description>
                     </List.Item>
                   </List>
 

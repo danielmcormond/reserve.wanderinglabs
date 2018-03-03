@@ -13091,6 +13091,11 @@ ol.ui.horizontal.list li:before,
 /*******************************
     User Variable Overrides
 *******************************/
+
+.ui.list .list > .item .description,
+.ui.list > .item .description {
+  padding-top: 0.28571429em;
+}
 /*!
  * # Semantic UI 2.2.10 - Loader
  * http://github.com/semantic-org/semantic-ui/
