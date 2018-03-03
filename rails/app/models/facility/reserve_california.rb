@@ -8,7 +8,7 @@ class Facility::ReserveCalifornia < Facility
   end
 
   def sub_name
-
+    'California State Parks'
   end
 
   def sns_scraper

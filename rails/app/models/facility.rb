@@ -14,6 +14,10 @@ class Facility < ApplicationRecord
     Facility.left_outer_joins(:availability_requests).merge(AvailabilityRequest.active).group('facilities.id')
   end
 
+  def self.top_facilities
+    Facility.select("facilities.*, COUNT('availability_requests.id') as ar_count").left_outer_joins(:availability_requests).merge(AvailabilityRequest.active).group('facilities.id').order('ar_count desc')
+  end
+
   def scrape_start
     [Time.now.to_date, availability_requests.active.map(&:date_start).sort.first].max
   end

@@ -1,7 +1,18 @@
 class FacilitiesController < ApplicationController
   def index
-    @facilities = Facility.lookup(params[:q])
-    render json: @facilities
+    @facilities = facility_scope.limit(15)
+    @facilities = @facilities.where('name ILIKE ?', "#{params[:q]}%") if params[:q]
+    @facilities = @facilities.where(type: filters) unless filters.empty?
+
+    if params[:q].present? && @facilities.count < 15
+      @more_facilities = Facility.order('LOWER(parent_name) ASC').limit(15 - @facilities.count)
+      @more_facilities = @more_facilities.where('parent_name ILIKE ?', "#{params[:q]}%") if params[:q]
+      @more_facilities = @more_facilities.where(type: filters) unless filters.empty?
+      @combined_facilities = @facilities + @more_facilities
+      render json: @combined_facilities
+    else
+      render json: @facilities
+    end
   end
 
   def active
@@ -23,5 +34,21 @@ class FacilitiesController < ApplicationController
     end
 
     render json: avails_mapped
+  end
+
+  def facility_scope
+    if params[:q].present?
+      Facility.order('LOWER(name) ASC')
+    else
+      Facility.top_facilities
+    end
+  end
+
+  def filters
+    f = []
+    f.push('Facility::ReserveAmerica') if params[:f].include?('reserve_america')
+    f.push('Facility::ReserveCalifornia') if params[:f].include?('reserve_california')
+    f.push('Facility::RecreationGov') if params[:f].include?('recreation_gov')
+    f
   end
 end
