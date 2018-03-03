@@ -18,6 +18,7 @@ class AvailabilityRequest < ApplicationRecord
 
   after_create :welcome_email
 
+  validates :user, presence: true
   validates :stay_length, presence: true
 
   def available_matches(notified = false)
