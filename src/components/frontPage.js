@@ -2,10 +2,9 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Button, Divider, Grid, Header, Icon } from "semantic-ui-react";
 import { push } from "react-router-redux";
+import { Link } from "react-router-dom";
 
 import Premium from "./user/premium.js";
-import RequestFormStep1Facility from "./request/form/step1Facility.js";
-import { formStepInc } from "../actions/requestFormActions";
 
 @connect(store => {
   return {
@@ -14,15 +13,6 @@ import { formStepInc } from "../actions/requestFormActions";
   };
 })
 export default class FrontPage extends Component {
-  componentWillMount() {
-    // this.props.dispatch(fetchAvailabilityRequests());
-  }
-
-  nextStep() {
-    this.props.dispatch(formStepInc());
-    this.props.dispatch(push("/new"));
-  }
-
   render() {
     return (
       <div>
@@ -37,25 +27,7 @@ export default class FrontPage extends Component {
         </Header>
 
         <Divider hidden />
-        <Grid>
-          <Grid.Column computer="16" tablet="16" mobile="16">
-            <div className="ui big form">
-              <div className="field">
-                <RequestFormStep1Facility />
-              </div>
 
-              <Button
-                as="a"
-                color="green"
-                floated="right"
-                onClick={() => this.nextStep()}
-              >
-                Next Step
-                <Icon name="chevron right" />
-              </Button>
-            </div>
-          </Grid.Column>
-        </Grid>
         <Grid>
           <Grid.Column computer="8" tablet="8" mobile="16">
             <div className="frontPageInstructions">
@@ -70,6 +42,20 @@ export default class FrontPage extends Component {
               </p>
               <p>It will then be up to you to make the actual reservation.</p>
             </div>
+            <Divider hidden />
+
+            <Button
+              fluid
+              as="a"
+              color="green"
+              floated="right"
+              size="huge"
+              as={Link}
+              to="new"
+            >
+              Make a Request
+              <Icon name="chevron right" />
+            </Button>
           </Grid.Column>
           <Grid.Column computer="8" tablet="8" mobile="16">
             <Premium />

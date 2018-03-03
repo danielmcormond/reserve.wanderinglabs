@@ -38,6 +38,7 @@ export default class RequestFormSteps extends Component {
         <Header as="h4">
           <Header.Content>
             <Icon
+              link
               disabled={currentStep === 1}
               onClick={() => this.prevStep()}
               name="chevron left"

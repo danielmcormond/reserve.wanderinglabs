@@ -12,9 +12,6 @@ export default class RequestFormStep1 extends Component {
         <Grid.Column computer="8" tablet="8" mobile="16">
           <RequestFormStep1Facility />
         </Grid.Column>
-        <Grid.Column computer="8" tablet="8" mobile="16">
-          <Premium />
-        </Grid.Column>
 
         <Grid.Row>
           <Grid.Column computer="16" tablet="16" mobile="16">
@@ -25,3 +22,8 @@ export default class RequestFormStep1 extends Component {
     );
   }
 }
+
+
+// <Grid.Column only="computer" computer="8">
+//   <Premium />
+// </Grid.Column>

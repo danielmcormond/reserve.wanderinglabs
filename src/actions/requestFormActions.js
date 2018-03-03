@@ -75,13 +75,17 @@ export function formStepGo(step) {
   return function(dispatch) {
     let current_step = store.getState().requestForm;
 
-    dispatch(formStepValidate());
-
-    let stepValid = store.getState().availabilityRequestForm.forms[
-      `step${current_step}`
-    ].$form.valid;
-    stepValid && dispatch({ type: "FORM_STEP_GO", payload: step });
-    stepValid && window.scrollTo(0, 0);
+    if (step > current_step) {
+      dispatch(formStepValidate());
+      let stepValid = store.getState().availabilityRequestForm.forms[
+        `step${current_step}`
+      ].$form.valid;
+      stepValid && dispatch({ type: "FORM_STEP_GO", payload: step });
+      stepValid && window.scrollTo(0, 0);
+    } else {
+      dispatch({ type: "FORM_STEP_GO", payload: step });
+      window.scrollTo(0, 0);
+    }
   };
 }
 
