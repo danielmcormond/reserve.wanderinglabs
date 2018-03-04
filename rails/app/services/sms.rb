@@ -13,13 +13,16 @@ class Sms
   end
 
   def send
-    msg = client.messages.create(
+    msg = client.messages.create(params)
+    puts msg.sid
+  end
+
+  def params
+    {
       from: '+18028515095',
       to: "+#{cleaned_with_prefix}",
-      body: availability_request.sms_body
-    )
-
-    puts msg.sid
+      body: availability_request.sms_body,
+    }
   end
 
   def cleaned_with_prefix
@@ -27,6 +30,6 @@ class Sms
   end
 
   def cleaned_sms
-    notification_method.param.scan(/\d+/).first
+    notification_method.param.scan(/\d+/).join('')
   end
 end

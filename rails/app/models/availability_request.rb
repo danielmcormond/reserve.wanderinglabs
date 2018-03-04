@@ -29,8 +29,10 @@ class AvailabilityRequest < ApplicationRecord
       .order('avail_date ASC')
   end
 
-  def cache_site_ids
+  def cache_site_ids(commit = false)
     self.site_ids = site_matcher.matching_site_ids
+    save if commit
+    site_ids.size
   end
 
   def site_matcher

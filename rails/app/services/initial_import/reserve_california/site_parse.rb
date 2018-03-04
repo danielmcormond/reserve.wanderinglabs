@@ -56,8 +56,8 @@ module InitialImport::ReserveCalifornia
     def site_type
       if dpr_site_type.include?('group')
         :group
-      elsif dpr_site_type.include?('cabin')
-        :cabin
+      elsif dpr_site_type.include?('cabin') || dpr_site_type.include?('cottage')
+        :other
       elsif dpr_site_type.include?('tent')
         :tent
       elsif dpr_site_type.include?('hike')
