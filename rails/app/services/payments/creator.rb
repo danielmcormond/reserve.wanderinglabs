@@ -33,6 +33,7 @@ class Payments::Creator
   end
 
   def paypal_payment
+    Rails.logger.warn("PAYPAYMENT #{params.inspect} - #{params[:payment].inspect}")
     @_paypal ||= PayPal::SDK::REST::Payment.find(params[:payment][:details][:paymentID])
   end
 end
