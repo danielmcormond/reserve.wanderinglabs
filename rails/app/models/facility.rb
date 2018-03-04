@@ -42,7 +42,7 @@ class Facility < ApplicationRecord
     ''
   end
 
-  def self.scrape
+  def scrape
     Scrape.new(self).work
   end
 end
