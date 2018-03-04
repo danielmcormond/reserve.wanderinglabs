@@ -6,17 +6,22 @@ class AvailabilityRequests::Creator
     @current_user = current_user
   end
 
+  def object
+    return @_ar if @_ar.present?
+    @_ar = AvailabilityRequest.new(merged_params)
+    @_ar.date_end ||= @_ar.date_start
+    @_ar.cache_site_ids
+    @_ar.status = :active
+    @_ar
+  end
+
   def create
-    ar = AvailabilityRequest.new(merged_params)
-    ar.date_end ||= ar.date_start
-    ar.cache_site_ids
-    ar.status = :active
-    if ar.save
-      ar.reload # so we have uuid
+    if object.save
+      object.reload # so we have uuid
     else
-      Rails.logger.fatal ar.errors.to_json
+      Rails.logger.fatal object.errors.to_json
     end
-    ar
+    object
   end
 
   def merged_params

@@ -12,6 +12,9 @@ Rails.application.routes.draw do
   resources :availability_imports
   resources :availability_requests do
     resources :availability_matches, only: %i[index]
+    collection do
+      post :sites_count
+    end
   end
 
   resources :availability_matches, only: [] do
