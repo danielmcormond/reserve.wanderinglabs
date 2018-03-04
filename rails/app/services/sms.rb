@@ -15,10 +15,18 @@ class Sms
   def send
     msg = client.messages.create(
       from: '+18028515095',
-      to: "+#{notification_method.param}",
+      to: "+#{cleaned_with_prefix}",
       body: availability_request.sms_body
     )
 
     puts msg.sid
+  end
+
+  def cleaned_with_prefix
+    cleaned_sms.start_with?('1') ? cleaned_sms : "1#{cleaned_sms}"
+  end
+
+  def cleaned_sms
+    notification_method.param.scan(/\d+/).first
   end
 end
