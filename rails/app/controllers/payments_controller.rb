@@ -1,6 +1,6 @@
 class PaymentsController < ApplicationController
   def create
-    payment = Payments::Creator.new(params.to_h, current_user).create
+    payment = Payments::Creator.new(params.require(:payment).permit!.to_h, current_user).create
     if payment.user # TODO: this is a security hole.
       render json: payment.reload.user
     else
