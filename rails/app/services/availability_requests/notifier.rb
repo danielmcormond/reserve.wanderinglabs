@@ -28,7 +28,7 @@ module AvailabilityRequests
 
     def notify_for(nm)
       if nm.notification_type == :sms
-        if AvailabilityNotification.where(notification_method_id: nm.id).count < nm.user.sms_limit
+        if availability_request.notify_sms && AvailabilityNotification.where(notification_method_id: nm.id).count < nm.user.sms_limit
           Sms.new(availability_request, nm).send
         end
       else

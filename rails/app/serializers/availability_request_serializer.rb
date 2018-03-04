@@ -1,7 +1,7 @@
 class AvailabilityRequestSerializer < ActiveModel::Serializer
   attributes :uuid, :user_id, :facility_id,
              :date_start, :date_end, :stay_length, :matches_availabile_count,
-             :status, :checked_count, :checked_at, :premium, :summary, :site_count
+             :status, :checked_count, :checked_at, :premium, :summary, :site_count, :notify_sms
 
   belongs_to :facility
 
