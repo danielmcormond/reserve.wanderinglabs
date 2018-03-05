@@ -1,5 +1,10 @@
 class Payments::Creator
   attr_reader :params, :current_user
+
+  def self.create(params, current_user = nil)
+    new(params, current_user).create
+  end
+
   def initialize(params, current_user = nil)
     @params = params.deep_symbolize_keys
     @current_user = current_user
@@ -33,7 +38,6 @@ class Payments::Creator
   end
 
   def paypal_payment
-    Rails.logger.warn("PAYPAYMENT #{params.inspect} - #{params[:payment].inspect}")
-    @_paypal ||= PayPal::SDK::REST::Payment.find(params[:payment][:details][:paymentID])
+    @_paypal ||= PayPal::SDK::REST::Payment.find(params[:details][:paymentID])
   end
 end
