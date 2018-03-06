@@ -1,10 +1,17 @@
 import React, { Component } from "react";
-import { Control } from "react-redux-form";
-import { Grid } from "semantic-ui-react";
+import { connect } from "react-redux";
+import { Control, Errors } from "react-redux-form";
+import { Divider, Grid, Label } from "semantic-ui-react";
 
 import RequestFormStepButtons from "./stepButtons";
+import { formStepValidate } from "../../../actions/requestFormActions";
 import SemanticInput from "../../semanticInput";
 
+@connect(store => {
+  return {
+    currentStep: store.requestForm
+  };
+})
 export default class RequestFormStep4 extends Component {
   render() {
     return (
@@ -16,7 +23,23 @@ export default class RequestFormStep4 extends Component {
             controlProps={{
               label: "Email Address"
             }}
+            validators={{
+              required: val => val.length
+            }}
           />
+          <Errors
+            model="availabilityRequestForm.step4.email"
+            messages={{
+              required: "Enter Your Email Address"
+            }}
+            show="touched"
+            component={props =>
+              <Label basic color="green" pointing>
+                {props.children}
+              </Label>}
+          />
+
+          <Divider hidden />
           <RequestFormStepButtons />
         </Grid.Column>
       </Grid>

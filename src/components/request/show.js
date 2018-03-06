@@ -1,13 +1,22 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Button, Divider, Grid, Header, Icon, List } from "semantic-ui-react";
+import {
+  Button,
+  Checkbox,
+  Divider,
+  Grid,
+  Header,
+  Icon,
+  List
+} from "semantic-ui-react";
 import { Link } from "react-router-dom";
 
 import DateFormat from "../utils/dateFormat";
 
 import {
   fetchAvailabilityRequest,
-  updateAvailabilityRequest
+  updateAvailabilityRequest,
+  updateAvailabilityRequestStatus
 } from "../../actions/availabilityRequestsActions";
 import AvailabilityMatches from "../availabilityMatches";
 import Premium from "../user/premium.js";
@@ -22,7 +31,7 @@ export default class RequestShow extends Component {
     console.log("params", this.props.match.params);
     if (this.props.match.params.status !== undefined) {
       this.props.dispatch(
-        updateAvailabilityRequest(
+        updateAvailabilityRequestStatus(
           this.props.match.params.uuid,
           this.props.match.params.status
         )
@@ -41,7 +50,7 @@ export default class RequestShow extends Component {
       newProps.match.params.status !== this.props.match.params.status
     ) {
       this.props.dispatch(
-        updateAvailabilityRequest(
+        updateAvailabilityRequestStatus(
           newProps.match.params.uuid,
           newProps.match.params.status
         )
@@ -50,6 +59,13 @@ export default class RequestShow extends Component {
       this.props.dispatch(fetchAvailabilityRequest(newProps.match.params.uuid));
     }
   }
+
+  toggleSms = () => {
+    const uuid = this.props.ar.uuid;
+    this.props.dispatch(
+      updateAvailabilityRequest(uuid, { notify_sms: !this.props.ar.notify_sms })
+    );
+  };
 
   get statusButtonProps() {
     // TODO: Refactor.. ugly and check if dates in past.
@@ -87,6 +103,12 @@ export default class RequestShow extends Component {
   render() {
     const { ar } = this.props;
 
+    const halfGridProps = {
+      tablet: 8,
+      computer: 8,
+      mobile: 8
+    };
+
     return (
       <div>
         <Grid>
@@ -104,19 +126,13 @@ export default class RequestShow extends Component {
 
             <Grid>
               <Grid.Row divided>
-                <Grid.Column
-                  verticalAlign="middle"
-                  tablet="8"
-                  computer="8"
-                  mobile="8"
-                >
+                <Grid.Column {...halfGridProps}>
                   <List relaxed>
                     <List.Item>
                       <List.Header>Arriving between</List.Header>
                       <List.Description>
-                        <DateFormat format="MM/DD/YYYY" date={ar.date_start} />
-                        {" "} & {" "}
-                        <DateFormat format="MM/DD/YYYY" date={ar.date_end} />
+                        <DateFormat format="MM/DD/YYYY" date={ar.date_start} /> {" "}
+                        & <DateFormat format="MM/DD/YYYY" date={ar.date_end} />
                       </List.Description>
                     </List.Item>
 
@@ -142,12 +158,8 @@ export default class RequestShow extends Component {
                     </List.Item>
                   </List>
                 </Grid.Column>
-                <Grid.Column
-                  verticalAlign="middle"
-                  tablet="8"
-                  computer="8"
-                  mobile="8"
-                >
+
+                <Grid.Column {...halfGridProps}>
                   <List size="medium" relaxed>
                     <List.Item>
                       <List.Header>Status</List.Header>
@@ -173,17 +185,29 @@ export default class RequestShow extends Component {
                       </List.Description>
                     </List.Item>
                   </List>
+                </Grid.Column>
+              </Grid.Row>
 
+              <Grid.Row>
+                <Grid.Column {...halfGridProps}>
+                  <Checkbox
+                    label="SMS Notifications"
+                    checked={ar.notify_sms}
+                    onChange={this.toggleSms}
+                  />
+                </Grid.Column>
+                <Grid.Column {...halfGridProps}>
                   <Button
                     as={Link}
                     fluid
-                    size="tiny"
+                    size="medium"
                     {...this.statusButtonProps}
                   />
                 </Grid.Column>
               </Grid.Row>
             </Grid>
           </Grid.Column>
+
           <Grid.Column only="computer" computer="8">
             <Premium />
           </Grid.Column>

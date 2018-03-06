@@ -6,6 +6,50 @@ import { setFlashMessage } from "../actions/flashActions";
 import reserveApi from "../utils/axios";
 import store from "../store";
 
+export function matchingSiteCount(values) {
+  return function(dispatch) {
+    let currentStep = store.getState().requestForm;
+    if (currentStep !== 3) {
+      return;
+    }
+    dispatch({ type: "SUBMIT_REQUEST" });
+
+    let apiValues = {
+      facility_id: values.step1.facilityId,
+      date_start: values.step2.dateStart,
+      date_end: values.step2.dateEnd,
+      stay_length: values.step2.stayLength,
+      email: values.step4.email,
+      sewer: values.step3.sewer,
+      water: values.step3.water,
+      pullthru: values.step3.pullthru,
+      min_length: values.step3.length,
+      min_electric: values.step3.electric,
+      site_premium: values.step3.sitePremium,
+      ignore_ada: values.step2.ignoreAda,
+      site_type: values.step3.type,
+      specific_site_ids: values.step3.siteIds,
+      arrival_days: values.step2.arrivalDays
+    };
+    reserveApi({
+      method: "post",
+      url: "/availability_requests/sites_count.json",
+      data: {
+        availability_request: apiValues
+      }
+    })
+      .then(response => {
+        dispatch({
+          type: "FETCH_AR_SITE_COUNT_FULFILLED",
+          payload: response.data.count
+        });
+      })
+      .catch(err => {
+        dispatch({ type: "SUBMIT_REQUEST_REJECTED", payload: err });
+      });
+  };
+}
+
 export function formSubmit(values) {
   return function(dispatch) {
     dispatch({ type: "SUBMIT_REQUEST" });

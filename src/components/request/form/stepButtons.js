@@ -23,26 +23,23 @@ export default class RequestFormStepButtons extends Component {
     const { currentStep } = this.props;
 
     return (
-      <Grid>
-        <Grid.Column floated="right" mobile="16" computer="8" tablet="8">
-          <Divider hidden />
-          {currentStep !== this.lastStep &&
-            <Button
-              as="a"
-              size="large"
-              color="green"
-              fluid
-              onClick={() => this.nextStep()}
-            >
-              Next Step
-              <Icon name="chevron right" />
-            </Button>}
-          {currentStep === this.lastStep &&
-            <Button size="large" color="green" fluid>
-              Submit Request
-            </Button>}
-        </Grid.Column>
-      </Grid>
+      <div>
+        {currentStep !== this.lastStep &&
+          <Button
+            as="a"
+            size="large"
+            color="green"
+            fluid
+            onClick={() => this.nextStep()}
+          >
+            Next Step
+            <Icon name="chevron right" />
+          </Button>}
+        {currentStep === this.lastStep &&
+          <Button size="large" color="green" fluid>
+            Submit Request
+          </Button>}
+      </div>
     );
   }
 }

@@ -42,10 +42,8 @@ export function fetchAvailabilityRequest(uuid) {
   };
 }
 
-export function updateAvailabilityRequest(uuid, codedStatus) {
+export function updateAvailabilityRequestStatus(uuid, codedStatus) {
   return function(dispatch) {
-    dispatch({ type: "UPDATE_AR" });
-
     let apiValues = {};
 
     // TODO: CLean up
@@ -61,7 +59,13 @@ export function updateAvailabilityRequest(uuid, codedStatus) {
       status = "active";
       apiValues.status = "active";
     }
+    dispatch(updateAvailabilityRequest(uuid, apiValues));
+  };
+}
 
+export function updateAvailabilityRequest(uuid, apiValues) {
+  return function(dispatch) {
+    dispatch({ type: "UPDATE_AR" });
     reserveApi({
       method: "put",
       url: `/availability_requests/${uuid}.json`,

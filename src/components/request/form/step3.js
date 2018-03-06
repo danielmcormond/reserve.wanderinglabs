@@ -17,7 +17,7 @@ const siteTypeOptions = [
   {
     text: "Tent or RV Sites",
     description: "You can tent in an RV site",
-    value: "tent_or_rv"
+    value: "rv_tent"
   },
   {
     text: "Tent Only Sites",
@@ -67,7 +67,8 @@ const electricOptions = [
     type: store.availabilityRequestForm.step3.type,
     electric: store.availabilityRequestForm.step3.electric,
     sitePremium: store.availabilityRequestForm.step3.sitePremium,
-    isReserveCalifornia: isReserveCalifornia
+    isReserveCalifornia: isReserveCalifornia,
+    matchingSiteCount: store.availabilityRequests.matchingSiteCount
   };
 })
 export default class RequestFormStep3 extends Component {
@@ -87,7 +88,7 @@ export default class RequestFormStep3 extends Component {
 
   reserveCalifornia() {
     return (
-      <Grid.Column mobile="16" computer="8" tablet="8" padded="vertically">
+      <Grid.Column mobile="16" computer="8" tablet="8">
         <Grid>
           <Grid.Column width="8">
             <Control.checkbox
@@ -113,7 +114,12 @@ export default class RequestFormStep3 extends Component {
     );
   }
   render() {
-    const { type, electric, isReserveCalifornia } = this.props;
+    const {
+      type,
+      electric,
+      isReserveCalifornia,
+      matchingSiteCount
+    } = this.props;
 
     return (
       <Grid style={{ marginTop: ".25em" }}>
@@ -185,9 +191,16 @@ export default class RequestFormStep3 extends Component {
           <RequestFormStep3Sites />
         </Grid.Column>
 
-        <Grid.Column computer="16" tablet="16" mobile="16">
-          <RequestFormStepButtons />
-        </Grid.Column>
+        <Grid.Row>
+          <Grid.Column computer="8" tablet="8" mobile="8">
+            <p>
+              Matching site count: {matchingSiteCount}
+            </p>
+          </Grid.Column>
+          <Grid.Column computer="8" tablet="8" mobile="8">
+            <RequestFormStepButtons />
+          </Grid.Column>
+        </Grid.Row>
       </Grid>
     );
   }

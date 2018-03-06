@@ -30,13 +30,14 @@ export default class RequestAll extends Component {
     const mappedArs = ars.map(ar =>
       <List.Item key={ar.uuid} onClick={() => this.clickedItem(ar.uuid)}>
         <List.Content floated="right">
+          {ar.notify_sms && <Icon name="mobile" size="large" />}
+
           <Label
             circular
             color={ar.matches_availabile_count > 0 ? "green" : "grey"}
             size="large"
-          >
-            {ar.matches_availabile_count}
-          </Label>
+            content={ar.matches_availabile_count}
+          />
         </List.Content>
         <List.Content>
           <List.Header>{ar.facility.name}</List.Header>
