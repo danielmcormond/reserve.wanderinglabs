@@ -506,7 +506,7 @@
 
 /* Red */
 .ui.red.segment:not(.inverted) {
-  border-top: 2px solid #F44336;
+  border-top: 2px solid #F44336 !important;
 }
 .ui.inverted.red.segment {
   background-color: #F44336 !important;
@@ -515,7 +515,7 @@
 
 /* Orange */
 .ui.orange.segment:not(.inverted) {
-  border-top: 2px solid #FF9800;
+  border-top: 2px solid #FF9800 !important;
 }
 .ui.inverted.orange.segment {
   background-color: #FF9800 !important;
@@ -524,7 +524,7 @@
 
 /* Yellow */
 .ui.yellow.segment:not(.inverted) {
-  border-top: 2px solid #FFEB3B;
+  border-top: 2px solid #FFEB3B !important;
 }
 .ui.inverted.yellow.segment {
   background-color: #FFEB3B !important;
@@ -533,7 +533,7 @@
 
 /* Olive */
 .ui.olive.segment:not(.inverted) {
-  border-top: 2px solid #B5CC18;
+  border-top: 2px solid #B5CC18 !important;
 }
 .ui.inverted.olive.segment {
   background-color: #B5CC18 !important;
@@ -542,7 +542,7 @@
 
 /* Green */
 .ui.green.segment:not(.inverted) {
-  border-top: 2px solid #77b57a;
+  border-top: 2px solid #77b57a !important;
 }
 .ui.inverted.green.segment {
   background-color: #77b57a !important;
@@ -551,7 +551,7 @@
 
 /* Teal */
 .ui.teal.segment:not(.inverted) {
-  border-top: 2px solid #1de9b6;
+  border-top: 2px solid #1de9b6 !important;
 }
 .ui.inverted.teal.segment {
   background-color: #1de9b6 !important;
@@ -560,7 +560,7 @@
 
 /* Blue */
 .ui.blue.segment:not(.inverted) {
-  border-top: 2px solid #2196F3;
+  border-top: 2px solid #2196F3 !important;
 }
 .ui.inverted.blue.segment {
   background-color: #2196F3 !important;
@@ -569,7 +569,7 @@
 
 /* Violet */
 .ui.violet.segment:not(.inverted) {
-  border-top: 2px solid #6435C9;
+  border-top: 2px solid #6435C9 !important;
 }
 .ui.inverted.violet.segment {
   background-color: #6435C9 !important;
@@ -578,7 +578,7 @@
 
 /* Purple */
 .ui.purple.segment:not(.inverted) {
-  border-top: 2px solid #9C27B0;
+  border-top: 2px solid #9C27B0 !important;
 }
 .ui.inverted.purple.segment {
   background-color: #9C27B0 !important;
@@ -587,7 +587,7 @@
 
 /* Pink */
 .ui.pink.segment:not(.inverted) {
-  border-top: 2px solid #E91E63;
+  border-top: 2px solid #E91E63 !important;
 }
 .ui.inverted.pink.segment {
   background-color: #E91E63 !important;
@@ -596,7 +596,7 @@
 
 /* Brown */
 .ui.brown.segment:not(.inverted) {
-  border-top: 2px solid #A5673F;
+  border-top: 2px solid #A5673F !important;
 }
 .ui.inverted.brown.segment {
   background-color: #A5673F !important;
@@ -605,7 +605,7 @@
 
 /* Grey */
 .ui.grey.segment:not(.inverted) {
-  border-top: 2px solid #2b303b;
+  border-top: 2px solid #2b303b !important;
 }
 .ui.inverted.grey.segment {
   background-color: #2b303b !important;
@@ -614,7 +614,7 @@
 
 /* Black */
 .ui.black.segment:not(.inverted) {
-  border-top: 2px solid #1B1C1D;
+  border-top: 2px solid #1B1C1D !important;
 }
 .ui.inverted.black.segment {
   background-color: #1B1C1D !important;

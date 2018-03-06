@@ -217,7 +217,6 @@
 
 /* Menu */
 .ui.menu .dropdown.item .menu {
-  left: 0px;
   min-width: calc(100% - 1px);
   border-radius: 0em 0em 4px 4px;
   background: #FFFFFF;
@@ -358,6 +357,16 @@
           Coupling
 *******************************/
 
+
+/*--------------
+     List
+---------------*/
+
+
+/* Menu divider shouldnt apply */
+.ui.menu .list .item:before {
+  background: none !important;
+}
 
 /*--------------
      Sidebar
@@ -1266,6 +1275,13 @@ Floated Menu / Item
   .ui.stackable.menu .right.item {
     margin-left: 0 !important;
   }
+  .ui.stackable.menu .right.menu,
+  .ui.stackable.menu .left.menu {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
 }
 
 /*--------------
@@ -1683,6 +1699,9 @@ Floated Menu / Item
       -ms-flex-pack: center;
           justify-content: center;
 }
+.ui.attached.item.menu {
+  margin: 0em -1px !important;
+}
 .ui.item.menu .item:last-child:before {
   display: none;
 }
@@ -1967,18 +1986,18 @@ Floated Menu / Item
 
 /* Huge */
 .ui.huge.menu {
-  font-size: 1.14285714rem;
+  font-size: 1.21428571rem;
 }
 .ui.huge.vertical.menu {
-  width: 20rem;
+  width: 22rem;
 }
 
 /* Big */
 .ui.big.menu {
-  font-size: 1.21428571rem;
+  font-size: 1.14285714rem;
 }
 .ui.big.vertical.menu {
-  width: 22rem;
+  width: 20rem;
 }
 
 /* Massive */

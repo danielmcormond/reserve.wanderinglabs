@@ -114,6 +114,11 @@
   border-top: none;
 }
 
+/* Repeated tbody */
+.ui.table tbody + tbody tr:first-child td {
+  border-top: 1px solid rgba(34, 36, 38, 0.1);
+}
+
 /* Table Cells */
 .ui.table td {
   padding: 0.78571429em 0.78571429em;
@@ -947,7 +952,7 @@
 .ui.inverted.table th {
   background-color: rgba(0, 0, 0, 0.15);
   border-color: rgba(255, 255, 255, 0.1) !important;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(255, 255, 255, 0.9) !important;
 }
 .ui.inverted.table tr td {
   border-color: rgba(255, 255, 255, 0.1) !important;

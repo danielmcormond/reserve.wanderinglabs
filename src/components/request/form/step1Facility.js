@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Button, Input, Label } from "semantic-ui-react";
 import { Errors } from "react-redux-form";
+import debounce from "debounce";
 
 import { fetchFacilities } from "../../../actions/facilitiesActions";
 
@@ -20,10 +21,10 @@ export default class RequestFormStep1Facility extends Component {
     this.doFetchFacilities();
   }
 
-  doFetchFacilities = () => {
+  doFetchFacilities = debounce(() => {
     const { filter, search } = this.state;
     this.props.dispatch(fetchFacilities(search, filter));
-  };
+  }, 400);
 
   handleSearchChange = event => {
     this.setState({ search: event.target.value }, () => {
@@ -45,6 +46,8 @@ export default class RequestFormStep1Facility extends Component {
 
   render() {
     const { filter } = this.state;
+    const { loading } = this.props;
+
     const filters = [
       {
         key: "reserve_america",
@@ -81,6 +84,7 @@ export default class RequestFormStep1Facility extends Component {
         <label>Campground or Facility to reserve at:</label>
         <Input
           fluid
+          loading={loading}
           icon="search"
           placeholder="Search..."
           onChange={this.handleSearchChange}

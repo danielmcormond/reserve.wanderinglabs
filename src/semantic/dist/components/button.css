@@ -527,7 +527,7 @@
 
 /* YouTube */
 .ui.youtube.button {
-  background-color: #CC181E;
+  background-color: #FF0000;
   color: #FFFFFF;
   text-shadow: none;
   background-image: -webkit-linear-gradient(transparent, rgba(0, 0, 0, 0.05));
@@ -535,12 +535,12 @@
   box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.1) inset;
 }
 .ui.youtube.button:hover {
-  background-color: #bd0d13;
+  background-color: #e60000;
   color: #FFFFFF;
   text-shadow: none;
 }
 .ui.youtube.button:active {
-  background-color: #9e1317;
+  background-color: #cc0000;
   color: #FFFFFF;
   text-shadow: none;
 }
@@ -766,7 +766,7 @@
 .ui.basic.active.button {
   background: #FFFFFF !important;
   box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.2) !important;
-  color: rgba(0, 0, 0, 0.95);
+  color: rgba(0, 0, 0, 0.95) !important;
 }
 .ui.basic.buttons .active.button:hover,
 .ui.basic.active.button:hover {
