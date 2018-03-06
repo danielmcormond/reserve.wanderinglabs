@@ -7,7 +7,10 @@ import RequestFormStep2 from "./step2";
 import RequestFormStep3 from "./step3";
 import RequestFormStep4 from "./step4";
 
-import { formSubmit, matchingSiteCount } from "../../../actions/requestFormActions";
+import {
+  formSubmit,
+  matchingSiteCount
+} from "../../../actions/requestFormActions";
 
 @connect(store => {
   return {

@@ -22,6 +22,23 @@ export default class PageAbout extends Component {
             and sends off an email giving you a heads up. That's it. That
             simple. It will be then up to you to actually reserve the open spot.
           </p>
+
+          <Header as="h5">
+            <Header.Content>Fan Mail</Header.Content>
+          </Header>
+
+          <p>
+            You are amazing! Thank you so much. This is the only way we have
+            been able to get these sites and they are a treat for our whole
+            family. Really appreciate your help!
+          </p>
+
+          <p>
+            I am so grateful for your program! This is a game changer for those
+            who can’t book a year in advance! I was able to go camping last
+            weekend and it was due to your program. Thank You, thank you, thank
+            you!!!
+          </p>
         </Grid.Column>
         <Grid.Column computer="8" tablet="8" mobile="16">
           <Header as="h4">
