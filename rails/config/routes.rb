@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resource :sessions
   resource :login_tokens, only: %i[create]
   resource :users
-  resources :payments, only: %i[create]
+  resources :payments, only: %i[create index]
   resources :notification_methods, only: %i[create destroy]
 
   resources :availability_imports

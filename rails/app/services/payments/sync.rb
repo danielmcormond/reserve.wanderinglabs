@@ -13,7 +13,6 @@ class Payments::Sync
 
     puts "Creating Payment.. #{paypal_payment.id} / #{paypal_payment.create_time}"
     Payments::Creator.create(id: paypal_payment.id)
-
   end
 
   def exists?
@@ -24,9 +23,10 @@ class Payments::Sync
     paypal_payments.each do |p|
       new(p).sync
     end
+    nil
   end
 
   def self.paypal_payments
-    @_paypal ||= PayPal::SDK::REST::Payment.all(count: 10).payments
+    PayPal::SDK::REST::Payment.all(count: 10).payments
   end
 end
