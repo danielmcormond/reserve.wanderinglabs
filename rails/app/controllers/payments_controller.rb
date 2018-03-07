@@ -7,8 +7,4 @@ class PaymentsController < ApplicationController
       render json: { id: payment.id }
     end
   end
-
-  def index
-    render json: { id: ENV['PAYPAL_ID'] }
-  end
 end

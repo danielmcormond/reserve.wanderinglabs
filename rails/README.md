@@ -12,6 +12,9 @@ scp deploy@192.34.56.219:dump.sql ~/Downloads
 # locally
 ssh-add
 
+~/.rbenv/vars
+(Remeber to stop and start puma.. can't just restart)
+
 * Premium Scrape Plan *
 
 Facility has premium_scrape:boolean
