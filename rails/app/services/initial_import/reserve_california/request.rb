@@ -51,11 +51,11 @@ module InitialImport::ReserveCalifornia
     end
 
     def site(facility_id, site_id)
-      url = "https://www.reservecalifornia.com/CaliforniaWebHome/Facilities/UnitDetailPopup.aspx?facility_id=#{facility_id}&unit_id=#{site_id}&arrival_date=11/29/2017%2012:00:00%20AM&is_available=True"
+      url = "https://reservecalifornia.com/CaliforniaWebHome/Facilities/UnitCloudTip.aspx?facility_id=#{facility_id}&unit_id=#{site_id}"
       site_request = Mechanize.new
       site_request.user_agent_alias = 'Windows Chrome'
       site_request.cookie_jar = session
-      site_request.get(url)
+      site_request.get(url, [], 'https://www.reservecalifornia.com/CaliforniaWebHome/Facilities/AdvanceSearch.aspx')
     end
   end
 end

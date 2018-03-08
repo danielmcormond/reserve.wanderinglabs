@@ -31,4 +31,4 @@ end
 # Facility::ReserveCalifornia.where(sites_count: 0).limit(50).each { |facility| InitialImport::ReserveCalifornia::Sites.new(facility).import; facility.cache_sites_count }
 
 
-Facility::ReserveCalifornia.where(sites_count: 0).where('id > 4902').limit(50).each { |facility| begin; InitialImport::ReserveCalifornia::Sites.new(facility).import; rescue; end; facility.cache_sites_count }
+# Facility::ReserveCalifornia.where(sites_count: 0).where('id > 4902').limit(50).each { |facility| begin; InitialImport::ReserveCalifornia::Sites.new(facility).import; rescue; end; facility.cache_sites_count }

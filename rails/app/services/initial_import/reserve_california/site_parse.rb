@@ -32,12 +32,12 @@ module InitialImport::ReserveCalifornia
         length: site_length,
         site_type: site_type,
         site_layout: site_layout_clean,
-        premium: amenities['feature_filter_premium']&.downcase&.include?('premium'),
+        premium: amenities['feature_filter_premium']&.downcase&.include?('premium') || false,
       }
     end
 
     def site_num
-      parsed.css('.popup-heading').text.match(/\#(.*)/)[1]
+      (parsed.css('h1') || parsed.css('.popup-heading')).text.match(/\#(.*)/)[1]
     end
 
     def site_length
@@ -50,7 +50,11 @@ module InitialImport::ReserveCalifornia
     end
 
     def dpr_site_type
-      amenities['dpr_site_type']&.downcase || ''
+      amenities['dpr_site_type']&.downcase || new_site_type || ''
+    end
+
+    def new_site_type
+      amenities['standard']&.downcase || amenities['standard_campsite']&.downcase
     end
 
     def site_type
