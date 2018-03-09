@@ -22,4 +22,9 @@ class NotifierMailer < ApplicationMailer
     @user = user
     mail(to: user.email, subject: 'WanderingLabs::Reserve login token')
   end
+
+  def premium_welcome(user)
+    @user = user
+    mail(to: user.email, subject: 'WanderingLabs::Reserve - Premium Status Activated')
+  end
 end
