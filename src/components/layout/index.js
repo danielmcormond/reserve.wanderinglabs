@@ -74,11 +74,11 @@ export default class Layout extends Component {
               <Route path="/success" component={RequestSuccess} />
 
               <Route
-                path="/:uuid([a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12})"
+                path="/:uuid([a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12})"
                 component={RequestShow}
               />
               <Route
-                path="/:status([cag]{1})/:uuid([a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12})"
+                path="/:status([cag]{1})/:uuid([a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12})"
                 component={RequestShow}
               />
 
@@ -89,9 +89,9 @@ export default class Layout extends Component {
               />
 
               <Route exact path="/f/:id" component={Facility} />
+              <Route exact path="/f/:id/log" component={AvailabilityImports} />
 
               <Route exact path="/log" component={AvailabilityImports} />
-              <Route exact path="/log/:id" component={AvailabilityImports} />
 
               <Route exact path="/sign-in" component={SessionNew} />
               <Route exact path="/sign-in/:token" component={SessionCreate} />

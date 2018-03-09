@@ -69,7 +69,7 @@ export default class RequestFormStep1Facility extends Component {
       }
     ];
 
-    const mappedFilters = filters.map(filter =>
+    const mappedFilters = filters.map(filter => (
       <Button
         toggle
         size="mini"
@@ -77,7 +77,7 @@ export default class RequestFormStep1Facility extends Component {
         as="a"
         {...filter}
       />
-    );
+    ));
 
     return (
       <div>
@@ -95,10 +95,11 @@ export default class RequestFormStep1Facility extends Component {
           messages={{
             required: "You must select a campground"
           }}
-          component={props =>
+          component={props => (
             <Label basic color="green" pointing>
               {props.children}
-            </Label>}
+            </Label>
+          )}
         />
 
         <p>

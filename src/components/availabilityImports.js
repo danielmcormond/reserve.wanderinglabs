@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Grid, Header, Icon, Loader, Table } from "semantic-ui-react";
+import { Grid, Header, Icon, List, Loader, Table } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 
 import DateFormat from "./utils/dateFormat";
@@ -15,38 +15,35 @@ import { fetchAvailabilityImports } from "../actions/availabilityImportsActions"
 })
 export default class AvailabilityImports extends Component {
   componentWillMount() {
-    if (this.props.fetched === false) {
-      this.props.dispatch(fetchAvailabilityImports());
-    }
+    this.props.dispatch(fetchAvailabilityImports(this.props.match.params.id));
   }
 
   render() {
-    const { imports, fetching, sort, sortDirection } = this.props;
+    const { imports, fetching } = this.props;
     const mappedImports = imports.map(log => {
       return (
         <Table.Row key={log.id}>
           <Table.Cell textAlign="left">
             <Header size="tiny">
               <Header.Content>
-                <Link to={`/f/${log.facility.id}`}>
+                <Link to={`/f/${log.facility.id}/log`}>
                   {log.facility.name}
                 </Link>
                 <Header.Subheader>
-                  <DateFormat format="MM/DD/YY h:m:ss" date={log.created_at} />
+                  <DateFormat
+                    format="MM/DD/YY hh:mm:ss"
+                    date={log.created_at}
+                  />
                 </Header.Subheader>
               </Header.Content>
             </Header>
           </Table.Cell>
           <Table.Cell textAlign="left" collapsing>
-            <DateFormat format="MM/DD/YY" date={log.date_start} /> -
+            <DateFormat format="MM/DD/YY" date={log.date_start} /> -{" "}
             <DateFormat format="MM/DD/YY" date={log.date_end} />
           </Table.Cell>
-          <Table.Cell textAlign="left">
-            {log.history_open_count}
-          </Table.Cell>
-          <Table.Cell textAlign="left">
-            {log.history_filled_count}
-          </Table.Cell>
+          <Table.Cell textAlign="left">{log.history_open_count}</Table.Cell>
+          <Table.Cell textAlign="left">{log.history_filled_count}</Table.Cell>
         </Table.Row>
       );
     });
@@ -58,42 +55,28 @@ export default class AvailabilityImports extends Component {
             <Icon name="list layout" />
             <Header.Content>Logs:</Header.Content>
           </Header>
+          <List>
+            <List.Item>
+              <strong>Range</strong> - Date range searched
+            </List.Item>
+            <List.Item>
+              <strong>Opened</strong> - Number of new availabilities. (A site
+              newly open for a night)
+            </List.Item>
+            <List.Item>
+              <strong>Filled</strong> - Number of sites filled/reserved.
+            </List.Item>
+          </List>
           <Table unstackable sortable className="availabilityMatches">
             <Table.Header>
               <Table.Row>
-                <Table.HeaderCell
-                  textAlign="left"
-                  sorted={sort === "avail_min" ? sortDirection : null}
-                  onClick={() => this.handleSort("avail_min")}
-                >
-                  Arrive
-                </Table.HeaderCell>
-                <Table.HeaderCell
-                  textAlign="left"
-                  sorted={sort === "length" ? sortDirection : null}
-                  onClick={() => this.handleSort("length")}
-                >
-                  Range scanned
-                </Table.HeaderCell>
-                <Table.HeaderCell
-                  textAlign="left"
-                  sorted={sort === "site_num" ? sortDirection : null}
-                  onClick={() => this.handleSort("site_num")}
-                >
-                  # opened
-                </Table.HeaderCell>
-                <Table.HeaderCell
-                  textAlign="left"
-                  sorted={sort === "site_num" ? sortDirection : null}
-                  onClick={() => this.handleSort("site_num")}
-                >
-                  # filled
-                </Table.HeaderCell>
+                <Table.HeaderCell textAlign="left">Facility</Table.HeaderCell>
+                <Table.HeaderCell textAlign="left">Range</Table.HeaderCell>
+                <Table.HeaderCell textAlign="left">Opened</Table.HeaderCell>
+                <Table.HeaderCell textAlign="left">Filled</Table.HeaderCell>
               </Table.Row>
             </Table.Header>
-            <Table.Body>
-              {mappedImports}
-            </Table.Body>
+            <Table.Body>{mappedImports}</Table.Body>
           </Table>
           <Loader active={fetching} size="big" />
         </Grid.Column>

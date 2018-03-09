@@ -1,9 +1,13 @@
 import reserveApi from "../utils/axios";
 
-export function fetchAvailabilityImports() {
+export function fetchAvailabilityImports(facility_id) {
   return function(dispatch) {
     dispatch({ type: "FETCH_IMPORTS" });
-    reserveApi({ method: "get", url: "/availability_imports.json" })
+    reserveApi({
+      method: "get",
+      url: `/availability_imports.json`,
+      params: { facility_id }
+    })
       .then(response => {
         dispatch({ type: "FETCH_IMPORTS_FULFILLED", payload: response.data });
       })

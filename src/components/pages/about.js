@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Grid, Header } from "semantic-ui-react";
+import { Link } from "react-router-dom";
 
 export default class PageAbout extends Component {
   render() {
@@ -21,6 +22,16 @@ export default class PageAbout extends Component {
             you. Our service checks for available campsites every few minutes
             and sends off an email giving you a heads up. That's it. That
             simple. It will be then up to you to actually reserve the open spot.
+          </p>
+
+          <Header as="h5">
+            <Header.Content>
+              Is this service still active and working?
+            </Header.Content>
+          </Header>
+
+          <p>
+            Check the activity log: <Link to="log">Activity Log</Link>
           </p>
 
           <Header as="h5">
@@ -49,7 +60,7 @@ export default class PageAbout extends Component {
             Airstream and hate planning more then a month or two in advance but
             we love staying at our awesome (and well used) public campgrounds. I
             built this service to solve a problem and then decided to share. If
-            you have comments or questions you can email me at: {" "}
+            you have comments or questions you can email me at:{" "}
             <a href="mailto:info@wanderinglabs.com">info@wanderinglabs.com</a>.
             I'll do my best to get back to you.
           </p>
