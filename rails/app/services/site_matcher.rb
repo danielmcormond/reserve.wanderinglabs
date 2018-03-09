@@ -21,6 +21,8 @@ class SiteMatcher
     return nil if availability_request.site_type.blank?
     if availability_request.site_type == :rv_tent
       %i[rv tent]
+    elsif availability_request.site_type == :tent
+      %i[tent tent_walk_in]
     else
       availability_request.site_type
     end

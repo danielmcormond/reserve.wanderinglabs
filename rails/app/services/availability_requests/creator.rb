@@ -18,6 +18,7 @@ class AvailabilityRequests::Creator
   def create
     if object.save
       object.reload # so we have uuid
+      object.availability_matcher # initial run
     else
       Rails.logger.fatal object.errors.to_json
     end

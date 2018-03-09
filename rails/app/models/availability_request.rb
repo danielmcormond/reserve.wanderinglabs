@@ -39,6 +39,12 @@ class AvailabilityRequest < ApplicationRecord
     SiteMatcher.new(self)
   end
 
+  def availability_matcher
+    last_import = facility.availability_imports.last
+    return if last_import.nil?
+    AvailabilityMatcher::Index.call(last_import, self)
+  end
+
   def welcome_email
     user.notification_methods.each do |nm|
       next unless nm.notification_type == :email
