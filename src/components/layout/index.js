@@ -89,7 +89,7 @@ export default class Layout extends Component {
               />
 
               <Route exact path="/f/:id" component={Facility} />
-              <Route exact path="/f/:id/log" component={AvailabilityImports} />
+              <Route path="/f/:id/log" component={AvailabilityImports} />
 
               <Route exact path="/log" component={AvailabilityImports} />
 

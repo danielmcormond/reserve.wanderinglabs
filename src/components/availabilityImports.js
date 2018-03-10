@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 
 import DateFormat from "./utils/dateFormat";
 import { fetchAvailabilityImports } from "../actions/availabilityImportsActions";
+import AvailabilityImportsHistory from "./imports/history";
 
 @connect(store => {
   return {
@@ -15,11 +16,31 @@ import { fetchAvailabilityImports } from "../actions/availabilityImportsActions"
 })
 export default class AvailabilityImports extends Component {
   componentWillMount() {
-    this.props.dispatch(fetchAvailabilityImports(this.props.match.params.id));
+    this.props.dispatch(
+      fetchAvailabilityImports(
+        this.props.match.params.id,
+        this.props.location.pathname.includes("expanded")
+      )
+    );
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (
+      this.props.location.pathname.includes("expanded") !==
+      nextProps.location.pathname.includes("expanded")
+    ) {
+      this.props.dispatch(
+        fetchAvailabilityImports(
+          nextProps.match.params.id,
+          nextProps.location.pathname.includes("expanded")
+        )
+      );
+    }
   }
 
   render() {
     const { imports, fetching } = this.props;
+
     const mappedImports = imports.map(log => {
       return (
         <Table.Row key={log.id}>
@@ -37,6 +58,19 @@ export default class AvailabilityImports extends Component {
                 </Header.Subheader>
               </Header.Content>
             </Header>
+
+            {log.history_open && (
+              <AvailabilityImportsHistory
+                histories={log.history_open}
+                color="green"
+              />
+            )}
+            {log.history_filled && (
+              <AvailabilityImportsHistory
+                histories={log.history_filled}
+                color="red"
+              />
+            )}
           </Table.Cell>
           <Table.Cell textAlign="left" collapsing>
             <DateFormat format="MM/DD/YY" date={log.date_start} /> -{" "}
@@ -67,6 +101,10 @@ export default class AvailabilityImports extends Component {
               <strong>Filled</strong> - Number of sites filled/reserved.
             </List.Item>
           </List>
+          <Link to={{ pathname: `${this.props.location.pathname}/expanded` }}>
+            Expanded
+          </Link>
+
           <Table unstackable sortable className="availabilityMatches">
             <Table.Header>
               <Table.Row>
