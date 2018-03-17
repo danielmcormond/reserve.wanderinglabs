@@ -17,7 +17,7 @@ import Nav from "./nav";
 import MenuBar from "./menuBar";
 import FrontPage from "../frontPage";
 import Facility from "../facility";
-import Loading from "../loading";
+
 import FlashMessage from "../flashMessage";
 
 import SessionNew from "../sessions/new";
@@ -56,7 +56,6 @@ export default class Layout extends Component {
     return (
       <ConnectedRouter history={history}>
         <div>
-          <Loading />
           <Nav onSidebarToggle={this.handleSidebarToggle} />
 
           <Sidebar.Pushable>
