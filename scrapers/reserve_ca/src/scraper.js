@@ -110,9 +110,9 @@ class Scraper {
   }
 
   results_json(filtered_results) {
-    console.log('filtered_results to json', filtered_results.length)
+    // console.log('filtered_results to json', filtered_results.length)
     let huh = JSON.stringify(filtered_results)
-    console.log('filtered_results to json', huh)
+    // console.log('filtered_results to json', huh)
     return JSON.stringify({ results: filtered_results });
   }
 

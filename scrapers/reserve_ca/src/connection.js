@@ -12,6 +12,7 @@ class Connection {
     this.rp = rp.defaults({
       jar,
       headers,
+      simple: false,
       followRedirect: false,
       resolveWithFullResponse: true,
       time: true,
@@ -25,11 +26,25 @@ class Connection {
 
   setSession() {
     const options = {
+      url: 'https://www.reservecalifornia.com/CaliforniaWebHome/Default.aspx'
+    };
+
+    return this.rp(options).then((response) => {
+      return this.setSearch().then((response) => {
+        return Promise.resolve(response)
+      });
+    });
+
+  }
+
+  setSearch() {
+    console.log('set search....')
+    const options = {
       url: 'https://www.reservecalifornia.com/CaliforniaWebHome/Facilities/AdvanceSearch.aspx',
       method: 'POST',
       body: {
-        'ctl01$AdvanceMainSearch$hdnArrivalDate': '11/28/2017',
-        'ctl01$AdvanceMainSearch$txtArrivalDate': '11/28/2017',
+        'ctl01$AdvanceMainSearch$hdnArrivalDate': '03/14/2018',
+        'ctl01$AdvanceMainSearch$txtArrivalDate': '03/14/2018',
         'ctl01$AdvanceMainSearch$hdnNights': 1,
         'ctl01$AdvanceMainSearch$ddlNights': 1,
         'ctl01$mainContent$hdnUnitTotalDay': 6,
@@ -45,7 +60,7 @@ class Connection {
         'ctl01$mainContent$txtDateRange': '11/28/2017',
         'ctl01$mainContent$Grid_ddlNights': 1,
         'ctl01$mainContent$TopMenuMainSearch$ddlFacilityCategory': 1,
-        'ctl01$mainContent$TopMenuMainSearch$txtTopArrivalDate': '11/28/2017',
+        'ctl01$mainContent$TopMenuMainSearch$txtTopArrivalDate': '03/14/2018',
         'ctl01$mainContent$TopMenuMainSearch$ddlTopNights': 1,
         'ctl01$mainContent$TopMenuMainSearch$ddlSortBy': 3
       }
