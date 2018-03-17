@@ -38,6 +38,19 @@ class Facility < ApplicationRecord
     update_attribute(:premium_scrape, !premium_scrape)
   end
 
+  def populate_sites_details
+    self.sites_details ||= {}
+    self.sites_details[:types] = sites.group(:site_type).count
+    self.sites_details[:max_length] = sites.pluck(:length).compact.max
+    self.sites_details[:electric] = sites.group(:electric).count.keys.compact.any?
+    self.sites_details[:water] = sites.where(water: true).count.positive?
+    self.sites_details[:sewer] = sites.where(sewer: true).count.positive?
+    self.sites_details[:site_layout] = sites.group(:site_layout).count.keys.include?('pullthru')
+    self.sites_details[:premium] = sites.where(premium: true).count.positive?
+    self.sites_details[:ada] = sites.where(ada: true).count.positive?
+    save
+  end
+
   def sub_name
     ''
   end
