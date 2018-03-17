@@ -84,8 +84,10 @@ export default class Premium extends Component {
           <p>You are a premium member. Extra benifits have been activated. </p>
 
           <p>
-            We greatly appreciate your support. Please do not hesitate to conact
-            us if you have a question or an idea!
+            I greatly appreciate your support. Please do not hesitate to contact
+            me if you have a question or an idea! info@wanderinglabs.com
+            <br/>
+            - Tim Watson
           </p>
         </div>
       );

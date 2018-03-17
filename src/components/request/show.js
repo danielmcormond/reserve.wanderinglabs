@@ -117,9 +117,7 @@ export default class RequestShow extends Component {
               <Icon name="marker" />
               <Header.Content>
                 {ar.facility.name}
-                <Header.Subheader>
-                  {ar.facility.sub_name}
-                </Header.Subheader>
+                <Header.Subheader>{ar.facility.sub_name}</Header.Subheader>
               </Header.Content>
             </Header>
             <Divider hidden />
@@ -131,7 +129,7 @@ export default class RequestShow extends Component {
                     <List.Item>
                       <List.Header>Arriving between</List.Header>
                       <List.Description>
-                        <DateFormat format="MM/DD/YYYY" date={ar.date_start} /> {" "}
+                        <DateFormat format="MM/DD/YYYY" date={ar.date_start} />{" "}
                         & <DateFormat format="MM/DD/YYYY" date={ar.date_end} />
                       </List.Description>
                     </List.Item>
@@ -145,16 +143,12 @@ export default class RequestShow extends Component {
 
                     <List.Item>
                       <List.Header>Filters</List.Header>
-                      <List.Description>
-                        {ar.summary}
-                      </List.Description>
+                      <List.Description>{ar.summary}</List.Description>
                     </List.Item>
 
                     <List.Item>
                       <List.Header>Matching Site Count</List.Header>
-                      <List.Description>
-                        {ar.site_count}
-                      </List.Description>
+                      <List.Description>{ar.site_count}</List.Description>
                     </List.Item>
                   </List>
                 </Grid.Column>
@@ -163,27 +157,25 @@ export default class RequestShow extends Component {
                   <List size="medium" relaxed>
                     <List.Item>
                       <List.Header>Status</List.Header>
-                      <List.Description>
-                        {this.titleStatus}
-                      </List.Description>
+                      <List.Description>{this.titleStatus}</List.Description>
                     </List.Item>
 
                     <List.Item>
                       <List.Header>Checked Count</List.Header>
-                      <List.Description>
-                        {ar.checked_count}
-                      </List.Description>
+                      <List.Description>{ar.checked_count}</List.Description>
                     </List.Item>
 
-                    <List.Item>
-                      <List.Header>Last Checked</List.Header>
-                      <List.Description>
-                        <DateFormat
-                          format="M/D/YYYY hh:mm"
-                          date={ar.checked_at}
-                        />
-                      </List.Description>
-                    </List.Item>
+                    {ar.checked_at && (
+                      <List.Item>
+                        <List.Header>Last Checked</List.Header>
+                        <List.Description>
+                          <DateFormat
+                            format="M/D/YYYY hh:mm"
+                            date={ar.checked_at}
+                          />
+                        </List.Description>
+                      </List.Item>
+                    )}
                   </List>
                 </Grid.Column>
               </Grid.Row>
