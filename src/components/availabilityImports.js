@@ -38,6 +38,10 @@ export default class AvailabilityImports extends Component {
     }
   }
 
+  canExpand() {
+    return !this.props.location.pathname.includes("expanded");
+  }
+
   render() {
     const { imports, fetching } = this.props;
 
@@ -101,9 +105,11 @@ export default class AvailabilityImports extends Component {
               <strong>Filled</strong> - Number of sites filled/reserved.
             </List.Item>
           </List>
-          <Link to={{ pathname: `${this.props.location.pathname}/expanded` }}>
-            Expanded
-          </Link>
+          {this.canExpand() && (
+            <Link to={{ pathname: `${this.props.location.pathname}/expanded` }}>
+              Expand
+            </Link>
+          )}
 
           <Table unstackable sortable className="availabilityMatches">
             <Table.Header>
