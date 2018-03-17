@@ -1,0 +1,34 @@
+<table>
+  <tr>
+    <td>
+      <p><b>Thank you...</b></p>
+
+      <p>You payment has been received and all requests created by <%= @user.email %> have been marked as premium.</p>
+
+      <% if @user.availability_requests.active.count.positive? %>
+        <p>You have <b><%= @user.availability_requests.active.count %></b> currently active requests. These requests will now be checked twice as often and never paused.</p>
+      <% else %>
+        <p>I looked for active requests in our database and don't see any with the email address: <%= @user.email %></p>
+        <p><b>Did you submit requests using a different email address?</b> If so, let me know and I will also mark that address as premium</p>
+        <p><b>Trouble creating a request?</b> Reply to this email with what happened and hopefully I can be of assistance. </p>
+      <% end %>
+
+
+      <p><b>Your Account</b><br/>
+        I hate passwords so no passwords for this service. The link below will log you into your account.
+        There you can review and manage all your requests, plus add a phone number for sms alerts
+      </p>
+
+      <h4>
+      <a href="<%= ENV['RESERVE_URL'] -%>/sign-in/<%= @user.login_token -%>" target="_blank"><%= ENV['RESERVE_URL'] -%>/sign-in/<%= @user.login_token -%></a>
+    </h4>
+
+      <p><b>Questions.. Suggestions.. Ideas.. Comments.. ?</b></p>
+      <p>Send them my way. Reply to this email or email info@wanderinglabs.com.</p>
+      <p>Thanks again for the support.
+        <br/>
+        - Tim Watson
+      </p>
+    </td>
+  </tr>
+</table>

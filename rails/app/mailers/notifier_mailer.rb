@@ -24,6 +24,7 @@ class NotifierMailer < ApplicationMailer
   end
 
   def premium_welcome(user)
+    user.generate_login_token unless user.login_token.present?
     @user = user
     mail(to: user.email, subject: 'WanderingLabs::Reserve - Premium Status Activated')
   end

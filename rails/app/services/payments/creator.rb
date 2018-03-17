@@ -17,7 +17,10 @@ class Payments::Creator
   def create
     payment = Payment.new(payment_params)
     if payment.save
-      user&.mark_premium
+      if user
+        user.mark_premium
+        NotifierMailer.premium_welcome(user).deliver!
+      end
     else
       Rails.logger.fatal("CREATE PAYMENT: #{payment.to_json}")
     end
