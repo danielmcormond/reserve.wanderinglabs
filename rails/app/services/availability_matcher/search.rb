@@ -1,9 +1,8 @@
 module AvailabilityMatcher
   class Search
-    attr_reader :availability_request, :import_id
+    attr_reader :availability_request
 
-    def initialize(availability_request, import_id)
-      @import_id = import_id
+    def initialize(availability_request)
       @availability_request = availability_request
     end
 
@@ -32,7 +31,6 @@ module AvailabilityMatcher
           "avail_date" - (dense_rank() over(PARTITION BY site_id ORDER BY avail_date))::int g
         FROM availabilities
         WHERE
-          availability_import_id = '#{import_id}' AND
           site_id IN(#{site_ids}) AND
           avail_date >= '#{availability_request.date_start}'
           #{arrival_days_sql}

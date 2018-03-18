@@ -27,3 +27,5 @@ Import -
     - Resque Schedual all for 11mins
   - else
     - match all
+
+psql -U postgres -d postgres -c 'SELECT pg_terminate_backend(pg_stat_activity.pid) FROM pg_stat_activity'

@@ -22,7 +22,7 @@ module AvailabilityMatcher
     end
 
     def search
-      AvailabilityMatcher::Search.new(availability_request, import.id).search
+      AvailabilityMatcher::Search.new(availability_request).search
     end
   end
 end

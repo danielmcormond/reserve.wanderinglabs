@@ -41,4 +41,15 @@ class User < ApplicationRecord
       .count
     update_attributes(sms_count: count)
   end
+
+
+  # Little helpful admin methods
+  def login_url
+    generate_login_token unless login_token.present?
+    ENV['RESERVE_URL'] + '/sign-in/' + login_token
+  end
+
+  def self.e(email)
+    where(email: email).first
+  end
 end

@@ -24,10 +24,7 @@ class AvailabilitiesController < ApplicationController
     )
 
     availability_request.site_ids = SiteMatcher.new(availability_request).matching_site_ids
-    search = AvailabilityMatcher::Search.new(
-      availability_request,
-      facility.availability_imports.last.id
-    ).search
+    search = AvailabilityMatcher::Search.new(availability_request).search
 
     dates = {}
     search.each do |sr|

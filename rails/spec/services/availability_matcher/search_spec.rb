@@ -19,7 +19,7 @@ RSpec.describe AvailabilityMatcher::Search do
     ]
   end
 
-  let(:search) { AvailabilityMatcher::Search.new(availability_request, import.id).search }
+  let(:search) { AvailabilityMatcher::Search.new(availability_request).search }
 
   describe '#search' do
     context 'single night with availability on both sides' do

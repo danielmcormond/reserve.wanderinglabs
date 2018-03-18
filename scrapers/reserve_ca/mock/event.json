@@ -10,7 +10,7 @@
         "Signature": "EXAMPLE",
         "SigningCertUrl": "EXAMPLE",
         "MessageId": "95df01b4-ee98-5cb9-9903-4c221d41eb5e",
-        "Message": "{\"facilityId\":\"4743\",\"rcFacilityId\":\"776\",\"rcPlaceId\":\"2\"}",
+        "Message": "{\"facilityId\":\"5041\",\"rcFacilityId\":\"694\",\"rcPlaceId\":\"715\"}",
         "MessageAttributes": {},
         "Type": "Notification",
         "UnsubscribeUrl": "EXAMPLE",
