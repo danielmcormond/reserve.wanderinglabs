@@ -49,6 +49,10 @@ class User < ApplicationRecord
     ENV['RESERVE_URL'] + '/sign-in/' + login_token
   end
 
+  def ar
+    availability_requests.map { |ar| ar.serialized }
+  end
+
   def self.e(email)
     where(email: email).first
   end

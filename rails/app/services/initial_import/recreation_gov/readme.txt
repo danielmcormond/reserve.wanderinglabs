@@ -30,31 +30,31 @@ Facility.where('sites_count > 0').where(booking_window: nil).each_with_index do 
 end
 
 
-Facility.where('details @> ?', {LegacyFacilityID: '75118.0'}.to_json)
+Facility.where('details @> ?', {LegacyFacilityID: '158542.0'}.to_json)
 
 ----------------
 
 a ={          :agency_id => 1,
-               :name => "SOUTH CAMPGROUND (UT)",
+               :name => "BICENTENNIAL CAMPGROUND",
                :type => "Facility::RecreationGov",
             :details => {
-                       "City" => "Springdale",
+                       "City" => "Sausalito",
                       "OrgID" => 128,
-                    "OrgName" => "National Park Service",
+                    "OrgName" => "Golden Gate National Recreation Area",
                     "OrgType" => "Department of the Interior",
                  "FacilityID" => nil,
-                 "PostalCode" => 84767.0,
-               "FacilityName" => "SOUTH CAMPGROUND (UT)",
+                 "PostalCode" => 94965.0,
+               "FacilityName" => "BICENTENNIAL CAMPGROUND",
               "OrgFacilityID" => "",
             "LastUpdatedDate" => "2018-03-01 04:05:15",
-           "AddressStateCode" => "UT",
-           "FacilityLatitude" => 37.198611111111106,
-           "LegacyFacilityID" => 157390.0,
+           "AddressStateCode" => "CA",
+           "FacilityLatitude" => 37.83089,
+           "LegacyFacilityID" => 158542.0,
           "FacilityAddressID" => 20385474,
-          "FacilityLongitude" => -112.9863888888889,
+          "FacilityLongitude" => -122.52466,
          "AddressCountryCode" => "USA",
         "FacilityAddressType" => "",
-     "FacilityStreetAddress1" => "S.R. 9",
+     "FacilityStreetAddress1" => "Building 948 Fort Barry",
      "FacilityStreetAddress2" => "",
      "FacilityStreetAddress3" => "",
     "FacilityTypeDescription" => "Camping"
@@ -64,5 +64,8 @@ a ={          :agency_id => 1,
 facility = Facility::RecreationGov.create(a)
 
 InitialImport::RecreationGov::Sites.new(facility).import
+
+facility.populate_sites_details
+facility.save
 
 InitialImport::RecreationGov::FacilityParent.new(facility).find

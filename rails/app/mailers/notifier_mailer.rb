@@ -1,11 +1,13 @@
 class NotifierMailer < ApplicationMailer
   def new_availabilities(availability_request, notification_method)
+    return if notification_method.param.nil?
     @availability_request = availability_request
     @availability_request_serialized = AvailabilityRequestSerializer.new(availability_request)
     mail(to: notification_method.param, subject: "Campsite Available: #{@availability_request.facility.name}")
   end
 
   def new_availability_request(availability_request, notification_method)
+    return if notification_method.param.nil?
     @availability_request = availability_request
     @availability_request_serialized = AvailabilityRequestSerializer.new(availability_request)
     mail(to: notification_method.param, subject: "Campsite Availability Request Confirmed: #{@availability_request.facility.name}")
