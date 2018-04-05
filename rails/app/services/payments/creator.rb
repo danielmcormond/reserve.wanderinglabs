@@ -11,7 +11,7 @@ class Payments::Creator
   end
 
   def user
-    current_user || User.where(email: paypal_payment.payer.payer_info.email).first
+    current_user || User.find_or_create_by(email: paypal_payment.payer.payer_info.email)
   end
 
   def create
