@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
 import { Grid, Header } from "semantic-ui-react";
 import Premium from "../user/premium.js";
 

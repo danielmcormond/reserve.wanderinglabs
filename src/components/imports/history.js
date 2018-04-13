@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Label } from "semantic-ui-react";
-import { Link } from "react-router-dom";
 
 @connect(store => {
   return {
@@ -30,10 +29,6 @@ export default class AvailabilityImportsHistory extends Component {
       );
     });
 
-    return (
-      <span>
-        {mappedHistory}
-      </span>
-    );
+    return <span>{mappedHistory}</span>;
   }
 }

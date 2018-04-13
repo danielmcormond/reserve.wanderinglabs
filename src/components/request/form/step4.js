@@ -4,7 +4,6 @@ import { Control, Errors } from "react-redux-form";
 import { Divider, Grid, Label } from "semantic-ui-react";
 
 import RequestFormStepButtons from "./stepButtons";
-import { formStepValidate } from "../../../actions/requestFormActions";
 import SemanticInput from "../../semanticInput";
 
 @connect(store => {

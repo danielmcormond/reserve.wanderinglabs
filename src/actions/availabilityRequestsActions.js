@@ -46,17 +46,12 @@ export function updateAvailabilityRequestStatus(uuid, codedStatus) {
   return function(dispatch) {
     let apiValues = {};
 
-    // TODO: CLean up
-    let status = "active";
     if (codedStatus === "c") {
-      status = "canceled";
       apiValues.status = "canceled";
     } else if (codedStatus === "g") {
-      status = "canceled";
       apiValues.status = "canceled";
       apiValues.canceled_found = true;
     } else if (codedStatus === "a") {
-      status = "active";
       apiValues.status = "active";
     }
     dispatch(updateAvailabilityRequest(uuid, apiValues));
