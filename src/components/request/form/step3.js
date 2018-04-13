@@ -25,7 +25,7 @@ const siteTypeOptions = [
     text: "Tent Only Sites",
     description: "No RV's",
     value: "tent",
-    values: ["tent"]
+    values: ["tent", "tent_walk_in"]
   },
   {
     text: "Group Sites",

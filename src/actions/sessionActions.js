@@ -22,7 +22,7 @@ export function sessionNew(email) {
       });
 }
 
-export function sessionCreate(token) {
+export function sessionCreate(token, redirect = null) {
   return dispatch =>
     reserveApi({
       method: "post",
@@ -32,7 +32,7 @@ export function sessionCreate(token) {
       .then(function(response) {
         dispatch(sessionSuccess(response.data.auth_token));
         dispatch({ type: "FETCH_USER_FULFILLED", payload: response.data.user });
-        dispatch(push("/"));
+        dispatch(push(redirect || "/"));
         // dispatch(setFlashMessage("logged in", "success"));
       })
       .catch(function(error) {

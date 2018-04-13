@@ -86,8 +86,6 @@ export default class Premium extends Component {
           <p>
             I greatly appreciate your support. Please do not hesitate to contact
             me if you have a question or an idea! info@wanderinglabs.com
-            <br/>
-            - Tim Watson
           </p>
         </div>
       );

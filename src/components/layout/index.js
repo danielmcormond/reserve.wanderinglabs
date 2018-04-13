@@ -94,6 +94,13 @@ export default class Layout extends Component {
 
               <Route exact path="/sign-in" component={SessionNew} />
               <Route exact path="/sign-in/:token" component={SessionCreate} />
+              <Route
+                exact
+                path="/sign-in/:token/settings"
+                render={props => (
+                  <SessionCreate {...props} redirect="/settings" />
+                )}
+              />
               <Route exact path="/sign-out" component={SessionDestroy} />
 
               <Route exact path="/premium" component={PagePremium} />
