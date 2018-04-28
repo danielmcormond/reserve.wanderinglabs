@@ -35,7 +35,7 @@ module VersionTwoImport
         min_length: min_length,
 
         checked_count: params.dig(:checkedCount, :n)&.to_i,
-        checked_at: checked_at,
+        checked_at: nil,
       }
     end
 
