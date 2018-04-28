@@ -17,7 +17,7 @@ module VersionTwoImport
       import_count = 0
 
       # File.foreach(@filename)
-      body.split("\n") do |line|
+      body.split("\n").each do |line|
         import = VersionTwoImport::Import.new(line)
         import_count += 1 if import.create.present?
       end
