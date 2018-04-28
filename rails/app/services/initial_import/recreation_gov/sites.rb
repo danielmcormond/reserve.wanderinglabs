@@ -42,8 +42,8 @@ module InitialImport::RecreationGov
         :tent_walk_in
       elsif set['SiteType'].include?('TENT')
         :tent
-      elsif set['SiteType'].include?('CABIN NONELECTRIC')
-        :cabin
+      elsif set['SiteType'].include?('CABIN')
+        :other
       elsif set['Maxeqplen'].blank?
         :other
       else

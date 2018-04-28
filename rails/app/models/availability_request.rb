@@ -7,7 +7,7 @@ class AvailabilityRequest < ApplicationRecord
   has_many :availability_notifications
 
   serialize :specific_site_ids, Array
-  enumerize :site_type, in: %i[group tent_walk_in tent other rv rv_tent cabin], predicates: { prefix: true }
+  enumerize :site_type, in: %i[group tent_walk_in tent other rv rv_tent], predicates: { prefix: true }
 
   enumerize :status, in: %i[active paused canceled ended], predicates: { prefix: true }
 
