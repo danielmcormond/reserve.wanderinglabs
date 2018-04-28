@@ -20,6 +20,7 @@ module AvailabilityRequests
 
     def call
       availability_request.update_attributes(status: :paused)
+      return unless availability_request.notify?
       NotifierMailer.paused(availability_request).deliver
     end
   end
