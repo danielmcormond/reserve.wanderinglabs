@@ -1,19 +1,27 @@
 module VersionTwoImport
   class Import
-    attr_reader :params
+    attr_reader :params, :errors
     def initialize(params)
       @params = if params.is_a?(String)
                   eval(params)
                 else
                   params
                 end
+      @errors = []
+    end
+
+    def cleaned_params
+      tmp_params = params
+      tmp_params.delete(:availabilities)
+      tmp_params
     end
 
     def attributes
       {
         uuid: uuid,
+        notify: false,
         imported: true,
-        import_details: params,
+        import_details: cleaned_params,
         facility_id: facility.id,
 
         site_type: site_type,
@@ -26,41 +34,40 @@ module VersionTwoImport
         min_electric: electric.positive? ? electric : nil,
         min_length: min_length,
 
-        checked_count: params[:checkedCount][:n].to_i,
+        checked_count: params.dig(:checkedCount, :n)&.to_i,
         checked_at: checked_at,
       }
     end
 
+    def log
+      "#{status} :: #{params[:email][:s]} :: #{park_id} - #{facility&.name || params.dig(:typeSpecific, :m, :parkName, :s)} :: #{date_start.to_date}-#{date_end.to_date} :: #{uuid} :: "
+    end
+
     def create
-      unless import?
-        puts 'Skipping.. '
-        return
-      end
-
       unless valid?
-        puts 'invalid..'
+        output("Invalid [#{errors.join(', ')}] :: #{log}") unless errors.include?('Status/Date') || errors.include?('Exists')
         return
       end
 
-      AvailabilityRequests::Creator.new(attributes, user).create
+      ar = AvailabilityRequests::Creator.new(attributes, user).create
+      output("Created #{ar.id} :: #{log}")
+      ar
     end
 
     def valid?
-      errors = []
+      errors << 'Status/Date' unless import?
       errors << 'No Facility' if facility.nil?
       errors << 'Exists' if exists?
       errors << 'Premium Mismatch' if premium && !user.premium?
-
-      puts errors.join("\n") unless errors.empty?
       errors.empty?
     end
 
     def import?
-      active? && park_id == '281005'
+      active?
     end
 
     def active?
-      status == :active
+      (status == :active || status == :paused) && adjusted_date_end > Time.now
     end
 
     def exists?
@@ -80,7 +87,11 @@ module VersionTwoImport
     end
 
     def facility
-      @_facility ||= Facility::ReserveAmerica.where('details @> ?', { park_id: park_id }.to_json).first
+      @_facility ||= if params.dig(:typeSpecific, :m, :code, :s) == 'NRSO'
+                       Facility::RecreationGov.where('details @> ?', { LegacyFacilityID: "#{park_id}.0".to_f }.to_json).first
+                     else
+                       Facility::ReserveAmerica.where('details @> ?', { park_id: park_id }.to_json).first
+                     end
     end
 
     def status
@@ -123,7 +134,7 @@ module VersionTwoImport
     end
 
     def premium
-      params[:premium][:bOOL]
+      params.dig(:premium, :bOOL)
     end
 
     def date_start
@@ -135,13 +146,18 @@ module VersionTwoImport
     end
 
     def checked_at
-      Time.at(params[:checkedAt][:n].to_i).utc
+      params[:checkedAt] && Time.at(params[:checkedAt][:n].to_i).utc
     end
 
     def adjusted_date_end
       adjusted = date_end - stay_length.days
-      puts "#{date_start}-#{date_end} :: #{stay_length} :: #{adjusted}"
+      # puts "#{date_start}-#{date_end} :: #{stay_length} :: #{adjusted}"
       adjusted
+    end
+
+    def output(txt)
+      puts txt
+      Rails.logger.debug txt
     end
   end
 end

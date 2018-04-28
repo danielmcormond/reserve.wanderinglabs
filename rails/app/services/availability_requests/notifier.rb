@@ -7,7 +7,9 @@ module AvailabilityRequests
     end
 
     def needed?
-      availability_request.user.present? && availability_request.availability_matches.available.notifiable.count.positive?
+      availability_request.notify? &&
+        availability_request.user.present? &&
+        availability_request.availability_matches.available.notifiable.count.positive?
     end
 
     def notify

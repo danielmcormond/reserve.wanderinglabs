@@ -7,7 +7,7 @@ class AvailabilityRequest < ApplicationRecord
   has_many :availability_notifications
 
   serialize :specific_site_ids, Array
-  enumerize :site_type, in: %i[group tent_walk_in tent other rv rv_tent], predicates: { prefix: true }
+  enumerize :site_type, in: %i[group tent_walk_in tent other rv rv_tent cabin], predicates: { prefix: true }
 
   enumerize :status, in: %i[active paused canceled ended], predicates: { prefix: true }
 
@@ -48,11 +48,8 @@ class AvailabilityRequest < ApplicationRecord
   def welcome_email
     user.notification_methods.each do |nm|
       next unless nm.notification_type == :email
-      if imported?
-        puts "IMPORTED EMAIL HERE"
-      else
-        NotifierMailer.new_availability_request(self.reload, nm).deliver
-      end
+      next if imported?
+      NotifierMailer.new_availability_request(self.reload, nm).deliver
     end
   end
 
