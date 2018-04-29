@@ -23,7 +23,7 @@ class Facility < ApplicationRecord
   end
 
   def scrape_end
-    [booking_end, availability_requests.active.map(&:date_end).sort.last].min
+    [booking_end, availability_requests.active.map(&:date_end).sort.last + 14].min
   end
 
   def booking_end
