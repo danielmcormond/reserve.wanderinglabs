@@ -28,6 +28,8 @@ module InitialImport::RecreationGov
         puts x
       end
       facility.cache_sites_count
+      facility.populate_sites_details
+      facility.save
       nil
     end
 
