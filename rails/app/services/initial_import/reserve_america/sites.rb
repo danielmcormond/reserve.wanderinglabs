@@ -42,6 +42,8 @@ module InitialImport::ReserveAmerica
         :tent_walk_in
       elsif set['SiteType'].include?('Tent Only')
         :tent
+      elsif set['SiteType'].include?('TENT SITE')
+        :tent
       elsif set['Maxeqplen'].blank? || set['Maxeqplen'].to_i.zero?
         :other
       else
