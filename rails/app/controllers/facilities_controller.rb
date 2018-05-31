@@ -27,20 +27,17 @@ class FacilitiesController < ApplicationController
     site_ids = avails.map { |h| h[:site_id] }.uniq
     sites = Site.where(id: site_ids).all
     avails_mapped = avails.map do |h|
-
       site = sites.select { |s| h[:site_id] == s.id }.first
-      h.merge(site: SiteSerializer.new(site) )
-
+      h.merge(site: SiteSerializer.new(site))
     end
-
     render json: avails_mapped
   end
 
   def facility_scope
     if params[:q].present?
-      Facility.order('LOWER(name) ASC')
+      Facility.active.order('LOWER(name) ASC')
     else
-      Facility.top_facilities
+      Facility.active.top_facilities
     end
   end
 

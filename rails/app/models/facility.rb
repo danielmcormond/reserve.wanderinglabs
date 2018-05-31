@@ -7,6 +7,7 @@ class Facility < ApplicationRecord
   has_many :availability_imports
 
   scope :lookup, (->(start) { where('name ILIKE ?', "#{start}%").order('name ASC').limit(15) })
+  scope :active, (-> { where(active: true) })
 
   enumerize :status, in: %i[active removed requires_attention], predicates: { prefix: true }
 

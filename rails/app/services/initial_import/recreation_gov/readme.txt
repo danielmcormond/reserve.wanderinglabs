@@ -70,5 +70,5 @@ facility.save
 
 InitialImport::RecreationGov::FacilityParent.new(facility).find
 
-facility = InitialImport::RecreationGov::FacilityWeb.new('https://www.recreation.gov/camping/fruita-campground/r/campgroundDetails.do?contractCode=NRSO&parkId=157240').create
+facility = InitialImport::RecreationGov::FacilityWeb.new('https://www.recreation.gov/camping/black-mountain-campground/r/campgroundDetails.do?contractCode=NRSO&parkId=158040').create
 

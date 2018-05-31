@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180428194559) do
+ActiveRecord::Schema.define(version: 20180531025101) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -131,6 +131,7 @@ ActiveRecord::Schema.define(version: 20180428194559) do
     t.boolean "premium_scrape", default: false, null: false
     t.string "parent_name"
     t.jsonb "sites_details"
+    t.boolean "active", default: false, null: false
     t.index ["agency_id"], name: "index_facilities_on_agency_id"
   end
 
