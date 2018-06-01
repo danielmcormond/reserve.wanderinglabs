@@ -1,8 +1,0 @@
-/*******************************
-    User Variable Overrides
-*******************************/
-
-@checkboxSize: 32px;
-@labelDistance: 2.85714em;
-@checkboxCheckFontSize: 28px;
-@labelFontSize: @relativeBig;
