@@ -1,0 +1,6 @@
+dist/
+node_modules/
+.envrc
+.env
+claudia.json
+production-env.json
