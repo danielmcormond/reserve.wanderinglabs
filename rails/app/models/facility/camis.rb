@@ -16,6 +16,7 @@ class Facility::Camis < Facility
       facilityId: id,
       baseUrl: agency.details['url'],
       path: details['path'],
+      concurrency: 4,
       hash: last_import_hash,
     }
   end
