@@ -26,7 +26,7 @@ class Scraper {
   }
 
   scrape() {
-    return Slack.notify(`${this.uniqKey} - Scrape Start`).then(() => {
+    // return Slack.notify(`${this.uniqKey} - Scrape Start`).then(() => {
       return this.connection.setSession().then((session) => {
         var timePeriods = [0,1,2,3,4,5,6,7,8];
         let timingsStart = +new Date();
@@ -47,18 +47,18 @@ class Scraper {
           let md5 = this.results_hash(results_json);
 
           if (this.hash === md5) {
-            return Slack.notify(`${this.uniqKey} - No differences - ${logging}`);
+            // return Slack.notify(`${this.uniqKey} - No differences - ${logging}`);
           }
           else {
-            return Slack.notify(`${this.uniqKey} - Found differences - ${logging}`).then(() => {
+            // return Slack.notify(`${this.uniqKey} - Found differences - ${logging}`).then(() => {
               return new S3Save(this.filename).do(results_json).then(() => {
                 return new NotifyComplete(this.facilityId).post(this.runId, md5);
               });
-            });
+            // });
           }
         });
       });
-    });
+    // });
   }
 
   nextDate(iter) {

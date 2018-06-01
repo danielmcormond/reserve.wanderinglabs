@@ -8,7 +8,7 @@ class Facility::Camis < Facility
   end
 
   def sns_scraper
-    ENV['AWS_SNS_SCRAPER_RC']
+    ENV['AWS_SNS_SCRAPER_CAMIS']
   end
 
   def scraper_details
