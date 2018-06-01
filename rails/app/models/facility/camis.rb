@@ -14,8 +14,8 @@ class Facility::Camis < Facility
   def scraper_details
     {
       facilityId: id,
-      rcFacilityId: rc_facility_id,
-      rcPlaceId: place_id,
+      baseUrl: agency.details['url'],
+      path: details['path'],
       hash: last_import_hash,
     }
   end
