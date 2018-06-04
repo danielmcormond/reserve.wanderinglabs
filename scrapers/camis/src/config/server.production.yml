@@ -1,0 +1,4 @@
+apps:
+  - script: dist/index-server.js
+    name: ScraperCamis
+    instances: 2

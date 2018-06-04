@@ -23,7 +23,11 @@ class Scrape
   end
 
   def work
-    Sns.publish(facility)
+    if facility.scraper_type == :container
+      ScrapeTypes::Container.new(facility).publish
+    else
+      Sns.publish(facility)
+    end
     Facilities::Checked.mark_as(facility)
   end
 end

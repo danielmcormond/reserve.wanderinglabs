@@ -7,8 +7,14 @@ class Facility::Camis < Facility
     agency.name
   end
 
-  def sns_scraper
-    ENV['AWS_SNS_SCRAPER_CAMIS']
+  def scraper_type
+    :container
+  end
+
+  def scraper_meta
+    {
+      url: ENV['AWS_SCRAPER_CONTAINER_CAMIS']
+    }
   end
 
   def scraper_details

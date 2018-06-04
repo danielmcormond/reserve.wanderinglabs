@@ -10,10 +10,7 @@
     "build": "npm run build:init && npm run build:js && npm run build:install",
     "build:init": "rm -rf dist && mkdir dist",
     "build:js": "babel src -d dist",
-    "build:install": "cp package.json dist/ && cp claudia.json dist/ && cp production-env.json dist/ && cd dist",
-    "lambda-create": "claudia create --name ScraperV2_Camis --region us-east-1 --handler index.handler --source dist --set-env-from-json production-env.json",
-    "lambda-test": "claudia test-lambda --event mock/event.json",
-    "deploy": "claudia update --source dist --set-env-from-json production-env.json"
+    "build:install": "cp package.json dist/"
   },
   "author": "",
   "license": "ISC",
@@ -27,6 +24,8 @@
     "aws-sdk": "^2.246.1",
     "bluebird": "^3.5.1",
     "bluebird-retry": "^0.11.0",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
     "lodash": "^4.17.10",
     "moment": "^2.22.1",
     "request": "^2.87.0",

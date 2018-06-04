@@ -1,0 +1,5 @@
+apps:
+  - script: src/serverDev.js
+    name: ScraperCamis
+    instances: 2
+    interpreter: babel-node
