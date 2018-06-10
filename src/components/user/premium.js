@@ -5,11 +5,13 @@ import {
   Divider,
   Grid,
   Header,
+  Label,
   List,
   Segment
 } from "semantic-ui-react";
 
 import PaypalButton from "./paypal";
+import SemanticInput from "../semanticInput";
 
 const amounts = [10, 20, 25, 50];
 
@@ -48,7 +50,7 @@ export default class Premium extends Component {
           <Header as="h4">Premium Membership</Header>
           <p>
             Become a premium member by sending a few bucks our way and we will
-            upgrade your request to include these benifits:
+            upgrade your request to include these benefits:
           </p>
           <List bulleted>
             <List.Item>Check twice as often</List.Item>
@@ -62,9 +64,7 @@ export default class Premium extends Component {
           </p>
 
           <div className="ui big form">
-            <Grid>
-              {amountCheckboxes}
-            </Grid>
+            <Grid>{amountCheckboxes}</Grid>
           </div>
 
           <Divider hidden />
@@ -77,16 +77,39 @@ export default class Premium extends Component {
       );
     }
 
-    function premiumMember() {
+    const premiumMember = (e) => {
       return (
         <div>
           <Header as="h4">Thank You!</Header>
-          <p>You are a premium member. Extra benifits have been activated. </p>
+          <p>You are a premium member. Extra benefits have been activated. </p>
 
           <p>
             I greatly appreciate your support. Please do not hesitate to contact
             me if you have a question or an idea! info@wanderinglabs.com
           </p>
+
+          <Divider hidden />
+
+          <p>
+            If you ever feel the need to send a bit more:
+          </p>
+
+          <Grid>
+            <Grid.Column width="4">
+              <SemanticInput
+                defaultValue={premiumAmount}
+                onChange={this.premiumAmountChange}
+                labelPosition="left"
+                type="text"
+              >
+                <Label basic>$</Label>
+                <input />
+              </SemanticInput>
+            </Grid.Column>
+            <Grid.Column width="12">
+              <PaypalButton />
+            </Grid.Column>
+          </Grid>
         </div>
       );
     }

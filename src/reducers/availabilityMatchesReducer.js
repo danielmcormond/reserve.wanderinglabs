@@ -31,7 +31,7 @@ export default function reducer(
       };
     }
     case "FETCH_MATCH": {
-      return { ...state, match: {}, fetching: true };
+      return { ...state, fetching: true };
     }
     case "FETCH_MATCH_REJECTED": {
       return { ...state, fetching: false, error: action.payload };

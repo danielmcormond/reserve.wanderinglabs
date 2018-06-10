@@ -21,7 +21,7 @@ export default class RequestFormStep1 extends Component {
 
   handleSearchChange = (e, value) => {
     this.props.dispatch(
-      fetchSites(this.props.facilityId, value, this.props.siteIds)
+      fetchSites(this.props.facilityId, value.searchQuery, this.props.siteIds)
     );
   };
 

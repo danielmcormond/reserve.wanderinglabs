@@ -50,6 +50,26 @@ export default class PageAbout extends Component {
             weekend and it was due to your program. Thank You, thank you, thank
             you!!!
           </p>
+
+          <p>
+            Great job! Another vacation reservation thanks to your great
+            website! Keep up the good work!
+          </p>
+
+          <p>Your site is amazing!</p>
+
+          <p>
+            Thanks for providing such a great service! I'm grateful that this
+            exists since I love last-minute trips to paradise in the great
+            outdoors{" "}
+          </p>
+
+          <p>Words cannot convey how much I appreciate your website!</p>
+
+          <p>
+            Just wanted to say Thank You sooooooooo much – this makes camping
+            for our family possible at our favorite spots.
+          </p>
         </Grid.Column>
         <Grid.Column computer="8" tablet="8" mobile="16">
           <Header as="h4">
