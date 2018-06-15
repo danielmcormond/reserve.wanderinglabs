@@ -45,6 +45,10 @@ class AvailabilityRequest < ApplicationRecord
     AvailabilityMatcher::Index.call(last_import, self)
   end
 
+  def availability_finder
+    AvailabilityMatcher::Finder.new(nil, self).matching_availabilities
+  end
+
   def welcome_email
     user.notification_methods.each do |nm|
       next unless nm.notification_type == :email

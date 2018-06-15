@@ -15,17 +15,5 @@ ssh-add
 ~/.rbenv/vars
 (Remeber to stop and start puma.. can't just restart)
 
-* Premium Scrape Plan *
-
-Facility has premium_scrape:boolean
-  - toggle it every pre scrape
-  - update checked counts/date separately
-
-Import -
-  - if facility premium_scrape is true
-    - match just premium
-    - Resque Schedual all for 11mins
-  - else
-    - match all
 
 psql -U postgres -d postgres -c 'SELECT pg_terminate_backend(pg_stat_activity.pid) FROM pg_stat_activity'

@@ -22,7 +22,7 @@ class Facility::Camis < Facility
       facilityId: id,
       baseUrl: agency.details['url'],
       path: details['path'],
-      concurrency: 4,
+      concurrency: 2,
       hash: last_import_hash,
     }
   end

@@ -18,13 +18,13 @@ docker build -t wanderinglabs/scraper-camis:latest .
 docker tag wanderinglabs/scraper-camis:latest 302062960021.dkr.ecr.us-east-1.amazonaws.com/wanderinglabs/scraper-camis:latest
 docker push 302062960021.dkr.ecr.us-east-1.amazonaws.com/wanderinglabs/scraper-camis:latest
 
+# PRD
 docker pull 302062960021.dkr.ecr.us-east-1.amazonaws.com/wanderinglabs/scraper-camis:latest
-
-
-
-docker run -d -p 3003:3003 --env-file ./.env wanderinglabs/scraper:camis.0.4
-
 docker run -d -p 80:3003 --env-file ./.env 302062960021.dkr.ecr.us-east-1.amazonaws.com/wanderinglabs/scraper-camis:latest
+
+
+# DEV
+docker run -d -p 3003:3003 --env-file ./.env wanderinglabs/scraper:camis.0.4
 
 
 
