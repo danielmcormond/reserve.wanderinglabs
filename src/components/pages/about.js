@@ -56,6 +56,8 @@ export default class PageAbout extends Component {
             website! Keep up the good work!
           </p>
 
+          <p>I think your site is worthless...</p>
+
           <p>Your site is amazing!</p>
 
           <p>

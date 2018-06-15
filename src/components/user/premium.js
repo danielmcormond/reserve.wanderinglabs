@@ -77,7 +77,7 @@ export default class Premium extends Component {
       );
     }
 
-    const premiumMember = (e) => {
+    const premiumMember = e => {
       return (
         <div>
           <Header as="h4">Thank You!</Header>
@@ -90,9 +90,7 @@ export default class Premium extends Component {
 
           <Divider hidden />
 
-          <p>
-            If you ever feel the need to send a bit more:
-          </p>
+          <p>If you ever feel the need to send a bit more:</p>
 
           <Grid>
             <Grid.Column width="4">
@@ -112,7 +110,7 @@ export default class Premium extends Component {
           </Grid>
         </div>
       );
-    }
+    };
 
     return (
       <Segment color="green">

@@ -168,9 +168,7 @@ export default class Facility extends Component {
               <Table.HeaderCell />
             </Table.Row>
           </Table.Header>
-          <Table.Body>
-            {mappedArs}
-          </Table.Body>
+          <Table.Body>{mappedArs}</Table.Body>
         </Table>
       </div>
     );

@@ -1,7 +1,16 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Grid, Header, Icon, List, Loader, Table } from "semantic-ui-react";
+import {
+  Button,
+  Grid,
+  Header,
+  Icon,
+  List,
+  Loader,
+  Table
+} from "semantic-ui-react";
 import { Link } from "react-router-dom";
+import debounce from "debounce";
 
 import DateFormat from "./utils/dateFormat";
 import { fetchAvailabilityImports } from "../actions/availabilityImportsActions";
@@ -15,13 +24,21 @@ import AvailabilityImportsHistory from "./imports/history";
   };
 })
 export default class AvailabilityImports extends Component {
-  componentWillMount() {
+  state = { filter: [] };
+
+  doFetchAvailabilityImports = debounce(() => {
+    const { filter } = this.state;
     this.props.dispatch(
       fetchAvailabilityImports(
         this.props.match.params.id,
-        this.props.location.pathname.includes("expanded")
+        this.props.location.pathname.includes("expanded"),
+        filter
       )
     );
+  }, 400);
+
+  componentWillMount() {
+    this.doFetchAvailabilityImports();
   }
 
   componentWillReceiveProps(nextProps) {
@@ -29,12 +46,7 @@ export default class AvailabilityImports extends Component {
       this.props.location.pathname.includes("expanded") !==
       nextProps.location.pathname.includes("expanded")
     ) {
-      this.props.dispatch(
-        fetchAvailabilityImports(
-          nextProps.match.params.id,
-          nextProps.location.pathname.includes("expanded")
-        )
-      );
+      this.doFetchAvailabilityImports();
     }
   }
 
@@ -42,8 +54,58 @@ export default class AvailabilityImports extends Component {
     return !this.props.location.pathname.includes("expanded");
   }
 
+  toggleFilter = (event, data) => {
+    var { filter } = this.state;
+    if (filter.indexOf(data.name) > -1) {
+      filter = filter.filter(item => item !== data.name);
+    } else {
+      filter.push(data.name);
+    }
+    this.setState({ filter }, () => {
+      this.doFetchAvailabilityImports();
+    });
+  };
+
   render() {
+    const { filter } = this.state;
     const { imports, fetching } = this.props;
+
+    const filters = [
+      {
+        key: "reserve_america",
+        name: "reserve_america",
+        active: filter.indexOf("reserve_america") > -1,
+        content: "Reserve America"
+      },
+      {
+        key: "recreation_gov",
+        name: "recreation_gov",
+        active: filter.indexOf("recreation_gov") > -1,
+        content: "Recreation.Gov"
+      },
+      {
+        key: "reserve_california",
+        name: "reserve_california",
+        active: filter.indexOf("reserve_california") > -1,
+        content: "Reserve California"
+      },
+      {
+        key: "camis",
+        name: "camis",
+        active: filter.indexOf("camis") > -1,
+        content: "Camis"
+      }
+    ];
+
+    const mappedFilters = filters.map(filter => (
+      <Button
+        toggle
+        size="mini"
+        onClick={this.toggleFilter}
+        as="a"
+        {...filter}
+      />
+    ));
 
     const mappedImports = imports.map(log => {
       return (
@@ -93,6 +155,10 @@ export default class AvailabilityImports extends Component {
             <Icon name="list layout" />
             <Header.Content>Logs:</Header.Content>
           </Header>
+          <p>
+            Filter on:<br />
+            {mappedFilters}
+          </p>
           <List>
             <List.Item>
               <strong>Range</strong> - Date range searched
