@@ -10,7 +10,8 @@ class ScrapeTypes::Container
     HTTParty.post(
       facility.scraper_meta[:url],
       body: facility.scraper_details.to_json,
-      headers: { 'Content-Type' => 'application/json' }
+      headers: { 'Content-Type' => 'application/json' },
+      timeout: 1
     )
   end
 end
