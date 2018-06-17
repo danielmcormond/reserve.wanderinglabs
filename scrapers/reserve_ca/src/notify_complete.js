@@ -13,9 +13,9 @@ class NotifyComplete {
   }
 
   post(runId, hash) {
-    // console.log('posting to', this.base)
+    const url = `${this.base}/facilities/${this.facilityId}/availabilities/import`
     const options = {
-      url: `${this.base}/facilities/${this.facilityId}/availabilities/import`,
+      url: url,
       method: 'POST',
       form: {
         import: runId,
