@@ -12,11 +12,11 @@ import { NotifyComplete } from './notify_complete';
 import Slack from './slack'
 
 class Scraper {
-  constructor(facilityId, rcPlaceId, rcFacilityId, hash) {
-    this.facilityId = facilityId;
-    this.rcPlaceId = rcPlaceId;
-    this.rcFacilityId = rcFacilityId;
-    this.hash = hash
+  constructor(params) {
+    this.facilityId = params["facilityId"];
+    this.rcPlaceId = params["rcPlaceId"];
+    this.rcFacilityId = params["rcFacilityId"];
+    this.hash = params["hash"];
 
     this.runId = moment().format('YY_MM_DD_HH_mm');
     this.concurrency = 0;
@@ -129,4 +129,4 @@ class Scraper {
   }
 }
 
-export { Scraper };
+export default Scraper;

@@ -15,6 +15,16 @@ class Facility::ReserveCalifornia < Facility
     ENV['AWS_SNS_SCRAPER_RC']
   end
 
+  def scraper_type
+    :container
+  end
+
+  def scraper_meta
+    {
+      url: ENV['AWS_SCRAPER_CONTAINER_RESERVE_CA'],
+    }
+  end
+
   def scraper_details
     {
       facilityId: id,
