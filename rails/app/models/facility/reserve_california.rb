@@ -11,9 +11,9 @@ class Facility::ReserveCalifornia < Facility
     'California State Parks'
   end
 
-  # def scraper_type
-  #   :container
-  # end
+  def scraper_type
+    :container
+  end
 
   def scraper_meta
     {
