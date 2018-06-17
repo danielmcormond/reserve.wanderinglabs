@@ -11,3 +11,10 @@ curl -d '{"facilityId":"5041", "rcFacilityId":"694", "rcPlaceId":"715"}' -H "Con
 # PRD
 docker pull 302062960021.dkr.ecr.us-east-1.amazonaws.com/wanderinglabs/scraper-reserve_ca:latest
 docker run -d -p 81:3003 --env-file ./.env 302062960021.dkr.ecr.us-east-1.amazonaws.com/wanderinglabs/scraper-reserve_ca:latest
+
+
+# PM2
+
+pm2 delete all
+pm2 start src/config/server.development.yml --watch
+

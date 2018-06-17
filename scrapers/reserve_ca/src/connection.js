@@ -16,7 +16,7 @@ class Connection {
       followRedirect: false,
       resolveWithFullResponse: true,
       time: true,
-      timeout: 3000,
+      timeout: 30000,
       forever: true,
       json: true,
     });
@@ -38,7 +38,6 @@ class Connection {
   }
 
   setSearch() {
-    console.log('set search....')
     const options = {
       url: 'https://www.reservecalifornia.com/CaliforniaWebHome/Facilities/AdvanceSearch.aspx',
       method: 'POST',
