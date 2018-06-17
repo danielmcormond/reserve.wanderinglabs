@@ -11,6 +11,16 @@ class Facility::ReserveCalifornia < Facility
     'California State Parks'
   end
 
+  def scraper_type
+    :container
+  end
+
+  def scraper_meta
+    {
+      url: ENV['AWS_SCRAPER_CONTAINER_RESERVE_CA'],
+    }
+  end
+
   def sns_scraper
     ENV['AWS_SNS_SCRAPER_RC']
   end
