@@ -14,6 +14,6 @@ ssh-add
 
 ~/.rbenv/vars
 (Remeber to stop and start puma.. can't just restart)
-
+bundle exec puma -C /home/deploy/rails.reserve.wanderinglabs/shared/config/puma.rb --daemon
 
 psql -U postgres -d postgres -c 'SELECT pg_terminate_backend(pg_stat_activity.pid) FROM pg_stat_activity'

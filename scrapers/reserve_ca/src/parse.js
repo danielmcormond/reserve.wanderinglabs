@@ -23,6 +23,11 @@ class Parse {
       // \u0026#39;0
       // \u0026#39;
       // );\"
+      var availablityPageMatch = this.body.match(/generateAvailabilityCellDefinitions/gi);
+      if ((availablityPageMatch === null) || (availablityPageMatch.length === 0)) {
+        console.log('FATAL.. availablityPageMatch NULL', this.body)
+        return reject('Fatal: non availability page')
+      }
 
       var regexp = /UnitDetailPopup(.*?)#39/gi;
       var matches_array = this.body.match(regexp);

@@ -7,7 +7,7 @@ docker run -d -p 3003:3003 --env-file ./.env wanderinglabs/scraper:camis.0.4
 curl -d '{"facilityId":"5041", "rcFacilityId":"694", "rcPlaceId":"715"}' -H "Content-Type: application/json" -X POST http://localhost:3003/scrape
 curl -d '{"facilityId":"5041", "rcFacilityId":"694", "rcPlaceId":"715"}' -H "Content-Type: application/json" -X POST http://204.48.25.66:81/scrape
 
-curl -d "{\"facilityId\":4958,\"rcFacilityId\":2016,\"rcPlaceId\":686,\"hash\":null}" -H "Content-Type: application/json" -X POST http://localhost:3003/scrape
+curl -d "{\"facilityId\":4986,\"rcFacilityId\":633,\"rcPlaceId\":699,\"hash\":\"bc585c1ed7d6692a3926d1da4f2efc24\"}" -H "Content-Type: application/json" -X POST http://localhost:3003/scrape
 
 
 

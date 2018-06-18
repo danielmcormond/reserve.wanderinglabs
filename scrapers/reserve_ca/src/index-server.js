@@ -12,7 +12,9 @@ app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x
 app.post("/scrape", (req, res) => {
   // console.log("req", req.body);
   let params = req.body;
-  new Scraper(params).scrape()
+  new Scraper(params).scrape().catch((e) => {
+    console.log('Fatal Error.. express level', e)
+  })
   res.send();
 });
 
