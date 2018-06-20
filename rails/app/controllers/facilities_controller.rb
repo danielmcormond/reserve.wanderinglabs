@@ -41,23 +41,19 @@ class FacilitiesController < ApplicationController
     end
   end
 
+  def filter_include?(value)
+    params[:f].present? && params[:f].include?(value)
+  end
+
   def filters_scope(scope)
     type_filters = []
-    type_filters.push('Facility::ReserveAmerica') if params[:f].present? && params[:f].include?('reserve_america')
-    type_filters.push('Facility::ReserveCalifornia') if params[:f].present? && params[:f].include?('reserve_california')
-    type_filters.push('Facility::RecreationGov') if params[:f].present? && params[:f].include?('recreation_gov')
+    type_filters.push('Facility::ReserveAmerica') if filter_include?('reserve_america')
+    type_filters.push('Facility::ReserveCalifornia') if filter_include?('reserve_california')
+    type_filters.push('Facility::RecreationGov') if filter_include?('recreation_gov')
 
-    scope = scope.where(type: type_filters) unless type_filters.empty?
+    agency_ids = []
+    agency_ids.push(52) if filter_include?('washington_state_parks')
 
-    if params[:f] == 'washington_state_parks'
-      scope = if type_filters.empty?
-                scope.where(agency_id: 52)
-              else
-                scope.or(Facility.where(agency_id: 52))
-              end
-
-    end
-
-    scope
+    scope.where('(type IN (?) OR agency_id IN (?))', type_filters, agency_ids)
   end
 end
