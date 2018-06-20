@@ -5,6 +5,7 @@ import { Errors } from "react-redux-form";
 import debounce from "debounce";
 
 import { fetchFacilities } from "../../../actions/facilitiesActions";
+import { filters } from "../../../filters";
 
 @connect(store => {
   return {
@@ -48,34 +49,14 @@ export default class RequestFormStep1Facility extends Component {
     const { filter } = this.state;
     const { loading } = this.props;
 
-    const filters = [
-      {
-        key: "reserve_america",
-        name: "reserve_america",
-        active: filter.indexOf("reserve_america") > -1,
-        content: "Reserve America"
-      },
-      {
-        key: "recreation_gov",
-        name: "recreation_gov",
-        active: filter.indexOf("recreation_gov") > -1,
-        content: "Recreation.Gov"
-      },
-      {
-        key: "reserve_california",
-        name: "reserve_california",
-        active: filter.indexOf("reserve_california") > -1,
-        content: "Reserve California"
-      }
-    ];
-
-    const mappedFilters = filters.map(filter => (
+    const mappedFilters = filters.map(filterItem => (
       <Button
         toggle
         size="mini"
         onClick={this.toggleFilter}
         as="a"
-        {...filter}
+        active={filter.indexOf(filterItem.name) > -1}
+        {...filterItem}
       />
     ));
 
