@@ -23,7 +23,7 @@ class Scraper {
 
     this.connection = new Connection(this.rcPlaceId, this.rcFacilityId);
     this.log = [];
-    this.maxDate = moment().add(6, 'months').subtract(1, 'days');
+    this.maxDate = moment().add(6, 'months').subtract(2, 'days');
     this.lastDate = moment();
 
     console.log(this.maxDate)
@@ -93,8 +93,8 @@ class Scraper {
           let firstDateText = firstDateColumn.match(/\'(.*?)\'/)[1];
           let lastDateTmp = moment(lastDateText, 'MM/DD/YYYY');
 
-          console.log(this.logPrefix, iter, 'Dates', firstDateText, lastDateText)
-          this.log.push([this.logPrefix, iter, 'Dates', firstDateText, lastDateText])
+          console.log(this.logPrefix, iter, 'Dates', firstDateText, lastDateText, this.maxDate)
+          this.log.push([this.logPrefix, iter, 'Dates', firstDateText, lastDateText, this.maxDate])
 
           if (lastDateTmp.isAfter(this.lastDate)) {
             this.lastDate = lastDateTmp;
@@ -125,7 +125,7 @@ class Scraper {
   }
 
   results_json(filtered_results) {
-    return JSON.stringify({ results: filtered_results, log: this.logPrefix });
+    return JSON.stringify({ results: filtered_results });
   }
 
   results_hash(results_json) {

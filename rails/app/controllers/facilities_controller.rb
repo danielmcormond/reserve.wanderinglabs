@@ -2,12 +2,12 @@ class FacilitiesController < ApplicationController
   def index
     @facilities = facility_scope.limit(15)
     @facilities = @facilities.where('name ILIKE ?', "#{params[:q]}%") if params[:q]
-    @facilities = @facilities.where(type: filters) unless filters.empty?
+    @facilities = filters_scope(@facilities)
 
     if params[:q].present? && @facilities.count < 15
       @more_facilities = Facility.order('LOWER(parent_name) ASC, LOWER(name) ASC').limit(15 - @facilities.count)
       @more_facilities = @more_facilities.where('parent_name ILIKE ?', "#{params[:q]}%") if params[:q]
-      @more_facilities = @more_facilities.where(type: filters) unless filters.empty?
+      @more_facilities = filters_scope(@more_facilities)
       @combined_facilities = @facilities + @more_facilities
       render json: @combined_facilities
     else
@@ -41,11 +41,23 @@ class FacilitiesController < ApplicationController
     end
   end
 
-  def filters
-    f = []
-    f.push('Facility::ReserveAmerica') if params[:f].present? && params[:f].include?('reserve_america')
-    f.push('Facility::ReserveCalifornia') if params[:f].present? && params[:f].include?('reserve_california')
-    f.push('Facility::RecreationGov') if params[:f].present? && params[:f].include?('recreation_gov')
-    f
+  def filters_scope(scope)
+    type_filters = []
+    type_filters.push('Facility::ReserveAmerica') if params[:f].present? && params[:f].include?('reserve_america')
+    type_filters.push('Facility::ReserveCalifornia') if params[:f].present? && params[:f].include?('reserve_california')
+    type_filters.push('Facility::RecreationGov') if params[:f].present? && params[:f].include?('recreation_gov')
+
+    scope = scope.where(type: type_filters) unless type_filters.empty?
+
+    if params[:f] == 'washington_state_parks'
+      scope = if type_filters.empty?
+                scope.where(agency_id: 52)
+              else
+                scope.or(Facility.where(agency_id: 52))
+              end
+
+    end
+
+    scope
   end
 end
