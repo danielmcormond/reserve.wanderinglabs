@@ -54,6 +54,10 @@ class FacilitiesController < ApplicationController
     agency_ids = []
     agency_ids.push(52) if filter_include?('washington_state_parks')
 
-    scope.where('(type IN (?) OR agency_id IN (?))', type_filters, agency_ids) if type_filters.any? || agency_ids.any?
+    if type_filters.any? || agency_ids.any?
+      scope.where('(type IN (?) OR agency_id IN (?))', type_filters, agency_ids)
+    else
+      scope
+    end
   end
 end
