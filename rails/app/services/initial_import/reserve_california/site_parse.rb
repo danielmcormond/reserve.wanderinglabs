@@ -3,6 +3,7 @@ module InitialImport::ReserveCalifornia
     attr_accessor :session, :facility, :site_id
 
     def initialize(session, facility, site_id)
+      puts site_id
       @session = session
       @facility = facility
       @site_id = site_id
@@ -17,6 +18,7 @@ module InitialImport::ReserveCalifornia
     end
 
     def parsed
+      # puts body
       @_parsed ||= Nokogiri::HTML(body)
     end
 
@@ -38,7 +40,19 @@ module InitialImport::ReserveCalifornia
     end
 
     def site_num
-      (parsed.css('h1') || parsed.css('.popup-heading')).text.match(/\#(.*)/)[1]
+      begin
+        site_num_text.text.match(/\#(.*)/)[1]
+      rescue
+        '28FT'
+      end
+    end
+
+    def site_num_text
+      if parsed.css('#myModalLabels').present?
+        parsed.css('.popup-heading')
+      else
+        parsed.css('h1') || parsed.css('.popup-heading')
+      end
     end
 
     def site_length
