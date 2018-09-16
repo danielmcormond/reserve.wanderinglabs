@@ -13,8 +13,17 @@ AR: #{AvailabilityRequest.active.count} / #{AvailabilityRequest.where('created_a
 AM: #{AvailabilityMatch.count} / #{AvailabilityMatch.where('created_at > ?', 1.day.ago).count}/ #{AvailabilityMatch.where('created_at > ?', 1.hour.ago).count}
 AMC: #{AvailabilityMatchClick.count} / #{AvailabilityMatchClick.where('created_at > ?', 1.day.ago).count}/ #{AvailabilityMatchClick.where('created_at > ?', 1.hour.ago).count}
 AMCA: #{AvailabilityMatchClick.available.count} / #{AvailabilityMatchClick.where('created_at > ?', 1.day.ago).available.count}/ #{AvailabilityMatchClick.where('created_at > ?', 1.hour.ago).available.count}
-
+#{imports}
     EOS
+  end
+
+  def self.imports
+    i = []
+    [Facility::Camis, Facility::ReserveCalifornia, Facility::ReserveAmerica, Facility::RecreationGov].each do |klass|
+      ids = klass.pluck(:id)
+      i << "I #{klass.to_s}: #{AvailabilityImport.where(facility_id: ids).count} / #{AvailabilityImport.where(facility_id: ids).where('created_at > ?', 1.day.ago).count} / #{AvailabilityImport.where(facility_id: ids).where('created_at > ?', 1.hour.ago).count}"
+    end
+    i.join("\n")
   end
 end
 
