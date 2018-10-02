@@ -29,6 +29,9 @@ docker run -d -p 3003:3003 --env-file ./.env wanderinglabs/scraper:camis.0.4
 curl -d '{"facilityId":"5112", "baseUrl":"https://washington.goingtocamp.com", "path":"/AlderLake-TacomaPowerPark%2fEast(Sites1-40)%3fCalendar", "concurrency":2}' -H "Content-Type: application/json" -X POST http://192.168.99.100:3003/scrape
 
 
+curl -d '{"facilityId":"5112", "baseUrl":"https://washington.goingtocamp.com", "path":"/BayViewStatePark/Sites1-76?Calendar", "concurrency":2}' -H "Content-Type: application/json" -X POST http://localhost:3003/scrape
+
+
 curl -d '{"facilityId":"5112", "baseUrl":"https://washington.goingtocamp.com", "path":"/AlderLake-TacomaPowerPark%2fEast(Sites1-40)%3fCalendar", "concurrency":2}' -H "Content-Type: application/json" -X POST http://204.48.25.66/scrape
 
 # PM2

@@ -81,7 +81,7 @@ class Scraper {
       this.timings.push(result.elapsedTime);
 
       // console.log(result.timingPhases)
-      //console.log('returned:', +new Date, result && result.statusCode, path)
+      console.log('returned:', +new Date, result && result.statusCode, path)
       if (result.body.length === 0) {
         console.log('RUN AGAIN', periodStart)
         return Promise.reject(e)
