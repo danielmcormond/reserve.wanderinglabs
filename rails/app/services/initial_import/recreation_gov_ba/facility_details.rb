@@ -53,7 +53,7 @@ module InitialImport::RecreationGovBa
     end
 
     def agency_id
-      Agency.where(name: json['ORGANIZATION'][0]['OrgName']).first.id
+      Agency.where(name: json['ORGANIZATION']&.first.try(:[],'OrgName') || '').first.id
     end
 
     def attributes
