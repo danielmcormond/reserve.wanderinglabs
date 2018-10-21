@@ -1,23 +1,22 @@
 class Facility::RecreationGovBa < Facility
-  def contract_code
-    'NRSO'
-  end
-
-  def park_id
-    details['FacilityID'].to_i.to_s
-  end
-
   def sub_name
-    [details['Parent'], details['AddressStateCode']].join(', ')
+    agency.name
   end
 
-  def sns_scraper
-    ENV['AWS_SNS_SCRAPER']
+  def scraper_type
+    :container
+  end
+
+  def scraper_meta
+    {
+      url: ENV['AWS_SCRAPER_CONTAINER_RG'],
+    }
   end
 
   def scraper_details
     {
       facilityId: id,
+      rcFacilityId: details['FacilityID'].to_i.to_s,
       startDate: scrape_start.strftime('%m/%d/%Y'),
       endDate: scrape_end.strftime('%m/%d/%Y'),
       hash: last_import_hash,
