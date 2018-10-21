@@ -3,6 +3,10 @@ class Facility::RecreationGovBa < Facility
     agency.name
   end
 
+  def ext_id
+    details['FacilityID'].to_i.to_s
+  end
+
   def scraper_type
     :container
   end
