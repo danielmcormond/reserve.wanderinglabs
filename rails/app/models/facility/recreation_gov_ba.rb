@@ -16,7 +16,7 @@ class Facility::RecreationGovBa < Facility
   def scraper_details
     {
       facilityId: id,
-      rcFacilityId: details['FacilityID'].to_i.to_s,
+      rgFacilityId: details['FacilityID'].to_i.to_s,
       startDate: scrape_start.strftime('%m/%d/%Y'),
       endDate: scrape_end.strftime('%m/%d/%Y'),
       hash: last_import_hash,
