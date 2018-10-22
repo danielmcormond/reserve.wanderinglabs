@@ -33,7 +33,7 @@ module InitialImport::RecreationGovBa
     def attributes
       {
         ext_site_id: attrs['CampsiteID'],
-        site_num: attrs['CampsiteName'],
+        site_num: site_num,
         details: details,
         water: water,
         sewer: sewer,
@@ -51,6 +51,10 @@ module InitialImport::RecreationGovBa
     def active
       return false if attrs['CampsiteType'].downcase.include?('management')
       true
+    end
+
+    def site_num
+      attrs['CampsiteName'].to_s.gsub('.0', '')
     end
 
     def length

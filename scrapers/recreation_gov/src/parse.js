@@ -23,7 +23,7 @@ class Parse {
             const formattedDate = moment(arrivalDate, "YYYY-MM-DD").format(
               "MM/DD/YYYY"
             );
-            console.log(final.length, siteId, formattedDate);
+            // console.log(final.length, siteId, formattedDate);
             final.push([siteId, formattedDate]);
           }
         }

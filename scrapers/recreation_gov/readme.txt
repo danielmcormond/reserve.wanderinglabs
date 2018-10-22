@@ -25,6 +25,8 @@ docker push 302062960021.dkr.ecr.us-east-1.amazonaws.com/wanderinglabs/scraper-r
 
 Docker creds for prd.. run this locally:
 aws ecr get-login --no-include-email
+$(aws ecr get-login --no-include-email --region us-east-1)
+
 
 docker pull 302062960021.dkr.ecr.us-east-1.amazonaws.com/wanderinglabs/scraper-recreation-gov:latest
 docker run -d -p 80:3003 --env-file ./.env 302062960021.dkr.ecr.us-east-1.amazonaws.com/wanderinglabs/scraper-recreation-gov:latest

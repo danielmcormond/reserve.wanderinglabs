@@ -49,7 +49,7 @@ class FacilitiesController < ApplicationController
     type_filters = []
     type_filters.push('Facility::ReserveAmerica') if filter_include?('reserve_america')
     type_filters.push('Facility::ReserveCalifornia') if filter_include?('reserve_california')
-    type_filters.push('Facility::RecreationGov') if filter_include?('recreation_gov')
+    type_filters.push('Facility::RecreationGovBa') if filter_include?('recreation_gov')
 
     agency_ids = []
     agency_ids.push(52) if filter_include?('washington_state_parks')

@@ -72,13 +72,13 @@ class Scraper {
   }
 
   filterResults(results) {
-    console.log("results", results.length);
+    // console.log("results", results.length);
     var correctHash = {};
     _.forEach(results, function(value) {
       correctHash[value[1]] = correctHash[value[1]] || [];
       correctHash[value[1]].push(value[0]);
     });
-    console.log(correctHash);
+    // console.log(correctHash);
     return correctHash;
   }
 

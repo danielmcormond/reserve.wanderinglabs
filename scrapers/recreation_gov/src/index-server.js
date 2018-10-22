@@ -10,7 +10,7 @@ app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
 app.post("/scrape", (req, res) => {
-  console.log("req", req.body);
+  // console.log("req", req.body);
   let params = req.body;
   new Scraper(params)
     .scrape()
@@ -18,7 +18,7 @@ app.post("/scrape", (req, res) => {
       console.log("Scrape fail...", e);
     })
     .then(result => {
-      console.log("Scrape complete...");
+      // console.log("Scrape complete...");
     });
   res.send({ some: 'json' });
 });
