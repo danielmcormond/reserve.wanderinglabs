@@ -10,6 +10,8 @@ class ReserveUrl
       Reserve::ReserveCalifornia.new(availability_match).params
     elsif availability_match.site.facility.is_a?(Facility::RecreationGov)
       Reserve::RecreationGov.new(availability_match).params
+    elsif availability_match.site.facility.is_a?(Facility::RecreationGovBa)
+      Reserve::RecreationGovBa.new(availability_match).params
     else
       Reserve::ReserveAmerica.new(availability_match).params
     end
