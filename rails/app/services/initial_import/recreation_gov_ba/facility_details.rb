@@ -24,7 +24,7 @@ module InitialImport::RecreationGovBa
     def self.import_by_id(recreation_gov_id)
       url = "https://ridb.recreation.gov/api/v1/facilities/#{recreation_gov_id}?apikey=#{ENV['RIDB_API_KEY']}&full=true"
       json = JSON.parse(HTTParty.get(url).body)
-      new(json).update_or_create
+      new(json).update_or_create(true)
     end
 
     def self.import_by_attributes(attributes)
@@ -40,12 +40,12 @@ module InitialImport::RecreationGovBa
       puts "Sites: #{json['CAMPSITE'].size}"
     end
 
-    def update_or_create
+    def update_or_create(do_sites = false)
       campsite
-      return if json['CAMPSITE'].size.zero?
+      # return if json['CAMPSITE'].size.zero?
 
       facility = Facility::RecreationGovBa.where(name: attributes[:name]).first_or_initialize(attributes).tap { |e| e.update!(attributes) }
-      InitialImport::RecreationGovBa::Sites.perform(facility.reload.id)
+      InitialImport::RecreationGovBa::Sites.perform(facility.reload.id) if do_sites
     end
 
     def details
@@ -60,6 +60,8 @@ module InitialImport::RecreationGovBa
       {
         agency_id: agency_id,
         name: json['FacilityName'],
+        parent_name: json['RECAREA']&.first.try(:[], 'RecAreaName'),
+        ext_facility_id: json['FacilityID'].to_i.to_s,
         details: details,
       }
     end

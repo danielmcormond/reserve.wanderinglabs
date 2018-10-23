@@ -31,7 +31,7 @@ module InitialImport::RecreationGovBa
     end
 
     def url
-      "https://ridb.recreation.gov/api/v1/facilities/#{facility.park_id}/campsites?apikey=#{ENV['RIDB_API_KEY']}&full=true&offset=#{offset}"
+      "https://ridb.recreation.gov/api/v1/facilities/#{facility.ext_facility_id}/campsites?apikey=#{ENV['RIDB_API_KEY']}&full=true&offset=#{offset}"
     end
 
     def body
