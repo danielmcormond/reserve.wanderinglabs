@@ -1,10 +1,10 @@
 class Facility::RecreationGovBa < Facility
-  def sub_name
-    agency.name
-  end
-
   def ext_id
     details['FacilityID'].to_i.to_s
+  end
+
+  def sub_name
+    [parent_name, details['FACILITYADDRESS']&.first.try(:[], 'AddressStateCode')].join(', ')
   end
 
   def scraper_type
