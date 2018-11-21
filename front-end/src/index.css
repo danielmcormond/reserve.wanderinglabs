@@ -1,0 +1,105 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff;
+}
+
+.NavPushed {
+  height: 46px;
+}
+
+.mainContainer {
+  min-height: 400px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+.footerDisclaimer {
+  color: #ccc;
+}
+
+.footerMenuRight {
+  text-align: right;
+}
+
+.ui.vertical.menu {
+  width: auto;
+}
+
+.ui.menu.StepsNavMenu {
+  top: 46px;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.ui.search .prompt {
+  border-radius: 0;
+}
+
+.facilitySearch > .input {
+  width: 100% !important;
+}
+
+input {
+  font: inherit;
+}
+
+@media only screen and (max-width: 767px) {
+  .ui.menu > .ui.container {
+    width: 100% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
+
+
+.ui.selection.dropdown .menu {
+  padding: 0;
+  max-height: none !important;
+}
+
+
+table.ui.table.availabilityMatches {
+  border: none;
+  background: inherit;
+}
+
+
+.ui.progress {
+  border-radius: 0;
+  margin: 0;
+  z-index: 102;
+}
+
+.ui.progress .bar {
+  border-radius: 0;
+}
+
+.ui.progress:first-child {
+  margin: 0;
+}
+
+.ui.menu .item.MenuPremium {
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+.ui.table tr td:first-child, .ui.table tr th:first-child {
+  padding-left: 0;
+}
+
+.ui.table tr td:last-child, .ui.table tr th:last-child {
+  padding-right: 0;
+}
+
+
+.ui.inverted.menu .dropdown.item:hover,
+.ui.inverted.menu .link.item:hover,
+.ui.inverted.menu a.item:hover,
+.ui.link.inverted.menu .item:hover {
+  background: inherit;
+}
+
+.ui.dropdown:not(.button)>.default.text {
+  color: #aaa;
+}

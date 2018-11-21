@@ -1,0 +1,16 @@
+/*******************************
+     User Global Variables
+*******************************/
+@textColor : #444444;
+@green          : #77b57a;
+@grey           : #2b303b;
+
+// @largeMonitorBreakpoint      : @computerBreakpoint;
+// @widescreenMonitorBreakpoint : @computerBreakpoint;
+
+@fontName          : 'Helvetica Neue';
+@fontFamily        : 'Helvetica Neue', Arial, Helvetica, sans-serif;
+@headerFont        : 'Helvetica Neue', Arial, Helvetica, sans-serif;
+@pageFont          : 'Helvetica Neue', Arial, Helvetica, sans-serif;
+
+@importGoogleFonts : false;

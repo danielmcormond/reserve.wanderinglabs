@@ -1,0 +1,44 @@
+/*******************************
+         Site Overrides
+*******************************/
+
+.frontPageInstructions {
+  clear: both;
+  font-size: @large;
+  color: rgba(0,0,0,.6);
+}
+
+.ui.inverted.menu.StepsNavMenu {
+  border-radius: 0;
+}
+
+.ui.big.dropdown {
+  font-size: @relativeBig;
+}
+
+// Semantic UI has these classes, however they're only applicable to
+// grids, containers, rows and columns.
+// plus, there isn't any `mobile hidden`, `X hidden` class.
+// this snippet is using the same class names and same approach
+// plus a bit more but to all elements.
+//
+// see https://github.com/Semantic-Org/Semantic-UI/issues/1114
+
+/* Mobile */
+@media only screen and (max-width: (@tabletBreakpoint - 1)) {
+  [class*="mobile hidden"],
+  [class*="tablet only"]:not(.mobile),
+  [class*="computer only"]:not(.mobile),
+  [class*="large screen only"]:not(.mobile),
+  [class*="widescreen only"]:not(.mobile),
+  [class*="or lower hidden"] {
+    display: none !important;
+  }
+}
+
+
+@media only screen and (min-width: @computerBreakpoint) {
+  [class*="mobile only"]:not(.computer) {
+    display: none !important;
+  }
+}
