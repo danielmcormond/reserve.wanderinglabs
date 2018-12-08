@@ -10,6 +10,19 @@ Works with the following:
 - Reserve California
 - Camas (Washington State Parks)
 
+### /frontend
+  - React UI
+
+### /rails
+  - Ruby on Rails
+  - API
+  - Availability Matching
+  - Notifications
+
+### /scrapers
+  - nodejs
+  - Different website and API scrapers
+
 
 This is the third iteration of the service. It originally started out for my own personal use to get campsites in the Florida Keys and as a way to both learn and experiment with new technologies.
 
