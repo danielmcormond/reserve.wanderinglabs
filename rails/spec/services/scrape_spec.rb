@@ -2,10 +2,13 @@ require 'rails_helper'
 
 RSpec.describe Scrape do
   context('instance') do
-
     let!(:facilities) do
-      20.times.map do |x|
-        f = FactoryGirl.create(:facility, name: "Scrape Facility #{x}", last_scrape_attempt: x.minutes.ago)
+      Array.new(20).map do |x|
+        f = FactoryGirl.create(
+          :facility,
+          name: "Scrape Facility #{x}",
+          last_scrape_attempt: x.minutes.ago,
+        )
         FactoryGirl.create(:availability_request, facility: f)
         f
       end
@@ -37,7 +40,7 @@ RSpec.describe Scrape do
   end
 
   context('instance') do
-    let(:facility) { double('Facility') }
+    let(:facility) { double('Facility', scraper_type: :lambda) }
     subject(:scrape) { Scrape.new(facility) }
     before do
       expect(Sns).to receive(:publish).with(facility)
