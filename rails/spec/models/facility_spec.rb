@@ -26,7 +26,8 @@ RSpec.describe Facility, type: :model do
       let!(:ar) { FactoryGirl.create(:availability_request, facility: facility, date_start: 1.week.ago, date_end: 2.months.from_now) }
       let!(:ar2) { FactoryGirl.create(:availability_request, facility: facility, date_start: 1.month.from_now, date_end: 3.months.from_now) }
       it 'is date_end' do
-        expect(facility.scrape_end.to_s).to eq(3.months.from_now.to_date.to_s)
+        end_date = 3.months.from_now.to_date + 14
+        expect(facility.scrape_end.to_s).to eq(end_date.to_s)
       end
     end
 
