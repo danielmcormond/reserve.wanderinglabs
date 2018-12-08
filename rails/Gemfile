@@ -61,6 +61,8 @@ group :development do
   gem 'capistrano3-nginx'
 
   gem 'rb-readline'
+
+  gem 'rubocop', '~> 0.61.1', require: false
 end
 
 group :test do

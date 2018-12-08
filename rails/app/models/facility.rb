@@ -6,25 +6,38 @@ class Facility < ApplicationRecord
   has_many :availability_requests
   has_many :availability_imports
 
-  scope :lookup, (->(start) { where('name ILIKE ?', "#{start}%").order('name ASC').limit(15) })
+  scope :lookup, (lambda do |start|
+    where('name ILIKE ?', "#{start}%").order('name ASC').limit(15)
+  end)
+
   scope :active, (-> { where(active: true) })
 
-  enumerize :status, in: %i[active removed requires_attention], predicates: { prefix: true }
+  enumerize :status,
+            in: %i[active removed requires_attention],
+            predicates: { prefix: true }
 
   def self.active_facilities
-    Facility.left_outer_joins(:availability_requests).merge(AvailabilityRequest.active).group('facilities.id')
+    Facility
+      .left_outer_joins(:availability_requests)
+      .merge(AvailabilityRequest.active)
+      .group('facilities.id')
   end
 
   def self.top_facilities
-    Facility.select("facilities.*, COUNT('availability_requests.id') as ar_count").left_outer_joins(:availability_requests).merge(AvailabilityRequest.active).group('facilities.id').order('ar_count desc')
+    Facility
+      .select("facilities.*, COUNT('availability_requests.id') as ar_count")
+      .left_outer_joins(:availability_requests)
+      .merge(AvailabilityRequest.active)
+      .group('facilities.id')
+      .order('ar_count desc')
   end
 
   def scrape_start
-    [Time.now.to_date, availability_requests.active.map(&:date_start).sort.first].max
+    [Time.now.to_date, availability_requests.active.map(&:date_start).min].max
   end
 
   def scrape_end
-    [booking_end, availability_requests.active.map(&:date_end).sort.last + 14].min
+    [booking_end, availability_requests.active.map(&:date_end).max + 14].min
   end
 
   def booking_end
@@ -46,7 +59,7 @@ class Facility < ApplicationRecord
     self.sites_details[:electric] = sites.group(:electric).count.keys.compact.any?
     self.sites_details[:water] = sites.where(water: true).count.positive?
     self.sites_details[:sewer] = sites.where(sewer: true).count.positive?
-    self.sites_details[:site_layout] = sites.group(:site_layout).count.keys.include?('pullthru')
+    self.sites_details[:site_layout] = sites.group(:site_layout).count.key?('pullthru')
     self.sites_details[:premium] = sites.where(premium: true).count.positive?
     self.sites_details[:ada] = sites.where(ada: true).count.positive?
     save

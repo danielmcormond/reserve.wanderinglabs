@@ -1,7 +1,5 @@
 class Facility::Camis < Facility
-  def place_id
-
-  end
+  def place_id; end
 
   def sub_name
     agency.name

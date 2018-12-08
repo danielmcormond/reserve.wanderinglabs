@@ -1,0 +1,57 @@
+AllCops:
+  Exclude:
+    - 'db/**/*'
+  TargetRubyVersion: 2.3
+
+Metrics/BlockLength:
+  CountComments: true  # count full line comments?
+  Max: 25
+  ExcludedMethods: []
+  Exclude:
+    - "spec/**/*"
+Style/Documentation:
+  Enabled: false
+Style/GlobalVars:
+  Exclude:
+    - 'spec/**/*.rb'
+Style/ClassAndModuleChildren:
+  Enabled: false
+Style/WordArray:
+  Enabled: false
+Style/FrozenStringLiteralComment:
+  Enabled: false
+Lint/ParenthesesAsGroupedExpression:
+  Exclude:
+    - 'spec/**/*.rb'
+Style/SingleLineBlockParams:
+  Enabled: false
+
+Style/TrailingCommaInArguments:
+  Description: 'Checks for trailing comma in argument lists.'
+  StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#no-trailing-array-commas'
+  EnforcedStyleForMultiline: comma
+  SupportedStylesForMultiline:
+    - comma
+    - consistent_comma
+    - no_comma
+  Enabled: true
+
+Style/TrailingCommaInArrayLiteral:
+  Description: 'Checks for trailing comma in array literals.'
+  StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#no-trailing-array-commas'
+  EnforcedStyleForMultiline: comma
+  SupportedStylesForMultiline:
+    - comma
+    - consistent_comma
+    - no_comma
+  Enabled: true
+
+Style/TrailingCommaInHashLiteral:
+  Description: 'Checks for trailing comma in hash literals.'
+  StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#no-trailing-array-commas'
+  EnforcedStyleForMultiline: comma
+  SupportedStylesForMultiline:
+    - comma
+    - consistent_comma
+    - no_comma
+  Enabled: true
