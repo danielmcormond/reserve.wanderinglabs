@@ -115,6 +115,8 @@ GEM
     case_transform (0.2)
       activesupport
     concurrent-ruby (1.0.5)
+    crack (0.4.3)
+      safe_yaml (~> 1.0.0)
     css_parser (1.5.0)
       addressable
     database_cleaner (1.6.1)
@@ -142,6 +144,7 @@ GEM
     ffi (1.9.18)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
+    hashdiff (0.3.0)
     htmlentities (4.3.4)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
@@ -286,6 +289,7 @@ GEM
     ruby_dep (1.5.0)
     rufus-scheduler (3.4.2)
       et-orbi (~> 1.0)
+    safe_yaml (1.0.4)
     sentry-raven (2.6.2)
       faraday (>= 0.7.6, < 1.0)
     simplecov (0.13.0)
@@ -331,8 +335,13 @@ GEM
       unf_ext
     unf_ext (0.0.7.4)
     unicode-display_width (1.4.0)
+    vcr (3.0.3)
     vegas (0.1.11)
       rack (>= 1.0.0)
+    webmock (2.1.0)
+      addressable (>= 2.3.6)
+      crack (>= 0.3.2)
+      hashdiff
     webrobots (0.1.2)
     websocket-driver (0.6.5)
       websocket-extensions (>= 0.1.0)
@@ -385,6 +394,8 @@ DEPENDENCIES
   spring-commands-rspec
   spring-watcher-listen (~> 2.0.0)
   twilio-ruby (~> 5.6.3)
+  vcr
+  webmock
 
 BUNDLED WITH
    1.16.1

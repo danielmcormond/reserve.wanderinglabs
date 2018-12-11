@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Scrape do
   context('instance') do
     let!(:facilities) do
-      Array.new(20).map do |x|
+      20.times.map do |x|
         f = FactoryGirl.create(
           :facility,
           name: "Scrape Facility #{x}",

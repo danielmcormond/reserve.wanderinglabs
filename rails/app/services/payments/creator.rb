@@ -41,11 +41,11 @@ class Payments::Creator
   end
 
   def paypal_payment
-    Rails.logger.warn("PAYMENT - #{params_id} - #{ENV['PAYPAL_ID']} - #{params.inspect}")
+    # Rails.logger.warn("PAYMENT - #{params_id} - #{ENV['PAYPAL_ID']} - #{params.inspect}")
     @_paypal ||= PayPal::SDK::REST::Payment.find(params_id)
   end
 
   def params_id
-    params.dig(:id) || params.dig(:details, :paymentID)
+    params.dig(:id) || params.dig(:details, :paymentID) || params.dig(:payment, :details, :paymentID)
   end
 end

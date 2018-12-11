@@ -7,11 +7,11 @@ class Payments::Sync
 
   def sync
     if exists?
-      puts "Payment already exists.. #{paypal_payment.id}"
+      # puts "Payment already exists.. #{paypal_payment.id}"
       return
     end
 
-    puts "Creating Payment.. #{paypal_payment.id} / #{paypal_payment.create_time}"
+    # puts "Creating Payment.. #{paypal_payment.id} / #{paypal_payment.create_time}"
     Payments::Creator.create(id: paypal_payment.id)
   end
 

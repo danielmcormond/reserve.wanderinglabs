@@ -21,17 +21,23 @@ RSpec.describe Payments::Creator do
 
   describe '#create' do
     it 'successfully creates the payment' do
-      expect { creator.create }.to change { Payment.count }.by(1)
+      VCR.use_cassette('payments_creator_premium') do
+        expect { creator.create }.to change { Payment.count }.by(1)
+      end
     end
 
     it 'marks user as premium' do
-      expect { creator.create }.to change { user.premium }
+      VCR.use_cassette('payments_creator_premium') do
+        expect { creator.create }.to(change { user.premium })
+      end
     end
 
     context 'nil user' do
       let(:user) { nil }
       it 'successfully creates the payment' do
-        expect { creator.create }.to change { Payment.count }.by(1)
+        VCR.use_cassette('payments_creator_premium') do
+          expect { creator.create }.to change { Payment.count }.by(1)
+        end
       end
     end
   end

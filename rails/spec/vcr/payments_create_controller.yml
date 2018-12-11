@@ -1,0 +1,111 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.sandbox.paypal.com/v1/oauth2/token
+    body:
+      encoding: UTF-8
+      string: grant_type=client_credentials
+    headers:
+      User-Agent:
+      - PayPalSDK/PayPal-Ruby-SDK 1.6.0 (paypal-sdk-core 1.6.0; ruby 2.3.1p112-x86_64-darwin14;OpenSSL
+        1.0.2p  14 Aug 2018)
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Authorization:
+      - Basic QWFvS1Vja1RpcC1FeGNybHB0bUthcnJRcE9lazB4RG9yUXFFczlJOVZ5WW9NMW96aE5zUGE4UVptZ3BfVUVpdHluSU50MVd0NG5jV3RZZVU6RU1DUjA4QkFVd0hNdXZhaG1KcThZdTc0QzN5b2EwTndYeUhtZVRXcUtCcjV6Wk1qX0tEZzVlUC1JZkJGMUV5ek9sSWVDbVc0aXpQQ0p3SVo=
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 11 Dec 2018 03:37:40 GMT
+      Server:
+      - Apache
+      Paypal-Debug-Id:
+      - dad3d1faba026
+      - dad3d1faba026
+      X-Paypal-Token-Service:
+      - IAAS
+      Http-X-Pp-Az-Locator:
+      - sandbox.slc
+      Set-Cookie:
+      - X-PP-SILOVER=; Expires=Thu, 01 Jan 1970 00:00:01 GMT
+      - X-PP-SILOVER=name%3DSANDBOX3.API.1%26silo_version%3D1880%26app%3Dapiplatformproxyserv%26TIME%3D70324060%26HTTP_X_PP_AZ_LOCATOR%3Dsandbox.slc;
+        Expires=Tue, 11 Dec 2018 04:07:40 GMT; domain=.paypal.com; path=/; Secure;
+        HttpOnly
+      Vary:
+      - Authorization
+      Content-Length:
+      - '550'
+      Connection:
+      - close
+      Content-Type:
+      - application/json
+    body:
+      encoding: UTF-8
+      string: '{"scope":"https://uri.paypal.com/services/subscriptions https://api.paypal.com/v1/payments/.*
+        https://api.paypal.com/v1/vault/credit-card https://uri.paypal.com/services/applications/webhooks
+        openid https://uri.paypal.com/payments/payouts https://api.paypal.com/v1/vault/credit-card/.*","nonce":"2018-12-11T03:16:04ZAAaL0hFvKczWeLi_uDum0uIA--Qdz2k-GQVQWvd0j1I","access_token":"A21AAGp6GRmuZ9-MauuQLPwRYrCr2zGMgXu7srgVyvCNNlpfBTGpHUppeuoyYgkER_VbzMmw7VC_KSB4HugeuDyRNhoswIe7w","token_type":"Bearer","app_id":"APP-80W284485P519543T","expires_in":31104}'
+    http_version: 
+  recorded_at: Tue, 11 Dec 2018 03:37:40 GMT
+- request:
+    method: get
+    uri: https://api.sandbox.paypal.com/v1/payments/payment/PAY-34L1132830093533CLF54GLA
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer A21AAGp6GRmuZ9-MauuQLPwRYrCr2zGMgXu7srgVyvCNNlpfBTGpHUppeuoyYgkER_VbzMmw7VC_KSB4HugeuDyRNhoswIe7w
+      Content-Type:
+      - application/json
+      User-Agent:
+      - PayPalSDK/PayPal-Ruby-SDK 1.6.0 (paypal-sdk-core 1.6.0; ruby 2.3.1p112-x86_64-darwin14;OpenSSL
+        1.0.2p  14 Aug 2018)
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 11 Dec 2018 03:37:41 GMT
+      Server:
+      - Apache
+      Paypal-Debug-Id:
+      - 73e2094e4bbfd
+      - 73e2094e4bbfd
+      Content-Language:
+      - "*"
+      Http-X-Pp-Az-Locator:
+      - sandbox.slc
+      Set-Cookie:
+      - X-PP-SILOVER=; Expires=Thu, 01 Jan 1970 00:00:01 GMT
+      - X-PP-SILOVER=name%3DSANDBOX3.API.1%26silo_version%3D1880%26app%3Dapiplatformproxyserv%26TIME%3D87101276%26HTTP_X_PP_AZ_LOCATOR%3Dsandbox.slc;
+        Expires=Tue, 11 Dec 2018 04:07:41 GMT; domain=.paypal.com; path=/; Secure;
+        HttpOnly
+      Vary:
+      - Authorization
+      Content-Length:
+      - '1772'
+      Connection:
+      - close
+      Content-Type:
+      - application/json
+    body:
+      encoding: UTF-8
+      string: '{"id":"PAY-34L1132830093533CLF54GLA","intent":"sale","state":"approved","cart":"62G48236VR9459313","payer":{"payment_method":"paypal","status":"VERIFIED","payer_info":{"email":"tiwatson+pptest@gmail.com","first_name":"Tim","last_name":"Watson","payer_id":"GY8BRXAC7DN74","shipping_address":{"recipient_name":"Tim
+        Watson","line1":"1 Main St","city":"San Jose","state":"CA","postal_code":"95131","country_code":"US"},"phone":"4087929793","country_code":"US"}},"transactions":[{"amount":{"total":"20.00","currency":"USD","details":{"subtotal":"20.00"}},"payee":{"merchant_id":"2KSK78PWV333E"},"item_list":{"items":[],"shipping_address":{"recipient_name":"Tim
+        Watson","line1":"1 Main St","city":"San Jose","state":"CA","postal_code":"95131","country_code":"US"}},"related_resources":[{"sale":{"id":"6CD34852XR732800P","state":"completed","amount":{"total":"20.00","currency":"USD","details":{"subtotal":"20.00"}},"payment_mode":"INSTANT_TRANSFER","protection_eligibility":"ELIGIBLE","protection_eligibility_type":"ITEM_NOT_RECEIVED_ELIGIBLE,UNAUTHORIZED_PAYMENT_ELIGIBLE","transaction_fee":{"value":"0.88","currency":"USD"},"parent_payment":"PAY-34L1132830093533CLF54GLA","create_time":"2017-07-28T23:05:31Z","update_time":"2017-07-28T23:05:31Z","links":[{"href":"https://api.sandbox.paypal.com/v1/payments/sale/6CD34852XR732800P","rel":"self","method":"GET"},{"href":"https://api.sandbox.paypal.com/v1/payments/sale/6CD34852XR732800P/refund","rel":"refund","method":"POST"},{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAY-34L1132830093533CLF54GLA","rel":"parent_payment","method":"GET"}]}}]}],"create_time":"2017-07-28T23:05:16Z","links":[{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAY-34L1132830093533CLF54GLA","rel":"self","method":"GET"}]}'
+    http_version: 
+  recorded_at: Tue, 11 Dec 2018 03:37:41 GMT
+recorded_with: VCR 3.0.3

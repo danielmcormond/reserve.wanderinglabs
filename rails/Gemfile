@@ -72,4 +72,6 @@ group :test do
   gem 'database_cleaner'
   gem 'simplecov', require: false
   gem 'spring-commands-rspec'
+  gem 'vcr'
+  gem 'webmock'
 end

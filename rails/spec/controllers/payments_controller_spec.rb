@@ -18,7 +18,9 @@ RSpec.describe PaymentsController, :type => :controller do
 
   context "POST create" do
     it "calls  Payments::Creator (params)" do
-      expect { post(:create, params: params) }.to change{ Payment.count }.by(1)
+      VCR.use_cassette('payments_create_controller') do
+        expect { post(:create, params: params) }.to change{ Payment.count }.by(1)
+      end
     end
   end
 end
