@@ -14,7 +14,7 @@ const scraperQueue = async function scraperQueue() {
     try {
       const scraper = new Scraper(jsonData);
       const logMsg = await scraper.scrape();
-      console.log(logMsg);
+      console.log({ ...logMsg, request: jsonData });
       await logger.log({ ...logMsg, request: jsonData });
     } catch (err) {
       console.log('FATAL', err);

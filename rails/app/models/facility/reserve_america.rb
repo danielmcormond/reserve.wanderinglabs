@@ -21,6 +21,7 @@ class Facility::ReserveAmerica < Facility
 
   def scraper_details
     {
+      name: "#{id}:#{name[0..25]}",
       facilityId: id,
       contractCode: contract_code,
       parkId: park_id,
