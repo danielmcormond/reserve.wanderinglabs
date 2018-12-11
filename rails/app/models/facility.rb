@@ -33,11 +33,11 @@ class Facility < ApplicationRecord
   end
 
   def scrape_start
-    [Time.now.to_date, availability_requests.active.map(&:date_start).min].max
+    [Time.now.to_date, availability_requests.active.map(&:date_start).min.presence].compact.max
   end
 
   def scrape_end
-    [booking_end, availability_requests.active.map(&:date_end).max + 14].min
+    [booking_end, (availability_requests.active.map(&:date_end).compact.max.presence || Time.now.to_date) + 14].min
   end
 
   def booking_end

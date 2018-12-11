@@ -34,7 +34,6 @@ export default class Scraper {
 
   async scrape() {
     const hrstart = process.hrtime();
-    console.log('Scrape Start', hrstart);
 
     const results = await BluebirdPromise.map(
       this.timePeriods,
@@ -49,7 +48,6 @@ export default class Scraper {
     const md5 = createHash(resultsJson);
 
     if (this.hash === md5) {
-      console.log('no differences');
       const delta = process.hrtime(hrstart);
       const timing = delta[0] + delta[1] / 1e9;
       return Promise.resolve({ status: 'no differences', timing });
@@ -60,7 +58,6 @@ export default class Scraper {
     const delta = process.hrtime(hrstart);
     const timing = delta[0] + delta[1] / 1e9;
 
-    console.log('complete');
     return Promise.resolve({ status: 'changes', timing });
   }
 

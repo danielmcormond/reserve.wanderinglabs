@@ -32,7 +32,7 @@ export default class Connection {
       method: 'GET',
     };
 
-    // return this.rp(options);
+    return this.rp(options);
 
     // try {
     //   const resp = await this.rp(options);
@@ -47,10 +47,10 @@ export default class Connection {
     //     console.log('Error');
     //   }
     // }
-    return this.rp(options).then((response) => {
-      console.log(scrapeDate)
-      // console.log('Request time in ms', response.elapsedTime);
-      return Promise.resolve(response)
-    });
+    // return this.rp(options).then((response) => {
+    //   console.log(scrapeDate)
+    //   // console.log('Request time in ms', response.elapsedTime);
+    //   return Promise.resolve(response)
+    // });
   }
 }

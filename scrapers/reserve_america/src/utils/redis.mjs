@@ -3,6 +3,8 @@ import { promisify } from 'util';
 
 const redisOptions = {
   host: process.env.REDIS_HOST,
+  port: process.env.REDIS_PORT,
+  password: process.env.REDIS_PASSWORD,
   db: process.env.REDIS_DB,
   // prefix: 'marketingAuction:',
 };

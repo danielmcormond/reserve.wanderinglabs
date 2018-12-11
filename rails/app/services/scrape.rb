@@ -25,6 +25,8 @@ class Scrape
   def work
     if facility.scraper_type == :container
       ScrapeTypes::Container.new(facility).publish
+    elsif facility.scraper_type == :queue
+      ScrapeTypes::Queue.new(facility).publish
     else
       Sns.publish(facility)
     end

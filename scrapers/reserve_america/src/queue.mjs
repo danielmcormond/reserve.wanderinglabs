@@ -4,8 +4,10 @@ import logger from './utils/logger';
 
 logger.connect();
 
+console.log('QUEUE Start', process.env.NODE_ENV)
+
 const scraperQueue = async function scraperQueue() {
-  const data = await redisBlpopAsync('ReserveAmerica', 5);
+  const data = await redisBlpopAsync('ReserveAmerica', 0);
 
   if (data !== null) {
     const jsonData = JSON.parse(data[1]);

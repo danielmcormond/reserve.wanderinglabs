@@ -15,6 +15,10 @@ class Facility::ReserveAmerica < Facility
     ENV['AWS_SNS_SCRAPER']
   end
 
+  def scraper_type
+    :queue
+  end
+
   def scraper_details
     {
       facilityId: id,
