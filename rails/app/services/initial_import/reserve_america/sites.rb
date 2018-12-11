@@ -14,6 +14,11 @@ module InitialImport::ReserveAmerica
       b = r.body
       h = Hash.from_xml(b)
       Array.wrap(h['resultset']['result']).each_with_index do |set, x|
+        existing_site = facility.sites.where(ext_site_id: set['SiteId']).count.positive?
+        if existing_site
+          puts "Site Exists.. #{set['SiteId']} // #{set['Site']}"
+          next
+        end
         Site.create(
           facility_id: facility.id,
           ext_site_id: set['SiteId'],
