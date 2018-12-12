@@ -12,3 +12,9 @@ services:
       context: .
       dockerfile: ./recreation_gov/Dockerfile
     image: ${DOCKER_REGISTRY}/wanderinglabs/scraper-recreation-gov
+
+  reserve_america:
+    build:
+      context: .
+      dockerfile: ./reserve_america/Dockerfile
+    image: ${DOCKER_REGISTRY}/wanderinglabs/scraper-reserve-america

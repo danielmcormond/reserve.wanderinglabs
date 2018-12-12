@@ -1,13 +1,14 @@
 import moment from 'moment';
 import BluebirdPromise from 'bluebird';
 
+import createHash from "scraper-wandering-labs-shared/src/createHash";
+import NotifyComplete from "scraper-wandering-labs-shared/src/notifyComplete";
+import S3 from "scraper-wandering-labs-shared/src/s3";
+
 import Connection from './connection';
 import dateRange from './utils/dateRange';
 import parse from './parse';
 import fromPairs from './utils/fromPairs';
-import createHash from './utils/createHash';
-import S3 from './utils/s3';
-import NotifyComplete from './notifyComplete';
 
 export default class Scraper {
   constructor({

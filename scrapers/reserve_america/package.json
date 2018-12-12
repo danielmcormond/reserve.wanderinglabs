@@ -4,18 +4,15 @@
   "description": "Reserve America XML Scraper",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "shared": "npm link scraper-wandering-labs-shared"
   },
   "author": "Tim Watson",
   "license": "UNLICENSED",
   "dependencies": {
-    "aws-sdk": "^2.373.0",
     "bluebird": "^3.5.3",
-    "cloudwatch-logger": "^0.1.0",
-    "crypto": "^1.0.1",
     "esm": "^3.0.84",
     "moment": "^2.22.2",
-    "redis": "^2.8.0",
     "request": "^2.88.0",
     "request-promise": "^4.2.2",
     "xml2js": "^0.4.19"
