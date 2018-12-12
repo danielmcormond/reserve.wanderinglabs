@@ -15,9 +15,6 @@ export default class Scraper {
     this.path = path;
     this.facilityId = facilityId;
     this.baseUrl = baseUrl;
-
-    // this.startDate = moment(startDate, 'MM/DD/YYYY');
-    // this.endDate = moment(endDate, 'MM/DD/YYYY');
     this.hash = hash;
 
     this.runId = moment().format('YY_MM_DD_HH_mm');
@@ -74,7 +71,7 @@ export default class Scraper {
   }
 
   async scrapeParseDate(scrapeDate) {
-    const scrapeResult = await this.connection.nextDate(scrapeDate);
+    const scrapeResult = await this.connection.nextDate(scrapeDate, 0);
     const result = await new Parse(scrapeResult.body).do();
     return Promise.resolve(result);
   }

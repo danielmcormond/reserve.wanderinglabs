@@ -5,14 +5,15 @@ import Scraper from './scraper';
 
 logger.connect();
 
-console.log('QUEUE Start', process.env.NODE_ENV);
+console.log('QUEUE Start', process.env.name);
 
 const scraperQueue = async function scraperQueue() {
-  const data = await redisBlpopAsync(process.env.QUEUE_KEY, 0);
+  const data = await redisBlpopAsync(process.env.name, 0);
 
   if (data !== null) {
     const jsonData = JSON.parse(data[1]);
     try {
+      console.log('Start Scrape..');
       const scraper = new Scraper(jsonData);
       const logMsg = await scraper.scrape();
       console.log({ ...logMsg, request: jsonData });

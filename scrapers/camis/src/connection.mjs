@@ -24,19 +24,21 @@ export default class Connection {
     const options = {
       url: `${this.baseUrl}${path}`,
     };
-
-    // return this.rp(options).then((response) => {
-    //   console.log('Request time in ms', response.elapsedTime);
-    //   return Promise.resolve(response)
-    // });
     return this.rp(options);
   }
 
-  async nextDate(nav) {
+  async nextDate(nav, retry) {
+    console.log('nextDate', nav, retry);
+    if (retry >= 5) {
+      return Promise.reject(new Error('Too many retries'));
+    }
+
     const options = {
       url: `${this.baseUrl}/view.ashx?view=grid&nav=${nav}&order=Next`,
     };
 
-    return this.rp(options);
+    return this.rp(options)
+      .then(response => Promise.resolve(response))
+      .catch(() => this.nextDate(nav, retry + 1));
   }
 }

@@ -6,7 +6,7 @@ class ScrapeTypes::Queue
   end
 
   def key
-    facility.class.to_s.split('::').last
+    "Scraper#{facility.class.to_s.split('::').last}"
   end
 
   def publish

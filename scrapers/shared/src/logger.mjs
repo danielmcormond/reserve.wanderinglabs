@@ -11,6 +11,5 @@ const config = {
   logStreamName: streamName,
 };
 
-console.log('yup', config)
 const logger = new CloudWatchLogger(config);
 export default logger;
