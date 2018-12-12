@@ -4,7 +4,7 @@ const headers = {
   'user-agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.32 Safari/537.36'
 };
 
-class Connection {
+export default class Connection {
   constructor(id) {
     this.rp = rp.defaults({
       headers,
@@ -17,8 +17,8 @@ class Connection {
     this.baseUrl = `https://www.recreation.gov/api/camps/availability/campground/${id}`;
   }
 
-  availability(startDate, endDate) {
-    let query = `start_date=${startDate}T00%3A00%3A00.000Z&end_date=${endDate}T00%3A00%3A00.000Z`;
+  async availability(startDate, endDate) {
+    let query = `start_date=${startDate.format('YYYY-MM-DD')}T00%3A00%3A00.000Z&end_date=${endDate.format('YYYY-MM-DD')}T00%3A00%3A00.000Z`;
     const options = {
       url: `${this.baseUrl}?${query}`
     };
@@ -31,5 +31,3 @@ class Connection {
     return this.rp(options);
   }
 }
-
-export { Connection };

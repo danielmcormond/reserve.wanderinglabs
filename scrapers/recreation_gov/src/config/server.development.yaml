@@ -1,5 +1,0 @@
-apps:
-  - script: src/index-server-dev.js
-    name: ScraperRecreationGov
-    instances: 1
-    interpreter: babel-node

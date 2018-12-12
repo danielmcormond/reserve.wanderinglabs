@@ -8,17 +8,18 @@ class Facility::RecreationGovBa < Facility
   end
 
   def scraper_type
-    :container
+    :queue
   end
 
   def scraper_meta
     {
-      url: ENV['AWS_SCRAPER_CONTAINER_RG'],
+      key: 'ScraperRecreationGov',
     }
   end
 
   def scraper_details
     {
+      name: "#{id}:#{name[0..25]}",
       facilityId: id,
       rgFacilityId: details['FacilityID'].to_i.to_s,
       startDate: scrape_start.strftime('%m/%d/%Y'),

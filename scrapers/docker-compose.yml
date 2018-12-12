@@ -6,3 +6,9 @@ services:
       context: .
       dockerfile: ./camis/Dockerfile
     image: ${DOCKER_REGISTRY}/wanderinglabs/scraper-camis
+
+  recreation_gov:
+    build:
+      context: .
+      dockerfile: ./recreation_gov/Dockerfile
+    image: ${DOCKER_REGISTRY}/wanderinglabs/scraper-recreation-gov
