@@ -73,6 +73,10 @@ class Facility < ApplicationRecord
     :lambda
   end
 
+  def scraper_meta
+    {}
+  end
+
   def scrape
     Scrape.new(self).work
   end
