@@ -1,9 +1,0 @@
-{
-  "Records": [
-    {
-      "Sns": {
-        "Message": "{\"facilityId\":\"5112\",\"baseUrl\":\"https://washington.goingtocamp.com\",\"path\":\"/AlderLake-TacomaPowerPark%2fEast(Sites1-40)%3fCalendar\",\"startDate\":\"07/25/2018\",\"endDate\":\"08/17/2018\",\"concurrency\":4}"
-      }
-    }
-  ]
-}

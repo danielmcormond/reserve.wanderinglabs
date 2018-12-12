@@ -6,7 +6,7 @@ class Facility::Camis < Facility
   end
 
   def scraper_type
-    :container
+    :queue
   end
 
   def scraper_meta
@@ -17,6 +17,7 @@ class Facility::Camis < Facility
 
   def scraper_details
     {
+      name: "#{id}:#{name[0..25]}",
       facilityId: id,
       baseUrl: agency.details['url'],
       path: details['path'],

@@ -1,15 +1,9 @@
 import rp from 'request-promise';
 
-import Promise from 'bluebird';
-
-const headers = {
-  'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.32 Safari/537.36',
-};
-
-class NotifyComplete {
+export default class NotifyComplete {
   constructor(facilityId) {
     this.facilityId = facilityId;
-    this.rp = rp.defaults({ headers, followRedirect: false });
+    this.rp = rp.defaults({ followRedirect: false });
     this.base = process.env.RESERVE_API_URL;
   }
 
@@ -20,11 +14,9 @@ class NotifyComplete {
       method: 'POST',
       form: {
         import: runId,
-        hash
-      }
+        hash,
+      },
     };
     return this.rp(options);
   }
 }
-
-export { NotifyComplete };

@@ -1,0 +1,6 @@
+version: "3"
+
+services:
+  camis:
+    build: ./camis
+    image: ${DOCKER_REGISTRY}/wanderinglabs/scraper-camis

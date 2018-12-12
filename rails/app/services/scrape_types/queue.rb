@@ -5,7 +5,11 @@ class ScrapeTypes::Queue
     @facility = facility
   end
 
+  def key
+    facility.class.to_s.split('::').last
+  end
+
   def publish
-    $redis.lpush('ReserveAmerica', facility.scraper_details.to_json)
+    $redis.lpush(key, facility.scraper_details.to_json)
   end
 end
