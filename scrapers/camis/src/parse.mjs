@@ -1,6 +1,6 @@
 import moment from 'moment';
 
-import dateRange from 'scraper-wandering-labs-shared/dateRange';
+import dateRange from 'scraper-wandering-labs-shared/src/dateRange';
 
 export default class Parse {
   static get regexpTable() {

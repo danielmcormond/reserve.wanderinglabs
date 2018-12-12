@@ -1,5 +1,5 @@
-import { redisBlpopAsync } from 'scraper-wandering-labs-shared/redis';
-import logger from 'scraper-wandering-labs-shared/logger';
+import { redisBlpopAsync } from 'scraper-wandering-labs-shared/src/redis';
+import logger from 'scraper-wandering-labs-shared/src/logger';
 
 import Scraper from './scraper';
 

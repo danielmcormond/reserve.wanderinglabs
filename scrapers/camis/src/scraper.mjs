@@ -1,9 +1,9 @@
 import moment from 'moment';
 import BluebirdPromise from 'bluebird';
 
-import createHash from 'scraper-wandering-labs-shared/createHash';
-import NotifyComplete from 'scraper-wandering-labs-shared/notifyComplete';
-import S3 from 'scraper-wandering-labs-shared/s3';
+import createHash from 'scraper-wandering-labs-shared/src/createHash';
+import NotifyComplete from 'scraper-wandering-labs-shared/src/notifyComplete';
+import S3 from 'scraper-wandering-labs-shared/src/s3';
 
 import Connection from './connection';
 import Parse from './parse';

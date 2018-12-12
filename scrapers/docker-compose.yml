@@ -2,5 +2,7 @@ version: "3"
 
 services:
   camis:
-    build: ./camis
+    build:
+      context: .
+      dockerfile: ./camis/Dockerfile
     image: ${DOCKER_REGISTRY}/wanderinglabs/scraper-camis
