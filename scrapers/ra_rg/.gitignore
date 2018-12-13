@@ -1,6 +1,0 @@
-dist/
-artifact.zip
-node_modules/
-.envrc
-.env
-_notes/**/*
