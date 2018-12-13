@@ -1,4 +1,0 @@
-apps:
-  - script: dist/index-server.js
-    name: ScraperReserveCalifornia
-    instances: 2

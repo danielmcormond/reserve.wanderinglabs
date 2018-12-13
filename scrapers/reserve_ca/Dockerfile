@@ -1,15 +1,17 @@
-FROM node:8.11-alpine
+FROM node:10.14-alpine
+
+RUN mkdir -p /usr/src/shared
+COPY shared/package.json shared/package-lock.json /usr/src/shared/
+COPY shared/src /usr/src/shared/src
 
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
-COPY package.json package-lock.json .babelrc /usr/src/app/
-COPY src /usr/src/app/src
+COPY reserve_ca/package.json reserve_ca/package-lock.json reserve_ca/ecosystem.config.js /usr/src/app/
+COPY reserve_ca/src /usr/src/app/src
 
-RUN npm install
-RUN npm run build
-RUN npm prune --production
-RUN npm install pm2 -g
+RUN npm install --production
+RUN npm install /usr/src/shared
+RUN npm install -g pm2
 
-EXPOSE 3003
-CMD ["pm2-runtime", "src/config/server.production.yml"]
+CMD ["pm2-runtime", "start", "ecosystem.config.js", "--env", "production"]

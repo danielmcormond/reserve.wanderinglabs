@@ -12,12 +12,12 @@ class Facility::ReserveCalifornia < Facility
   end
 
   def scraper_type
-    :container
+    :queue
   end
 
   def scraper_meta
     {
-      url: ENV['AWS_SCRAPER_CONTAINER_RESERVE_CA'],
+      key: 'ScraperReserveCA',
     }
   end
 
@@ -27,6 +27,7 @@ class Facility::ReserveCalifornia < Facility
 
   def scraper_details
     {
+      name: "#{id}:#{name[0..25]}",
       facilityId: id,
       rcFacilityId: rc_facility_id,
       rcPlaceId: place_id,

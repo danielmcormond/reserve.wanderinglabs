@@ -1,5 +1,0 @@
-apps:
-  - script: src/index-server-development.js
-    name: ScraperReserveCalifornia
-    instances: 2
-    interpreter: babel-node

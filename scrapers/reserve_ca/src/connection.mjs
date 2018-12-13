@@ -6,7 +6,7 @@ const headers = {
   'user-agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.32 Safari/537.36'
 };
 
-class Connection {
+export default class Connection {
   constructor(placeId, facilityId) {
     const jar = rp.jar();
     this.rp = rp.defaults({
@@ -105,5 +105,3 @@ class Connection {
     return this.rp(options);
   }
 }
-
-export { Connection };

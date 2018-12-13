@@ -1,7 +1,6 @@
 import _ from 'lodash';
 
-class Parse {
-
+export default class Parse {
   constructor(response) {
     this.body = response;
   }
@@ -45,5 +44,3 @@ class Parse {
     });
   }
 }
-
-export { Parse }

@@ -18,3 +18,9 @@ services:
       context: .
       dockerfile: ./reserve_america/Dockerfile
     image: ${DOCKER_REGISTRY}/wanderinglabs/scraper-reserve-america
+
+  reserve_ca:
+    build:
+      context: .
+      dockerfile: ./reserve_ca/Dockerfile
+    image: ${DOCKER_REGISTRY}/wanderinglabs/scraper-reserve-ca
