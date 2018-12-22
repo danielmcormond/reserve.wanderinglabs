@@ -7,6 +7,12 @@ services:
       dockerfile: ./camis/Dockerfile
     image: ${DOCKER_REGISTRY}/wanderinglabs/scraper-camis
 
+  pinellas_county:
+    build:
+      context: .
+      dockerfile: ./pinellas_county/Dockerfile
+    image: ${DOCKER_REGISTRY}/wanderinglabs/scraper-pinellas_county
+
   recreation_gov:
     build:
       context: .

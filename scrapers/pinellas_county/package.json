@@ -1,0 +1,25 @@
+{
+  "name": "pinellas_county",
+  "version": "1.0.0",
+  "description": "Pinellas County XML Scraper",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "shared": "npm link scraper-wandering-labs-shared"
+  },
+  "author": "Tim Watson",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "bluebird": "^3.5.3",
+    "esm": "^3.0.84",
+    "moment": "^2.22.2",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.2",
+    "xml2js": "^0.4.19"
+  },
+  "devDependencies": {
+    "eslint": "^5.10.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0"
+  }
+}

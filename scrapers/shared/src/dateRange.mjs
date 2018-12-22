@@ -3,7 +3,7 @@ export default function dateRange(startDate, endDate) {
   const day = startDate.clone();
 
   while (day <= endDate) {
-    timePeriods.push(day.format('M/D/YYYY'));
+    timePeriods.push(day.clone());
     day.add(1, 'day');
   }
 
