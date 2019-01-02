@@ -18,6 +18,7 @@
 /db/data/recreation_gov/*
 .envrc
 .env
+.*.env
 
 config/secrets.yml
 config/database.yml

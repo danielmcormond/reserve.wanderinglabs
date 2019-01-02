@@ -24,5 +24,4 @@ class Facility::PinellasCounty < Facility
       hash: last_import_hash,
     }
   end
-
 end

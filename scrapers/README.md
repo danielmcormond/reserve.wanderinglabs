@@ -18,7 +18,7 @@ Push:
 
 #### Image repo / AWS ECR
 
-AWS ECR logins expire under 24 hrs.
+AWS ECR logins expire after 12 hrs.
 
 To get a new session locally:
 
@@ -28,19 +28,27 @@ AWS cli is not install on production servers. Run this locally and paste results
 
 `aws ecr get-login --no-include-email`
 
+#### Deploying
+
+./deploy.sh pinellas-county 167.99.153.28
+./deploy.sh recreation-gov 167.99.153.28
+./deploy.sh reserve-america 167.99.153.28 204.48.25.66
+
+
+#### All together now
+
+docker-compose build camis && docker-compose push camis && ./deploy.sh camis 167.99.153.28
+
+docker-compose build reserve-ca && docker-compose push reserve-ca && ./deploy.sh reserve-ca 167.99.153.28
+
+docker-compose build reserve-america && docker-compose push reserve-america && ./deploy.sh reserve-america 204.48.25.66
 
 ---
 
 ## TODO
 
-- Consolidate production .env files into one
-  - Standardize/Variablize cloudfront log group names
-- Deployment solution
-  - AWS ECR sessions (docker pull)
-  - multiple hosts?
 - ESlint not per scraper
 - Cleanup ReserveCA linter issues (parse)
-- Consolidate .envrc to scraper root.
 - Tests
 - Bulk of redis loop in Queue to shared
 - Better error handling

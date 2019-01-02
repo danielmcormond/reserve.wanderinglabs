@@ -7,25 +7,25 @@ services:
       dockerfile: ./camis/Dockerfile
     image: ${DOCKER_REGISTRY}/wanderinglabs/scraper-camis
 
-  pinellas_county:
+  pinellas-county:
     build:
       context: .
       dockerfile: ./pinellas_county/Dockerfile
-    image: ${DOCKER_REGISTRY}/wanderinglabs/scraper-pinellas_county
+    image: ${DOCKER_REGISTRY}/wanderinglabs/scraper-pinellas-county
 
-  recreation_gov:
+  recreation-gov:
     build:
       context: .
       dockerfile: ./recreation_gov/Dockerfile
     image: ${DOCKER_REGISTRY}/wanderinglabs/scraper-recreation-gov
 
-  reserve_america:
+  reserve-america:
     build:
       context: .
       dockerfile: ./reserve_america/Dockerfile
     image: ${DOCKER_REGISTRY}/wanderinglabs/scraper-reserve-america
 
-  reserve_ca:
+  reserve-ca:
     build:
       context: .
       dockerfile: ./reserve_ca/Dockerfile
