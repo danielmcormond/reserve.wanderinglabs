@@ -48,6 +48,7 @@ export default class Scraper {
     const resultsJson = this.resultsToJson(resultsHash);
     const md5 = createHash(resultsJson);
 
+    console.log(this.hash, md5)
     if (this.hash === md5) {
       const delta = process.hrtime(hrstart);
       const timing = delta[0] + delta[1] / 1e9;
