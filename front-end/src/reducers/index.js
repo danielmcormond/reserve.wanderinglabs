@@ -1,7 +1,7 @@
 import { combineReducers } from "redux";
 import { combineForms } from "react-redux-form";
 
-import { routerReducer } from "react-router-redux";
+import { connectRouter } from 'connected-react-router'
 
 import availabilityImports from "./availabilityImportsReducer";
 import availabilityMatches from "./availabilityMatchesReducer";
@@ -42,8 +42,8 @@ const initialAvailabilityRequestFormState = {
   }
 };
 
-export default combineReducers({
-  router: routerReducer,
+export default (history) => combineReducers({
+  router: connectRouter(history),
   availabilityRequestForm: combineForms(
     initialAvailabilityRequestFormState,
     "availabilityRequestForm"

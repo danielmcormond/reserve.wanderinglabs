@@ -6,12 +6,12 @@ import { Divider, Grid, Label } from "semantic-ui-react";
 import RequestFormStepButtons from "./stepButtons";
 import SemanticInput from "../../semanticInput";
 
-@connect(store => {
+const connected = connect(store => {
   return {
     currentStep: store.requestForm
   };
 })
-export default class RequestFormStep4 extends Component {
+export class RequestFormStep4 extends Component {
   render() {
     return (
       <Grid padded="vertically">
@@ -45,3 +45,4 @@ export default class RequestFormStep4 extends Component {
     );
   }
 }
+export default connected(RequestFormStep4);

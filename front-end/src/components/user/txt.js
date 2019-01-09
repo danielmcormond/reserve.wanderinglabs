@@ -8,12 +8,12 @@ import {
   deleteNotificationMethod
 } from "../../actions/userActions";
 
-@connect(store => {
+const connected = connect(store => {
   return {
     user: store.user.user
   };
 })
-export default class UserTxt extends Component {
+export class UserTxt extends Component {
   state = { phoneNumber: "" };
 
   addNumber = e => {
@@ -89,3 +89,4 @@ export default class UserTxt extends Component {
     );
   }
 }
+export default connected(UserTxt);

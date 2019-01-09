@@ -2,14 +2,14 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Label } from "semantic-ui-react";
 
-@connect(store => {
+const connected = connect(store => {
   return {
     imports: store.availabilityImports.imports,
     fetching: store.availabilityImports.fetching,
     fetched: store.availabilityImports.fetched
   };
 })
-export default class AvailabilityImportsHistory extends Component {
+export class AvailabilityImportsHistory extends Component {
   render() {
     const { histories, color } = this.props;
 
@@ -32,3 +32,5 @@ export default class AvailabilityImportsHistory extends Component {
     return <span>{mappedHistory}</span>;
   }
 }
+
+export default connected(AvailabilityImportsHistory);

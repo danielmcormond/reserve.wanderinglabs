@@ -3,13 +3,13 @@ import { connect } from 'react-redux';
 
 import { Message } from 'semantic-ui-react'
 
-@connect((store) => {
+const connected = connect((store) => {
   return {
     message: store.flash.message,
     style: store.flash.style
   }
 })
-export default class FlashMessage extends Component {
+export class FlashMessage extends Component {
   isStyle(styleAttr) {
     return styleAttr === this.props.style;
   }
@@ -24,3 +24,4 @@ export default class FlashMessage extends Component {
     );
   }
 }
+export default connected(FlashMessage);

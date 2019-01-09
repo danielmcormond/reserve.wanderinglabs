@@ -3,12 +3,12 @@ import { connect } from "react-redux";
 import { Sidebar, Menu, Icon } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 
-@connect(store => {
+const connected = connect(store => {
   return {
     isAuthenticated: store.session.isAuthenticated
   };
 })
-export default class MenuBar extends Component {
+export class MenuBar extends Component {
   state = {};
   constructor(props) {
     super(props);
@@ -96,3 +96,4 @@ export default class MenuBar extends Component {
     );
   }
 }
+export default connected(MenuBar);

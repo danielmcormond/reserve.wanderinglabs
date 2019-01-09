@@ -4,12 +4,12 @@ import PaypalExpressBtn from "react-paypal-express-checkout";
 
 import { paymentSuccess } from "../../actions/userActions";
 
-@connect(store => {
+const connected = connect(store => {
   return {
     premiumAmount: store.user.premiumAmount
   };
 })
-export default class PaypalButton extends React.Component {
+export class PaypalButton extends React.Component {
   render() {
     const { premiumAmount } = this.props;
 
@@ -61,3 +61,4 @@ export default class PaypalButton extends React.Component {
     );
   }
 }
+export default connected(PaypalButton);

@@ -12,7 +12,7 @@ import {
   matchingSiteCount
 } from "../../../actions/requestFormActions";
 
-@connect(store => {
+const connected = connect(store => {
   return {
     currentStep: store.requestForm
   };
@@ -43,4 +43,4 @@ class RequestForm extends Component {
   }
 }
 
-export default RequestForm;
+export default connected(RequestForm);

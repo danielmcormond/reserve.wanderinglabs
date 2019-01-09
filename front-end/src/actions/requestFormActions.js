@@ -1,6 +1,6 @@
 import _ from "lodash";
 import { actions } from "react-redux-form";
-import { push } from "react-router-redux";
+import { push } from "connected-react-router";
 import { setFlashMessage } from "../actions/flashActions";
 
 import reserveApi from "../utils/axios";

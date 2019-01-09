@@ -4,13 +4,13 @@ import { Button, Icon } from "semantic-ui-react";
 
 import { formStepInc } from "../../../actions/requestFormActions";
 
-@connect(store => {
+const connected = connect(store => {
   return {
     currentStep: store.requestForm,
     isAuthenticated: store.session.isAuthenticated
   };
 })
-export default class RequestFormStepButtons extends Component {
+export class RequestFormStepButtons extends Component {
   nextStep() {
     this.props.dispatch(formStepInc());
   }
@@ -51,3 +51,4 @@ export default class RequestFormStepButtons extends Component {
     );
   }
 }
+export default connected(RequestFormStepButtons);

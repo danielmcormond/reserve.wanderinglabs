@@ -3,10 +3,10 @@ import { connect } from "react-redux";
 
 import { sessionCreate } from "../../actions/sessionActions";
 
-@connect(store => {
+const connected = connect(store => {
   return {};
 })
-export default class SessionCreate extends Component {
+export class SessionCreate extends Component {
   componentWillMount() {
     this.props.dispatch(
       sessionCreate(this.props.match.params.token, this.props.redirect)
@@ -17,3 +17,4 @@ export default class SessionCreate extends Component {
     return <h1>Logging in...</h1>;
   }
 }
+export default connected(SessionCreate);

@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Container, Sidebar } from "semantic-ui-react";
 
 import { Route } from "react-router";
-import { ConnectedRouter } from "react-router-redux";
+import { ConnectedRouter } from "connected-react-router";
 
 import { history } from "../../utils/history";
 
@@ -32,12 +32,13 @@ import AvailabilityMatchClick from "../availabilityMatchClick";
 import PagePremium from "../pages/premium";
 import PageAbout from "../pages/about";
 
-@connect(store => {
+const connected = connect(store => {
   return {
     isAuthenticated: store.session.isAuthenticated
   };
 })
-export default class Layout extends Component {
+
+export class Layout extends Component {
   state = {};
   constructor(props) {
     super(props);
@@ -118,3 +119,5 @@ export default class Layout extends Component {
     );
   }
 }
+
+export default connected(Layout);

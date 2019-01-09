@@ -2,7 +2,7 @@ import { applyMiddleware, createStore } from "redux";
 
 import thunk from "redux-thunk";
 import promise from "redux-promise-middleware";
-import { routerMiddleware } from "react-router-redux";
+import { routerMiddleware } from "connected-react-router";
 
 import reducer from "./reducers";
 
@@ -23,4 +23,4 @@ const middleware = applyMiddleware(
   routerMiddleware(history)
 );
 
-export default createStore(reducer, middleware);
+export default createStore(reducer(history), middleware);

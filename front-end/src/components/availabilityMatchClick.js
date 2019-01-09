@@ -4,12 +4,12 @@ import { Button, Header, Icon } from "semantic-ui-react";
 
 import { fetchAvailabilityMatch } from "../actions/availabilityMatchesActions";
 
-@connect(store => {
+const connected = connect(store => {
   return {
     availabilityMatch: store.availabilityMatches.match
   };
 })
-export default class availabilityMatchClick extends Component {
+export class availabilityMatchClick extends Component {
   componentWillMount() {
     this.props.dispatch(
       fetchAvailabilityMatch(
@@ -125,6 +125,7 @@ export default class availabilityMatchClick extends Component {
     );
   }
 }
+export default connected(availabilityMatchClick);
 
 //         {availabilityMatch.available === true && this.redirecting()}
 

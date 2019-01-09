@@ -3,13 +3,13 @@ import { connect } from "react-redux";
 import { formStepInc, formStepDec } from "../../../actions/requestFormActions";
 import { Icon, Header } from "semantic-ui-react";
 
-@connect(store => {
+const connected = connect(store => {
   return {
     currentStep: store.requestForm,
     isAuthenticated: store.session.isAuthenticated
   };
 })
-export default class RequestFormSteps extends Component {
+export class RequestFormSteps extends Component {
   nextStep() {
     this.props.dispatch(formStepInc());
   }
@@ -50,7 +50,7 @@ export default class RequestFormSteps extends Component {
     );
   }
 }
-
+export default connected(RequestFormSteps);
 // <Step.Group fluid className='mobile hidden'>
 //   <Step active={currentStep === 1} title='Where' description='Bahia Honda' onClick={() => this.goStep(1)} />
 //   <Step active={currentStep === 2} title='When' description='9/21/2017 - 10/12/2017' onClick={() => this.goStep(2)} />

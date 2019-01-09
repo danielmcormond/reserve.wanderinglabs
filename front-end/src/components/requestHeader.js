@@ -5,13 +5,13 @@ import { Link } from 'react-router-dom'
 
 import { fetchAvailabilityRequest } from "../actions/availabilityRequestsActions"
 
-@connect((store) => {
+const connected = connect((store) => {
   return {
     ar: store.availabilityRequests.ar,
     loading: store.availabilityRequests.fetching,
   };
 })
-export default class RequestHeader extends Component {
+export class RequestHeader extends Component {
   render() {
     const { ar } = this.props;
 
@@ -34,4 +34,4 @@ export default class RequestHeader extends Component {
     );
   }
 }
-
+export default connected(RequestHeader);

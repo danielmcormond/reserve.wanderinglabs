@@ -5,10 +5,10 @@ import { Grid } from "semantic-ui-react";
 
 import Premium from "../user/premium.js";
 
-@connect(store => {
+const connected = connect(store => {
   return { premium: store.user.premium };
 })
-export default class PagePremium extends Component {
+export class PagePremium extends Component {
   render() {
     return (
       <Grid>
@@ -25,3 +25,4 @@ export default class PagePremium extends Component {
     );
   }
 }
+export default connected(PagePremium);

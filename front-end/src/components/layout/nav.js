@@ -3,12 +3,12 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { Container, Icon, Menu } from "semantic-ui-react";
 
-@connect(store => {
+const connected = connect(store => {
   return {
     isAuthenticated: store.session.isAuthenticated
   };
 })
-export default class Nav extends Component {
+export class Nav extends Component {
   constructor(props) {
     super(props);
     this.toggleMenu = this.toggleMenu.bind(this);
@@ -68,7 +68,7 @@ export default class Nav extends Component {
     );
   }
 }
-
+export default connected(Nav);
 /**
 <Popup
   trigger={this.menuUser()}

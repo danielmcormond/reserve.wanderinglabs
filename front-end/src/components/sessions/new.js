@@ -9,10 +9,10 @@ import { sessionNew } from "../../actions/sessionActions";
 const EmailInput = props =>
   <Input size="huge" placeholder="Email Address" {...props} />;
 
-@connect(store => {
+const connected = connect(store => {
   return {};
 })
-export default class SessionNew extends Component {
+export class SessionNew extends Component {
   handleSubmit(val) {
     this.props.dispatch(sessionNew(val.forms.email.value));
     // TODO: val.forms.email.value can't be correct...
@@ -66,3 +66,4 @@ export default class SessionNew extends Component {
     );
   }
 }
+export default connected(SessionNew);
