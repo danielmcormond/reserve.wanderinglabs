@@ -30,3 +30,6 @@ AvailabilityRequest.where(facility_id: Facility::RecreationGov.all.map(&:id)).ac
     puts "Failed"
   end
 end
+
+
+AvailabilityImport.where(facility_id: 3509).where("history_open = '[]'").where("history_filled = '[]'").count
