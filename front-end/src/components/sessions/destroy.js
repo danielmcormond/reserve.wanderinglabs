@@ -3,11 +3,11 @@ import { connect } from 'react-redux';
 
 import { sessionDestroy } from "../../actions/sessionActions"
 
-@connect((store) => {
+const connected = connect((store) => {
   return {
   }
 })
-export default class SessionDestroy extends Component {
+export class SessionDestroy extends Component {
   componentWillMount() {
     this.props.dispatch(sessionDestroy())
   }
@@ -18,3 +18,4 @@ export default class SessionDestroy extends Component {
     );
   }
 }
+export default connected(SessionDestroy)

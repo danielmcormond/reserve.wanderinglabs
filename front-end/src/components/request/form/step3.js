@@ -64,7 +64,7 @@ const electricOptions = [
   }
 ];
 
-@connect(store => {
+const connected = connect(store => {
   return {
     type: store.availabilityRequestForm.step3.type,
     electric: store.availabilityRequestForm.step3.electric,
@@ -73,7 +73,7 @@ const electricOptions = [
     facility: store.availabilityRequestForm.step1.facility
   };
 })
-export default class RequestFormStep3 extends Component {
+export class RequestFormStep3 extends Component {
   handleSiteTypeClick = (e, data) => {
     e.preventDefault();
     this.props.dispatch(
@@ -232,3 +232,4 @@ export default class RequestFormStep3 extends Component {
     );
   }
 }
+export default connected(RequestFormStep3);

@@ -21,12 +21,12 @@ import {
 import AvailabilityMatches from "../availabilityMatches";
 import Premium from "../user/premium.js";
 
-@connect(store => {
+const connected = connect(store => {
   return {
     ar: store.availabilityRequests.ar
   };
 })
-export default class RequestShow extends Component {
+export class RequestShow extends Component {
   componentWillMount() {
     console.log("params", this.props.match.params);
     if (this.props.match.params.status !== undefined) {
@@ -210,6 +210,7 @@ export default class RequestShow extends Component {
     );
   }
 }
+export default connected(RequestShow);
 
 // <Button
 //   as={Link}

@@ -3,12 +3,12 @@ import { connect } from "react-redux";
 import { Dropdown } from "semantic-ui-react";
 import { actions } from "react-redux-form";
 
-@connect(store => {
+const connected = connect(store => {
   return {
     arrivalDays: store.availabilityRequestForm.step2.arrivalDays
   };
 })
-export default class RequestFormStep2ArrivalDays extends Component {
+export class RequestFormStep2ArrivalDays extends Component {
   handleChange = (e, value) => {
     this.props.dispatch(
       actions.change("availabilityRequestForm.step2.arrivalDays", value.value)
@@ -42,3 +42,4 @@ export default class RequestFormStep2ArrivalDays extends Component {
     );
   }
 }
+export default connected(RequestFormStep2ArrivalDays);

@@ -7,13 +7,13 @@ import {
   formStepInc
 } from "../../../actions/requestFormActions";
 
-@connect(store => {
+const connected = connect(store => {
   return {
     facilities: store.facilities.facilities,
     loading: store.facilities.fetching
   };
 })
-export default class RequestFormStep1Table extends Component {
+export class RequestFormStep1Table extends Component {
   handleChange = (e, value) => {
     this.props.dispatch(formSetFacility(value.id));
     this.props.dispatch(formStepInc());
@@ -47,3 +47,4 @@ export default class RequestFormStep1Table extends Component {
     );
   }
 }
+export default connected(RequestFormStep1Table);

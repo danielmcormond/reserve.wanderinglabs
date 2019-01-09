@@ -9,14 +9,14 @@ import Premium from "./premium.js";
 import UserEmail from "./email.js";
 import UserTxt from "./txt.js";
 
-@connect(store => {
+const connected = connect(store => {
   return {
     isAuthenticated: store.session.isAuthenticated,
     user: store.user.user,
     premium: store.user.premium
   };
 })
-export default class UserSettings extends Component {
+export class UserSettings extends Component {
   componentWillMount() {
     this.props.dispatch(userSettings());
   }
@@ -67,3 +67,4 @@ export default class UserSettings extends Component {
 //   <Menu.Item as={Link} to="/settings">
 //     Account
 //   </Menu.Item>}
+export default connected(UserSettings);

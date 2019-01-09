@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 // import { setFlashMessage } from "../../actions/flashActions";
 
 export default function requireAuth(Component, Component2 = null) {
-  @connect(store => {
+  const connected = connect(store => {
     return {
       token: store.session.token,
       isAuthenticated: store.session.isAuthenticated
@@ -31,5 +31,5 @@ export default function requireAuth(Component, Component2 = null) {
     }
   }
 
-  return SessionAuthenticated;
+  return connected(SessionAuthenticated);
 }

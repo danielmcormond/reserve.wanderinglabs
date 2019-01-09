@@ -13,13 +13,13 @@ import { Link } from "react-router-dom";
 import DateFormat from "./utils/dateFormat";
 import { fetchAvailabilityMatches } from "../actions/availabilityMatchesActions";
 
-@connect(store => {
+const connected = connect(store => {
   return {
     matches: store.availabilityMatches.matches,
     fetching: store.availabilityMatches.fetching
   };
 })
-export default class AvailabilityMatches extends Component {
+export class AvailabilityMatches extends Component {
   componentWillMount() {
     this.props.dispatch(fetchAvailabilityMatches(this.props.match.params.uuid));
   }
@@ -98,3 +98,4 @@ export default class AvailabilityMatches extends Component {
     );
   }
 }
+export default connected(AvailabilityMatches);

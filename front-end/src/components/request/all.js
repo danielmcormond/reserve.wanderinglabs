@@ -1,20 +1,20 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Grid, Header, Icon, Label, List, Loader } from "semantic-ui-react";
-import { push } from "react-router-redux";
+import { push } from "connected-react-router";
 
 import Premium from "../user/premium.js";
 import DateFormat from "../utils/dateFormat";
 import { fetchAvailabilityRequests } from "../../actions/availabilityRequestsActions";
 
-@connect(store => {
+const connected = connect(store => {
   return {
     ars: store.availabilityRequests.ars,
     fetching: store.availabilityRequests.fetching,
     fetched: store.availabilityRequests.fetched
   };
 })
-export default class RequestAll extends Component {
+export class RequestAll extends Component {
   componentWillMount() {
     if (this.props.fetched === false) {
       this.props.dispatch(fetchAvailabilityRequests());
@@ -67,3 +67,4 @@ export default class RequestAll extends Component {
     );
   }
 }
+export default connected(RequestAll);

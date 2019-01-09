@@ -10,14 +10,14 @@ import SemanticInput from "../../semanticInput";
 import RequestFormStep2ArrivalDays from "./step2ArrivalDays";
 import "../../../dayPicker.css";
 
-@connect(store => {
+const connected = connect(store => {
   return {
     dateStart: store.availabilityRequestForm.step2.dateStart,
     dateEnd: store.availabilityRequestForm.step2.dateEnd,
     step2Valid: store.availabilityRequestForm.forms.step2.$form.valid
   };
 })
-export default class RequestFormStep2 extends Component {
+export class RequestFormStep2 extends Component {
   handleDayClick = day => {
     const range = DateUtils.addDayToRange(day, {
       from: this.props.dateStart,
@@ -125,3 +125,4 @@ export default class RequestFormStep2 extends Component {
     );
   }
 }
+export default connected(RequestFormStep2);

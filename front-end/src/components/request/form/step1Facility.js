@@ -7,7 +7,7 @@ import debounce from "debounce";
 import { fetchFacilities } from "../../../actions/facilitiesActions";
 import { filters } from "../../../filters";
 
-@connect(store => {
+const connected = connect(store => {
   return {
     facilities: store.facilities.facilities,
     step1: store.availabilityRequestForm.step1,
@@ -15,7 +15,7 @@ import { filters } from "../../../filters";
     loading: store.facilities.fetching
   };
 })
-export default class RequestFormStep1Facility extends Component {
+export class RequestFormStep1Facility extends Component {
   state = { search: "", filter: [] };
 
   componentWillMount() {
@@ -91,3 +91,4 @@ export default class RequestFormStep1Facility extends Component {
     );
   }
 }
+export default connected(RequestFormStep1Facility);

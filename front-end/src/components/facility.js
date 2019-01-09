@@ -45,7 +45,7 @@ const siteTypeOptions = [
   }
 ];
 
-@connect(store => {
+const connected = connect(store => {
   return {
     avails: store.groupedAvailabilities.avails,
     filterSiteType: store.groupedAvailabilities.filterSiteType,
@@ -54,7 +54,7 @@ const siteTypeOptions = [
     fetching: store.groupedAvailabilities.fetching
   };
 })
-export default class Facility extends Component {
+export class Facility extends Component {
   componentWillMount() {
     this.props.dispatch(fetchGroupedAvailabilities(this.props.match.params.id));
   }
@@ -174,3 +174,4 @@ export default class Facility extends Component {
     );
   }
 }
+export default connected(Facility);

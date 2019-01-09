@@ -16,14 +16,14 @@ import DateFormat from "./utils/dateFormat";
 import { fetchAvailabilityImports } from "../actions/availabilityImportsActions";
 import AvailabilityImportsHistory from "./imports/history";
 
-@connect(store => {
+const connected = connect(store => {
   return {
     imports: store.availabilityImports.imports,
     fetching: store.availabilityImports.fetching,
     fetched: store.availabilityImports.fetched
   };
 })
-export default class AvailabilityImports extends Component {
+export class AvailabilityImports extends Component {
   state = { filter: [] };
 
   doFetchAvailabilityImports = debounce(() => {
@@ -194,3 +194,4 @@ export default class AvailabilityImports extends Component {
     );
   }
 }
+export default connected(AvailabilityImports);

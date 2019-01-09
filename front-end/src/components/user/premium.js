@@ -15,13 +15,13 @@ import SemanticInput from "../semanticInput";
 
 const amounts = [10, 20, 25, 50];
 
-@connect(store => {
+const connected = connect(store => {
   return {
     premium: store.user.premium,
     premiumAmount: store.user.premiumAmount
   };
 })
-export default class Premium extends Component {
+export class Premium extends Component {
   premiumAmountChange = (e, { value }) =>
     this.props.dispatch({ type: "SET_PREMIUM_AMOUNT", payload: value });
 
@@ -119,3 +119,4 @@ export default class Premium extends Component {
     );
   }
 }
+export default connected(Premium);
