@@ -1,9 +1,9 @@
 import reserveApi from "../utils/axios";
 
 export function fetchFacilities(value, filters = []) {
-  return function(dispatch) {
+  return dispatch => {
     dispatch({ type: "FETCH_FACILITIES" });
-    reserveApi({
+    return reserveApi({
       method: "get",
       url: `/facilities.json?q=${value}&f=${filters}`
     })
@@ -20,9 +20,9 @@ export function fetchFacilities(value, filters = []) {
 }
 
 export function fetchGroupedAvailabilities(facility_id) {
-  return function(dispatch) {
+  return dispatch => {
     dispatch({ type: "FETCH_GROUP_AVAILS" });
-    reserveApi({
+    return reserveApi({
       method: "get",
       url: `/facilities/${facility_id}/grouped_availabilities.json`
     })
@@ -39,14 +39,11 @@ export function fetchGroupedAvailabilities(facility_id) {
 }
 
 export function groupedAvailabilitiesFilterSiteType(value) {
-  return function(dispatch) {
+  return dispatch =>
     dispatch({ type: "GROUP_AVAILS_FILTER_SITE_TYPE", payload: value });
-  };
 }
 
 export function groupedAvailabilitiesSort(value) {
-  console.log('VALUE', value)
-  return function(dispatch) {
+  return dispatch =>
     dispatch({ type: "GROUP_AVAILS_SORT", payload: value });
-  };
 }
