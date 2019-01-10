@@ -27,7 +27,7 @@ export function fetchAvailabilityRequest(uuid) {
       console.log("cached");
       dispatch({ type: "FETCH_AR_FULFILLED", payload: cachedAr });
     } else {
-      reserveApi({ method: "get", url: `/availability_requests/${uuid}.json` })
+      return reserveApi({ method: "get", url: `/availability_requests/${uuid}.json` })
         .then(response => {
           if (response.data.premium === true) {
             dispatch({ type: "SET_PREMIUM" });
