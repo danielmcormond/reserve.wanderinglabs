@@ -1,38 +1,37 @@
-export default function reducer(
-  state = {
-    user: {
-      notification_methods: [],
-      sms_limit: 0,
-      sms_count: 0
-    },
-    premiumAmount: 20,
-    premium: false,
-    fetching: false,
-    fetched: false,
-    error: null
+export const initialState = {
+  user: {
+    notification_methods: [],
+    sms_limit: 0,
+    sms_count: 0
   },
-  action
-) {
-  switch (action.type) {
+  premiumAmount: 20,
+  premium: false,
+  fetching: false,
+  fetched: false,
+  error: null
+}
+
+export default (state = initialState, { type, payload }) => {
+  switch (type) {
     case "SET_PREMIUM": {
       return { ...state, premium: true };
     }
     case "SET_PREMIUM_AMOUNT": {
-      return { ...state, premiumAmount: action.payload };
+      return { ...state, premiumAmount: payload };
     }
     case "FETCH_USER": {
       return { ...state, fetching: true };
     }
     case "FETCH_USER_REJECTED": {
-      return { ...state, fetching: false, error: action.payload };
+      return { ...state, fetching: false, error: payload };
     }
     case "FETCH_USER_FULFILLED": {
       return {
         ...state,
         fetching: false,
         fetched: true,
-        user: action.payload,
-        premium: action.payload.premium
+        user: payload,
+        premium: payload.premium
       };
     }
     default: {
