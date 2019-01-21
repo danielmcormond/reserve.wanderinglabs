@@ -9,6 +9,7 @@ DOCKER_IMAGE=${DOCKER_REGISTRY}/wanderinglabs/scraper-${NAME}:latest
 
 ssh -T root@${SERVER} << EOSSH
   $DOCKER_LOGIN
+  mkdir -p /home/scraper
   echo "$ENV_PROD" > /home/scraper/.env
   docker pull $DOCKER_IMAGE
 

@@ -29,4 +29,6 @@ AvailabilityRequest.where(facility_id: Facility::RecreationGov.all.map(&:id)).ac
   end
 end
 
-AvailabilityImport.where(facility_id: 3509).where("history_open = '[]'").where("history_filled = '[]'").count
+AvailabilityImport.where("history_open = '[]'").where("history_filled = '[]'").all.each do |ai|
+  ai.delete unless ai.availabilities.count.positive?
+end; nil
