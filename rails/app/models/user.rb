@@ -49,6 +49,10 @@ class User < ApplicationRecord
     ENV['RESERVE_URL'] + '/sign-in/' + login_token
   end
 
+  def settings_url
+    login_url + "/settings"
+  end
+
   def ar
     availability_requests.map { |ar| ar.serialized }
   end
