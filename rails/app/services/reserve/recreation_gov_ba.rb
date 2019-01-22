@@ -15,6 +15,6 @@ class Reserve::RecreationGovBa
   end
 
   def site_url
-    "https://www.recreation.gov/camping/campgrounds/#{site.facility.ext_id}/campsites"
+    "https://www.recreation.gov/camping/campsites/#{site.ext_id}"
   end
 end
