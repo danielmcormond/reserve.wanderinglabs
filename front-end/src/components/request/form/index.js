@@ -14,7 +14,7 @@ import {
 
 const connected = connect(store => {
   return {
-    currentStep: store.requestForm
+    currentStep: store.requestForm.step
   };
 })
 class RequestForm extends Component {

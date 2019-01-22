@@ -6,10 +6,11 @@ import { formStepInc } from "../../../actions/requestFormActions";
 
 const connected = connect(store => {
   return {
-    currentStep: store.requestForm,
+    currentStep: store.requestForm.step,
+    submitting: store.requestForm.submitting,
     isAuthenticated: store.session.isAuthenticated
   };
-})
+});
 export class RequestFormStepButtons extends Component {
   nextStep() {
     this.props.dispatch(formStepInc());
@@ -20,7 +21,7 @@ export class RequestFormStepButtons extends Component {
   }
 
   render() {
-    const { currentStep } = this.props;
+    const { currentStep, submitting } = this.props;
 
     return (
       <div>
@@ -42,7 +43,8 @@ export class RequestFormStepButtons extends Component {
             size="large"
             color="green"
             fluid
-            disabled={this.props.disabled}
+            disabled={this.props.disabled || submitting}
+            loading={submitting}
           >
             Submit Request
           </Button>

@@ -5,7 +5,7 @@ import { Icon, Header } from "semantic-ui-react";
 
 const connected = connect(store => {
   return {
-    currentStep: store.requestForm,
+    currentStep: store.requestForm.step,
     isAuthenticated: store.session.isAuthenticated
   };
 })

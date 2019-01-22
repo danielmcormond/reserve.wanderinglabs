@@ -8,11 +8,10 @@ import store from "../store";
 
 export function matchingSiteCount(values) {
   return function(dispatch) {
-    let currentStep = store.getState().requestForm;
+    let currentStep = store.getState().requestForm.step;
     if (currentStep !== 3) {
       return;
     }
-    dispatch({ type: "SUBMIT_REQUEST" });
 
     let apiValues = {
       facility_id: values.step1.facilityId,
@@ -52,7 +51,7 @@ export function matchingSiteCount(values) {
 
 export function formSubmit(values) {
   return function(dispatch) {
-    dispatch({ type: "SUBMIT_REQUEST" });
+    dispatch({ type: "SUBMIT_REQUEST_FORM" });
 
     let apiValues = {
       facility_id: values.step1.facilityId,
@@ -79,6 +78,7 @@ export function formSubmit(values) {
       }
     })
       .then(response => {
+        dispatch({ type: "SUBMIT_REQUEST_FORM_SUCCESS" });
         dispatch({ type: "FETCH_AR_FULFILLED", payload: response.data });
         dispatch(formStepGo(1));
         dispatch({ type: "ARS_RESET" });
@@ -99,7 +99,7 @@ export function formSubmit(values) {
 
 export function formStepInc() {
   return function(dispatch) {
-    let current_step = store.getState().requestForm;
+    let current_step = store.getState().requestForm.step;
 
     let newStep = current_step + 1;
     dispatch(formStepGo(newStep > 4 ? 4 : newStep));
@@ -108,7 +108,7 @@ export function formStepInc() {
 
 export function formStepDec() {
   return function(dispatch) {
-    let current_step = store.getState().requestForm;
+    let current_step = store.getState().requestForm.step;
 
     let newStep = current_step - 1;
     dispatch(formStepGo(newStep < 1 ? 1 : newStep));
@@ -117,7 +117,7 @@ export function formStepDec() {
 
 export function formStepGo(step) {
   return function(dispatch) {
-    let current_step = store.getState().requestForm;
+    let current_step = store.getState().requestForm.step;
 
     if (step > current_step) {
       dispatch(formStepValidate());
@@ -149,7 +149,7 @@ export function formSetFacility(facilityId) {
 
 export function formStepValidate() {
   return function(dispatch) {
-    let current_step = store.getState().requestForm;
+    let current_step = store.getState().requestForm.step;
 
     if (current_step === 1) {
       dispatch(

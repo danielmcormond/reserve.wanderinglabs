@@ -8,7 +8,7 @@ import SemanticInput from "../../semanticInput";
 
 const connected = connect(store => {
   return {
-    currentStep: store.requestForm
+    currentStep: store.requestForm.step
   };
 })
 export class RequestFormStep4 extends Component {
