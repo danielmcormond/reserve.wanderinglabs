@@ -2,9 +2,9 @@ class Facility < ApplicationRecord
   extend Enumerize
 
   belongs_to :agency
-  has_many :sites
-  has_many :availability_requests
-  has_many :availability_imports
+  has_many :sites, dependent: :destroy
+  has_many :availability_requests, dependent: :destroy
+  has_many :availability_imports, dependent: :destroy
 
   scope :lookup, (lambda do |start|
     where('name ILIKE ?', "#{start}%").order('name ASC').limit(15)

@@ -1,6 +1,7 @@
 class Site < ApplicationRecord
   extend Enumerize
-  has_many :availabilities
+  has_many :availabilities, dependent: :destroy
+  has_many :availability_matches, dependent: :destroy
   belongs_to :facility
 
   enumerize :site_type, in: %i[group tent_walk_in tent other rv], predicates: { prefix: true }
