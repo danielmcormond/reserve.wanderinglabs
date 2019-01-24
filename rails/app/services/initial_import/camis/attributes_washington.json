@@ -1,0 +1,1695 @@
+{
+  "expires": "2019-01-24T16:09:44.743Z",
+  "value": {
+    "-32721": {
+      "locales": [{ "localeId": 0, "displayName": "Picnic Tables" }],
+      "minValue": 0,
+      "maxValue": 42,
+      "attributeDefinitionId": -32721,
+      "versionId": -2147437413,
+      "versionDate": "2018-10-19T13:58:00.32Z",
+      "isDisabled": false,
+      "order": 80,
+      "isFilterable": false
+    },
+    "-32723": {
+      "locales": [{ "localeId": 0, "displayName": "Number Of Barbeques" }],
+      "minValue": 0,
+      "maxValue": 17,
+      "attributeDefinitionId": -32723,
+      "versionId": -2147437410,
+      "versionDate": "2018-10-19T13:58:00.32Z",
+      "isDisabled": false,
+      "order": 110,
+      "isFilterable": false
+    },
+    "-32719": {
+      "locales": [{ "localeId": 0, "displayName": "Distance To Restroom" }],
+      "minValue": 0,
+      "maxValue": 2600,
+      "attributeDefinitionId": -32719,
+      "versionId": -2147437408,
+      "versionDate": "2018-10-19T13:58:00.32Z",
+      "isDisabled": false,
+      "order": 130,
+      "isFilterable": false
+    },
+    "-32717": {
+      "locales": [{ "localeId": 0, "displayName": "Distance To Water Source" }],
+      "minValue": 0,
+      "maxValue": 2000,
+      "attributeDefinitionId": -32717,
+      "versionId": -2147437407,
+      "versionDate": "2018-10-19T13:58:00.32Z",
+      "isDisabled": false,
+      "order": 140,
+      "isFilterable": false
+    },
+    "-32720": {
+      "locales": [{ "localeId": 0, "displayName": "Vehicle Parking" }],
+      "minValue": 0,
+      "maxValue": 100,
+      "attributeDefinitionId": -32720,
+      "versionId": -2147437404,
+      "versionDate": "2018-10-19T13:58:00.32Z",
+      "isDisabled": false,
+      "order": 170,
+      "isFilterable": false
+    },
+    "-32715": {
+      "locales": [{ "localeId": 0, "displayName": "Pad Length" }],
+      "minValue": 0,
+      "maxValue": 200,
+      "attributeDefinitionId": -32715,
+      "versionId": -2147437403,
+      "versionDate": "2018-10-19T13:58:00.32Z",
+      "isDisabled": false,
+      "order": 180,
+      "isFilterable": false
+    },
+    "-32714": {
+      "locales": [{ "localeId": 0, "displayName": "Pad Width" }],
+      "minValue": 0,
+      "maxValue": 75,
+      "attributeDefinitionId": -32714,
+      "versionId": -2147437402,
+      "versionDate": "2018-10-19T13:58:00.32Z",
+      "isDisabled": false,
+      "order": 190,
+      "isFilterable": false
+    },
+    "-32735": {
+      "locales": [{ "localeId": 0, "displayName": "Site Length" }],
+      "minValue": 0,
+      "maxValue": 950,
+      "attributeDefinitionId": -32735,
+      "versionId": -2147437394,
+      "versionDate": "2018-10-19T13:58:00.32Z",
+      "isDisabled": false,
+      "order": 260,
+      "isFilterable": false
+    },
+    "-32734": {
+      "locales": [{ "localeId": 0, "displayName": "Site Width" }],
+      "minValue": 0,
+      "maxValue": 600,
+      "attributeDefinitionId": -32734,
+      "versionId": -2147437393,
+      "versionDate": "2018-10-19T13:58:00.32Z",
+      "isDisabled": false,
+      "order": 270,
+      "isFilterable": false
+    },
+    "-32731": {
+      "locales": [{ "localeId": 0, "displayName": "Tent Area Length" }],
+      "minValue": 0,
+      "maxValue": 65,
+      "attributeDefinitionId": -32731,
+      "versionId": -2147437392,
+      "versionDate": "2018-10-19T13:58:00.32Z",
+      "isDisabled": false,
+      "order": 280,
+      "isFilterable": false
+    },
+    "-32730": {
+      "locales": [{ "localeId": 0, "displayName": "Tent Area Width" }],
+      "minValue": 0,
+      "maxValue": 39,
+      "attributeDefinitionId": -32730,
+      "versionId": -2147437391,
+      "versionDate": "2018-10-19T13:58:00.32Z",
+      "isDisabled": false,
+      "order": 290,
+      "isFilterable": false
+    },
+    "-32716": {
+      "locales": [{ "localeId": 0, "displayName": "Min Billable Party Size" }],
+      "minValue": 0,
+      "maxValue": 400,
+      "attributeDefinitionId": -32716,
+      "versionId": -2147437388,
+      "versionDate": "2018-10-19T13:58:00.32Z",
+      "isDisabled": false,
+      "order": 320,
+      "isFilterable": false
+    },
+    "-32733": {
+      "locales": [{ "localeId": 0, "displayName": "Rating" }],
+      "minValue": 1,
+      "maxValue": 150,
+      "attributeDefinitionId": -32733,
+      "versionId": -2147437386,
+      "versionDate": "2018-10-19T13:58:00.32Z",
+      "isDisabled": false,
+      "order": 340,
+      "isFilterable": false
+    },
+    "-32732": {
+      "locales": [{ "localeId": 0, "displayName": "Tent Areas" }],
+      "minValue": 0,
+      "maxValue": 4,
+      "attributeDefinitionId": -32732,
+      "versionId": -2147437385,
+      "versionDate": "2018-10-19T13:58:00.32Z",
+      "isDisabled": false,
+      "order": 350,
+      "isFilterable": false
+    },
+    "-32729": {
+      "locales": [{ "localeId": 0, "displayName": "Second Tent Area Length" }],
+      "minValue": 0,
+      "maxValue": 30,
+      "attributeDefinitionId": -32729,
+      "versionId": -2147437384,
+      "versionDate": "2018-10-19T13:58:00.32Z",
+      "isDisabled": false,
+      "order": 360,
+      "isFilterable": false
+    },
+    "-32728": {
+      "locales": [{ "localeId": 0, "displayName": "Second Tent Area Width" }],
+      "minValue": 0,
+      "maxValue": 22,
+      "attributeDefinitionId": -32728,
+      "versionId": -2147437383,
+      "versionDate": "2018-10-19T13:58:00.32Z",
+      "isDisabled": false,
+      "order": 370,
+      "isFilterable": false
+    },
+    "-32727": {
+      "locales": [{ "localeId": 0, "displayName": "Third Tent Area Length" }],
+      "minValue": 0,
+      "maxValue": 12,
+      "attributeDefinitionId": -32727,
+      "versionId": -2147437382,
+      "versionDate": "2018-10-19T13:58:00.32Z",
+      "isDisabled": false,
+      "order": 380,
+      "isFilterable": false
+    },
+    "-32726": {
+      "locales": [{ "localeId": 0, "displayName": "Third Tent Area Width" }],
+      "minValue": 0,
+      "maxValue": 14,
+      "attributeDefinitionId": -32726,
+      "versionId": -2147437381,
+      "versionDate": "2018-10-19T13:58:00.32Z",
+      "isDisabled": false,
+      "order": 390,
+      "isFilterable": false
+    },
+    "-32725": {
+      "locales": [{ "localeId": 0, "displayName": "Max RVs" }],
+      "minValue": 0,
+      "maxValue": 1,
+      "attributeDefinitionId": -32725,
+      "versionId": -2147437380,
+      "versionDate": "2018-10-19T13:58:00.32Z",
+      "isDisabled": false,
+      "order": 440,
+      "isFilterable": false
+    },
+    "-32724": {
+      "locales": [{ "localeId": 0, "displayName": "Electrical Outlets" }],
+      "minValue": 0,
+      "maxValue": 6,
+      "attributeDefinitionId": -32724,
+      "versionId": -2147437379,
+      "versionDate": "2018-10-19T13:58:00.32Z",
+      "isDisabled": false,
+      "order": 460,
+      "isFilterable": false
+    },
+    "-32722": {
+      "locales": [{ "localeId": 0, "displayName": "Maximum Tents" }],
+      "minValue": 0,
+      "maxValue": 2,
+      "attributeDefinitionId": -32722,
+      "versionId": -2147437378,
+      "versionDate": "2018-10-19T13:58:00.32Z",
+      "isDisabled": false,
+      "order": 470,
+      "isFilterable": false
+    },
+    "-32718": {
+      "locales": [{ "localeId": 0, "displayName": "Distance To Beach" }],
+      "minValue": 0,
+      "maxValue": 8000,
+      "attributeDefinitionId": -32718,
+      "versionId": -2147437377,
+      "versionDate": "2018-10-19T13:58:00.32Z",
+      "isDisabled": false,
+      "order": 490,
+      "isFilterable": false
+    },
+    "-32755": {
+      "locales": [{ "localeId": 0, "displayName": "DELETEAllowed Equipment" }],
+      "isMultiSelect": true,
+      "values": [
+        {
+          "locales": [{ "localeId": 0, "displayName": "Tents" }],
+          "enumValue": 0,
+          "order": 1,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "Trailers" }],
+          "enumValue": 1,
+          "order": 2,
+          "isActive": true
+        }
+      ],
+      "attributeDefinitionId": -32755,
+      "versionId": -2147437422,
+      "versionDate": "2018-10-19T13:58:00.32Z",
+      "isDisabled": false,
+      "order": 450,
+      "isFilterable": false
+    },
+    "-32768": {
+      "locales": [{ "localeId": 0, "displayName": "Service Type" }],
+      "isMultiSelect": false,
+      "values": [
+        {
+          "locales": [
+            { "localeId": 0, "displayName": "Primitive Hiker/Biker" }
+          ],
+          "enumValue": 0,
+          "order": 1,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "Primitive Walk-in" }],
+          "enumValue": 1,
+          "order": 2,
+          "isActive": true
+        },
+        {
+          "locales": [
+            { "localeId": 0, "displayName": "Primitive With Vehicle" }
+          ],
+          "enumValue": 2,
+          "order": 3,
+          "isActive": true
+        },
+        {
+          "locales": [
+            { "localeId": 0, "displayName": "Standard - No Hook-ups" }
+          ],
+          "enumValue": 3,
+          "order": 4,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "Electric No Hook-ups" }],
+          "enumValue": 4,
+          "order": 5,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "Electric Hook-ups" }],
+          "enumValue": 5,
+          "order": 6,
+          "isActive": true
+        },
+        {
+          "locales": [
+            { "localeId": 0, "displayName": "Electrical Water Hook-up" }
+          ],
+          "enumValue": 6,
+          "order": 7,
+          "isActive": true
+        },
+        {
+          "locales": [
+            { "localeId": 0, "displayName": "Electrical Water Sewer Hook-up" }
+          ],
+          "enumValue": 7,
+          "order": 8,
+          "isActive": true
+        }
+      ],
+      "attributeDefinitionId": -32768,
+      "versionId": -2147437420,
+      "versionDate": "2018-10-19T13:58:00.32Z",
+      "isDisabled": false,
+      "order": 10,
+      "isFilterable": true
+    },
+    "-32767": {
+      "locales": [{ "localeId": 0, "displayName": "Electrical Service" }],
+      "isMultiSelect": true,
+      "values": [
+        {
+          "locales": [{ "localeId": 0, "displayName": "Not Available" }],
+          "enumValue": 0,
+          "order": 1,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "15 Amps" }],
+          "enumValue": 1,
+          "order": 2,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "20 Amps" }],
+          "enumValue": 2,
+          "order": 3,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "30 Amps" }],
+          "enumValue": 3,
+          "order": 4,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "50 Amps" }],
+          "enumValue": 4,
+          "order": 5,
+          "isActive": true
+        }
+      ],
+      "attributeDefinitionId": -32767,
+      "versionId": -2147437419,
+      "versionDate": "2018-10-19T13:58:00.32Z",
+      "isDisabled": false,
+      "order": 20,
+      "isFilterable": true
+    },
+    "-32765": {
+      "locales": [{ "localeId": 0, "displayName": "Fee Level" }],
+      "isMultiSelect": false,
+      "values": [
+        {
+          "locales": [{ "localeId": 0, "displayName": "Popular Plus" }],
+          "enumValue": 0,
+          "order": 1,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "Popular" }],
+          "enumValue": 1,
+          "order": 2,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "Basic Plus" }],
+          "enumValue": 2,
+          "order": 3,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "Basic" }],
+          "enumValue": 3,
+          "order": 4,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "Economy Plus" }],
+          "enumValue": 4,
+          "order": 5,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "Economy" }],
+          "enumValue": 5,
+          "order": 6,
+          "isActive": true
+        }
+      ],
+      "attributeDefinitionId": -32765,
+      "versionId": -2147437418,
+      "versionDate": "2018-10-19T13:58:00.32Z",
+      "isDisabled": false,
+      "order": 30,
+      "isFilterable": true
+    },
+    "-32759": {
+      "locales": [{ "localeId": 0, "displayName": "ADA Only" }],
+      "isMultiSelect": false,
+      "values": [
+        {
+          "locales": [{ "localeId": 0, "displayName": "Yes" }],
+          "enumValue": 0,
+          "order": 1,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "No" }],
+          "enumValue": 1,
+          "order": 2,
+          "isActive": true
+        }
+      ],
+      "attributeDefinitionId": -32759,
+      "versionId": -2147437417,
+      "versionDate": "2018-10-19T13:58:00.32Z",
+      "isDisabled": false,
+      "order": 40,
+      "isFilterable": true
+    },
+    "-32738": {
+      "locales": [{ "localeId": 0, "displayName": "ADA Accessible" }],
+      "isMultiSelect": false,
+      "values": [
+        {
+          "locales": [{ "localeId": 0, "displayName": "Yes" }],
+          "enumValue": 0,
+          "order": 1,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "No" }],
+          "enumValue": 1,
+          "order": 2,
+          "isActive": true
+        }
+      ],
+      "attributeDefinitionId": -32738,
+      "versionId": -2147437416,
+      "versionDate": "2018-10-19T13:58:00.32Z",
+      "isDisabled": false,
+      "order": 50,
+      "isFilterable": true
+    },
+    "-32757": {
+      "locales": [{ "localeId": 0, "displayName": "Privacy" }],
+      "isMultiSelect": false,
+      "values": [
+        {
+          "locales": [{ "localeId": 0, "displayName": "Not Available" }],
+          "enumValue": 0,
+          "order": 1,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "Poor" }],
+          "enumValue": 1,
+          "order": 2,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "Average" }],
+          "enumValue": 2,
+          "order": 3,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "Good" }],
+          "enumValue": 3,
+          "order": 4,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "Excellent" }],
+          "enumValue": 4,
+          "order": 5,
+          "isActive": true
+        }
+      ],
+      "attributeDefinitionId": -32757,
+      "versionId": -2147437415,
+      "versionDate": "2018-10-19T13:58:00.32Z",
+      "isDisabled": false,
+      "order": 60,
+      "isFilterable": false
+    },
+    "-32756": {
+      "locales": [{ "localeId": 0, "displayName": "Site Shade" }],
+      "isMultiSelect": false,
+      "values": [
+        {
+          "locales": [{ "localeId": 0, "displayName": "Not Available" }],
+          "enumValue": 0,
+          "order": 1,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "Full Shade" }],
+          "enumValue": 1,
+          "order": 2,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "No Shade/Full Sun" }],
+          "enumValue": 2,
+          "order": 3,
+          "isActive": true
+        },
+        {
+          "locales": [
+            { "localeId": 0, "displayName": "Partial Shade - AM Sun" }
+          ],
+          "enumValue": 3,
+          "order": 4,
+          "isActive": true
+        },
+        {
+          "locales": [
+            { "localeId": 0, "displayName": "Partial Shade - PM Sun" }
+          ],
+          "enumValue": 4,
+          "order": 5,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "Partial Shade" }],
+          "enumValue": 5,
+          "order": 6,
+          "isActive": true
+        }
+      ],
+      "attributeDefinitionId": -32756,
+      "versionId": -2147437414,
+      "versionDate": "2018-10-19T13:58:00.32Z",
+      "isDisabled": false,
+      "order": 70,
+      "isFilterable": false
+    },
+    "-32737": {
+      "locales": [{ "localeId": 0, "displayName": "Campstove/Firepit" }],
+      "isMultiSelect": false,
+      "values": [
+        {
+          "locales": [{ "localeId": 0, "displayName": "Yes" }],
+          "enumValue": 0,
+          "order": 1,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "No" }],
+          "enumValue": 1,
+          "order": 2,
+          "isActive": true
+        }
+      ],
+      "attributeDefinitionId": -32737,
+      "versionId": -2147437412,
+      "versionDate": "2018-10-19T13:58:00.32Z",
+      "isDisabled": false,
+      "order": 90,
+      "isFilterable": false
+    },
+    "-32736": {
+      "locales": [{ "localeId": 0, "displayName": "Barbeque" }],
+      "isMultiSelect": false,
+      "values": [
+        {
+          "locales": [{ "localeId": 0, "displayName": "Yes" }],
+          "enumValue": 0,
+          "order": 1,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "No" }],
+          "enumValue": 1,
+          "order": 2,
+          "isActive": true
+        }
+      ],
+      "attributeDefinitionId": -32736,
+      "versionId": -2147437411,
+      "versionDate": "2018-10-19T13:58:00.32Z",
+      "isDisabled": false,
+      "order": 100,
+      "isFilterable": false
+    },
+    "-32746": {
+      "locales": [{ "localeId": 0, "displayName": "Adjacent To" }],
+      "isMultiSelect": true,
+      "values": [
+        {
+          "locales": [{ "localeId": 0, "displayName": "Not Available" }],
+          "enumValue": 0,
+          "order": 1,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "Restroom" }],
+          "enumValue": 1,
+          "order": 2,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "Beach" }],
+          "enumValue": 2,
+          "order": 3,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "Refuse Disposal" }],
+          "enumValue": 3,
+          "order": 4,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "Body of Water" }],
+          "enumValue": 4,
+          "order": 5,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "Water Tap" }],
+          "enumValue": 5,
+          "order": 6,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "Playground" }],
+          "enumValue": 6,
+          "order": 7,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "Field" }],
+          "enumValue": 7,
+          "order": 8,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "Parking" }],
+          "enumValue": 8,
+          "order": 9,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "Wetland/Marsh" }],
+          "enumValue": 9,
+          "order": 10,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "ADA Restroom" }],
+          "enumValue": 10,
+          "order": 11,
+          "isActive": true
+        }
+      ],
+      "attributeDefinitionId": -32746,
+      "versionId": -2147437409,
+      "versionDate": "2018-10-19T13:58:00.32Z",
+      "isDisabled": false,
+      "order": 120,
+      "isFilterable": false
+    },
+    "-32749": {
+      "locales": [{ "localeId": 0, "displayName": "On-Site Vehicle Parking" }],
+      "isMultiSelect": false,
+      "values": [
+        {
+          "locales": [{ "localeId": 0, "displayName": "0" }],
+          "enumValue": 0,
+          "order": 1,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "1" }],
+          "enumValue": 1,
+          "order": 2,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "2" }],
+          "enumValue": 2,
+          "order": 3,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "Unlimited" }],
+          "enumValue": 3,
+          "order": 4,
+          "isActive": true
+        }
+      ],
+      "attributeDefinitionId": -32749,
+      "versionId": -2147437406,
+      "versionDate": "2018-10-19T13:58:00.32Z",
+      "isDisabled": false,
+      "order": 150,
+      "isFilterable": false
+    },
+    "-32748": {
+      "locales": [{ "localeId": 0, "displayName": "Off-Site Vehicle Parking" }],
+      "isMultiSelect": false,
+      "values": [
+        {
+          "locales": [{ "localeId": 0, "displayName": "0" }],
+          "enumValue": 0,
+          "order": 1,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "1" }],
+          "enumValue": 1,
+          "order": 2,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "2" }],
+          "enumValue": 2,
+          "order": 3,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "Unlimited" }],
+          "enumValue": 3,
+          "order": 4,
+          "isActive": true
+        }
+      ],
+      "attributeDefinitionId": -32748,
+      "versionId": -2147437405,
+      "versionDate": "2018-10-19T13:58:00.32Z",
+      "isDisabled": false,
+      "order": 160,
+      "isFilterable": false
+    },
+    "-32753": {
+      "locales": [{ "localeId": 0, "displayName": "Pad Location" }],
+      "isMultiSelect": false,
+      "values": [
+        {
+          "locales": [{ "localeId": 0, "displayName": "Not Available" }],
+          "enumValue": 0,
+          "order": 1,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "Head In" }],
+          "enumValue": 1,
+          "order": 2,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "Back In" }],
+          "enumValue": 2,
+          "order": 3,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "Straight Drive-thru" }],
+          "enumValue": 3,
+          "order": 4,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "Pull-thru Left" }],
+          "enumValue": 4,
+          "order": 5,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "Pull-thru Right" }],
+          "enumValue": 5,
+          "order": 6,
+          "isActive": true
+        }
+      ],
+      "attributeDefinitionId": -32753,
+      "versionId": -2147437401,
+      "versionDate": "2018-10-19T13:58:00.32Z",
+      "isDisabled": false,
+      "order": 200,
+      "isFilterable": true
+    },
+    "-32751": {
+      "locales": [{ "localeId": 0, "displayName": "Pad Slope" }],
+      "isMultiSelect": false,
+      "values": [
+        {
+          "locales": [{ "localeId": 0, "displayName": "Not Available" }],
+          "enumValue": 0,
+          "order": 1,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "Slight" }],
+          "enumValue": 1,
+          "order": 3,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "Moderate" }],
+          "enumValue": 2,
+          "order": 4,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "Severe" }],
+          "enumValue": 3,
+          "order": 5,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "Uneven" }],
+          "enumValue": 4,
+          "order": 6,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "Level" }],
+          "enumValue": 5,
+          "order": 2,
+          "isActive": true
+        }
+      ],
+      "attributeDefinitionId": -32751,
+      "versionId": -2147437400,
+      "versionDate": "2018-10-19T13:58:00.32Z",
+      "isDisabled": false,
+      "order": 210,
+      "isFilterable": false
+    },
+    "-32750": {
+      "locales": [{ "localeId": 0, "displayName": "Pad Maneuverability" }],
+      "isMultiSelect": false,
+      "values": [
+        {
+          "locales": [{ "localeId": 0, "displayName": "Not Available" }],
+          "enumValue": 0,
+          "order": 1,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "Poor" }],
+          "enumValue": 1,
+          "order": 2,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "Good" }],
+          "enumValue": 2,
+          "order": 4,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "Excellent" }],
+          "enumValue": 3,
+          "order": 5,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "Average" }],
+          "enumValue": 4,
+          "order": 3,
+          "isActive": true
+        }
+      ],
+      "attributeDefinitionId": -32750,
+      "versionId": -2147437399,
+      "versionDate": "2018-10-19T13:58:00.32Z",
+      "isDisabled": false,
+      "order": 220,
+      "isFilterable": false
+    },
+    "-32752": {
+      "locales": [{ "localeId": 0, "displayName": "Pad Surface" }],
+      "isMultiSelect": false,
+      "values": [
+        {
+          "locales": [{ "localeId": 0, "displayName": "Not Available" }],
+          "enumValue": 0,
+          "order": 1,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "Gravel" }],
+          "enumValue": 1,
+          "order": 2,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "Paved" }],
+          "enumValue": 2,
+          "order": 3,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "Grass" }],
+          "enumValue": 3,
+          "order": 4,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "Dirt" }],
+          "enumValue": 4,
+          "order": 5,
+          "isActive": true
+        }
+      ],
+      "attributeDefinitionId": -32752,
+      "versionId": -2147437398,
+      "versionDate": "2018-10-19T13:58:00.32Z",
+      "isDisabled": false,
+      "order": 230,
+      "isFilterable": false
+    },
+    "-32763": {
+      "locales": [{ "localeId": 0, "displayName": "Walk In" }],
+      "isMultiSelect": false,
+      "values": [
+        {
+          "locales": [{ "localeId": 0, "displayName": "Yes" }],
+          "enumValue": 0,
+          "order": 1,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "No" }],
+          "enumValue": 1,
+          "order": 2,
+          "isActive": true
+        }
+      ],
+      "attributeDefinitionId": -32763,
+      "versionId": -2147437397,
+      "versionDate": "2018-10-19T13:58:00.32Z",
+      "isDisabled": false,
+      "order": 240,
+      "isFilterable": true
+    },
+    "-32754": {
+      "locales": [{ "localeId": 0, "displayName": "Size" }],
+      "isMultiSelect": false,
+      "values": [
+        {
+          "locales": [{ "localeId": 0, "displayName": "Small" }],
+          "enumValue": 0,
+          "order": 1,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "Medium" }],
+          "enumValue": 1,
+          "order": 2,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "Large" }],
+          "enumValue": 2,
+          "order": 3,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "X-large" }],
+          "enumValue": 3,
+          "order": 4,
+          "isActive": true
+        }
+      ],
+      "attributeDefinitionId": -32754,
+      "versionId": -2147437396,
+      "versionDate": "2018-10-19T13:58:00.32Z",
+      "isDisabled": false,
+      "order": 250,
+      "isFilterable": false
+    },
+    "-32747": {
+      "locales": [{ "localeId": 0, "displayName": "Ground Cover" }],
+      "isMultiSelect": true,
+      "values": [
+        {
+          "locales": [{ "localeId": 0, "displayName": "Not Available" }],
+          "enumValue": 0,
+          "order": 1,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "Gravel" }],
+          "enumValue": 1,
+          "order": 2,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "Sand" }],
+          "enumValue": 2,
+          "order": 3,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "Grass" }],
+          "enumValue": 3,
+          "order": 4,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "Soil" }],
+          "enumValue": 4,
+          "order": 5,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "Rock(s)" }],
+          "enumValue": 5,
+          "order": 6,
+          "isActive": true
+        }
+      ],
+      "attributeDefinitionId": -32747,
+      "versionId": -2147437390,
+      "versionDate": "2018-10-19T13:58:00.32Z",
+      "isDisabled": false,
+      "order": 300,
+      "isFilterable": false
+    },
+    "-32745": {
+      "locales": [{ "localeId": 0, "displayName": "Conditions" }],
+      "isMultiSelect": true,
+      "values": [
+        {
+          "locales": [{ "localeId": 0, "displayName": "Noisy" }],
+          "enumValue": 0,
+          "order": 1,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "Windy" }],
+          "enumValue": 1,
+          "order": 2,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "Poor Drainage" }],
+          "enumValue": 2,
+          "order": 3,
+          "isActive": true
+        },
+        {
+          "locales": [
+            { "localeId": 0, "displayName": "Above Avg. Vehicular Traffic" }
+          ],
+          "enumValue": 3,
+          "order": 4,
+          "isActive": true
+        },
+        {
+          "locales": [
+            { "localeId": 0, "displayName": "Above Avg. Pedestrian Traffic" }
+          ],
+          "enumValue": 4,
+          "order": 5,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "Corner Site" }],
+          "enumValue": 5,
+          "order": 6,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "Split Level Site" }],
+          "enumValue": 6,
+          "order": 7,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "View Site" }],
+          "enumValue": 7,
+          "order": 8,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "Partial View Site" }],
+          "enumValue": 8,
+          "order": 9,
+          "isActive": true
+        }
+      ],
+      "attributeDefinitionId": -32745,
+      "versionId": -2147437389,
+      "versionDate": "2018-10-19T13:58:00.32Z",
+      "isDisabled": false,
+      "order": 310,
+      "isFilterable": false
+    },
+    "-32764": {
+      "locales": [{ "localeId": 0, "displayName": "WiFi" }],
+      "isMultiSelect": false,
+      "values": [
+        {
+          "locales": [{ "localeId": 0, "displayName": "Yes" }],
+          "enumValue": 0,
+          "order": 1,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "No" }],
+          "enumValue": 1,
+          "order": 2,
+          "isActive": true
+        }
+      ],
+      "attributeDefinitionId": -32764,
+      "versionId": -2147437387,
+      "versionDate": "2018-10-19T13:58:00.32Z",
+      "isDisabled": false,
+      "order": 330,
+      "isFilterable": false
+    },
+    "-32766": {
+      "locales": [{ "localeId": 0, "displayName": "Tents Allowed" }],
+      "isMultiSelect": false,
+      "values": [
+        {
+          "locales": [{ "localeId": 0, "displayName": "Yes" }],
+          "enumValue": 0,
+          "order": 1,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "No" }],
+          "enumValue": 1,
+          "order": 2,
+          "isActive": true
+        }
+      ],
+      "attributeDefinitionId": -32766,
+      "versionId": -2147437376,
+      "versionDate": "2018-10-19T13:58:00.32Z",
+      "isDisabled": false,
+      "order": 500,
+      "isFilterable": false
+    },
+    "-32762": {
+      "locales": [{ "localeId": 0, "displayName": "Vehicles Allowed" }],
+      "isMultiSelect": false,
+      "values": [
+        {
+          "locales": [{ "localeId": 0, "displayName": "Yes" }],
+          "enumValue": 0,
+          "order": 1,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "No" }],
+          "enumValue": 1,
+          "order": 2,
+          "isActive": true
+        }
+      ],
+      "attributeDefinitionId": -32762,
+      "versionId": -2147437375,
+      "versionDate": "2018-10-19T13:58:00.32Z",
+      "isDisabled": false,
+      "order": 430,
+      "isFilterable": false
+    },
+    "-32761": {
+      "locales": [{ "localeId": 0, "displayName": "Radio Allowed" }],
+      "isMultiSelect": false,
+      "values": [
+        {
+          "locales": [{ "localeId": 0, "displayName": "Yes" }],
+          "enumValue": 0,
+          "order": 1,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "No" }],
+          "enumValue": 1,
+          "order": 2,
+          "isActive": true
+        }
+      ],
+      "attributeDefinitionId": -32761,
+      "versionId": -2147437374,
+      "versionDate": "2018-10-19T13:58:00.32Z",
+      "isDisabled": false,
+      "order": 400,
+      "isFilterable": false
+    },
+    "-32760": {
+      "locales": [{ "localeId": 0, "displayName": "Pets Allowed" }],
+      "isMultiSelect": false,
+      "values": [
+        {
+          "locales": [{ "localeId": 0, "displayName": "Yes" }],
+          "enumValue": 0,
+          "order": 1,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "No" }],
+          "enumValue": 1,
+          "order": 2,
+          "isActive": true
+        }
+      ],
+      "attributeDefinitionId": -32760,
+      "versionId": -2147437373,
+      "versionDate": "2018-10-19T13:58:00.32Z",
+      "isDisabled": false,
+      "order": 410,
+      "isFilterable": true
+    },
+    "-32758": {
+      "locales": [{ "localeId": 0, "displayName": "Quality" }],
+      "isMultiSelect": false,
+      "values": [
+        {
+          "locales": [{ "localeId": 0, "displayName": "Not Available" }],
+          "enumValue": 0,
+          "order": 1,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "Poor" }],
+          "enumValue": 1,
+          "order": 2,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "Average" }],
+          "enumValue": 2,
+          "order": 3,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "Good" }],
+          "enumValue": 3,
+          "order": 4,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "Excellent" }],
+          "enumValue": 4,
+          "order": 5,
+          "isActive": true
+        }
+      ],
+      "attributeDefinitionId": -32758,
+      "versionId": -2147437372,
+      "versionDate": "2018-10-19T13:58:00.32Z",
+      "isDisabled": false,
+      "order": 420,
+      "isFilterable": false
+    },
+    "-32739": {
+      "locales": [{ "localeId": 0, "displayName": "Campground Host Site" }],
+      "isMultiSelect": false,
+      "values": [
+        {
+          "locales": [{ "localeId": 0, "displayName": "Yes" }],
+          "enumValue": 0,
+          "order": 1,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "No" }],
+          "enumValue": 1,
+          "order": 2,
+          "isActive": true
+        }
+      ],
+      "attributeDefinitionId": -32739,
+      "versionId": -2147437371,
+      "versionDate": "2018-10-19T13:58:00.32Z",
+      "isDisabled": false,
+      "order": 510,
+      "isFilterable": false
+    },
+    "-32744": {
+      "locales": [{ "localeId": 0, "displayName": "Tent Area Type" }],
+      "isMultiSelect": false,
+      "values": [
+        {
+          "locales": [{ "localeId": 0, "displayName": "Not Available" }],
+          "enumValue": 0,
+          "order": 1,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "Unrestricted" }],
+          "enumValue": 1,
+          "order": 2,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "Tent Pad" }],
+          "enumValue": 2,
+          "order": 3,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "Restricted" }],
+          "enumValue": 3,
+          "order": 4,
+          "isActive": true
+        }
+      ],
+      "attributeDefinitionId": -32744,
+      "versionId": -2147437370,
+      "versionDate": "2018-10-19T13:58:00.32Z",
+      "isDisabled": false,
+      "order": 520,
+      "isFilterable": false
+    },
+    "-32743": {
+      "locales": [{ "localeId": 0, "displayName": "Tent Area Surface" }],
+      "isMultiSelect": false,
+      "values": [
+        {
+          "locales": [{ "localeId": 0, "displayName": "Not Available" }],
+          "enumValue": 0,
+          "order": 1,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "Gravel" }],
+          "enumValue": 1,
+          "order": 2,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "Paved" }],
+          "enumValue": 2,
+          "order": 3,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "Grass" }],
+          "enumValue": 3,
+          "order": 4,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "Sand" }],
+          "enumValue": 4,
+          "order": 5,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "Soil" }],
+          "enumValue": 5,
+          "order": 6,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "Rock(s)" }],
+          "enumValue": 6,
+          "order": 7,
+          "isActive": true
+        }
+      ],
+      "attributeDefinitionId": -32743,
+      "versionId": -2147437369,
+      "versionDate": "2018-10-19T13:58:00.32Z",
+      "isDisabled": false,
+      "order": 530,
+      "isFilterable": false
+    },
+    "-32742": {
+      "locales": [{ "localeId": 0, "displayName": "Second Tent Area Surface" }],
+      "isMultiSelect": false,
+      "values": [
+        {
+          "locales": [{ "localeId": 0, "displayName": "Not Available" }],
+          "enumValue": 0,
+          "order": 1,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "Gravel" }],
+          "enumValue": 1,
+          "order": 2,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "Paved" }],
+          "enumValue": 2,
+          "order": 3,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "Grass" }],
+          "enumValue": 3,
+          "order": 4,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "Sand" }],
+          "enumValue": 4,
+          "order": 5,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "Soil" }],
+          "enumValue": 5,
+          "order": 6,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "Rock(s)" }],
+          "enumValue": 6,
+          "order": 7,
+          "isActive": true
+        }
+      ],
+      "attributeDefinitionId": -32742,
+      "versionId": -2147437368,
+      "versionDate": "2018-10-19T13:58:00.32Z",
+      "isDisabled": false,
+      "order": 540,
+      "isFilterable": false
+    },
+    "-32741": {
+      "locales": [{ "localeId": 0, "displayName": "Third Tent Area Surface" }],
+      "isMultiSelect": false,
+      "values": [
+        {
+          "locales": [{ "localeId": 0, "displayName": "Not Available" }],
+          "enumValue": 0,
+          "order": 1,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "Gravel" }],
+          "enumValue": 1,
+          "order": 2,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "Paved" }],
+          "enumValue": 2,
+          "order": 3,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "Grass" }],
+          "enumValue": 3,
+          "order": 4,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "Sand" }],
+          "enumValue": 4,
+          "order": 5,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "Soil" }],
+          "enumValue": 5,
+          "order": 6,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "Rock(s)" }],
+          "enumValue": 6,
+          "order": 7,
+          "isActive": true
+        }
+      ],
+      "attributeDefinitionId": -32741,
+      "versionId": -2147437367,
+      "versionDate": "2018-10-19T13:58:00.32Z",
+      "isDisabled": false,
+      "order": 590,
+      "isFilterable": false
+    },
+    "-32740": {
+      "locales": [{ "localeId": 0, "displayName": "Premium Status Site" }],
+      "isMultiSelect": false,
+      "values": [
+        {
+          "locales": [{ "localeId": 0, "displayName": "Yes" }],
+          "enumValue": 0,
+          "order": 1,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "No" }],
+          "enumValue": 1,
+          "order": 2,
+          "isActive": true
+        }
+      ],
+      "attributeDefinitionId": -32740,
+      "versionId": -2147437366,
+      "versionDate": "2018-10-19T13:58:00.32Z",
+      "isDisabled": false,
+      "order": 550,
+      "isFilterable": true
+    },
+    "-32713": {
+      "locales": [{ "localeId": 0, "displayName": "Double Site" }],
+      "isMultiSelect": false,
+      "values": [
+        {
+          "locales": [{ "localeId": 0, "displayName": "Yes" }],
+          "enumValue": 0,
+          "order": 1,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "No" }],
+          "enumValue": 1,
+          "order": 2,
+          "isActive": true
+        }
+      ],
+      "attributeDefinitionId": -32713,
+      "versionId": -2147437365,
+      "versionDate": "2018-10-19T13:58:00.32Z",
+      "isDisabled": false,
+      "order": 560,
+      "isFilterable": true
+    },
+    "-32712": {
+      "locales": [{ "localeId": 0, "displayName": "Slideouts" }],
+      "isMultiSelect": false,
+      "values": [
+        {
+          "locales": [{ "localeId": 0, "displayName": "Yes" }],
+          "enumValue": 0,
+          "order": 1,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "No" }],
+          "enumValue": 1,
+          "order": 2,
+          "isActive": true
+        }
+      ],
+      "attributeDefinitionId": -32712,
+      "versionId": -2147437364,
+      "versionDate": "2018-10-19T13:58:00.32Z",
+      "isDisabled": false,
+      "order": 570,
+      "isFilterable": false
+    },
+    "-32711": {
+      "locales": [{ "localeId": 0, "displayName": "Amenities" }],
+      "isMultiSelect": true,
+      "values": [
+        {
+          "locales": [{ "localeId": 0, "displayName": "Kitchenette" }],
+          "enumValue": 0,
+          "order": 1,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "Sink" }],
+          "enumValue": 1,
+          "order": 2,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "Restroom" }],
+          "enumValue": 2,
+          "order": 3,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "Restroom w/Shower" }],
+          "enumValue": 3,
+          "order": 4,
+          "isActive": true
+        }
+      ],
+      "attributeDefinitionId": -32711,
+      "versionId": -2147437363,
+      "versionDate": "2018-10-19T13:58:00.32Z",
+      "isDisabled": false,
+      "order": 580,
+      "isFilterable": false
+    },
+    "-32710": {
+      "locales": [{ "localeId": 0, "displayName": "Water" }],
+      "isMultiSelect": false,
+      "values": [
+        {
+          "locales": [{ "localeId": 0, "displayName": "Yes" }],
+          "enumValue": 0,
+          "order": 1,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "No" }],
+          "enumValue": 1,
+          "order": 2,
+          "isActive": true
+        }
+      ],
+      "attributeDefinitionId": -32710,
+      "versionId": -2147437362,
+      "versionDate": "2018-10-19T13:58:00.32Z",
+      "isDisabled": false,
+      "order": 600,
+      "isFilterable": false
+    },
+    "-32709": {
+      "locales": [
+        { "localeId": 0, "displayName": "Motorhomes/Trailers Allowed" }
+      ],
+      "isMultiSelect": false,
+      "values": [
+        {
+          "locales": [{ "localeId": 0, "displayName": "Yes" }],
+          "enumValue": 0,
+          "order": 1,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "No" }],
+          "enumValue": 1,
+          "order": 2,
+          "isActive": true
+        }
+      ],
+      "attributeDefinitionId": -32709,
+      "versionId": -2147437361,
+      "versionDate": "2018-10-19T13:58:00.32Z",
+      "isDisabled": false,
+      "order": 610,
+      "isFilterable": false
+    },
+    "-32708": {
+      "locales": [{ "localeId": 0, "displayName": "Equestrian Site" }],
+      "isMultiSelect": false,
+      "values": [
+        {
+          "locales": [{ "localeId": 0, "displayName": "Yes" }],
+          "enumValue": 0,
+          "order": 1,
+          "isActive": true
+        },
+        {
+          "locales": [{ "localeId": 0, "displayName": "No" }],
+          "enumValue": 1,
+          "order": 2,
+          "isActive": true
+        }
+      ],
+      "attributeDefinitionId": -32708,
+      "versionId": -2147437360,
+      "versionDate": "2018-10-19T13:58:00.32Z",
+      "isDisabled": false,
+      "order": 620,
+      "isFilterable": true
+    }
+  }
+}

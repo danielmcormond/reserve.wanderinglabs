@@ -20,8 +20,9 @@ class Facility::Camis < Facility
       name: "#{id}:#{name[0..25]}",
       facilityId: id,
       baseUrl: agency.details['url'],
-      path: details['path'],
-      concurrency: 2,
+      mapId: ext_facility_id,
+      startDate: scrape_start.strftime('%m/%d/%Y'),
+      endDate: scrape_end.strftime('%m/%d/%Y'),
       hash: last_import_hash,
     }
   end
