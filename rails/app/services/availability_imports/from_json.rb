@@ -10,6 +10,7 @@ class AvailabilityImports::FromJson
   end
 
   def perform
+    t1 = Process.clock_gettime(Process::CLOCK_MONOTONIC)
     history_open = []
     update_ids = []
 
@@ -29,6 +30,15 @@ class AvailabilityImports::FromJson
     update_availabilities(update_ids)
     update_import(history_open)
     delete_availabilities
+
+    t2 = Process.clock_gettime(Process::CLOCK_MONOTONIC)
+    timing = (t2 - t1) * 1000;
+    GRAYLOG.notify!(
+      facility: 'import',
+      short_message: "Import Complete: #{import.id}:#{import.facility_id}",
+      facility_id: import.facility_id,
+      timing: timing,
+    )
   end
 
   def update_import(history_open)
@@ -36,7 +46,7 @@ class AvailabilityImports::FromJson
       history_open: history_open,
       history_filled: history_filled,
       date_start: date_start,
-      date_end: date_end
+      date_end: date_end,
     )
   end
 

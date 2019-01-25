@@ -23,7 +23,11 @@ class Scrape
   end
 
   def work
-    Rails.logger.info("Scrape: #{facility.id} // #{facility.name}")
+    GRAYLOG.notify!(
+      facility: 'scrape-init',
+      short_message: "Scrape: #{id}:#{name[0..25]}",
+      facility_id: facility.id,
+    )
     if facility.scraper_type == :container
       ScrapeTypes::Container.new(facility).publish
     elsif facility.scraper_type == :queue
