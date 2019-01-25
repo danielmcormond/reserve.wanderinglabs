@@ -23,6 +23,7 @@ class Scrape
   end
 
   def work
+    Rails.logger.info("Scrape: #{facility.id} // #{facility.name}")
     if facility.scraper_type == :container
       ScrapeTypes::Container.new(facility).publish
     elsif facility.scraper_type == :queue
