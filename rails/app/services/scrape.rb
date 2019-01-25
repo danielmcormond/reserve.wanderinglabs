@@ -25,7 +25,7 @@ class Scrape
   def work
     GRAYLOG.notify!(
       facility: 'scrape-init',
-      short_message: "Scrape: #{id}:#{name[0..25]}",
+      short_message: "Scrape: #{facility.id}:#{facility.name[0..25]}",
       facility_id: facility.id,
     )
     if facility.scraper_type == :container
