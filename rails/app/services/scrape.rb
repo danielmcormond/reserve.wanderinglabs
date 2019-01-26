@@ -27,7 +27,8 @@ class Scrape
       facility: 'scrape-init',
       short_message: "Scrape: #{facility.id}:#{facility.name[0..25]}",
       facility_id: facility.id,
-    )
+    ) unless Rails.env.test?
+
     if facility.scraper_type == :container
       ScrapeTypes::Container.new(facility).publish
     elsif facility.scraper_type == :queue
