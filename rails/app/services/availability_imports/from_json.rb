@@ -11,38 +11,39 @@ class AvailabilityImports::FromJson
 
   def perform
     t1 = Process.clock_gettime(Process::CLOCK_MONOTONIC)
+    results = {}
     or_array = body['results'].map do |avail_date, ext_sites|
       avail_date_date = Date.strptime(avail_date, '%m/%d/%Y')
+      site_ids = sites_for(ext_sites).map(&:id)
+      results[avail_date_date] = site_ids
       Availability.where(
-        site_id: sites_for(ext_sites),
+        site_id: site_ids,
         avail_date: avail_date_date,
       ).to_sql.gsub(/.*WHERE /, '')
     end
     or_string = '(' + or_array.join(') OR (') + ')'
 
-    scope = Availability.includes(:site).where(or_string)
+    scope = Availability.where(or_string)
 
     history_open = []
     update_ids = []
 
-
     scope.all.each do |availability|
-      site = availability.site
-      avail_date = availability.avail_date.strftime('%-m/%-d/%Y')
-      if body['results'][avail_date].nil?
+      # site = availability.site
+      avail_date = availability.avail_date #.strftime('%-m/%-d/%Y')
+      if results[avail_date].nil?
         Rails.logger.warn("DATE MISMATCH #{import.id} // #{avail_date} // #{availability.id}")
         next
       end
-      next unless body['results'][avail_date].include?(site.ext_site_id)
+      next unless results[avail_date].include?(availability.site_id)
 
       update_ids << availability.id
-      body['results'][avail_date].delete(site.ext_site_id)
+      results[avail_date].delete(availability.site_id)
     end
 
-    body['results'].each do |avail_date, ext_sites|
-      avail_date_date = Date.strptime(avail_date, '%m/%d/%Y')
-      sites_for(ext_sites).each do |site|
-        history_open << { site_id: site.id, avail_date: avail_date_date }
+    results.each do |avail_date, sites|
+      sites.each do |site|
+        history_open << { site_id: site, avail_date: avail_date }
       end
     end
 
