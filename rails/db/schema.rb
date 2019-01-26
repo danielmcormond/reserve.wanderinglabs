@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181023014701) do
+ActiveRecord::Schema.define(version: 20190126221230) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 20181023014701) do
     t.datetime "updated_at", null: false
     t.bigint "availability_import_id"
     t.index ["availability_import_id"], name: "index_availabilities_on_availability_import_id"
+    t.index ["site_id", "avail_date"], name: "availabilities_site_id_avail_date"
     t.index ["site_id"], name: "index_availabilities_on_site_id"
   end
 
