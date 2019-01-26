@@ -29,6 +29,10 @@ class AvailabilityImports::FromJson
     scope.all.each do |availability|
       site = availability.site
       avail_date = availability.avail_date.strftime('%-m/%-d/%Y')
+      if body['results'][avail_date].nil?
+        Rails.logger.warn("DATE MISMATCH #{import.id} // #{avail_date} // #{availability.id}")
+        next
+      end
       next unless body['results'][avail_date].include?(site.ext_site_id)
 
       update_ids << availability.id
