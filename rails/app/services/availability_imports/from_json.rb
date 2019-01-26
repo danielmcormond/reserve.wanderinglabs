@@ -12,37 +12,39 @@ class AvailabilityImports::FromJson
   def perform
     t1 = Process.clock_gettime(Process::CLOCK_MONOTONIC)
     results = {}
-    or_array = body['results'].map do |avail_date, ext_sites|
-      avail_date_date = Date.strptime(avail_date, '%m/%d/%Y')
-      site_ids = sites_for(ext_sites).map(&:id)
-      results[avail_date_date] = site_ids
-      Availability.where(
-        site_id: site_ids,
-        avail_date: avail_date_date,
-      ).to_sql.gsub(/.*WHERE /, '')
-    end
-    or_string = '(' + or_array.join(') OR (') + ')'
-
-    scope = Availability.where(or_string)
-
     history_open = []
     update_ids = []
 
-    scope.all.each do |availability|
-      # site = availability.site
-      avail_date = availability.avail_date #.strftime('%-m/%-d/%Y')
-      if results[avail_date].nil?
-        next
+    unless body['results'].empty?
+      or_array = body['results'].map do |avail_date, ext_sites|
+        avail_date_date = Date.strptime(avail_date, '%m/%d/%Y')
+        site_ids = sites_for(ext_sites).map(&:id)
+        results[avail_date_date] = site_ids
+        Availability.where(
+          site_id: site_ids,
+          avail_date: avail_date_date,
+        ).to_sql.gsub(/.*WHERE /, '')
       end
-      next unless results[avail_date].include?(availability.site_id)
+      or_string = '(' + or_array.join(') OR (') + ')'
 
-      update_ids << availability.id
-      results[avail_date].delete(availability.site_id)
-    end
+      scope = Availability.where(or_string)
 
-    results.each do |avail_date, sites|
-      sites.each do |site|
-        history_open << { site_id: site, avail_date: avail_date }
+      scope.all.each do |availability|
+        # site = availability.site
+        avail_date = availability.avail_date #.strftime('%-m/%-d/%Y')
+        if results[avail_date].nil?
+          next
+        end
+        next unless results[avail_date].include?(availability.site_id)
+
+        update_ids << availability.id
+        results[avail_date].delete(availability.site_id)
+      end
+
+      results.each do |avail_date, sites|
+        sites.each do |site|
+          history_open << { site_id: site, avail_date: avail_date }
+        end
       end
     end
 
