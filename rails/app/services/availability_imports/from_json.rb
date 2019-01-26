@@ -32,7 +32,6 @@ class AvailabilityImports::FromJson
       # site = availability.site
       avail_date = availability.avail_date #.strftime('%-m/%-d/%Y')
       if results[avail_date].nil?
-        Rails.logger.warn("DATE MISMATCH #{import.id} // #{avail_date} // #{availability.id}")
         next
       end
       next unless results[avail_date].include?(availability.site_id)
@@ -60,6 +59,7 @@ class AvailabilityImports::FromJson
       facility_id: import.facility_id,
       timing: timing,
     )
+    nil
   end
 
   def update_import(history_open)
