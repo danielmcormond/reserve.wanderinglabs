@@ -73,5 +73,17 @@ RSpec.describe AvailabilityImports::FromJson do
         end
       end
     end
+
+    context('empty results') do
+      let(:body) do
+        {
+          'results' => {},
+        }
+      end
+
+      it('completes and does not create availabilities') do
+        expect { from_json.perform }.to_not(change { Availability.count })
+      end
+    end
   end
 end

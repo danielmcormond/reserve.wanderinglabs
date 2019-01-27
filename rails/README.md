@@ -1,8 +1,10 @@
 https://scotch.io/tutorials/build-a-restful-json-api-with-rails-5-part-one
 
 sudo nano /etc/systemd/system/resque.service
-sudo systemctl restart resque && sudo systemctl restart resque-scheduler
+sudo systemctl restart resque && sudo systemctl restart resque-importer && sudo systemctl restart resque-scheduler
 ssh deploy@192.34.56.219
+
+watch -n 2 'ps auxww | ag resque'
 
 PGPASSWORD=xxx pg_dump -Fc -x reserve_wanderinglabs -h localhost -U reserve -w --exclude-table-data=pg_toast.\* > reserve.dump
 
