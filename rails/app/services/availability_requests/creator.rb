@@ -1,13 +1,13 @@
 class AvailabilityRequests::Creator
   attr_reader :params, :current_user
   def initialize(params, current_user = nil)
-    Rails.logger.debug params
     @params = params
     @current_user = current_user
   end
 
   def object
     return @_ar if @_ar.present?
+
     @_ar = AvailabilityRequest.new(merged_params)
     @_ar.date_end ||= @_ar.date_start
     @_ar.cache_site_ids
@@ -38,6 +38,6 @@ class AvailabilityRequests::Creator
   end
 
   def user
-    @_user ||= current_user || User.find_or_create_by(email: params[:email])
+    @user ||= current_user || User.find_or_create_by(email: params[:email])
   end
 end
