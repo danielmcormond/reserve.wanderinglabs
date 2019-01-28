@@ -40,15 +40,15 @@ RSpec.describe Scrape do
   end
 
   context('instance') do
-    let(:facility) { double('Facility', scraper_type: :lambda) }
+    let(:facility) { double('Facility', scraper_type: :queue) }
     subject(:scrape) { Scrape.new(facility) }
     before do
-      expect(Sns).to receive(:publish).with(facility)
+      expect(ScrapeTypes::Queue).to receive(:publish).with(facility)
       expect(Facilities::Checked).to receive(:mark_as).with(facility)
     end
 
     describe '#work' do
-      it 'Calls sns publish and facilities checked services (return values don\'t matter' do
+      it 'Calls publish and facilities checked services (return values don\'t matter' do
         scrape.work
       end
     end
