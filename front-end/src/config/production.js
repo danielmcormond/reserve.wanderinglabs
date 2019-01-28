@@ -1,3 +1,3 @@
 module.exports = {
-  reserveApiUrl: "http://api-reserve-beta.wanderinglabs.com"
+  reserveApiUrl: "https://api-reserve.wanderinglabs.com"
 };
