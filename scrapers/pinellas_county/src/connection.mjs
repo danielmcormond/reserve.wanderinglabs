@@ -17,6 +17,7 @@ export default class Connection {
   }
 
   async post(startDate) {
+    console.log('POST', startDate.format('MM/DD/YYYY'))
     const options = {
       url: 'https://public.co.pinellas.fl.us/parks/PublicSearchByDate.jsp',
       method: 'POST',

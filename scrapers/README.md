@@ -45,6 +45,9 @@ docker-compose build reserve-america && docker-compose push reserve-america && .
 
 docker-compose build recreation-gov && docker-compose push recreation-gov && ./deploy.sh recreation-gov 167.99.153.28
 
+docker-compose build pinellas-county && docker-compose push pinellas-county && ./deploy.sh pinellas-county 167.99.153.28
+
+
 
 ---
 
