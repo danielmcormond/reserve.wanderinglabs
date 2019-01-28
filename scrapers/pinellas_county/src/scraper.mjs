@@ -23,7 +23,7 @@ export default class Scraper {
     this.hash = hash;
 
     this.runId = moment().format('YY_MM_DD_HH_mm');
-    this.concurrency = concurrency || 10;
+    this.concurrency = concurrency || 2;
 
     this.connection = new Connection(this.contractCode, this.parkId);
 
@@ -44,7 +44,6 @@ export default class Scraper {
     );
 
     const filteredResults = results.filter(result => result[1].length > 0);
-    console.log(filteredResults)
     const resultsJson = this.resultsToJson(filteredResults);
     const md5 = createHash(resultsJson);
 
