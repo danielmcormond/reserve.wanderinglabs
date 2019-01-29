@@ -2,6 +2,7 @@ import { push } from "connected-react-router";
 
 import reserveApi from "../utils/axios";
 import { setFlashMessage } from "../actions/flashActions";
+import * as AppConstants from "../utils/constants";
 
 export const sessionNew = email => {
   return dispatch =>
@@ -12,12 +13,12 @@ export const sessionNew = email => {
     })
       .then(() => {
         dispatch(push("/"));
-        dispatch(setFlashMessage("Being emailed", "success"));
+        dispatch(setFlashMessage(AppConstants.SESSION_SUCCESS, "success"));
       })
       .catch(() => {
         dispatch(push("/"));
         dispatch(
-          setFlashMessage("Email not found. Create a new request.", "error")
+          setFlashMessage(AppConstants.SESSION_FAILURE, "error")
         );
       });
 };
@@ -37,7 +38,7 @@ export const sessionCreate = (token, redirect = null) => {
       })
       .catch(() => {
         dispatch(push("/sign-in"));
-        dispatch(setFlashMessage("Bad Token", "error"));
+        dispatch(setFlashMessage(AppConstants.SESSION_BAD_TOKEN, "error"));
       });
 };
 
@@ -53,7 +54,7 @@ export const sessionCreateNoRedirect = token => {
         dispatch({ type: "FETCH_USER_FULFILLED", payload: response.data.user });
       })
       .catch(() => {
-        dispatch(setFlashMessage("Bad Token", "error"));
+        dispatch(setFlashMessage(AppConstants.SESSION_BAD_TOKEN, "error"));
       });
 };
 
@@ -62,7 +63,7 @@ export const sessionDestroy = () => {
     localStorage.removeItem("token");
     dispatch(sessionSuccess(null));
     dispatch(push("/"));
-    dispatch(setFlashMessage("logged out", "success"));
+    dispatch(setFlashMessage(AppConstants.SESSION_LOGGED_OUT, "success"));
   };
 };
 

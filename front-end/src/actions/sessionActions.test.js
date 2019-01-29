@@ -9,6 +9,7 @@ import {
   sessionSuccess,
   sessionDestroy
 } from "./sessionActions";
+import * as AppConstants from "../utils/constants";
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
@@ -50,7 +51,7 @@ describe("sessionDestroy action", () => {
         type: "@@router/CALL_HISTORY_METHOD"
       },
       {
-        payload: { message: "logged out", style: "success" },
+        payload: { message: AppConstants.SESSION_LOGGED_OUT, style: "success" },
         type: "FLASH_MESSAGE"
       }
     ];
@@ -69,7 +70,7 @@ describe("sessionNew action", () => {
         type: "@@router/CALL_HISTORY_METHOD"
       },
       {
-        payload: { message: "Being emailed", style: "success" },
+        payload: { message: AppConstants.SESSION_SUCCESS, style: "success" },
         type: "FLASH_MESSAGE"
       }
     ];
@@ -91,7 +92,7 @@ describe("sessionNew action", () => {
       },
       {
         payload: {
-          message: "Email not found. Create a new request.",
+          message: AppConstants.SESSION_FAILURE,
           style: "error"
         },
         type: "FLASH_MESSAGE"
@@ -140,7 +141,7 @@ describe("sessionCreate action", () => {
       },
       {
         payload: {
-          message: "Bad Token",
+          message: AppConstants.SESSION_BAD_TOKEN,
           style: "error"
         },
         type: "FLASH_MESSAGE"
