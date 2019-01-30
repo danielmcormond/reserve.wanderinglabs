@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 
-import { AvailabilityMatchClickInstructionsRecreationGov } from "./recreationGov";
-import { AvailabilityMatchClickInstructionsReserveCalifornia } from "./reserveCalifornia";
-import { AvailabilityMatchClickInstructionsReserveAmerica } from "./reserveAmerica";
+import AvailabilityMatchClickInstructionsRecreationGov from "./recreationGov";
+import AvailabilityMatchClickInstructionsReserveCalifornia from "./reserveCalifornia";
+import AvailabilityMatchClickInstructionsReserveAmerica from "./reserveAmerica";
 
-export class AvailabilityMatchClickInstructions extends Component {
+export default class AvailabilityMatchClickInstructions extends Component {
   render() {
     const availabilityMatch = this.props;
 

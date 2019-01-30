@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { List } from "semantic-ui-react";
 
-export class AvailabilityMatchClickDetails extends Component {
+export default class AvailabilityMatchClickDetails extends Component {
   render() {
     const listItemOpts = { className: "availabilityMatchClickListItem" };
     return (

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-export class AvailabilityMatchClickInstructionsRecreationGov extends Component {
+export default class AvailabilityMatchClickInstructionsRecreationGov extends Component {
   render() {
     return (
       <div>

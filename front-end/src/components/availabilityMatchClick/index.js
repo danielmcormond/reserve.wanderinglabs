@@ -3,15 +3,16 @@ import { connect } from "react-redux";
 import { Button, Grid, Header, Icon, Divider } from "semantic-ui-react";
 
 import { fetchAvailabilityMatch } from "../../actions/availabilityMatchesActions";
-import { AvailabilityMatchClickDetails } from "./details";
-import { AvailabilityMatchClickInstructions } from "./instructions/index";
+import AvailabilityMatchClickDetails from "./details";
+import AvailabilityMatchClickInstructions from "./instructions/index";
+import AvailabilityMatchClickThankYou from "./thankYou";
 
 const connected = connect(store => {
   return {
     availabilityMatch: store.availabilityMatches.match
   };
 });
-export class availabilityMatchClick extends Component {
+export class AvailabilityMatchClick extends Component {
   componentWillMount() {
     this.props.dispatch(
       fetchAvailabilityMatch(
@@ -69,6 +70,7 @@ export class availabilityMatchClick extends Component {
         content="Reserve it.... "
         as="a"
         href={availabilityMatch.reserve.site_url}
+        target="ReserveIt"
         size="big"
         fluid
       />
@@ -78,6 +80,10 @@ export class availabilityMatchClick extends Component {
   reservedInstructions() {
     const { availabilityMatch } = this.props;
     return <AvailabilityMatchClickInstructions {...availabilityMatch} />;
+  }
+
+  thankYou() {
+    return <AvailabilityMatchClickThankYou />;
   }
 
   render() {
@@ -93,8 +99,11 @@ export class availabilityMatchClick extends Component {
           <Divider hidden />
           {availabilityMatch.id !== null && this.reservedInstructions()}
         </Grid.Column>
+        <Grid.Column computer="8" tablet="8" mobile="16">
+          {availabilityMatch.available === true && this.thankYou()}
+        </Grid.Column>
       </Grid>
     );
   }
 }
-export default connected(availabilityMatchClick);
+export default connected(AvailabilityMatchClick);

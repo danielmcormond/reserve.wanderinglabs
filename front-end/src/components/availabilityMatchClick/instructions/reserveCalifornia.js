@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import { Header, Icon } from "semantic-ui-react";
 
-export class AvailabilityMatchClickInstructionsReserveCalifornia extends Component {
+export default class AvailabilityMatchClickInstructionsReserveCalifornia extends Component {
   render() {
     return (
       <div>
