@@ -28,7 +28,7 @@ export function fetchAvailabilityMatch(id, from) {
         if (response.data.premium === true) {
           dispatch({ type: "SET_PREMIUM" });
         }
-        // dispatch({ type: "FETCH_MATCH_FULFILLED", payload: response.data });
+        dispatch({ type: "FETCH_MATCH_FULFILLED", payload: response.data });
       })
       .catch(err => {
         dispatch({ type: "FETCH_MATCH_REJECTED", payload: err });
