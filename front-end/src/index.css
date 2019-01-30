@@ -40,6 +40,11 @@ body {
   width: 100% !important;
 }
 
+.availabilityMatchClickListItem > .header {
+  display: inline !important;
+  margin-right: .5em !important;
+}
+
 input {
   font: inherit;
 }

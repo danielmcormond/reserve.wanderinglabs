@@ -7,7 +7,8 @@ export default function reducer(
       },
       site: {
         site_num: null
-      }
+      },
+      id: null
     },
     fetching: false,
     fetched: false,
