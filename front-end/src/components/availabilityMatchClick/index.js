@@ -1,13 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import {
-  Button,
-  Grid,
-  Header,
-  Icon,
-  Segment,
-  Divider
-} from "semantic-ui-react";
+import { Button, Grid, Header, Icon, Divider } from "semantic-ui-react";
 
 import { fetchAvailabilityMatch } from "../../actions/availabilityMatchesActions";
 import { AvailabilityMatchClickDetails } from "./details";

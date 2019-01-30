@@ -491,9 +491,9 @@
 
 /* Top */
 .ui.attached.steps {
-  width: calc(102%) !important;
+  width: calc(100% + (--1px * 2)) !important;
   margin: 0em -1px 0;
-  max-width: calc(102%);
+  max-width: calc(100% + (--1px * 2));
   border-radius: 4px 4px 0em 0em;
 }
 .ui.attached.steps .step:first-child {
@@ -562,7 +562,7 @@
   width: 14.285%;
 }
 .ui.eight.steps > .step {
-  width: 12.500%;
+  width: 12.5%;
 }
 
 /*-------------------
