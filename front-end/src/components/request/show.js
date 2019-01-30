@@ -114,7 +114,7 @@ export class RequestShow extends Component {
         <Grid>
           <Grid.Column computer="8" tablet="8" mobile="16">
             <Header as="h3">
-              <Icon name="marker" />
+              <Icon name="map marker alternate" />
               <Header.Content>
                 {ar.facility.name}
                 <Header.Subheader>{ar.facility.sub_name}</Header.Subheader>

@@ -71,7 +71,7 @@ export class AvailabilityMatches extends Component {
         <Divider hidden />
         <Loader active={fetching} size="big" />
         <Header disabled={fetching} size="tiny">
-          <Icon name="calendar" />
+          <Icon name="calendar alternate" />
           <Header.Content>
             Availabilities
             <Header.Subheader>

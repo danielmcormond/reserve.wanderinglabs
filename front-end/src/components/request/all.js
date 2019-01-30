@@ -30,7 +30,7 @@ export class RequestAll extends Component {
     const mappedArs = ars.map(ar =>
       <List.Item key={ar.uuid} onClick={() => this.clickedItem(ar.uuid)}>
         <List.Content floated="right">
-          {ar.notify_sms && <Icon name="mobile" size="large" />}
+          {ar.notify_sms && <Icon name="mobile alternate" size="large" />}
 
           <Label
             circular
