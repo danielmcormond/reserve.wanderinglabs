@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Divider, Grid, Header, Icon, Menu } from "semantic-ui-react";
+import { Divider, Grid, Header, Icon, Button } from "semantic-ui-react";
 
 import { Link } from "react-router-dom";
 import { userSettings } from "../../actions/userActions";
@@ -15,7 +15,7 @@ const connected = connect(store => {
     user: store.user.user,
     premium: store.user.premium
   };
-})
+});
 export class UserSettings extends Component {
   componentWillMount() {
     this.props.dispatch(userSettings());
@@ -28,31 +28,41 @@ export class UserSettings extends Component {
       <div>
         <Header as="h4">
           <Icon name="id badge" color="green" />
-          <Header.Content>
-            {user.email}
-          </Header.Content>
+          <Header.Content>{user.email}</Header.Content>
         </Header>
         <Grid>
           <Grid.Column computer="8" tablet="8" mobile="16">
-            <Menu color="green">
-              {isAuthenticated &&
-                <Menu.Item name="sessionDestroy" as={Link} to="/sign-out">
-                  Sign Out
-                </Menu.Item>}
+            {isAuthenticated && (
+              <Button
+                name="sessionDestroy"
+                as={Link}
+                to="/sign-out"
+                content="Sign Out"
+                color="grey"
+              />
+            )}
 
-              {!!!isAuthenticated &&
-                <Menu.Item name="sessionNew" as={Link} to="/sign-in">
-                  Sign In
-                </Menu.Item>}
-            </Menu>
+            {!!!isAuthenticated && (
+              <Button
+                name="sessionNew"
+                as={Link}
+                to="/sign-in"
+                content="Sign In"
+                color="green"
+              />
+            )}
 
-            {premium
-              ? <div>
-                  <UserEmail />
-                  <Divider hidden />
-                  <UserTxt />
-                </div>
-              : <p>Premium members can get notified via SMS.</p>}
+            <Divider hidden />
+
+            {premium ? (
+              <div>
+                <UserEmail />
+                <Divider hidden />
+                <UserTxt />
+              </div>
+            ) : (
+              <p>Premium members can get notified via SMS.</p>
+            )}
           </Grid.Column>
           <Grid.Column computer="8" tablet="8" mobile="16">
             <Premium />
