@@ -85,5 +85,25 @@ RSpec.describe AvailabilityImports::FromJson do
         expect { from_json.perform }.to_not(change { Availability.count })
       end
     end
+
+    context 'second import with no availabilities' do
+      let(:import2) { FactoryGirl.create(:availability_import, facility: import.facility) }
+      let(:from_json2) { AvailabilityImports::FromJson.new(import2) }
+
+      let(:body2) do
+        {
+          'results' => {},
+        }
+      end
+
+      before do
+        from_json.perform
+        allow(from_json2).to receive(:body) { body2 }
+      end
+
+      it 'Removes existing Availabilities' do
+        expect { from_json2.perform }.to change { Availability.count }.by(-6)
+      end
+    end
   end
 end

@@ -34,3 +34,5 @@ end
 AvailabilityImport.where("history_open = '[]'").where("history_filled = '[]'").all.each do |ai|
   ai.delete unless ai.availabilities.count.positive?
 end; nil
+
+AvailabilityImports::Index.perform(*Resque.peek('import', 0, 100).last['args'])
