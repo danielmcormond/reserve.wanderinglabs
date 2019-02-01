@@ -1,4 +1,4 @@
-import { redisBlpopAsync } from 'scraper-wandering-labs-shared/src/redis';
+import { redisBrpopAsync } from 'scraper-wandering-labs-shared/src/redis';
 import logger from 'scraper-wandering-labs-shared/src/logger';
 
 import Scraper from './scraper';
@@ -6,7 +6,7 @@ import Scraper from './scraper';
 console.log('QUEUE Start', process.env.name);
 
 const scraperQueue = async function scraperQueue() {
-  const data = await redisBlpopAsync(process.env.name, 0);
+  const data = await redisBrpopAsync(process.env.name, 0);
 
   if (data !== null) {
     const jsonData = JSON.parse(data[1]);
