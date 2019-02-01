@@ -77,6 +77,12 @@ class Facility < ApplicationRecord
     {}
   end
 
+  def scraper_details
+    {
+      facilityId: id,
+    }
+  end
+
   def scrape
     Scrape.new(self).work
   end
