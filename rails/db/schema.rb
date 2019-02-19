@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190126221230) do
+ActiveRecord::Schema.define(version: 20190219225106) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -193,7 +193,7 @@ ActiveRecord::Schema.define(version: 20190126221230) do
     t.boolean "premium", default: false, null: false
     t.date "premium_until"
     t.integer "priority", default: 1000
-    t.integer "sms_limit", default: 25
+    t.integer "sms_limit", default: 250
     t.integer "sms_count", default: 0
     t.index ["auth_token"], name: "index_users_on_auth_token"
     t.index ["email"], name: "index_users_on_email", unique: true
