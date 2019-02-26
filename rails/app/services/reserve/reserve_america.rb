@@ -15,7 +15,7 @@ class Reserve::ReserveAmerica
   end
 
   def site_url
-    arvdate = availability_match.avail_date.strftime('%m/%d/%Y')
-    "https://www.reserveamerica.com/camping/#{site.facility.details['slug']}/r/campsiteDetails.do?siteId=#{site.ext_site_id}&contractCode=#{site.facility.details['contract_code']}&parkId=#{site.facility.details['park_id']}&offset=0&arvdate=#{arvdate}&lengthOfStay=#{availability_request.stay_length}"
+    arvdate = availability_match.avail_date.strftime('%Y-%m-%d')
+    "https://www.reserveamerica.com/explore/#{site.facility.details['slug']}/#{site.facility.details['state']}/#{site.facility.details['park_id']}/#{site.ext_site_id}/campsite-booking?availStartDate=#{arvdate}&arrivalDate=#{arvdate}&lengthOfStay=#{availability_request.stay_length}&nextAvailableDate=false&dynamicUpdate=true"
   end
 end
