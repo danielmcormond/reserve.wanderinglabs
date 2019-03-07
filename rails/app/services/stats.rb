@@ -41,7 +41,14 @@ class Stats
   def self.currency
     TIMEFRAMES.map do |frame, duration|
       sum = Payment.where('created_at > ?', duration.ago).sum(:total)
-      "#{frame}: #{ActionController::Base.helpers.number_to_currency(sum)} (#{ActionController::Base.helpers.number_to_currency(sum / 1.day)})"
+      sum_per_day = if duration > 1.day
+                      sum / (duration / 1.day)
+                    else
+                      '-'
+                    end
+      sum_formatted = ActionController::Base.helpers.number_to_currency(sum)
+      sum_per_day_formatted = ActionController::Base.helpers.number_to_currency(sum_per_day)
+      "#{frame}: #{sum_formatted} (#{sum_per_day_formatted})"
     end.join("\n")
   end
 
