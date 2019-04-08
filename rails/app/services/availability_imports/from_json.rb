@@ -74,9 +74,7 @@ class AvailabilityImports::FromJson
   end
 
   def delete_availabilities
-    return unless last_import.present?
-
-    Availability.where(availability_import_id: last_import.id).delete_all
+    Availability.where(site_id: facility_sites.map(&:id)).where.not(availability_import_id: import.id).delete_all
   end
 
   def history_filled
