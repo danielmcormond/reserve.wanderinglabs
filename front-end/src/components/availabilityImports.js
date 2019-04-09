@@ -23,7 +23,7 @@ const connected = connect(store => {
     fetching: store.availabilityImports.fetching,
     fetched: store.availabilityImports.fetched
   };
-})
+});
 export class AvailabilityImports extends Component {
   state = { filter: [] };
 
@@ -55,7 +55,7 @@ export class AvailabilityImports extends Component {
     return !this.props.location.pathname.includes("expanded");
   }
 
-  toggleFilter = (data) => {
+  toggleFilter = data => {
     var { filter } = this.state;
     if (filter.indexOf(data.name) > -1) {
       filter = filter.filter(item => item !== data.name);
@@ -70,6 +70,8 @@ export class AvailabilityImports extends Component {
   render() {
     const { filter } = this.state;
     const { imports, fetching } = this.props;
+
+    const facilityId = this.props.match.params.id;
 
     const mappedImports = imports.map(log => {
       return (
@@ -119,7 +121,12 @@ export class AvailabilityImports extends Component {
             <Icon name="list layout" />
             <Header.Content>Logs:</Header.Content>
           </Header>
-          <FacilityFilter filter={filter} onFilterChange={this.toggleFilter}/>
+          {!facilityId && (
+            <FacilityFilter
+              filter={filter}
+              onFilterChange={this.toggleFilter}
+            />
+          )}
           <List>
             <List.Item>
               <strong>Range</strong> - Date range searched
