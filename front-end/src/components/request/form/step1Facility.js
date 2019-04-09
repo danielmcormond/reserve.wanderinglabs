@@ -4,8 +4,9 @@ import { Button, Input, Label } from "semantic-ui-react";
 import { Errors } from "react-redux-form";
 import debounce from "debounce";
 
+import FacilityFilter from "../../facilityFilter";
+
 import { fetchFacilities } from "../../../actions/facilitiesActions";
-import { filters } from "../../../filters";
 
 const connected = connect(store => {
   return {
@@ -14,7 +15,7 @@ const connected = connect(store => {
     step1Valid: store.availabilityRequestForm.forms.step1.$form.valid,
     loading: store.facilities.fetching
   };
-})
+});
 export class RequestFormStep1Facility extends Component {
   state = { search: "", filter: [] };
 
@@ -33,7 +34,7 @@ export class RequestFormStep1Facility extends Component {
     });
   };
 
-  toggleFilter = (event, data) => {
+  toggleFilter = (data) => {
     var { filter } = this.state;
     if (filter.indexOf(data.name) > -1) {
       filter = filter.filter(item => item !== data.name);
@@ -48,17 +49,6 @@ export class RequestFormStep1Facility extends Component {
   render() {
     const { filter } = this.state;
     const { loading } = this.props;
-
-    const mappedFilters = filters.map(filterItem => (
-      <Button
-        toggle
-        size="mini"
-        onClick={this.toggleFilter}
-        as="a"
-        active={filter.indexOf(filterItem.name) > -1}
-        {...filterItem}
-      />
-    ));
 
     return (
       <div>
@@ -83,10 +73,7 @@ export class RequestFormStep1Facility extends Component {
           )}
         />
 
-        <p>
-          Filter on:<br />
-          {mappedFilters}
-        </p>
+        <FacilityFilter filter={filter} onFilterChange={this.toggleFilter} />
       </div>
     );
   }

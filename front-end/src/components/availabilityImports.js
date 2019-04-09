@@ -15,6 +15,7 @@ import debounce from "debounce";
 import DateFormat from "./utils/dateFormat";
 import { fetchAvailabilityImports } from "../actions/availabilityImportsActions";
 import AvailabilityImportsHistory from "./imports/history";
+import FacilityFilter from "./facilityFilter";
 
 const connected = connect(store => {
   return {
@@ -54,7 +55,7 @@ export class AvailabilityImports extends Component {
     return !this.props.location.pathname.includes("expanded");
   }
 
-  toggleFilter = (event, data) => {
+  toggleFilter = (data) => {
     var { filter } = this.state;
     if (filter.indexOf(data.name) > -1) {
       filter = filter.filter(item => item !== data.name);
@@ -69,43 +70,6 @@ export class AvailabilityImports extends Component {
   render() {
     const { filter } = this.state;
     const { imports, fetching } = this.props;
-
-    const filters = [
-      {
-        key: "reserve_america",
-        name: "reserve_america",
-        active: filter.indexOf("reserve_america") > -1,
-        content: "Reserve America"
-      },
-      {
-        key: "recreation_gov",
-        name: "recreation_gov",
-        active: filter.indexOf("recreation_gov") > -1,
-        content: "Recreation.Gov"
-      },
-      {
-        key: "reserve_california",
-        name: "reserve_california",
-        active: filter.indexOf("reserve_california") > -1,
-        content: "Reserve California"
-      },
-      {
-        key: "camis",
-        name: "camis",
-        active: filter.indexOf("camis") > -1,
-        content: "Camis"
-      }
-    ];
-
-    const mappedFilters = filters.map(filter => (
-      <Button
-        toggle
-        size="mini"
-        onClick={this.toggleFilter}
-        as="a"
-        {...filter}
-      />
-    ));
 
     const mappedImports = imports.map(log => {
       return (
@@ -155,10 +119,7 @@ export class AvailabilityImports extends Component {
             <Icon name="list layout" />
             <Header.Content>Logs:</Header.Content>
           </Header>
-          <p>
-            Filter on:<br />
-            {mappedFilters}
-          </p>
+          <FacilityFilter filter={filter} onFilterChange={this.toggleFilter}/>
           <List>
             <List.Item>
               <strong>Range</strong> - Date range searched

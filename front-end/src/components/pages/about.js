@@ -72,6 +72,13 @@ export default class PageAbout extends Component {
             Just wanted to say Thank You sooooooooo much – this makes camping
             for our family possible at our favorite spots.
           </p>
+
+          <p>
+            Hi, I just wanted to thank you for this service. It is priceless to
+            me! I have been able to snag many FL state park reservations (and
+            other states as well) using this service. I appreciate this so much
+            and just wanted to say thank you!
+          </p>
         </Grid.Column>
         <Grid.Column computer="8" tablet="8" mobile="16">
           <Header as="h4">

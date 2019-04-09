@@ -25,7 +25,7 @@ const connected = connect(store => {
   return {
     ar: store.availabilityRequests.ar
   };
-})
+});
 export class RequestShow extends Component {
   componentWillMount() {
     console.log("params", this.props.match.params);
@@ -173,6 +173,8 @@ export class RequestShow extends Component {
                             format="M/D/YYYY hh:mm"
                             date={ar.checked_at}
                           />
+                          {' '}
+                          (<Link to={`/f/${ar.facility.id}/log`}>Log</Link>)
                         </List.Description>
                       </List.Item>
                     )}
