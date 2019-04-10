@@ -55,13 +55,7 @@ export class AvailabilityImports extends Component {
     return !this.props.location.pathname.includes("expanded");
   }
 
-  toggleFilter = data => {
-    var { filter } = this.state;
-    if (filter.indexOf(data.name) > -1) {
-      filter = filter.filter(item => item !== data.name);
-    } else {
-      filter.push(data.name);
-    }
+  toggleFilter = filter => {
     this.setState({ filter }, () => {
       this.doFetchAvailabilityImports();
     });

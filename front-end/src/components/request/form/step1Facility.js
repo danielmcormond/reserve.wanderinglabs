@@ -34,13 +34,7 @@ export class RequestFormStep1Facility extends Component {
     });
   };
 
-  toggleFilter = (data) => {
-    var { filter } = this.state;
-    if (filter.indexOf(data.name) > -1) {
-      filter = filter.filter(item => item !== data.name);
-    } else {
-      filter.push(data.name);
-    }
+  toggleFilter = filter => {
     this.setState({ filter }, () => {
       this.doFetchFacilities();
     });

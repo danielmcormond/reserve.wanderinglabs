@@ -5,7 +5,14 @@ import { filters } from "../filters";
 
 export default class FacilityFilter extends Component {
   handleFilterChange = (event, data) => {
-    this.props.onFilterChange(data);
+    let { filter } = this.props;
+    if (filter.indexOf(data.name) > -1) {
+      filter = filter.filter(item => item !== data.name);
+    } else {
+      filter.push(data.name);
+    }
+
+    this.props.onFilterChange(filter);
   };
 
   render() {
