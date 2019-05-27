@@ -79,6 +79,12 @@ export default class PageAbout extends Component {
             other states as well) using this service. I appreciate this so much
             and just wanted to say thank you!
           </p>
+
+          <p>
+            Let me say that Wandering Labs is an amazing site. I thank you for
+            all the opportunities that you gave us to go camping when we
+            couldn’t get a site. You created memories for us.
+          </p>
         </Grid.Column>
         <Grid.Column computer="8" tablet="8" mobile="16">
           <Header as="h4">
