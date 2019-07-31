@@ -29,3 +29,5 @@ Facility::ReserveAmerica.where('sites_count > 0').where(booking_window: nil).eac
   end
 end
 
+
+InitialImport::ReserveAmerica::Facilities.new(agency).all_facilities

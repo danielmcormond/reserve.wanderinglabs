@@ -5,10 +5,12 @@ module InitialImport::ReserveCalifornia
       @facility = facility
     end
 
-    def import(reset = false)
+    def import(reset = false, site_ids = [])
       delete_all if reset
-      session = InitialImport::ReserveCalifornia::Request.new
-      site_ids = InitialImport::ReserveCalifornia::SiteIds.new(session, facility).ids
+      if site_ids.blank?
+        session = InitialImport::ReserveCalifornia::Request.new
+        site_ids = InitialImport::ReserveCalifornia::SiteIds.new(session, facility).ids
+      end
       site_ids.each do |site_id|
         attrs = InitialImport::ReserveCalifornia::SiteParse.new(session, facility, site_id).details
 

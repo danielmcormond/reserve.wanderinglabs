@@ -36,18 +36,13 @@ module InitialImport::ReserveCalifornia
     end
 
     def site_ids(place_id, facility_id)
-      url = 'https://www.reservecalifornia.com/CaliforniaWebHome/Facilities/AdvanceSearch.aspx/GetUnitGridDataHtmlString'
+      url = "https://reservecalifornia.com/CaliforniaWebHome/Facilities/MapView.aspx?map_id=#{facility_id}&map_level=Facility&nights=&arrival_date="
+      puts url
+      Rails.logger.debug(url)
       site_request = Mechanize.new
       site_request.user_agent_alias = 'Windows Chrome'
       site_request.cookie_jar = session
-      data = {
-        "FacilityId": facility_id,
-        "PlaceId": place_id,
-        "MaximumDates": "20",
-        "IsTablet": true,
-        "MaximumStayforGrid": 30
-      }
-      site_request.post(url, data.to_json, {'Content-Type' => 'application/json'})
+      site_request.get(url, [])
     end
 
     def site(facility_id, site_id)
@@ -56,7 +51,7 @@ module InitialImport::ReserveCalifornia
       site_request = Mechanize.new
       site_request.user_agent_alias = 'Windows Chrome'
       site_request.cookie_jar = session
-      site_request.get(url, [], 'https://www.reservecalifornia.com/CaliforniaWebHome/Facilities/AdvanceSearch.aspx')
+      site_request.get(url, [], 'https://www.reservecalifornia.com/CaliforniaWebHome/Facilities/AdvanceSearchm.aspx')
     end
   end
 end

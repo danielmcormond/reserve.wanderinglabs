@@ -24,7 +24,7 @@ module InitialImport::RecreationGovBa
     def self.import_by_id(recreation_gov_id)
       url = "https://ridb.recreation.gov/api/v1/facilities/#{recreation_gov_id}?apikey=#{ENV['RIDB_API_KEY']}&full=true"
       json = JSON.parse(HTTParty.get(url).body)
-      new(json).update_or_create(false)
+      new(json).update_or_create(true)
     end
 
     def self.import_by_attributes(attributes)
