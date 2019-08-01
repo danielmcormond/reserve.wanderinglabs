@@ -3,3 +3,4 @@ artifact.zip
 node_modules/
 .envrc
 .env
+tmp/
