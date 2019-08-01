@@ -31,6 +31,7 @@ class Facility::ReserveCalifornia < Facility
       facilityId: id,
       rcFacilityId: rc_facility_id,
       rcPlaceId: place_id,
+      rcName: details['parent'],
       hash: last_import_hash,
     }
   end
