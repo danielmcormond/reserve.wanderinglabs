@@ -1,10 +1,11 @@
-FROM node:10.14-alpine
+FROM buildkite/puppeteer:latest
 
 RUN mkdir -p /usr/src/shared
 COPY shared/package.json shared/package-lock.json /usr/src/shared/
 COPY shared/src /usr/src/shared/src
 
 RUN mkdir -p /usr/src/app
+RUN mkdir -p /usr/src/app/tmp
 WORKDIR /usr/src/app
 
 COPY reserve_ca/package.json reserve_ca/package-lock.json reserve_ca/ecosystem.config.js /usr/src/app/
