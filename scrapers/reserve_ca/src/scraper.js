@@ -27,11 +27,11 @@ export default class Scraper {
     const hrstart = process.hrtime();
 
     await this.page.launch();
-    await this.page.search({ parkId: this.rcPlaceId, facilityId: this.rcFacilityId, parkName: this.rcName, arrivalDate: this.dateStart });
+    await this.page.search({ parkName: this.rcName, arrivalDate: this.dateStart });
     await this.page.facility({ parkId: this.rcPlaceId, facilityId: this.rcFacilityId });
     await this.page.gridExpand();
 
-    const resultPairs = await this.page.grids(this.rcFacilityId);
+    const resultPairs = await this.page.grids();
     this.page.close();
 
     const resultsJson = `{ "results": ${JSON.stringify(
@@ -47,7 +47,7 @@ export default class Scraper {
       return Promise.resolve({ status: 'no differences', timing });
     }
     await new S3().put({ key: this.filename, body: resultsJson });
-    // await new NotifyComplete(this.facilityId).post(this.runId, md5);
+    await new NotifyComplete(this.facilityId).post(this.runId, md5);
 
     const delta = process.hrtime(hrstart);
     const timing = delta[0] + delta[1] / 1e9;

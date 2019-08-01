@@ -5,7 +5,7 @@ export default class Page {
     const width = 1920;
     const height = 900;
 
-    const headless = process.env.HEADLESS || false;
+    const headless = process.env.HEADLESS || true;
     this.browser = await puppeteer.launch({
       args: [
         // Required for Docker version of Puppeteer
@@ -20,43 +20,59 @@ export default class Page {
       headless,
     });
 
-    console.log('Headless', headless);
     this.page = await this.browser.newPage();
-    const version = await this.page.browser().version();
-    console.log('Version', version);
+    // const version = await this.page.browser().version();
   }
 
   async close() {
     await this.browser.close();
   }
 
-  async search({
-    parkId, facilityId, parkName, arrivalDate,
-  }) {
+  async search({ parkName, arrivalDate }) {
+    await this.page.setRequestInterception(true);
+    this.page.on('request', (interceptedRequest) => {
+      const reqUrl = interceptedRequest.url();
+
+      // const postData = interceptedRequest.postData();
+      // if (reqUrl.includes('Facilities')) {
+      //   console.log({ reqUrl, postData });
+      // }
+
+      if (
+        reqUrl.includes('AdvanceMapImageGenerator')
+        || reqUrl.includes('cali-content.usedirect.com/images')
+        || reqUrl.includes('cali-content.usedirect.com/Images')
+        || reqUrl.includes('cali-content.usedirect.com/themes')
+        || reqUrl.includes('cali-content.usedirect.com/CommonThemes')
+        || reqUrl.includes('fonts.googleapis.com')
+        || reqUrl.endsWith('.png')
+        || reqUrl.includes('bam.nr-data.net')
+        || reqUrl.includes('gstatic')
+        || reqUrl.includes('google.com/recaptcha')
+        || reqUrl.includes('google-analytics.com')
+        || reqUrl.includes('apis.google.com')
+        || reqUrl.includes('bootstrapcdn')
+        || reqUrl.includes('CaliforniaWebHome/images')
+        || reqUrl.includes('CaliforniaWebHome/styles')
+        || reqUrl.endsWith('.css')
+      ) {
+        interceptedRequest.abort();
+      } else {
+        interceptedRequest.continue();
+      }
+    });
+
     const url = 'https://www.reservecalifornia.com/CaliforniaWebHome/Default.aspx';
     await this.page.goto(url, { waitUntil: 'networkidle2' });
-    // await this.page.screenshot({ path: `tmp/${facilityId}_1.png` });
-
-    // hdnsearchplaceid
-    await this.page.click('#txtSearchparkautocomplete');
-    await this.page.keyboard.type('Emerald Bay SP', { delay: 100 });
-
-    await this.page.screenshot({ path: `tmp/${facilityId}_1.png` });
-    // await this.page.type('#txtSearchparkautocomplete', parkName);
-    // await this.page.waitFor(5000);
-    await this.page.screenshot({ path: `tmp/${facilityId}_2.png` });
+    await this.page.type('#txtSearchparkautocomplete', parkName);
     await Promise.all([
-      this.page.waitForSelector('.ui-menu-item > a'),
-      this.page.click('.ui-menu-item > a'),
+      this.page.waitFor(1000),
+      await this.page.keyboard.press('ArrowDown'),
+      await this.page.keyboard.press('Enter'),
     ]);
-
-    // await this.page.evaluate(({ parkId }) => document.querySelectorAll('input[id=hdnsearchplaceid]')[0].value = parkId, {
-    //   parkId,
-    // })
 
     await this.page.click('#mainContent_txtArrivalDate');
     await this.page.type('#mainContent_txtArrivalDate', arrivalDate);
-    await this.page.screenshot({ path: `tmp/${facilityId}_2.png` });
 
     await this.page.keyboard.press('Enter');
 
@@ -66,18 +82,11 @@ export default class Page {
 
     await Promise.all([
       this.page.keyboard.press('Enter'),
-      this.page.screenshot({ path: `tmp/${facilityId}_3.png` }),
       this.page.waitForNavigation({ waitUntil: 'networkidle0' }),
     ]);
   }
 
   async facility({ parkId, facilityId }) {
-    // const parkFacilityString = `(${facilityId},${parkId})`;
-    // const facility = await this.page.evaluateHandle(
-    //   pfs => [...document.querySelectorAll('.col-md-4 > a')].filter(elem => elem.getAttribute('onclick').includes(pfs))[0],
-    //   parkFacilityString,
-    // );
-
     await Promise.all([
       // eslint-disable-next-line no-shadow, no-undef
       this.page.evaluate(({ facilityId, parkId }) => fnGotoUnitlevel(facilityId, parkId), {
@@ -89,13 +98,6 @@ export default class Page {
   }
 
   async gridExpand() {
-    const width = await this.page.evaluate(() => $(window).width());
-    const matchMedia = await this.page.evaluate(() => window.matchMedia('(min-width:1920px)').matches );
-    const hdmaximumdate = await this.page.evaluate(() => $("#hdmaximumdate").val());
-    const Hidscreenresolution = await this.page.evaluate(() => $("#mainContent_Hidscreenresolution").val());
-    console.log({ width, matchMedia, hdmaximumdate, Hidscreenresolution });
-
-
     // eslint-disable-next-line no-undef
     await this.page.evaluate(() => fnUnitgridChangeLargesize());
     // this.page.click('#aUnitLarge');
@@ -104,17 +106,18 @@ export default class Page {
 
   async gridDate() {
     return this.page.evaluate(
+      // eslint-disable-next-line no-undef
       () => document.querySelectorAll('#mainContent_txtDateRange')[0].value,
     );
   }
 
-  async grids(facilityId) {
+  async grids() {
     let lastDate = null;
     const resultPairs = {};
 
     while (true) {
       const dateStart = await this.gridDate();
-      console.log('dateStart', lastDate, dateStart);
+      // console.log('dateStart', lastDate, dateStart);
       if (dateStart === lastDate) {
         break;
       }
@@ -127,9 +130,9 @@ export default class Page {
         }
       });
 
-      await this.page.screenshot({
-        path: `tmp/${facilityId}_${dateStart.replace(/\//g, '_')}.png`,
-      });
+      // await this.page.screenshot({
+      //   path: `tmp/${facilityId}_${dateStart.replace(/\//g, '_')}.png`,
+      // });
       await this.page.evaluate(() => fnNextDays());
       await this.page.waitFor(1000);
     }
