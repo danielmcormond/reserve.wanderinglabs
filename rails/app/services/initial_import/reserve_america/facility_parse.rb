@@ -29,11 +29,14 @@ module InitialImport::ReserveAmerica
     end
 
     def contract_code
-      href.match(/contractCode=([A-Z]+)/, 1)[1]
+      puts href
+      href.split('/')[3]
+      # href.match(/contractCode=([A-Z]+)/, 1)[1]
     end
 
     def park_id
-      href.match(/parkId=([0-9]+)/, 1)[1]
+      href.split('/')[4]
+      # href.match(/parkId=([0-9]+)/, 1)[1]
     end
 
     def state

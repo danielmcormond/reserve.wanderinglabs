@@ -9,6 +9,7 @@ module.exports = {
       ignore_watch: ['node_modules', 'tmp'],
       watch: true,
       max_memory_restart: '1G',
+      cron_restart: '0 * * * *',
       env: {
         NODE_ENV: 'development',
       },

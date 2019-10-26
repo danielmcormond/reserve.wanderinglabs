@@ -48,6 +48,8 @@ export default class Scraper {
       const timing = delta[0] + delta[1] / 1e9;
       return Promise.resolve({ status: 'no differences', timing });
     }
+
+    console.log(resultsJson)
     await new S3().put({ key: this.filename, body: resultsJson });
     await new NotifyComplete(this.facilityId).post(this.runId, md5);
 

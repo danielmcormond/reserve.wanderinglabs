@@ -41,6 +41,12 @@ set :default_env, { path: "/home/deploy/.rbenv/shims:/home/deploy/.rbenv/bin:$PA
 # Puma:
 set :puma_conf, "#{shared_path}/config/puma.rb"
 
+set :nginx_use_ssl, true
+set :nginx_server_name, "api-reserve.wanderinglabs.com"
+set :nginx_domains, "api-reserve.wanderinglabs.com"
+set :nginx_ssl_certificate, '/etc/letsencrypt/live/api-reserve.wanderinglabs.com/fullchain.pem'
+set :nginx_ssl_certificate_key, '/etc/letsencrypt/live/api-reserve.wanderinglabs.com/privkey.pem'
+
 namespace :deploy do
   before 'check:linked_files', 'puma:config'
   before 'check:linked_files', 'puma:nginx_config'
