@@ -24,7 +24,7 @@ module InitialImport::ReserveAmerica
     end
 
     def update_or_create(attrs)
-      Facility.where(name: attrs[:name]).first_or_create(attrs.merge(agency_id: agency.id))
+      agency.facilities.where(name: attrs[:name]).first_or_create(attrs.merge(agency_id: agency.id))
     end
   end
 end
