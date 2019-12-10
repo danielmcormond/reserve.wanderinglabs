@@ -28,7 +28,7 @@ class Scrape
   end
 
   def work
-    log
+    # log
     ScrapeTypes::Queue.publish(facility)
     Facilities::Checked.mark_as(facility)
   end
