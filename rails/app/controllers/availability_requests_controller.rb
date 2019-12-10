@@ -2,7 +2,7 @@ class AvailabilityRequestsController < ApplicationController
   before_action :login_required, only: [:index]
 
   def index
-    @availability_requests = current_user.availability_requests.active
+    @availability_requests = current_user.availability_requests.active.includes(:facility)
     render json: @availability_requests
   end
 
