@@ -32,6 +32,8 @@ class Facility::ReserveCalifornia < Facility
       rcFacilityId: rc_facility_id,
       rcPlaceId: place_id,
       rcName: details['parent'],
+      startDate: scrape_start.strftime('%m/%d/%Y'),
+      endDate: scrape_end.strftime('%m/%d/%Y'),
       hash: last_import_hash,
     }
   end

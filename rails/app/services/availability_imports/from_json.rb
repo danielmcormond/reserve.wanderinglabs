@@ -93,6 +93,7 @@ class AvailabilityImports::FromJson
   end
 
   def sites_for(ids)
+    ids = ids.map(&:to_s)
     facility_sites.select { |site| ids.include?(site.ext_site_id) }
   end
 
