@@ -44,17 +44,22 @@ export default class Page {
         || reqUrl.includes('cali-content.usedirect.com/Images')
         || reqUrl.includes('cali-content.usedirect.com/themes')
         || reqUrl.includes('cali-content.usedirect.com/CommonThemes')
-        || reqUrl.includes('fonts.googleapis.com')
-        || reqUrl.endsWith('.png')
+        || reqUrl.includes('cali-content2.usedirect.com/images')
+        || reqUrl.includes('cali-content2.usedirect.com/Images')
+        || reqUrl.includes('cali-content2.usedirect.com/themes')
+        || reqUrl.includes('cali-content2.usedirect.com/CommonThemes')
+        // || reqUrl.includes('fonts.googleapis.com')
+        // || reqUrl.endsWith('.png')
         || reqUrl.includes('bam.nr-data.net')
         || reqUrl.includes('gstatic')
         || reqUrl.includes('google.com/recaptcha')
         || reqUrl.includes('google-analytics.com')
         || reqUrl.includes('apis.google.com')
         || reqUrl.includes('bootstrapcdn')
-        || reqUrl.includes('CaliforniaWebHome/images')
-        || reqUrl.includes('CaliforniaWebHome/styles')
-        || reqUrl.endsWith('.css')
+        // || reqUrl.includes('CaliforniaWebHome/images')
+        // || reqUrl.includes('CaliforniaWebHome/styles')
+        // || reqUrl.endsWith('.css')
+        // || reqUrl.includes('www.parks.ca.gov/Images/content/featured')
       ) {
         interceptedRequest.abort();
       } else {
@@ -65,35 +70,34 @@ export default class Page {
     const url = 'https://www.reservecalifornia.com/CaliforniaWebHome/Default.aspx';
     await this.page.goto(url, { waitUntil: 'networkidle2' });
     await this.page.type('#txtSearchparkautocomplete', parkName);
-    await Promise.all([
-      this.page.waitFor(1000),
-      await this.page.keyboard.press('ArrowDown'),
-      await this.page.keyboard.press('Enter'),
-    ]);
 
-    await this.page.click('#mainContent_txtArrivalDate');
-    await this.page.type('#mainContent_txtArrivalDate', arrivalDate);
-
+    await this.page.waitFor(1000);
+    await this.page.keyboard.press('ArrowDown');
+    await this.page.keyboard.press('ArrowDown');
     await this.page.keyboard.press('Enter');
 
-    await this.page.select('#ddlHomeNights', '1');
-    await this.page.keyboard.press('Tab');
-    await this.page.keyboard.press('Tab');
+    await this.page.click('#mainContent_txtArrivalDate');
+    await this.page.waitFor(500);
+    await this.page.click('.ui-datepicker-close');
+    await this.page.type('#mainContent_txtArrivalDate', arrivalDate);
 
-    await Promise.all([
-      this.page.keyboard.press('Enter'),
-      this.page.waitForNavigation({ waitUntil: 'networkidle0' }),
-    ]);
+    await this.page.select('#ddlHomeNights', '1');
+
+    await this.page.waitFor(500);
+    await this.page.click('.home_btn_go > a');
+
+    await this.page.waitForNavigation({ waitUntil: 'networkidle0' });
   }
 
   async facility({ parkId, facilityId }) {
     await Promise.all([
       // eslint-disable-next-line no-shadow, no-undef
-      this.page.evaluate(({ facilityId, parkId }) => fnGotoUnitlevel(facilityId, parkId), {
+      this.page.evaluate(({ facilityId, parkId }) => fnGotoUnitlevelRDR(facilityId, parkId), {
         facilityId,
         parkId,
       }),
-      this.page.waitForNavigation({ waitUntil: 'networkidle0' }),
+      this.page.waitFor(2000)
+      // this.page.waitForNavigation({ waitUntil: 'networkidle0' }),
     ]);
   }
 
@@ -117,7 +121,6 @@ export default class Page {
 
     while (true) {
       const dateStart = await this.gridDate();
-      // console.log('dateStart', lastDate, dateStart);
       if (dateStart === lastDate) {
         break;
       }
@@ -131,9 +134,9 @@ export default class Page {
       });
 
       // await this.page.screenshot({
-      //   path: `tmp/${facilityId}_${dateStart.replace(/\//g, '_')}.png`,
+      //   path: `tmp/tmp_${dateStart.replace(/\//g, '_')}.png`,
       // });
-      await this.page.evaluate(() => fnNextDays());
+      await this.page.evaluate(() => fnNextDaysRDR());
       await this.page.waitFor(1000);
     }
     return Promise.resolve(resultPairs);

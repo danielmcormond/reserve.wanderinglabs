@@ -32,8 +32,8 @@ AWS cli is not install on production servers. Run this locally and paste results
 
 ./deploy.sh pinellas-county 157.245.125.174
 ./deploy.sh recreation-gov 157.245.125.174
-./deploy.sh reserve-america 157.245.125.174
-./deploy.sh reserve-ca 165.22.152.237
+./deploy.sh reserve-america 67.205.165.136
+./deploy.sh reserve-ca 67.205.165.136
 ./deploy.sh camis 157.245.125.174
 
 #### All together now

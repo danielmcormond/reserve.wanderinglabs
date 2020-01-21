@@ -28,5 +28,5 @@ services:
   reserve-ca:
     build:
       context: .
-      dockerfile: ./reserve_ca/Dockerfile
+      dockerfile: ./reserve_ca_rdr/Dockerfile
     image: ${DOCKER_REGISTRY}/wanderinglabs/scraper-reserve-ca
