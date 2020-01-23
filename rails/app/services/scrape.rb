@@ -2,7 +2,7 @@ class Scrape
   @queue = :scrape
   attr_reader :facility
 
-  PERCENT_PER_MINUTE = 10
+  PERCENT_PER_MINUTE = 33
 
   def self.perform
     query.each do |facility|

@@ -15,14 +15,6 @@ GIT
       nokogiri (>= 1.4.4)
       premailer (>= 1.7.1)
 
-GIT
-  remote: https://github.com/thoughtbot/shoulda-matchers.git
-  revision: edaf9cb926ee9c59c59729e7a4f8c206b44da8a1
-  branch: rails-5
-  specs:
-    shoulda-matchers (3.1.2)
-      activesupport (>= 4.2.0)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -294,6 +286,8 @@ GEM
     safe_yaml (1.0.4)
     sentry-raven (2.6.2)
       faraday (>= 0.7.6, < 1.0)
+    shoulda-matchers (4.1.2)
+      activesupport (>= 4.2.0)
     simplecov (0.13.0)
       docile (~> 1.1.0)
       json (>= 1.8, < 3)
@@ -390,7 +384,7 @@ DEPENDENCIES
   rspec-rails (~> 3.5)
   rubocop (~> 0.61.1)
   sentry-raven
-  shoulda-matchers!
+  shoulda-matchers
   simplecov
   slack-notifier
   spring
@@ -401,4 +395,4 @@ DEPENDENCIES
   webmock
 
 BUNDLED WITH
-   1.16.1
+   1.17.2

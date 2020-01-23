@@ -20,7 +20,7 @@ module AvailabilityMatcher
         call(import, ar)
       end
       return nil unless premium
-      Resque.enqueue_in(11.minutes, AvailabilityMatcher::Index, import_id)
+      Resque.enqueue_in(1.minutes, AvailabilityMatcher::Index, import_id)
       nil
     end
 

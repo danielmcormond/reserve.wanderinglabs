@@ -11,7 +11,7 @@ module AvailabilityRequests
         .availability_requests
         .active
         .not_premium
-        .where('checked_count > 0 AND MOD(checked_count, 1000) = 0')
+        .where('checked_count > 0 AND MOD(checked_count, 5000) = 0')
 
       scope.all.each do |availability_request|
         new(availability_request).call
