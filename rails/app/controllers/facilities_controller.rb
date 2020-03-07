@@ -15,6 +15,11 @@ class FacilitiesController < ApplicationController
     end
   end
 
+  def show
+    @facility = Facility.active.find(params[:id])
+    render json: @facility
+  end
+
   def active
     @facilities = Facility.active_facilities
     render json: @facilities

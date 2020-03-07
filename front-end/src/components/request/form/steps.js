@@ -6,7 +6,8 @@ import { Icon, Header } from "semantic-ui-react";
 const connected = connect(store => {
   return {
     currentStep: store.requestForm.step,
-    isAuthenticated: store.session.isAuthenticated
+    isAuthenticated: store.session.isAuthenticated,
+    step1: store.availabilityRequestForm.step1,
   };
 })
 export class RequestFormSteps extends Component {
@@ -23,7 +24,7 @@ export class RequestFormSteps extends Component {
   }
 
   render() {
-    const { currentStep } = this.props;
+    const { currentStep, step1: { facility } } = this.props;
 
     const step_titles = [
       "_padding_",
@@ -44,6 +45,7 @@ export class RequestFormSteps extends Component {
               name="chevron left"
             />
             Step {currentStep} of {this.lastStep}: {step_titles[currentStep]}
+            <Header.Subheader style={{paddingLeft: "2em"}}>{facility.name}</Header.Subheader>
           </Header.Content>
         </Header>
       </div>

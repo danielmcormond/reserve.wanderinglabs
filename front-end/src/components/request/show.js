@@ -28,7 +28,6 @@ const connected = connect(store => {
 });
 export class RequestShow extends Component {
   componentWillMount() {
-    console.log("params", this.props.match.params);
     if (this.props.match.params.status !== undefined) {
       this.props.dispatch(
         updateAvailabilityRequestStatus(

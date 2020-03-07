@@ -1,14 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import {
-  Button,
-  Grid,
-  Header,
-  Icon,
-  List,
-  Loader,
-  Table
-} from "semantic-ui-react";
+import { Button, Grid, Header, Icon, List, Loader, Table } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import debounce from "debounce";
 
@@ -29,13 +21,10 @@ export class AvailabilityImports extends Component {
 
   doFetchAvailabilityImports = debounce(() => {
     const { filter } = this.state;
-    this.props.dispatch(
-      fetchAvailabilityImports(
-        this.props.match.params.id,
-        this.props.location.pathname.includes("expanded"),
-        filter
-      )
-    );
+
+    const facilityId = this.props.facilityId || this.props.match.params.id;
+    const expanded = this.props.expanded;
+    this.props.dispatch(fetchAvailabilityImports(facilityId, expanded, filter));
   }, 400);
 
   componentWillMount() {
@@ -43,16 +32,13 @@ export class AvailabilityImports extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (
-      this.props.location.pathname.includes("expanded") !==
-      nextProps.location.pathname.includes("expanded")
-    ) {
+    if (this.props.expanded !== nextProps.expanded) {
       this.doFetchAvailabilityImports();
     }
   }
 
   canExpand() {
-    return !this.props.location.pathname.includes("expanded");
+    return !this.props.expanded;
   }
 
   toggleFilter = filter => {
@@ -65,38 +51,25 @@ export class AvailabilityImports extends Component {
     const { filter } = this.state;
     const { imports, fetching } = this.props;
 
-    const facilityId = this.props.match.params.id;
+    const facilityId = this.props.facilityId || this.props.match.params.id;
 
     const mappedImports = imports.map(log => {
       return (
         <Table.Row key={log.id}>
           <Table.Cell textAlign="left">
             <Header size="tiny">
-              <Header.Content>
-                <Link to={`/f/${log.facility.id}/log`}>
-                  {log.facility.name}
-                </Link>
-                <Header.Subheader>
-                  <DateFormat
-                    format="MM/DD/YY hh:mm:ss"
-                    date={log.created_at}
-                  />
-                </Header.Subheader>
-              </Header.Content>
+              {!facilityId && (
+                <Header.Content>
+                  <Link to={`/f/${log.facility.id}/log`}>{log.facility.name}</Link>
+                  <Header.Subheader>
+                    <DateFormat format="MM/DD/YY hh:mm:ss" date={log.created_at} />
+                  </Header.Subheader>
+                </Header.Content>
+              )}
             </Header>
 
-            {log.history_open && (
-              <AvailabilityImportsHistory
-                histories={log.history_open}
-                color="green"
-              />
-            )}
-            {log.history_filled && (
-              <AvailabilityImportsHistory
-                histories={log.history_filled}
-                color="red"
-              />
-            )}
+            {log.history_open && <AvailabilityImportsHistory histories={log.history_open} color="green" />}
+            {log.history_filled && <AvailabilityImportsHistory histories={log.history_filled} color="red" />}
           </Table.Cell>
           <Table.Cell textAlign="left" collapsing>
             <DateFormat format="MM/DD/YY" date={log.date_start} /> -{" "}
@@ -115,29 +88,19 @@ export class AvailabilityImports extends Component {
             <Icon name="list layout" />
             <Header.Content>Logs:</Header.Content>
           </Header>
-          {!facilityId && (
-            <FacilityFilter
-              filter={filter}
-              onFilterChange={this.toggleFilter}
-            />
-          )}
+          {!facilityId && <FacilityFilter filter={filter} onFilterChange={this.toggleFilter} />}
           <List>
             <List.Item>
               <strong>Range</strong> - Date range searched
             </List.Item>
             <List.Item>
-              <strong>Opened</strong> - Number of new availabilities. (A site
-              newly open for a night)
+              <strong>Opened</strong> - Number of new availabilities. (A site newly open for a night)
             </List.Item>
             <List.Item>
               <strong>Filled</strong> - Number of sites filled/reserved.
             </List.Item>
           </List>
-          {this.canExpand() && (
-            <Link to={{ pathname: `${this.props.location.pathname}/expanded` }}>
-              Expand
-            </Link>
-          )}
+          {this.canExpand() && <Link to={{ pathname: `expanded` }}>Expand</Link>}
 
           <Table unstackable sortable className="availabilityMatches">
             <Table.Header>

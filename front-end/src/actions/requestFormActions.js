@@ -147,6 +147,20 @@ export function formSetFacility(facilityId) {
   };
 }
 
+
+export function formSetFacility2() {
+  return function(dispatch) {
+    let facility = store.getState().facilities.facility;
+    dispatch(
+      actions.change("availabilityRequestForm.step1.facilityId", facility.id)
+    );
+    dispatch(
+      actions.change("availabilityRequestForm.step1.facility", facility)
+    );
+    dispatch(formStepValidate()); // Get rid of errors upon selection
+  };
+}
+
 export function formStepValidate() {
   return function(dispatch) {
     let current_step = store.getState().requestForm.step;

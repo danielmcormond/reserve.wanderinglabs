@@ -10,12 +10,12 @@ import {
   Table
 } from "semantic-ui-react";
 
-import DateFormat from "./utils/dateFormat";
+import DateFormat from "./../utils/dateFormat";
 import {
   fetchGroupedAvailabilities,
   groupedAvailabilitiesFilterSiteType,
   groupedAvailabilitiesSort
-} from "../actions/facilitiesActions";
+} from "../../actions/facilitiesActions";
 
 const siteTypeOptions = [
   {
@@ -54,9 +54,9 @@ const connected = connect(store => {
     fetching: store.groupedAvailabilities.fetching
   };
 })
-export class Facility extends Component {
+export class FacilityAvailability extends Component {
   componentWillMount() {
-    this.props.dispatch(fetchGroupedAvailabilities(this.props.match.params.id));
+    this.props.dispatch(fetchGroupedAvailabilities(this.props.facilityId));
   }
 
   handleSiteTypeClick = (e, data) => {
@@ -174,4 +174,4 @@ export class Facility extends Component {
     );
   }
 }
-export default connected(Facility);
+export default connected(FacilityAvailability);

@@ -23,7 +23,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :facilities, only: %i[index] do
+  resources :facilities, only: %i[index show] do
     collection do
       get :active
     end

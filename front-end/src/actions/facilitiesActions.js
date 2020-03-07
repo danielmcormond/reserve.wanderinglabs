@@ -1,5 +1,24 @@
 import reserveApi from "../utils/axios";
 
+export function fetchFacility(value) {
+  return dispatch => {
+    dispatch({ type: "FETCH_FACILITY" });
+    return reserveApi({
+      method: "get",
+      url: `/facilities/${value}.json`
+    })
+      .then(response => {
+        dispatch({
+          type: "FETCH_FACILITY_FULFILLED",
+          payload: response.data
+        });
+      })
+      .catch(err => {
+        dispatch({ type: "FETCH_FACILITY_REJECTED", payload: err });
+      });
+  };
+}
+
 export function fetchFacilities(value, filters = []) {
   return dispatch => {
     dispatch({ type: "FETCH_FACILITIES" });

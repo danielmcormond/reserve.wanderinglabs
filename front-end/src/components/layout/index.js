@@ -16,7 +16,7 @@ import RequestSuccess from "../request/success";
 import Nav from "./nav";
 import MenuBar from "./menuBar";
 import FrontPage from "../frontPage";
-import Facility from "../facility";
+import Facility from "../facility/index";
 
 import FlashMessage from "../flashMessage";
 
@@ -70,6 +70,7 @@ export class Layout extends Component {
                 path="/"
                 component={requireAuth(RequestAll, FrontPage)}
               />
+
               <Route path="/new" component={RequestForm} />
               <Route path="/success" component={RequestSuccess} />
 
