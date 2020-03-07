@@ -14,21 +14,22 @@ class AvailabilityImports::FromJson
     history_open = []
     update_ids = []
 
-    still_open_availabilities.all.each do |availability|
-      next if results[availability.avail_date].nil? &&
-              results[availability.avail_date].exclude?(availability.site_id)
 
-      update_ids << availability.id
-      results[availability.avail_date].delete(availability.site_id)
-    end
+    # p range_format
 
-    results.each do |avail_date, sites|
-      sites.each do |site|
-        history_open << { site_id: site, avail_date: avail_date }
-      end
-    end
 
-    create_availabilities(history_open)
+    # p still_open_availabilities.to_sql
+    # still_open_availabilities.all.each do |availability|
+    #   next if results[availability.avail_date].nil? &&
+    #           results[availability.avail_date].exclude?(availability.site_id)
+
+    #   update_ids << availability.id
+    #   results[availability.avail_date].delete(availability.site_id)
+    # end
+
+
+
+    create_availabilities(range_format)
     update_availabilities(update_ids)
     update_import(history_open)
     delete_availabilities
@@ -54,19 +55,34 @@ class AvailabilityImports::FromJson
   end
 
   def still_open_availabilities
-    AvailabilityImports::SqlBuilder.scope(results)
+    AvailabilityImports::SqlBuilder.scope(range_format)
   end
 
   def create_availabilities(openings)
-    Availability.bulk_insert do |avail|
-      openings.each do |open_site|
-        avail.add(
-          availability_import_id: import.id,
-          site_id: open_site[:site_id],
-          avail_date: open_site[:avail_date],
-        )
+    availabilities = []
+    openings.each do |site_id, avail_dates|
+      avail_dates.each do |avail_date_range|
+        availabilities.push([
+          import.id,
+          site_id,
+          avail_date_range,
+          Time.now,
+          Time.now
+      ])
       end
     end
+
+    ### HERE - WORK HERE -- ##
+    ## NEEDED AREL 9 for Arel::InsertManager.new.create_values_list
+    sql_query = %(
+      INSERT INTO "availabilities"
+        ("availability_import_id","site_id","avail_at","created_at","updated_at")
+    #{Arel::InsertManager.new.create_values_list(availabilities).to_sql}
+     ON CONFLICT ON CONSTRAINT constraint_site_id_avail DO UPDATE SET availability_import_id=EXCLUDED.availability_import_id, updated_at=EXCLUDED.updated_at
+
+    )
+
+    Availability.connection.exec_insert(sql_query)
   end
 
   def update_availabilities(ids)
@@ -135,5 +151,23 @@ class AvailabilityImports::FromJson
       @results[avail_date_date] = site_ids
     end
     @results
+  end
+
+  def range_format
+    return @range_format if @range_format.present?
+
+    @range_format = {}
+    results.each do |avail_date, sites|
+      sites.each do |site|
+        @range_format[site] ||= []
+        @range_format[site].push(avail_date)
+
+        # history_open << { site_id: site, avail_date: avail_date }
+      end
+    end
+
+    @range_format.each do |k, v|
+      @range_format[k] = AvailabilityImports::RangeBuilder.to_range(v)
+    end
   end
 end

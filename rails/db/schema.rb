@@ -10,12 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190219225106) do
+ActiveRecord::Schema.define(version: 20200307012247) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "citext"
   enable_extension "uuid-ossp"
+  enable_extension "btree_gist"
 
   create_table "agencies", force: :cascade do |t|
     t.string "name"
@@ -30,7 +31,9 @@ ActiveRecord::Schema.define(version: 20190219225106) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "availability_import_id"
+    t.tsrange "avail_at", null: false
     t.index ["availability_import_id"], name: "index_availabilities_on_availability_import_id"
+    t.index ["site_id", "avail_at"], name: "constraint_site_id_avail", using: :gist
     t.index ["site_id", "avail_date"], name: "availabilities_site_id_avail_date"
     t.index ["site_id"], name: "index_availabilities_on_site_id"
   end

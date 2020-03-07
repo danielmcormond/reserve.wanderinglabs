@@ -13,7 +13,7 @@ gem 'puma', '3.8.2'
 # https://github.com/puma/puma/issues/1308
 
 gem 'httparty'
-gem 'bulk_insert'
+gem 'bulk_insert', git: 'https://github.com/jamis/bulk_insert.git', branch: 'master'
 gem 'aws-sdk', '~> 2'
 gem "actionmailer_inline_css", git: 'https://github.com/premailer/actionmailer_inline_css.git', branch: 'master'
 gem 'enumerize'
