@@ -21,6 +21,16 @@ class AvailabilityRequest < ApplicationRecord
   validates :user, presence: true
   validates :stay_length, presence: true
 
+  def date_range
+    (date_start..date_end)
+  end
+
+  def dow_ranges
+    arrival_days.flat_map do |dow|
+      date_range.select { |date| date.wday == dow.to_i }.map { |date| (date..(date + stay_length - 1)) }
+    end
+  end
+
   def available_matches(notified = false)
     availability_matches
       .send(notified ? 'notified' : 'notifiable')

@@ -1,6 +1,6 @@
 class AvailabilityRange < ActiveRecord::Migration[5.1]
   def change
-    add_column :availabilities, :avail_at, :tsrange, null: false
+    add_column :availabilities, :avail_at, :daterange, null: false
 
     execute %{
       ALTER TABLE availabilities

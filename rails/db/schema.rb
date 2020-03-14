@@ -31,9 +31,8 @@ ActiveRecord::Schema.define(version: 20200307012247) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "availability_import_id"
-    t.tsrange "avail_at", null: false
+    t.daterange "avail_at", null: false
     t.index ["availability_import_id"], name: "index_availabilities_on_availability_import_id"
-    t.index ["site_id", "avail_at"], name: "constraint_site_id_avail", using: :gist
     t.index ["site_id", "avail_date"], name: "availabilities_site_id_avail_date"
     t.index ["site_id"], name: "index_availabilities_on_site_id"
   end
