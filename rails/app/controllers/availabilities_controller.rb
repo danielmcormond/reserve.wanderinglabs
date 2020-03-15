@@ -3,11 +3,10 @@ class AvailabilitiesController < ApplicationController
 
   def index
     last_import = facility.availability_imports.last
-    availabilities = Availability.where(
-      site_id: facility.sites.pluck(:id),
-      availability_import_id: last_import.id,
-      avail_date: Date.parse(params[:date])
-    )
+
+    availabilities = last_import.availabilities.includes(:site).order(:avail_at)
+    availabilities = availabilities.where(avail_date: Date.parse(params[:date])) if params[:date].present?
+
     render json: availabilities
   end
 
@@ -52,6 +51,6 @@ class AvailabilitiesController < ApplicationController
   end
 
   def facility
-    @facility ||= Facility.find(params[:facility_id])
+    @facility ||= Facility.find_by_id_or_slug(params[:facility_id])
   end
 end

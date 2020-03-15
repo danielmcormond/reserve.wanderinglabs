@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200307012247) do
+ActiveRecord::Schema.define(version: 20200315172231) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -136,7 +136,9 @@ ActiveRecord::Schema.define(version: 20200307012247) do
     t.jsonb "sites_details"
     t.boolean "active", default: false, null: false
     t.string "ext_facility_id"
+    t.string "slug"
     t.index ["agency_id"], name: "index_facilities_on_agency_id"
+    t.index ["slug"], name: "index_facilities_on_slug", unique: true
   end
 
   create_table "notification_methods", force: :cascade do |t|

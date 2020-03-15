@@ -16,26 +16,13 @@ class FacilitiesController < ApplicationController
   end
 
   def show
-    @facility = Facility.active.find(params[:id])
+    @facility = Facility.active.find_by_id_or_slug(params[:id])
     render json: @facility
   end
 
   def active
     @facilities = Facility.active_facilities
     render json: @facilities
-  end
-
-  def grouped_availabilities
-    @facility = Facility.find(params[:id])
-    avails = Facilities::Stats.new(@facility, 1).search
-
-    site_ids = avails.map { |h| h[:site_id] }.uniq
-    sites = Site.where(id: site_ids).all
-    avails_mapped = avails.map do |h|
-      site = sites.select { |s| h[:site_id] == s.id }.first
-      h.merge(site: SiteSerializer.new(site))
-    end
-    render json: avails_mapped
   end
 
   def facility_scope

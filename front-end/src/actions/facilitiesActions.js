@@ -43,7 +43,7 @@ export function fetchGroupedAvailabilities(facility_id) {
     dispatch({ type: "FETCH_GROUP_AVAILS" });
     return reserveApi({
       method: "get",
-      url: `/facilities/${facility_id}/grouped_availabilities.json`
+      url: `/facilities/${facility_id}/availabilities.json`
     })
       .then(response => {
         dispatch({

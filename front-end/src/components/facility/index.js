@@ -14,7 +14,7 @@ import { formSetFacility2, formStepInc } from "../../actions/requestFormActions"
 
 const PANE_STYLE = {
   padding: 0,
-  border: "none",
+  borderTop: "none",
   boxShadow: "none"
 };
 
@@ -33,7 +33,6 @@ export class Facility extends Component {
   }
 
   newRequest = () => {
-    console.log("New Request");
     this.props.dispatch(formSetFacility2());
     this.props.dispatch(formStepInc());
 

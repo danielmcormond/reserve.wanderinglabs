@@ -1,5 +1,7 @@
 class Facility < ApplicationRecord
   extend Enumerize
+  extend FriendlyId
+  friendly_id :name, use: :slugged
 
   belongs_to :agency
   has_many :sites, dependent: :destroy
@@ -30,6 +32,12 @@ class Facility < ApplicationRecord
       .merge(AvailabilityRequest.active)
       .group('facilities.id')
       .order('ar_count desc')
+  end
+
+  def self.find_by_id_or_slug(param)
+    return find(param) if param.to_i > 0
+
+    friendly.find(param)
   end
 
   def scrape_start
