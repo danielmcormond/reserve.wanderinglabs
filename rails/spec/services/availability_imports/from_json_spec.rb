@@ -23,7 +23,19 @@ RSpec.describe AvailabilityImports::FromJson do
     end
 
     it 'Creates Availabilities' do
-      expect { from_json.perform }.to change { import.availabilities.count }.by(6)
+      expect { from_json.perform }.to change { import.availabilities.count }.by(4)
+    end
+
+    it 'creates the avail_at range successfully' do
+      from_json.perform
+      expect(import.availabilities.where(site_id: site2.id).first.avail_at.first).to eq(Date.strptime('11/24/2017', '%m/%d/%Y'))
+      expect(import.availabilities.where(site_id: site2.id).first.avail_at.to_a.last).to eq(Date.strptime('11/26/2017', '%m/%d/%Y'))
+    end
+
+    it 'creates the avail_at range successfully with one date' do
+      from_json.perform
+      expect(import.availabilities.where(site_id: site3.id).first.avail_at.first).to eq(Date.strptime('11/25/2017', '%m/%d/%Y'))
+      expect(import.availabilities.where(site_id: site3.id).first.avail_at.to_a.last).to eq(Date.strptime('11/25/2017', '%m/%d/%Y'))
     end
 
     context 'second import' do
@@ -47,7 +59,7 @@ RSpec.describe AvailabilityImports::FromJson do
       end
 
       it 'Creates Availabilities' do
-        expect { from_json2.perform }.to change { Availability.count }.by(2)
+        expect { from_json2.perform }.to change { Availability.count }.by(1)
       end
 
       it 'updates import_id' do
@@ -102,7 +114,7 @@ RSpec.describe AvailabilityImports::FromJson do
       end
 
       it 'Removes existing Availabilities' do
-        expect { from_json2.perform }.to change { Availability.count }.by(-6)
+        expect { from_json2.perform }.to change { Availability.count }.by(-4)
       end
     end
 
@@ -125,7 +137,7 @@ RSpec.describe AvailabilityImports::FromJson do
       end
 
       it 'Removes existing Availabilities' do
-        expect { from_json2.perform }.to change { Availability.count }.by(-6)
+        expect { from_json2.perform }.to change { Availability.count }.by(-4)
       end
     end
   end

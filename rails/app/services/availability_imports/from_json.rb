@@ -11,26 +11,8 @@ class AvailabilityImports::FromJson
 
   def perform
     # t1 = Process.clock_gettime(Process::CLOCK_MONOTONIC)
-    history_open = []
-    update_ids = []
-
-    still_open_availabilities.all.each do |availability|
-      next if results[availability.avail_date].nil? &&
-              results[availability.avail_date].exclude?(availability.site_id)
-
-      update_ids << availability.id
-      results[availability.avail_date].delete(availability.site_id)
-    end
-
-    results.each do |avail_date, sites|
-      sites.each do |site|
-        history_open << { site_id: site, avail_date: avail_date }
-      end
-    end
-
-    create_availabilities(history_open)
-    update_availabilities(update_ids)
-    update_import(history_open)
+    create_availabilities
+    update_import
     delete_availabilities
 
     # t2 = Process.clock_gettime(Process::CLOCK_MONOTONIC)
@@ -44,7 +26,7 @@ class AvailabilityImports::FromJson
     nil
   end
 
-  def update_import(history_open)
+  def update_import
     import.update_attributes(
       history_open: history_open,
       history_filled: history_filled,
@@ -54,42 +36,33 @@ class AvailabilityImports::FromJson
   end
 
   def still_open_availabilities
-    AvailabilityImports::SqlBuilder.scope(results)
+    AvailabilityImports::SqlBuilder.scope(range_format)
   end
 
-  def create_availabilities(openings)
-    Availability.bulk_insert do |avail|
-      openings.each do |open_site|
-        avail.add(
-          availability_import_id: import.id,
-          site_id: open_site[:site_id],
-          avail_date: open_site[:avail_date],
-        )
+  def create_availabilities
+    Availability.bulk_insert(ignore: true) do |availabilities|
+      range_format.each do |site_id, avail_dates|
+        avail_dates.each do |avail_date_range|
+          availabilities.add(
+            availability_import_id: import.id,
+            site_id: site_id,
+            avail_at: avail_date_range,
+          )
+        end
       end
     end
-  end
-
-  def update_availabilities(ids)
-    Availability.where(id: ids).update_all(availability_import_id: import.id)
   end
 
   def delete_availabilities
     Availability.where(site_id: facility_sites.map(&:id)).where.not(availability_import_id: import.id).delete_all
   end
 
-  def history_filled
-    return unless last_import.present?
-
-    Availability
-      .where(availability_import_id: last_import.id)
-      .map { |a| { site_id: a.site_id, avail_date: a.avail_date } }
+  def history_open
+    AvailabilityImports::History.all_open(import.id, facility_sites.map(&:id))
   end
 
-  def last_import
-    @last_import ||= AvailabilityImport
-                     .where.not(id: import.id)
-                     .where(facility_id: import.facility_id)
-                     .last
+  def history_filled
+    AvailabilityImports::History.all_filled(import.id, facility_sites.map(&:id))
   end
 
   def sites_for(ids)
@@ -135,5 +108,21 @@ class AvailabilityImports::FromJson
       @results[avail_date_date] = site_ids
     end
     @results
+  end
+
+  def range_format
+    return @range_format if @range_format.present?
+
+    @range_format = {}
+    results.each do |avail_date, sites|
+      sites.each do |site|
+        @range_format[site] ||= []
+        @range_format[site].push(avail_date)
+      end
+    end
+
+    @range_format.each do |k, v|
+      @range_format[k] = AvailabilityImports::RangeBuilder.to_range(v)
+    end
   end
 end

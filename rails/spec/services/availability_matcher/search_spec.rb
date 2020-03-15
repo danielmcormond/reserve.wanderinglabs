@@ -6,16 +6,12 @@ RSpec.describe AvailabilityMatcher::Search do
   let(:site2) { FactoryGirl.create(:site) }
   let!(:availabilities) do
     [
-      FactoryGirl.create(:availability, availability_import: import, site: site1, avail_date: Date.strptime('01/13/2017', '%m/%d/%Y')),
-      FactoryGirl.create(:availability, availability_import: import, site: site1, avail_date: Date.strptime('01/14/2017', '%m/%d/%Y')),
-      FactoryGirl.create(:availability, availability_import: import, site: site1, avail_date: Date.strptime('01/15/2017', '%m/%d/%Y')),
-      FactoryGirl.create(:availability, availability_import: import, site: site1, avail_date: Date.strptime('01/16/2017', '%m/%d/%Y')),
+      FactoryGirl.create(:availability, availability_import: import, site: site1, avail_at: (Date.strptime('01/13/2017', '%m/%d/%Y')..Date.strptime('01/16/2017', '%m/%d/%Y'))),
 
-      FactoryGirl.create(:availability, availability_import: import, site: site1, avail_date: Date.strptime('01/18/2017', '%m/%d/%Y')),
-      FactoryGirl.create(:availability, availability_import: import, site: site1, avail_date: Date.strptime('01/19/2017', '%m/%d/%Y')),
-      FactoryGirl.create(:availability, availability_import: import, site: site1, avail_date: Date.strptime('01/21/2017', '%m/%d/%Y')),
+      FactoryGirl.create(:availability, availability_import: import, site: site1, avail_at: (Date.strptime('01/18/2017', '%m/%d/%Y')..Date.strptime('01/19/2017', '%m/%d/%Y'))),
+      FactoryGirl.create(:availability, availability_import: import, site: site1, avail_at: (Date.strptime('01/21/2017', '%m/%d/%Y')..Date.strptime('01/21/2017', '%m/%d/%Y'))),
 
-      FactoryGirl.create(:availability, availability_import: import, site: site2, avail_date: Date.strptime('01/14/2017', '%m/%d/%Y')),
+      FactoryGirl.create(:availability, availability_import: import, site: site2, avail_at: (Date.strptime('01/14/2017', '%m/%d/%Y')..Date.strptime('01/14/2017', '%m/%d/%Y'))),
     ]
   end
 
@@ -29,7 +25,7 @@ RSpec.describe AvailabilityMatcher::Search do
           date_start: Date.strptime('01/14/2017', '%m/%d/%Y'),
           date_end: Date.strptime('01/14/2017', '%m/%d/%Y'),
           stay_length: 1,
-          site_ids: [site1.id]
+          site_ids: [site1.id],
         )
       end
 
@@ -48,7 +44,7 @@ RSpec.describe AvailabilityMatcher::Search do
           date_start: Date.strptime('01/13/2017', '%m/%d/%Y'),
           date_end: Date.strptime('01/31/2017', '%m/%d/%Y'),
           stay_length: 4,
-          site_ids: [site1.id]
+          site_ids: [site1.id],
         )
       end
 
@@ -67,7 +63,7 @@ RSpec.describe AvailabilityMatcher::Search do
           date_start: Date.strptime('01/15/2017', '%m/%d/%Y'),
           date_end: Date.strptime('01/18/2017', '%m/%d/%Y'),
           stay_length: 2,
-          site_ids: [site1.id]
+          site_ids: [site1.id],
         )
       end
 
@@ -103,19 +99,13 @@ RSpec.describe AvailabilityMatcher::Search do
   describe 'Matching bug' do
     let!(:availabilities) do
       [
-        FactoryGirl.create(:availability, availability_import: import, site: site2, avail_date: Date.strptime('11/14/2017', '%m/%d/%Y')),
-        FactoryGirl.create(:availability, availability_import: import, site: site2, avail_date: Date.strptime('11/16/2017', '%m/%d/%Y')),
+        FactoryGirl.create(:availability, availability_import: import, site: site2, avail_at: (Date.strptime('11/14/2017', '%m/%d/%Y')..Date.strptime('11/14/2017', '%m/%d/%Y'))),
+        FactoryGirl.create(:availability, availability_import: import, site: site2, avail_at: (Date.strptime('11/16/2017', '%m/%d/%Y')..Date.strptime('11/16/2017', '%m/%d/%Y'))),
 
-        FactoryGirl.create(:availability, availability_import: import, site: site1, avail_date: Date.strptime('11/18/2017', '%m/%d/%Y')),
-        FactoryGirl.create(:availability, availability_import: import, site: site1, avail_date: Date.strptime('11/25/2017', '%m/%d/%Y')),
+        FactoryGirl.create(:availability, availability_import: import, site: site1, avail_at: (Date.strptime('11/18/2017', '%m/%d/%Y')..Date.strptime('11/18/2017', '%m/%d/%Y'))),
+        FactoryGirl.create(:availability, availability_import: import, site: site1, avail_at: (Date.strptime('11/25/2017', '%m/%d/%Y')..Date.strptime('11/25/2017', '%m/%d/%Y'))),
 
-        FactoryGirl.create(:availability, availability_import: import, site: site2, avail_date: Date.strptime('11/18/2017', '%m/%d/%Y')),
-        FactoryGirl.create(:availability, availability_import: import, site: site2, avail_date: Date.strptime('11/19/2017', '%m/%d/%Y')),
-        FactoryGirl.create(:availability, availability_import: import, site: site2, avail_date: Date.strptime('11/20/2017', '%m/%d/%Y')),
-        FactoryGirl.create(:availability, availability_import: import, site: site2, avail_date: Date.strptime('11/21/2017', '%m/%d/%Y')),
-        FactoryGirl.create(:availability, availability_import: import, site: site2, avail_date: Date.strptime('11/22/2017', '%m/%d/%Y')),
-        FactoryGirl.create(:availability, availability_import: import, site: site2, avail_date: Date.strptime('11/23/2017', '%m/%d/%Y')),
-        FactoryGirl.create(:availability, availability_import: import, site: site2, avail_date: Date.strptime('11/24/2017', '%m/%d/%Y')),
+        FactoryGirl.create(:availability, availability_import: import, site: site2, avail_at: (Date.strptime('11/18/2017', '%m/%d/%Y')..Date.strptime('11/24/2017', '%m/%d/%Y'))),
       ]
     end
 
@@ -125,7 +115,7 @@ RSpec.describe AvailabilityMatcher::Search do
         date_start: Date.strptime('11/10/2017', '%m/%d/%Y'),
         date_end: Date.strptime('11/25/2017', '%m/%d/%Y'),
         stay_length: 1,
-        site_ids: [site1.id, site2.id]
+        site_ids: [site1.id, site2.id],
       )
     end
 
