@@ -19,7 +19,7 @@ class Scrape
 
   def self.limit
     @limit ||= (
-      Facility.active_facilities.count.keys.size / PERCENT_PER_MINUTE.to_f
+      Facility.active_facilities.count.keys.size * (PERCENT_PER_MINUTE / 100.to_f)
     ).round
   end
 

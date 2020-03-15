@@ -6,7 +6,7 @@ ssh deploy@192.34.56.219
 
 watch -n 2 'ps auxww | ag resque'
 
-PGPASSWORD=xxx pg_dump -Fc -x reserve_wanderinglabs -h localhost -U reserve -w --exclude-table-data=pg_toast.\* > reserve.dump
+PGPASSWORD=timphin pg_dump -Fc -x reserve_wanderinglabs -h localhost -U reserve -w --exclude-table-data=pg_toast.\* > reserve.dump
 
 scp deploy@192.34.56.219:reserve.dump ~/Downloads
 
