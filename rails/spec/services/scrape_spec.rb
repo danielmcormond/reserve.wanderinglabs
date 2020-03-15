@@ -17,7 +17,7 @@ RSpec.describe Scrape do
     describe '#limit' do
       it 'is a set percentage of the total active facilities' do
         limit = Scrape.limit
-        expect(limit).to be(2)
+        expect(limit).to be(7)
       end
     end
 
@@ -34,7 +34,7 @@ RSpec.describe Scrape do
         allow_any_instance_of(Scrape).to receive(:work) { call_count += 1 }
 
         Scrape.perform
-        expect(call_count).to eq(2)
+        expect(call_count).to eq(7)
       end
     end
   end

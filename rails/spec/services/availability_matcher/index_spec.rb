@@ -21,7 +21,7 @@ RSpec.describe AvailabilityMatcher::Index do
       end
 
       it 'enqueues a non premium run' do
-        expect(Resque).to receive(:enqueue_in).with(11.minutes, AvailabilityMatcher::Index, import.id)
+        expect(Resque).to receive(:enqueue_in).with(1.minutes, AvailabilityMatcher::Index, import.id)
         AvailabilityMatcher::Index.perform(import.id, true)
       end
     end

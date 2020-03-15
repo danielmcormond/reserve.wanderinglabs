@@ -36,3 +36,6 @@ AvailabilityImport.where("history_open = '[]'").where("history_filled = '[]'").a
 end; nil
 
 AvailabilityImports::Index.perform(*Resque.peek('import', 0, 100).last['args'])
+
+
+sudo systemctl stop resque && sudo systemctl stop resque-importer && sudo systemctl stop resque-scheduler
