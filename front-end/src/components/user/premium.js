@@ -13,7 +13,7 @@ import {
 import PaypalButton from "./paypal";
 import SemanticInput from "../semanticInput";
 
-const amounts = [10, 20, 25, 50];
+const amounts = [15, 20, 25, 50];
 
 const connected = connect(store => {
   return {
@@ -53,7 +53,7 @@ export class Premium extends Component {
             upgrade your request to include these benefits:
           </p>
           <List bulleted>
-            <List.Item>Check twice as often</List.Item>
+            <List.Item>Check twice as often (every 3-5 minutes)</List.Item>
             <List.Item>No pausing</List.Item>
             <List.Item>Txt alerts</List.Item>
           </List>

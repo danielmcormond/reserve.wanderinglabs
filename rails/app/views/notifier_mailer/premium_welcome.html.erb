@@ -20,8 +20,16 @@
       </p>
 
       <h4>
-      <a href="<%= ENV['RESERVE_URL'] -%>/sign-in/<%= @user.login_token -%>" target="_blank"><%= ENV['RESERVE_URL'] -%>/sign-in/<%= @user.login_token -%></a>
-    </h4>
+        <a href="<%= ENV['RESERVE_URL'] -%>/sign-in/<%= @user.login_token -%>" target="_blank"><%= ENV['RESERVE_URL'] -%>/sign-in/<%= @user.login_token -%></a>
+      </h4>
+
+      <p><b>SMS Notifications</b>
+        Direct link to your settings page. Enter your phone number here:
+      </p>
+
+      <h4>
+        <a href="<%= ENV['RESERVE_URL'] -%>/sign-in/<%= @user.login_token -%>/settings" target="_blank">Settings Page</a>
+      </h4>
 
       <p><b>Questions.. Suggestions.. Ideas.. Comments.. ?</b></p>
       <p>Send them my way. Reply to this email or email info@wanderinglabs.com.</p>
