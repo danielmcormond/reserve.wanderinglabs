@@ -1,0 +1,1723 @@
+{
+  "location": {
+    "id": "14078",
+    "code": "FDSCamp",
+    "name": "Fort De Soto Campground",
+    "address1": "3500 Pinellas Bayway South",
+    "address2": "",
+    "city": "Tierra Verde",
+    "state": "FL",
+    "zip": "33715",
+    "phone": "7275822100",
+    "displayMode": "grid",
+    "facilities": [
+      {
+        "id": "61288",
+        "name": "Site 002 - Waterfront",
+        "code": "FDSCamp\/A1\/002",
+        "fullName": "Fort De Soto Campground Site 002 - Waterfront",
+        "codeAbbr": "FDSCamp\/A1\/002",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61289",
+        "name": "Site 003 - Waterfront",
+        "code": "FDSCamp\/A1\/003",
+        "fullName": "Fort De Soto Campground Site 003 - Waterfront",
+        "codeAbbr": "FDSCamp\/A1\/003",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61290",
+        "name": "Site 004 - Waterfront",
+        "code": "FDSCamp\/A1\/004",
+        "fullName": "Fort De Soto Campground Site 004 - Waterfront",
+        "codeAbbr": "FDSCamp\/A1\/004",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61291",
+        "name": "Site 005 - Waterfront",
+        "code": "FDSCamp\/A1\/005",
+        "fullName": "Fort De Soto Campground Site 005 - Waterfront",
+        "codeAbbr": "FDSCamp\/A1\/005",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61292",
+        "name": "Site 006 - Waterfront",
+        "code": "FDSCamp\/A1\/006",
+        "fullName": "Fort De Soto Campground Site 006 - Waterfront",
+        "codeAbbr": "FDSCamp\/A1\/006",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61294",
+        "name": "Site 008 - Waterfront",
+        "code": "FDSCamp\/A1\/008",
+        "fullName": "Fort De Soto Campground Site 008 - Waterfront",
+        "codeAbbr": "FDSCamp\/A1\/008",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61295",
+        "name": "Site 009 - Waterfront",
+        "code": "FDSCamp\/A1\/009",
+        "fullName": "Fort De Soto Campground Site 009 - Waterfront",
+        "codeAbbr": "FDSCamp\/A1\/009",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61296",
+        "name": "Site 010 - Waterfront",
+        "code": "FDSCamp\/A1\/010",
+        "fullName": "Fort De Soto Campground Site 010 - Waterfront",
+        "codeAbbr": "FDSCamp\/A1\/010",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61287",
+        "name": "Site 011 - Non-Waterfront",
+        "code": "FDSCamp\/A1\/011",
+        "fullName": "Fort De Soto Campground Site 011 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A1\/011",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61298",
+        "name": "Site 012 - Waterfront",
+        "code": "FDSCamp\/A1\/012",
+        "fullName": "Fort De Soto Campground Site 012 - Waterfront",
+        "codeAbbr": "FDSCamp\/A1\/012",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61299",
+        "name": "Site 013 - Waterfront",
+        "code": "FDSCamp\/A1\/013",
+        "fullName": "Fort De Soto Campground Site 013 - Waterfront",
+        "codeAbbr": "FDSCamp\/A1\/013",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61303",
+        "name": "Site 014 - Non-Waterfront",
+        "code": "FDSCamp\/A1\/014",
+        "fullName": "Fort De Soto Campground Site 014 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A1\/014",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61300",
+        "name": "Site 015 - Waterfront",
+        "code": "FDSCamp\/A1\/015",
+        "fullName": "Fort De Soto Campground Site 015 - Waterfront",
+        "codeAbbr": "FDSCamp\/A1\/015",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61304",
+        "name": "Site 016 - Non-Waterfront",
+        "code": "FDSCamp\/A1\/016",
+        "fullName": "Fort De Soto Campground Site 016 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A1\/016",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61302",
+        "name": "Site 017 - Waterfront",
+        "code": "FDSCamp\/A1\/017",
+        "fullName": "Fort De Soto Campground Site 017 - Waterfront",
+        "codeAbbr": "FDSCamp\/A1\/017",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61305",
+        "name": "Site 018 - Non-Waterfront",
+        "code": "FDSCamp\/A1\/018",
+        "fullName": "Fort De Soto Campground Site 018 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A1\/018",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61306",
+        "name": "Site 019 - Non-Waterfront",
+        "code": "FDSCamp\/A1\/019",
+        "fullName": "Fort De Soto Campground Site 019 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A1\/019",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61311",
+        "name": "Site 020 - Waterfront",
+        "code": "FDSCamp\/A1\/020",
+        "fullName": "Fort De Soto Campground Site 020 - Waterfront",
+        "codeAbbr": "FDSCamp\/A1\/020",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61319",
+        "name": "Site 021 - Non-Waterfront",
+        "code": "FDSCamp\/A1\/021",
+        "fullName": "Fort De Soto Campground Site 021 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A1\/021",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61312",
+        "name": "Site 022 - Waterfront",
+        "code": "FDSCamp\/A1\/022",
+        "fullName": "Fort De Soto Campground Site 022 - Waterfront",
+        "codeAbbr": "FDSCamp\/A1\/022",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61320",
+        "name": "Site 023 - Non-Waterfront",
+        "code": "FDSCamp\/A1\/023",
+        "fullName": "Fort De Soto Campground Site 023 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A1\/023",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61313",
+        "name": "Site 024 - Waterfront",
+        "code": "FDSCamp\/A1\/024",
+        "fullName": "Fort De Soto Campground Site 024 - Waterfront",
+        "codeAbbr": "FDSCamp\/A1\/024",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61321",
+        "name": "Site 025 - Non-Waterfront",
+        "code": "FDSCamp\/A1\/025",
+        "fullName": "Fort De Soto Campground Site 025 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A1\/025",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61314",
+        "name": "Site 026 - Waterfront",
+        "code": "FDSCamp\/A1\/026",
+        "fullName": "Fort De Soto Campground Site 026 - Waterfront",
+        "codeAbbr": "FDSCamp\/A1\/026",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61322",
+        "name": "Site 027 - Non-Waterfront",
+        "code": "FDSCamp\/A1\/027",
+        "fullName": "Fort De Soto Campground Site 027 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A1\/027",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61315",
+        "name": "Site 028 - Waterfront",
+        "code": "FDSCamp\/A1\/028",
+        "fullName": "Fort De Soto Campground Site 028 - Waterfront",
+        "codeAbbr": "FDSCamp\/A1\/028",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61323",
+        "name": "Site 029 - Non-Waterfront",
+        "code": "FDSCamp\/A1\/029",
+        "fullName": "Fort De Soto Campground Site 029 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A1\/029",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61316",
+        "name": "Site 030 - Waterfront",
+        "code": "FDSCamp\/A1\/030",
+        "fullName": "Fort De Soto Campground Site 030 - Waterfront",
+        "codeAbbr": "FDSCamp\/A1\/030",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61324",
+        "name": "Site 031 - Non-Waterfront",
+        "code": "FDSCamp\/A1\/031",
+        "fullName": "Fort De Soto Campground Site 031 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A1\/031",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61317",
+        "name": "Site 032 - Waterfront",
+        "code": "FDSCamp\/A1\/032",
+        "fullName": "Fort De Soto Campground Site 032 - Waterfront",
+        "codeAbbr": "FDSCamp\/A1\/032",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61318",
+        "name": "Site 033 - Waterfront",
+        "code": "FDSCamp\/A1\/033",
+        "fullName": "Fort De Soto Campground Site 033 - Waterfront",
+        "codeAbbr": "FDSCamp\/A1\/033",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61330",
+        "name": "Site 034 - Waterfront",
+        "code": "FDSCamp\/A1\/034",
+        "fullName": "Fort De Soto Campground Site 034 - Waterfront",
+        "codeAbbr": "FDSCamp\/A1\/034",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61325",
+        "name": "Site 035 - Non-Waterfront",
+        "code": "FDSCamp\/A1\/035",
+        "fullName": "Fort De Soto Campground Site 035 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A1\/035",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61331",
+        "name": "Site 036 - Waterfront",
+        "code": "FDSCamp\/A1\/036",
+        "fullName": "Fort De Soto Campground Site 036 - Waterfront",
+        "codeAbbr": "FDSCamp\/A1\/036",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61326",
+        "name": "Site 037 - Non-Waterfront",
+        "code": "FDSCamp\/A1\/037",
+        "fullName": "Fort De Soto Campground Site 037 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A1\/037",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61332",
+        "name": "Site 038 - Waterfront",
+        "code": "FDSCamp\/A1\/038",
+        "fullName": "Fort De Soto Campground Site 038 - Waterfront",
+        "codeAbbr": "FDSCamp\/A1\/038",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61327",
+        "name": "Site 039 - Non-Waterfront",
+        "code": "FDSCamp\/A1\/039",
+        "fullName": "Fort De Soto Campground Site 039 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A1\/039",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61333",
+        "name": "Site 040 - Waterfront",
+        "code": "FDSCamp\/A1\/040",
+        "fullName": "Fort De Soto Campground Site 040 - Waterfront",
+        "codeAbbr": "FDSCamp\/A1\/040",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61329",
+        "name": "Site 041 - Non-Waterfront",
+        "code": "FDSCamp\/A1\/041",
+        "fullName": "Fort De Soto Campground Site 041 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A1\/041",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61334",
+        "name": "Site 042 - Waterfront",
+        "code": "FDSCamp\/A1\/042",
+        "fullName": "Fort De Soto Campground Site 042 - Waterfront",
+        "codeAbbr": "FDSCamp\/A1\/042",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61335",
+        "name": "Site 043 - Waterfront",
+        "code": "FDSCamp\/A1\/043",
+        "fullName": "Fort De Soto Campground Site 043 - Waterfront",
+        "codeAbbr": "FDSCamp\/A1\/043",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61336",
+        "name": "Site 044 - Waterfront",
+        "code": "FDSCamp\/A1\/044",
+        "fullName": "Fort De Soto Campground Site 044 - Waterfront",
+        "codeAbbr": "FDSCamp\/A1\/044",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61337",
+        "name": "Site 045 - Waterfront",
+        "code": "FDSCamp\/A1\/045",
+        "fullName": "Fort De Soto Campground Site 045 - Waterfront",
+        "codeAbbr": "FDSCamp\/A1\/045",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61338",
+        "name": "Site 046 - Waterfront",
+        "code": "FDSCamp\/A1\/046",
+        "fullName": "Fort De Soto Campground Site 046 - Waterfront",
+        "codeAbbr": "FDSCamp\/A1\/046",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61339",
+        "name": "Site 047 - Waterfront",
+        "code": "FDSCamp\/A1\/047",
+        "fullName": "Fort De Soto Campground Site 047 - Waterfront",
+        "codeAbbr": "FDSCamp\/A1\/047",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61340",
+        "name": "Site 048 - Waterfront",
+        "code": "FDSCamp\/A1\/048",
+        "fullName": "Fort De Soto Campground Site 048 - Waterfront",
+        "codeAbbr": "FDSCamp\/A1\/048",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61349",
+        "name": "Site 049 - Non-Waterfront",
+        "code": "FDSCamp\/A1\/049",
+        "fullName": "Fort De Soto Campground Site 049 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A1\/049",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61397",
+        "name": "Site 050 - Non-Waterfront",
+        "code": "FDSCamp\/A1\/050",
+        "fullName": "Fort De Soto Campground Site 050 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A1\/050",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61398",
+        "name": "Site 051 - Non-Waterfront",
+        "code": "FDSCamp\/A1\/051",
+        "fullName": "Fort De Soto Campground Site 051 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A1\/051",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61399",
+        "name": "Site 052 - Non-Waterfront",
+        "code": "FDSCamp\/A1\/052",
+        "fullName": "Fort De Soto Campground Site 052 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A1\/052",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61400",
+        "name": "Site 053 - Non-Waterfront",
+        "code": "FDSCamp\/A1\/053",
+        "fullName": "Fort De Soto Campground Site 053 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A1\/053",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61401",
+        "name": "Site 054 - Non-Waterfront",
+        "code": "FDSCamp\/A1\/054",
+        "fullName": "Fort De Soto Campground Site 054 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A1\/054",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61404",
+        "name": "Site 055 - Non-Waterfront",
+        "code": "FDSCamp\/A1\/055",
+        "fullName": "Fort De Soto Campground Site 055 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A1\/055",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61402",
+        "name": "Site 056 - Non-Waterfront",
+        "code": "FDSCamp\/A1\/056",
+        "fullName": "Fort De Soto Campground Site 056 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A1\/056",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61405",
+        "name": "Site 057 - Non-Waterfront",
+        "code": "FDSCamp\/A1\/057",
+        "fullName": "Fort De Soto Campground Site 057 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A1\/057",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61428",
+        "name": "Site 058 - Non-Waterfront",
+        "code": "FDSCamp\/A1\/058",
+        "fullName": "Fort De Soto Campground Site 058 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A1\/058",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61406",
+        "name": "Site 059 - Non-Waterfront",
+        "code": "FDSCamp\/A1\/059",
+        "fullName": "Fort De Soto Campground Site 059 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A1\/059",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61429",
+        "name": "Site 060 - Non-Waterfront",
+        "code": "FDSCamp\/A1\/060",
+        "fullName": "Fort De Soto Campground Site 060 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A1\/060",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61430",
+        "name": "Site 061 - Non-Waterfront",
+        "code": "FDSCamp\/A1\/061",
+        "fullName": "Fort De Soto Campground Site 061 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A1\/061",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61431",
+        "name": "Site 062 - Non-Waterfront",
+        "code": "FDSCamp\/A1\/062",
+        "fullName": "Fort De Soto Campground Site 062 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A1\/062",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61432",
+        "name": "Site 063 - Non-Waterfront",
+        "code": "FDSCamp\/A1\/063",
+        "fullName": "Fort De Soto Campground Site 063 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A1\/063",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61433",
+        "name": "Site 064 - Non-Waterfront",
+        "code": "FDSCamp\/A1\/064",
+        "fullName": "Fort De Soto Campground Site 064 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A1\/064",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61434",
+        "name": "Site 065 - Non-Waterfront",
+        "code": "FDSCamp\/A1\/065",
+        "fullName": "Fort De Soto Campground Site 065 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A1\/065",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61435",
+        "name": "Site 066 - Non-Waterfront",
+        "code": "FDSCamp\/A1\/066",
+        "fullName": "Fort De Soto Campground Site 066 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A1\/066",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61436",
+        "name": "Site 067 - Non-Waterfront",
+        "code": "FDSCamp\/A1\/067",
+        "fullName": "Fort De Soto Campground Site 067 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A1\/067",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61437",
+        "name": "Site 068 - Non-Waterfront",
+        "code": "FDSCamp\/A1\/068",
+        "fullName": "Fort De Soto Campground Site 068 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A1\/068",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61438",
+        "name": "Site 069 - Non-Waterfront",
+        "code": "FDSCamp\/A1\/069",
+        "fullName": "Fort De Soto Campground Site 069 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A1\/069",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61439",
+        "name": "Site 070 - Non-Waterfront",
+        "code": "FDSCamp\/A1\/070",
+        "fullName": "Fort De Soto Campground Site 070 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A1\/070",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61441",
+        "name": "Site 071 - Non-Waterfront",
+        "code": "FDSCamp\/A1\/071",
+        "fullName": "Fort De Soto Campground Site 071 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A1\/071",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61442",
+        "name": "Site 072 - Non-Waterfront",
+        "code": "FDSCamp\/A1\/072",
+        "fullName": "Fort De Soto Campground Site 072 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A1\/072",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61443",
+        "name": "Site 073 - Non-Waterfront",
+        "code": "FDSCamp\/A1\/073",
+        "fullName": "Fort De Soto Campground Site 073 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A1\/073",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61444",
+        "name": "Site 074 - Non-Waterfront",
+        "code": "FDSCamp\/A1\/074",
+        "fullName": "Fort De Soto Campground Site 074 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A1\/074",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61445",
+        "name": "Site 075 - Non-Waterfront",
+        "code": "FDSCamp\/A1\/075",
+        "fullName": "Fort De Soto Campground Site 075 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A1\/075",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61446",
+        "name": "Site 076 - Non-Waterfront",
+        "code": "FDSCamp\/A1\/076",
+        "fullName": "Fort De Soto Campground Site 076 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A1\/076",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61447",
+        "name": "Site 077 - Non-Waterfront",
+        "code": "FDSCamp\/A1\/077",
+        "fullName": "Fort De Soto Campground Site 077 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A1\/077",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61449",
+        "name": "Site 078 - Non-Waterfront",
+        "code": "FDSCamp\/A1\/078",
+        "fullName": "Fort De Soto Campground Site 078 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A1\/078",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61452",
+        "name": "Site 079 - Non-Waterfront",
+        "code": "FDSCamp\/A1\/079",
+        "fullName": "Fort De Soto Campground Site 079 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A1\/079",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61453",
+        "name": "Site 080 - Non-Waterfront",
+        "code": "FDSCamp\/A1\/080",
+        "fullName": "Fort De Soto Campground Site 080 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A1\/080",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61454",
+        "name": "Site 081 - Non-Waterfront",
+        "code": "FDSCamp\/A1\/081",
+        "fullName": "Fort De Soto Campground Site 081 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A1\/081",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61455",
+        "name": "Site 082 - Non-Waterfront",
+        "code": "FDSCamp\/A1\/082",
+        "fullName": "Fort De Soto Campground Site 082 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A1\/082",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61456",
+        "name": "Site 083 - Non-Waterfront",
+        "code": "FDSCamp\/A1\/083",
+        "fullName": "Fort De Soto Campground Site 083 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A1\/083",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61457",
+        "name": "Site 084 - Non-Waterfront",
+        "code": "FDSCamp\/A1\/084",
+        "fullName": "Fort De Soto Campground Site 084 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A1\/084",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61458",
+        "name": "Site 085- Non-Waterfront",
+        "code": "FDSCamp\/A1\/085",
+        "fullName": "Fort De Soto Campground Site 085- Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A1\/085",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61469",
+        "name": "Site 087 - Waterfront",
+        "code": "FDSCamp\/A2\/087",
+        "fullName": "Fort De Soto Campground Site 087 - Waterfront",
+        "codeAbbr": "FDSCamp\/A2\/087",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61463",
+        "name": "Site 088 - Non-Waterfront",
+        "code": "FDSCamp\/A2\/088",
+        "fullName": "Fort De Soto Campground Site 088 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A2\/088",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61470",
+        "name": "Site 089 - Waterfront",
+        "code": "FDSCamp\/A2\/089",
+        "fullName": "Fort De Soto Campground Site 089 - Waterfront",
+        "codeAbbr": "FDSCamp\/A2\/089",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61464",
+        "name": "Site 090 - Non-Waterfront",
+        "code": "FDSCamp\/A2\/090",
+        "fullName": "Fort De Soto Campground Site 090 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A2\/090",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61471",
+        "name": "Site 091 - Waterfront",
+        "code": "FDSCamp\/A2\/091",
+        "fullName": "Fort De Soto Campground Site 091 - Waterfront",
+        "codeAbbr": "FDSCamp\/A2\/091",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61465",
+        "name": "Site 092 - Non-Waterfront",
+        "code": "FDSCamp\/A2\/092",
+        "fullName": "Fort De Soto Campground Site 092 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A2\/092",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61472",
+        "name": "Site 093 - Waterfront",
+        "code": "FDSCamp\/A2\/093",
+        "fullName": "Fort De Soto Campground Site 093 - Waterfront",
+        "codeAbbr": "FDSCamp\/A2\/093",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61466",
+        "name": "Site 094 - Non-Waterfront",
+        "code": "FDSCamp\/A2\/094",
+        "fullName": "Fort De Soto Campground Site 094 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A2\/094",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61473",
+        "name": "Site 095 - Waterfront",
+        "code": "FDSCamp\/A2\/095",
+        "fullName": "Fort De Soto Campground Site 095 - Waterfront",
+        "codeAbbr": "FDSCamp\/A2\/095",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61467",
+        "name": "Site 096 - Non-Waterfront",
+        "code": "FDSCamp\/A2\/096",
+        "fullName": "Fort De Soto Campground Site 096 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A2\/096",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61474",
+        "name": "Site 097 - Waterfront",
+        "code": "FDSCamp\/A2\/097",
+        "fullName": "Fort De Soto Campground Site 097 - Waterfront",
+        "codeAbbr": "FDSCamp\/A2\/097",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61468",
+        "name": "Site 098 - Non-Waterfront",
+        "code": "FDSCamp\/A2\/098",
+        "fullName": "Fort De Soto Campground Site 098 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A2\/098",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61475",
+        "name": "Site 099 - Waterfront",
+        "code": "FDSCamp\/A2\/099",
+        "fullName": "Fort De Soto Campground Site 099 - Waterfront",
+        "codeAbbr": "FDSCamp\/A2\/099",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61476",
+        "name": "Site 100 - Waterfront",
+        "code": "FDSCamp\/A2\/100",
+        "fullName": "Fort De Soto Campground Site 100 - Waterfront",
+        "codeAbbr": "FDSCamp\/A2\/100",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61496",
+        "name": "Site 101 - Waterfront",
+        "code": "FDSCamp\/A2\/101",
+        "fullName": "Fort De Soto Campground Site 101 - Waterfront",
+        "codeAbbr": "FDSCamp\/A2\/101",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61497",
+        "name": "Site 103 - Waterfront",
+        "code": "FDSCamp\/A2\/103",
+        "fullName": "Fort De Soto Campground Site 103 - Waterfront",
+        "codeAbbr": "FDSCamp\/A2\/103",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61517",
+        "name": "Site 104 - Non-Waterfront",
+        "code": "FDSCamp\/A2\/104",
+        "fullName": "Fort De Soto Campground Site 104 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A2\/104",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61525",
+        "name": "Site 106 - Non-Waterfront",
+        "code": "FDSCamp\/A2\/106",
+        "fullName": "Fort De Soto Campground Site 106 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A2\/106",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61500",
+        "name": "Site 107 - Waterfront",
+        "code": "FDSCamp\/A2\/107",
+        "fullName": "Fort De Soto Campground Site 107 - Waterfront",
+        "codeAbbr": "FDSCamp\/A2\/107",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61527",
+        "name": "Site 108 - Non-Waterfront",
+        "code": "FDSCamp\/A2\/108",
+        "fullName": "Fort De Soto Campground Site 108 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A2\/108",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61501",
+        "name": "Site 109 - Waterfront",
+        "code": "FDSCamp\/A2\/109",
+        "fullName": "Fort De Soto Campground Site 109 - Waterfront",
+        "codeAbbr": "FDSCamp\/A2\/109",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "75443",
+        "name": "Site 110 - Non-Waterfront",
+        "code": "FDSCamp\/A2\/110",
+        "fullName": "Fort De Soto Campground Site 110 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A2\/110",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61502",
+        "name": "Site 111 - Waterfront",
+        "code": "FDSCamp\/A2\/111",
+        "fullName": "Fort De Soto Campground Site 111 - Waterfront",
+        "codeAbbr": "FDSCamp\/A2\/111",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61528",
+        "name": "Site 112 - Non-Waterfront",
+        "code": "FDSCamp\/A2\/112",
+        "fullName": "Fort De Soto Campground Site 112 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A2\/112",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61503",
+        "name": "Site 113 - Waterfront",
+        "code": "FDSCamp\/A2\/113",
+        "fullName": "Fort De Soto Campground Site 113 - Waterfront",
+        "codeAbbr": "FDSCamp\/A2\/113",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61529",
+        "name": "Site 114 - Non-Waterfront",
+        "code": "FDSCamp\/A2\/114",
+        "fullName": "Fort De Soto Campground Site 114 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A2\/114",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61504",
+        "name": "Site 115 - Waterfront",
+        "code": "FDSCamp\/A2\/115",
+        "fullName": "Fort De Soto Campground Site 115 - Waterfront",
+        "codeAbbr": "FDSCamp\/A2\/115",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61508",
+        "name": "Site 116 - Waterfront",
+        "code": "FDSCamp\/A2\/116",
+        "fullName": "Fort De Soto Campground Site 116 - Waterfront",
+        "codeAbbr": "FDSCamp\/A2\/116",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61532",
+        "name": "Site 117 - Non-Waterfront",
+        "code": "FDSCamp\/A2\/117",
+        "fullName": "Fort De Soto Campground Site 117 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A2\/117",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61530",
+        "name": "Site 118 - Non-Waterfront",
+        "code": "FDSCamp\/A2\/118",
+        "fullName": "Fort De Soto Campground Site 118 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A2\/118",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61534",
+        "name": "Site 119 - Non-Waterfront",
+        "code": "FDSCamp\/A2\/119",
+        "fullName": "Fort De Soto Campground Site 119 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A2\/119",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61539",
+        "name": "Site 120 - Non-Waterfront",
+        "code": "FDSCamp\/A2\/120",
+        "fullName": "Fort De Soto Campground Site 120 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A2\/120",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61546",
+        "name": "Site 121 - Non-Waterfront",
+        "code": "FDSCamp\/A2\/121",
+        "fullName": "Fort De Soto Campground Site 121 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A2\/121",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61547",
+        "name": "Site 122 - Non-Waterfront",
+        "code": "FDSCamp\/A2\/122",
+        "fullName": "Fort De Soto Campground Site 122 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A2\/122",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61548",
+        "name": "Site 123 - Non-Waterfront",
+        "code": "FDSCamp\/A2\/123",
+        "fullName": "Fort De Soto Campground Site 123 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A2\/123",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61550",
+        "name": "Site 124 - Non-Waterfront",
+        "code": "FDSCamp\/A2\/124",
+        "fullName": "Fort De Soto Campground Site 124 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A2\/124",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61555",
+        "name": "Site 125 - Non-Waterfront",
+        "code": "FDSCamp\/A2\/125",
+        "fullName": "Fort De Soto Campground Site 125 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A2\/125",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61558",
+        "name": "Site 126 - Non-Waterfront",
+        "code": "FDSCamp\/A2\/126",
+        "fullName": "Fort De Soto Campground Site 126 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A2\/126",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61560",
+        "name": "Site 128 - Waterfront",
+        "code": "FDSCamp\/A2\/128",
+        "fullName": "Fort De Soto Campground Site 128 - Waterfront",
+        "codeAbbr": "FDSCamp\/A2\/128",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61565",
+        "name": "Site 131 - Waterfront",
+        "code": "FDSCamp\/A2\/131",
+        "fullName": "Fort De Soto Campground Site 131 - Waterfront",
+        "codeAbbr": "FDSCamp\/A2\/131",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61567",
+        "name": "Site 132 - Waterfront",
+        "code": "FDSCamp\/A2\/132",
+        "fullName": "Fort De Soto Campground Site 132 - Waterfront",
+        "codeAbbr": "FDSCamp\/A2\/132",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61568",
+        "name": "Site 133 - Waterfront",
+        "code": "FDSCamp\/A2\/133",
+        "fullName": "Fort De Soto Campground Site 133 - Waterfront",
+        "codeAbbr": "FDSCamp\/A2\/133",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61571",
+        "name": "Site 134 - Waterfront",
+        "code": "FDSCamp\/A2\/134",
+        "fullName": "Fort De Soto Campground Site 134 - Waterfront",
+        "codeAbbr": "FDSCamp\/A2\/134",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61573",
+        "name": "Site 135 - Waterfront",
+        "code": "FDSCamp\/A2\/135",
+        "fullName": "Fort De Soto Campground Site 135 - Waterfront",
+        "codeAbbr": "FDSCamp\/A2\/135",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61574",
+        "name": "Site 136 - Waterfront",
+        "code": "FDSCamp\/A2\/136",
+        "fullName": "Fort De Soto Campground Site 136 - Waterfront",
+        "codeAbbr": "FDSCamp\/A2\/136",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61575",
+        "name": "Site 137 - Waterfront",
+        "code": "FDSCamp\/A2\/137",
+        "fullName": "Fort De Soto Campground Site 137 - Waterfront",
+        "codeAbbr": "FDSCamp\/A2\/137",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61576",
+        "name": "Site 138 - Waterfront",
+        "code": "FDSCamp\/A2\/138",
+        "fullName": "Fort De Soto Campground Site 138 - Waterfront",
+        "codeAbbr": "FDSCamp\/A2\/138",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61577",
+        "name": "Site 141 - Waterfront",
+        "code": "FDSCamp\/A2\/141",
+        "fullName": "Fort De Soto Campground Site 141 - Waterfront",
+        "codeAbbr": "FDSCamp\/A2\/141",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61581",
+        "name": "Site 142 - Waterfront",
+        "code": "FDSCamp\/A2\/142",
+        "fullName": "Fort De Soto Campground Site 142 - Waterfront",
+        "codeAbbr": "FDSCamp\/A2\/142",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61582",
+        "name": "Site 143 - Waterfront",
+        "code": "FDSCamp\/A2\/143",
+        "fullName": "Fort De Soto Campground Site 143 - Waterfront",
+        "codeAbbr": "FDSCamp\/A2\/143",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61584",
+        "name": "Site 145 - Waterfront",
+        "code": "FDSCamp\/A2\/145",
+        "fullName": "Fort De Soto Campground Site 145 - Waterfront",
+        "codeAbbr": "FDSCamp\/A2\/145",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61585",
+        "name": "Site 146 - Waterfront",
+        "code": "FDSCamp\/A2\/146",
+        "fullName": "Fort De Soto Campground Site 146 - Waterfront",
+        "codeAbbr": "FDSCamp\/A2\/146",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61586",
+        "name": "Site 148 - Waterfront",
+        "code": "FDSCamp\/A2\/148",
+        "fullName": "Fort De Soto Campground Site 148 - Waterfront",
+        "codeAbbr": "FDSCamp\/A2\/148",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61587",
+        "name": "Site 149 - Waterfront",
+        "code": "FDSCamp\/A2\/149",
+        "fullName": "Fort De Soto Campground Site 149 - Waterfront",
+        "codeAbbr": "FDSCamp\/A2\/149",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61588",
+        "name": "Site 150 - Waterfront",
+        "code": "FDSCamp\/A2\/150",
+        "fullName": "Fort De Soto Campground Site 150 - Waterfront",
+        "codeAbbr": "FDSCamp\/A2\/150",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61589",
+        "name": "Site 151 - Waterfront",
+        "code": "FDSCamp\/A2\/151",
+        "fullName": "Fort De Soto Campground Site 151 - Waterfront",
+        "codeAbbr": "FDSCamp\/A2\/151",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61591",
+        "name": "Site 152 - Waterfront",
+        "code": "FDSCamp\/A2\/152",
+        "fullName": "Fort De Soto Campground Site 152 - Waterfront",
+        "codeAbbr": "FDSCamp\/A2\/152",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61592",
+        "name": "Site 153 - Waterfront",
+        "code": "FDSCamp\/A2\/153",
+        "fullName": "Fort De Soto Campground Site 153 - Waterfront",
+        "codeAbbr": "FDSCamp\/A2\/153",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61602",
+        "name": "Site 154 - Non-Waterfront",
+        "code": "FDSCamp\/A2\/154",
+        "fullName": "Fort De Soto Campground Site 154 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A2\/154",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61603",
+        "name": "Site 155 - Non-Waterfront",
+        "code": "FDSCamp\/A2\/155",
+        "fullName": "Fort De Soto Campground Site 155 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A2\/155",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61604",
+        "name": "Site 156 - Non-Waterfront",
+        "code": "FDSCamp\/A2\/156",
+        "fullName": "Fort De Soto Campground Site 156 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A2\/156",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61605",
+        "name": "Site 157 - Non-Waterfront",
+        "code": "FDSCamp\/A2\/157",
+        "fullName": "Fort De Soto Campground Site 157 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A2\/157",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61606",
+        "name": "Site 158 - Non-Waterfront",
+        "code": "FDSCamp\/A2\/158",
+        "fullName": "Fort De Soto Campground Site 158 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A2\/158",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61608",
+        "name": "Site 160 - Non-Waterfront",
+        "code": "FDSCamp\/A2\/160",
+        "fullName": "Fort De Soto Campground Site 160 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A2\/160",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61609",
+        "name": "Site 161 - Non-Waterfront",
+        "code": "FDSCamp\/A2\/161",
+        "fullName": "Fort De Soto Campground Site 161 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A2\/161",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61610",
+        "name": "Site 162 - Non-Waterfront",
+        "code": "FDSCamp\/A2\/162",
+        "fullName": "Fort De Soto Campground Site 162 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A2\/162",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61611",
+        "name": "Site 163 - Non-Waterfront",
+        "code": "FDSCamp\/A2\/163",
+        "fullName": "Fort De Soto Campground Site 163 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A2\/163",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61612",
+        "name": "Site 164 - Non-Waterfront",
+        "code": "FDSCamp\/A2\/164",
+        "fullName": "Fort De Soto Campground Site 164 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A2\/164",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61640",
+        "name": "Site 165 - Waterfront",
+        "code": "FDSCamp\/A3\/165",
+        "fullName": "Fort De Soto Campground Site 165 - Waterfront",
+        "codeAbbr": "FDSCamp\/A3\/165",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61641",
+        "name": "Site 166 - Waterfront",
+        "code": "FDSCamp\/A3\/166",
+        "fullName": "Fort De Soto Campground Site 166 - Waterfront",
+        "codeAbbr": "FDSCamp\/A3\/166",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "62955",
+        "name": "Site 168 - Waterfront",
+        "code": "FDSCamp\/A3\/168",
+        "fullName": "Fort De Soto Campground Site 168 - Waterfront",
+        "codeAbbr": "FDSCamp\/A3\/168",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "62958",
+        "name": "Site 170 - Waterfront",
+        "code": "FDSCamp\/A3\/170",
+        "fullName": "Fort De Soto Campground Site 170 - Waterfront",
+        "codeAbbr": "FDSCamp\/A3\/170",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61629",
+        "name": "Site 171 - Non-Waterfront",
+        "code": "FDSCamp\/A3\/171",
+        "fullName": "Fort De Soto Campground Site 171 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A3\/171",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "62959",
+        "name": "Site 172 - Waterfront",
+        "code": "FDSCamp\/A3\/172",
+        "fullName": "Fort De Soto Campground Site 172 - Waterfront",
+        "codeAbbr": "FDSCamp\/A3\/172",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "62961",
+        "name": "Site 174 - Waterfront",
+        "code": "FDSCamp\/A3\/174",
+        "fullName": "Fort De Soto Campground Site 174 - Waterfront",
+        "codeAbbr": "FDSCamp\/A3\/174",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "62962",
+        "name": "Site 176 - Waterfront",
+        "code": "FDSCamp\/A3\/176",
+        "fullName": "Fort De Soto Campground Site 176 - Waterfront",
+        "codeAbbr": "FDSCamp\/A3\/176",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61632",
+        "name": "Site 177 - Non-Waterfront",
+        "code": "FDSCamp\/A3\/177",
+        "fullName": "Fort De Soto Campground Site 177 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A3\/177",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "62963",
+        "name": "Site 178 - Waterfront",
+        "code": "FDSCamp\/A3\/178",
+        "fullName": "Fort De Soto Campground Site 178 - Waterfront",
+        "codeAbbr": "FDSCamp\/A3\/178",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "62965",
+        "name": "Site 180 - Waterfront",
+        "code": "FDSCamp\/A3\/180",
+        "fullName": "Fort De Soto Campground Site 180 - Waterfront",
+        "codeAbbr": "FDSCamp\/A3\/180",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61634",
+        "name": "Site 181 - Non-Waterfront",
+        "code": "FDSCamp\/A3\/181",
+        "fullName": "Fort De Soto Campground Site 181 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A3\/181",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "62966",
+        "name": "Site 183 - Waterfront",
+        "code": "FDSCamp\/A3\/183",
+        "fullName": "Fort De Soto Campground Site 183 - Waterfront",
+        "codeAbbr": "FDSCamp\/A3\/183",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "62967",
+        "name": "Site 184 - Waterfront",
+        "code": "FDSCamp\/A3\/184",
+        "fullName": "Fort De Soto Campground Site 184 - Waterfront",
+        "codeAbbr": "FDSCamp\/A3\/184",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "62968",
+        "name": "Site 185 - Waterfront",
+        "code": "FDSCamp\/A3\/185",
+        "fullName": "Fort De Soto Campground Site 185 - Waterfront",
+        "codeAbbr": "FDSCamp\/A3\/185",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "62969",
+        "name": "Site 186 - Waterfront",
+        "code": "FDSCamp\/A3\/186",
+        "fullName": "Fort De Soto Campground Site 186 - Waterfront",
+        "codeAbbr": "FDSCamp\/A3\/186",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "62970",
+        "name": "Site 188 - Waterfront",
+        "code": "FDSCamp\/A3\/188",
+        "fullName": "Fort De Soto Campground Site 188 - Waterfront",
+        "codeAbbr": "FDSCamp\/A3\/188",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "62972",
+        "name": "Site 190 - Waterfront",
+        "code": "FDSCamp\/A3\/190",
+        "fullName": "Fort De Soto Campground Site 190 - Waterfront",
+        "codeAbbr": "FDSCamp\/A3\/190",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "62973",
+        "name": "Site 192 - Waterfront",
+        "code": "FDSCamp\/A3\/192",
+        "fullName": "Fort De Soto Campground Site 192 - Waterfront",
+        "codeAbbr": "FDSCamp\/A3\/192",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61639",
+        "name": "Site 193 - Non-Waterfront",
+        "code": "FDSCamp\/A3\/193",
+        "fullName": "Fort De Soto Campground Site 193 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A3\/193",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "62975",
+        "name": "Site 194 - Waterfront",
+        "code": "FDSCamp\/A3\/194",
+        "fullName": "Fort De Soto Campground Site 194 - Waterfront",
+        "codeAbbr": "FDSCamp\/A3\/194",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "62976",
+        "name": "Site 195 - Waterfront",
+        "code": "FDSCamp\/A3\/195",
+        "fullName": "Fort De Soto Campground Site 195 - Waterfront",
+        "codeAbbr": "FDSCamp\/A3\/195",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "62977",
+        "name": "Site 196 - Waterfront",
+        "code": "FDSCamp\/A3\/196",
+        "fullName": "Fort De Soto Campground Site 196 - Waterfront",
+        "codeAbbr": "FDSCamp\/A3\/196",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "62978",
+        "name": "Site 197 - Waterfront",
+        "code": "FDSCamp\/A3\/197",
+        "fullName": "Fort De Soto Campground Site 197 - Waterfront",
+        "codeAbbr": "FDSCamp\/A3\/197",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "62979",
+        "name": "Site 198 - Waterfront",
+        "code": "FDSCamp\/A3\/198",
+        "fullName": "Fort De Soto Campground Site 198 - Waterfront",
+        "codeAbbr": "FDSCamp\/A3\/198",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "62980",
+        "name": "Site 199 - Waterfront",
+        "code": "FDSCamp\/A3\/199",
+        "fullName": "Fort De Soto Campground Site 199 - Waterfront",
+        "codeAbbr": "FDSCamp\/A3\/199",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "62981",
+        "name": "Site 200 - Waterfront",
+        "code": "FDSCamp\/A3\/200",
+        "fullName": "Fort De Soto Campground Site 200 - Waterfront",
+        "codeAbbr": "FDSCamp\/A3\/200",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "62982",
+        "name": "Site 201 - Waterfront",
+        "code": "FDSCamp\/A3\/201",
+        "fullName": "Fort De Soto Campground Site 201 - Waterfront",
+        "codeAbbr": "FDSCamp\/A3\/201",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "62994",
+        "name": "Site 202 - Waterfront",
+        "code": "FDSCamp\/A3\/202",
+        "fullName": "Fort De Soto Campground Site 202 - Waterfront",
+        "codeAbbr": "FDSCamp\/A3\/202",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "62995",
+        "name": "Site 203 - Waterfront",
+        "code": "FDSCamp\/A3\/203",
+        "fullName": "Fort De Soto Campground Site 203 - Waterfront",
+        "codeAbbr": "FDSCamp\/A3\/203",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "62996",
+        "name": "Site 204 - Waterfront",
+        "code": "FDSCamp\/A3\/204",
+        "fullName": "Fort De Soto Campground Site 204 - Waterfront",
+        "codeAbbr": "FDSCamp\/A3\/204",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "62997",
+        "name": "Site 205 - Waterfront",
+        "code": "FDSCamp\/A3\/205",
+        "fullName": "Fort De Soto Campground Site 205 - Waterfront",
+        "codeAbbr": "FDSCamp\/A3\/205",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "62998",
+        "name": "Site 206 - Waterfront",
+        "code": "FDSCamp\/A3\/206",
+        "fullName": "Fort De Soto Campground Site 206 - Waterfront",
+        "codeAbbr": "FDSCamp\/A3\/206",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "62999",
+        "name": "Site 207 - Waterfront",
+        "code": "FDSCamp\/A3\/207",
+        "fullName": "Fort De Soto Campground Site 207 - Waterfront",
+        "codeAbbr": "FDSCamp\/A3\/207",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "63000",
+        "name": "Site 208 - Waterfront",
+        "code": "FDSCamp\/A3\/208",
+        "fullName": "Fort De Soto Campground Site 208 - Waterfront",
+        "codeAbbr": "FDSCamp\/A3\/208",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "63001",
+        "name": "Site 209 - Waterfront",
+        "code": "FDSCamp\/A3\/209",
+        "fullName": "Fort De Soto Campground Site 209 - Waterfront",
+        "codeAbbr": "FDSCamp\/A3\/209",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "63002",
+        "name": "Site 210 - Waterfront",
+        "code": "FDSCamp\/A3\/210",
+        "fullName": "Fort De Soto Campground Site 210 - Waterfront",
+        "codeAbbr": "FDSCamp\/A3\/210",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "63003",
+        "name": "Site 211 - Waterfront",
+        "code": "FDSCamp\/A3\/211",
+        "fullName": "Fort De Soto Campground Site 211 - Waterfront",
+        "codeAbbr": "FDSCamp\/A3\/211",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "63004",
+        "name": "Site 212 - Waterfront",
+        "code": "FDSCamp\/A3\/212",
+        "fullName": "Fort De Soto Campground Site 212 - Waterfront",
+        "codeAbbr": "FDSCamp\/A3\/212",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "63005",
+        "name": "Site 213 - Waterfront",
+        "code": "FDSCamp\/A3\/213",
+        "fullName": "Fort De Soto Campground Site 213 - Waterfront",
+        "codeAbbr": "FDSCamp\/A3\/213",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "63007",
+        "name": "Site 214 - Waterfront",
+        "code": "FDSCamp\/A3\/214",
+        "fullName": "Fort De Soto Campground Site 214 - Waterfront",
+        "codeAbbr": "FDSCamp\/A3\/214",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "63008",
+        "name": "Site 215 - Waterfront",
+        "code": "FDSCamp\/A3\/215",
+        "fullName": "Fort De Soto Campground Site 215 - Waterfront",
+        "codeAbbr": "FDSCamp\/A3\/215",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "63010",
+        "name": "Site 216 - Waterfront",
+        "code": "FDSCamp\/A3\/216",
+        "fullName": "Fort De Soto Campground Site 216 - Waterfront",
+        "codeAbbr": "FDSCamp\/A3\/216",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "63016",
+        "name": "Site 217 - Waterfront",
+        "code": "FDSCamp\/A3\/217",
+        "fullName": "Fort De Soto Campground Site 217 - Waterfront",
+        "codeAbbr": "FDSCamp\/A3\/217",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "63017",
+        "name": "Site 218 - Waterfront",
+        "code": "FDSCamp\/A3\/218",
+        "fullName": "Fort De Soto Campground Site 218 - Waterfront",
+        "codeAbbr": "FDSCamp\/A3\/218",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "63018",
+        "name": "Site 219 - Waterfront",
+        "code": "FDSCamp\/A3\/219",
+        "fullName": "Fort De Soto Campground Site 219 - Waterfront",
+        "codeAbbr": "FDSCamp\/A3\/219",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "63020",
+        "name": "Site 221 - Waterfront",
+        "code": "FDSCamp\/A3\/221",
+        "fullName": "Fort De Soto Campground Site 221 - Waterfront",
+        "codeAbbr": "FDSCamp\/A3\/221",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61625",
+        "name": "Site 222 - Non-Waterfront",
+        "code": "FDSCamp\/A3\/222",
+        "fullName": "Fort De Soto Campground Site 222 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A3\/222",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "63021",
+        "name": "Site 223 - Waterfront",
+        "code": "FDSCamp\/A3\/223",
+        "fullName": "Fort De Soto Campground Site 223 - Waterfront",
+        "codeAbbr": "FDSCamp\/A3\/223",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61624",
+        "name": "Site 224 - Non-Waterfront",
+        "code": "FDSCamp\/A3\/224",
+        "fullName": "Fort De Soto Campground Site 224 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A3\/224",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "63024",
+        "name": "Site 225 - Waterfront",
+        "code": "FDSCamp\/A3\/225",
+        "fullName": "Fort De Soto Campground Site 225 - Waterfront",
+        "codeAbbr": "FDSCamp\/A3\/225",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61618",
+        "name": "Site 226 - Non-Waterfront",
+        "code": "FDSCamp\/A3\/226",
+        "fullName": "Fort De Soto Campground Site 226 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A3\/226",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "63025",
+        "name": "Site 227 - Waterfront",
+        "code": "FDSCamp\/A3\/227",
+        "fullName": "Fort De Soto Campground Site 227 - Waterfront",
+        "codeAbbr": "FDSCamp\/A3\/227",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "63026",
+        "name": "Site 228 - Waterfront",
+        "code": "FDSCamp\/A3\/228",
+        "fullName": "Fort De Soto Campground Site 228 - Waterfront",
+        "codeAbbr": "FDSCamp\/A3\/228",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "63027",
+        "name": "Site 229 - Waterfront",
+        "code": "FDSCamp\/A3\/229",
+        "fullName": "Fort De Soto Campground Site 229 - Waterfront",
+        "codeAbbr": "FDSCamp\/A3\/229",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "63028",
+        "name": "Site 230 - Waterfront",
+        "code": "FDSCamp\/A3\/230",
+        "fullName": "Fort De Soto Campground Site 230 - Waterfront",
+        "codeAbbr": "FDSCamp\/A3\/230",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "63030",
+        "name": "Site 231 - Waterfront",
+        "code": "FDSCamp\/A3\/231",
+        "fullName": "Fort De Soto Campground Site 231 - Waterfront",
+        "codeAbbr": "FDSCamp\/A3\/231",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "63032",
+        "name": "Site 232 - Waterfront",
+        "code": "FDSCamp\/A3\/232",
+        "fullName": "Fort De Soto Campground Site 232 - Waterfront",
+        "codeAbbr": "FDSCamp\/A3\/232",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "63033",
+        "name": "Site 233 - Waterfront",
+        "code": "FDSCamp\/A3\/233",
+        "fullName": "Fort De Soto Campground Site 233 - Waterfront",
+        "codeAbbr": "FDSCamp\/A3\/233",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61617",
+        "name": "Site 234 - Non-Waterfront",
+        "code": "FDSCamp\/A3\/234",
+        "fullName": "Fort De Soto Campground Site 234 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A3\/234",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61616",
+        "name": "Site 235 - Non-Waterfront",
+        "code": "FDSCamp\/A3\/235",
+        "fullName": "Fort De Soto Campground Site 235 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A3\/235",
+        "incrementMinutes": "30"
+      },
+      {
+        "id": "61615",
+        "name": "Site 236 - Non-Waterfront",
+        "code": "FDSCamp\/A3\/236",
+        "fullName": "Fort De Soto Campground Site 236 - Non-Waterfront",
+        "codeAbbr": "FDSCamp\/A3\/236",
+        "incrementMinutes": "30"
+      }
+    ],
+    "hasBlockRate": true,
+    "minDuration": -7200
+  },
+  "errors": []
+}

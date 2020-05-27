@@ -14,10 +14,9 @@
 #       methods: [:get, :post, :put, :patch, :delete, :options, :head]
 #   end
 # end
-
 Rails.application.config.middleware.insert_before 0, Rack::Cors, debug: true, logger: (-> { Rails.logger }) do
   allow do
-    origins 'localhost:3000', 'reserve-beta.wanderinglabs.com.s3-website-us-east-1.amazonaws.com', 'reserve-beta.wanderinglabs.com', 'reserve.wanderinglabs.com.s3-website-us-east-1.amazonaws.com', 'reserve.wanderinglabs.com'
+    origins 'localhost:3000','localhost:3001', 'reserve-beta.wanderinglabs.com.s3-website-us-east-1.amazonaws.com', 'reserve-beta.wanderinglabs.com', 'reserve.wanderinglabs.com.s3-website-us-east-1.amazonaws.com', 'reserve.wanderinglabs.com'
 
     resource '*',
              headers: :any,
