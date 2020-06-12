@@ -11,19 +11,16 @@ const scraperQueue = async function scraperQueue() {
   if (data !== null) {
     const jsonData = JSON.parse(data[1]);
     try {
-      console.log('Start Scrape..');
+      console.log(jsonData);
       const scraper = new Scraper(jsonData);
       const logMsg = await scraper.scrape();
       console.log({ ...logMsg, request: jsonData });
       logger.log({ ...logMsg, request: jsonData });
     } catch (err) {
       console.log('FATAL', err);
-      logger.error({ ...err, request: jsonData });
     }
   }
-  setTimeout(() => {
-    scraperQueue();
-  }, 500);
+  scraperQueue();
 };
 
 scraperQueue();

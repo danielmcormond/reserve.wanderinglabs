@@ -21,7 +21,9 @@ const scraperQueue = async function scraperQueue() {
       logger.error({ ...err, request: jsonData });
     }
   }
-  scraperQueue();
+  setTimeout(() => {
+    scraperQueue();
+  }, 500);
 };
 
 scraperQueue();
