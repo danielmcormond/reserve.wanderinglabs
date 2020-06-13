@@ -1,18 +1,24 @@
-import xml2js from 'xml2js';
+import moment from 'moment';
 
 export default async function parse(body) {
-  return new Promise((resolve, reject) => {
-    xml2js.parseString(body, (err, result) => {
-      if (err) {
-        reject(err);
-      }
+  return new Promise((resolve) => {
+    const json = JSON.parse(body);
 
-      const availableResult = result.resultset.result.filter(
-        filterObject => filterObject.$.availabilityStatus === 'Y'
-          && filterObject.$.reservationChannel === 'Web Reservable',
-      );
-      const availableSiteIds = availableResult.map(mapObject => mapObject.$.SiteId);
-      resolve(availableSiteIds);
+    // console.log(json)
+    const final = [];
+
+    json.records.forEach((record) => {
+      record.availabilityGrid.forEach((avail) => {
+        if (avail.status === 'AVAILABLE') {
+          const formattedDate = moment(avail.date, "YYYY-MM-DD").format(
+            "MM/DD/YYYY"
+          );
+
+          final.push([record.id, formattedDate]);
+        }
+      });
     });
+
+    resolve(final);
   });
 }

@@ -36,19 +36,40 @@ export default class Scraper {
   async scrape() {
     const hrstart = process.hrtime();
 
+    const session = await this.connection.setSession();
+
+    const numSites = session.body.match(/Sites 1 - 20 of ([0-9]*)/)[1];
+    const pages = parseInt(numSites / 50, 10) + 1;
+    console.log('ALL', numSites, pages);
+
+    const timePeriodsPages = [];
+
+    this.timePeriods.forEach((timePeriod) => {
+      for (let page = 0; page < pages; page++) {
+        timePeriodsPages.push([timePeriod, page]);
+      }
+    });
+
     const results = await BluebirdPromise.map(
-      this.timePeriods,
-      scrapeDate => this.scrapeParseDate(scrapeDate),
+      timePeriodsPages,
+      scrapeDatePage => this.scrapeParseDate(scrapeDatePage),
       { concurrency: this.concurrency },
     );
+    const resultPairs = {};
 
-    const filteredResults = results.filter(result => result[1].length > 0);
-    const resultsHash = fromPairs(filteredResults);
+    results.forEach((result) => {
+      result.forEach((availability) => {
+        resultPairs[availability[1]] = resultPairs[availability[1]] || [];
+        if (resultPairs[availability[1]].indexOf(availability[0]) < 0) {
+          resultPairs[availability[1]].push(availability[0]);
+        }
+      });
+    });
 
-    const resultsJson = this.resultsToJson(resultsHash);
+    const resultsJson = `{ "results": ${JSON.stringify(resultPairs, Object.keys(resultPairs).sort())} }`;
+
     const md5 = createHash(resultsJson);
 
-    console.log(this.hash, md5)
     if (this.hash === md5) {
       const delta = process.hrtime(hrstart);
       const timing = delta[0] + delta[1] / 1e9;
@@ -63,10 +84,10 @@ export default class Scraper {
     return Promise.resolve({ status: 'changes', timing });
   }
 
-  async scrapeParseDate(scrapeDate) {
-    const scrapeResult = await this.connection.get(scrapeDate);
-    const result = await parse(scrapeResult.body);
-    return Promise.resolve([scrapeDate, result]);
+  async scrapeParseDate(scrapeDatePage) {
+    const scrapeResult = await this.connection.get(scrapeDatePage[0], scrapeDatePage[1]);
+    const result = parse(scrapeResult.body);
+    return Promise.resolve(result);
   }
 
   resultsToJson(filteredResults) {

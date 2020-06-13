@@ -10,7 +10,9 @@ export default class Connection {
     this.contractCode = contractCode;
     this.parkId = parkId;
 
+    const jar = request.jar();
     this.rp = request.defaults({
+      jar,
       headers,
       followRedirect: false,
       resolveWithFullResponse: true,
@@ -22,35 +24,21 @@ export default class Connection {
     this.base = 'https://www.reserveamerica.com';
   }
 
-  async get(scrapeDate) {
-    const path = `/campsiteSearch.do?contractCode=${this.contractCode}&parkId=${
-      this.parkId
-    }&arvdate=${scrapeDate}&lengthOfStay=1&xml=true`;
+  async setSession() {
+    const options = {
+      url: `https://www.reserveamerica.com/explore/got-to-get-that-session-cookie/${this.contractCode}/${this.parkId}/campsites`,
+    };
 
+    return this.rp(options);
+  }
+
+  async get(scrapeDate, page) {
+    const path = `/jaxrs-json/products/${this.contractCode}/${this.parkId}?rcp=${page}&rcs=50&gad=${scrapeDate}&lsy=1&next=false`
     const options = {
       url: `${this.base}${path}`,
       method: 'GET',
     };
 
     return this.rp(options);
-
-    // try {
-    //   const resp = await this.rp(options);
-    //   console.log('resp', scrapeDate);
-    //   return Promise.resolve(resp);
-    // } catch (err) {
-    //   try {
-    //     const resp = await this.rp(options);
-    //     console.log('2nd resp', scrapeDate);
-    //     return Promise.resolve(resp);
-    //   } catch (err) {
-    //     console.log('Error');
-    //   }
-    // }
-    // return this.rp(options).then((response) => {
-    //   console.log(scrapeDate)
-    //   // console.log('Request time in ms', response.elapsedTime);
-    //   return Promise.resolve(response)
-    // });
   }
 }
