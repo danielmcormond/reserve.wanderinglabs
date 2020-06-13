@@ -15,6 +15,6 @@ class Reserve::Rec1
   end
 
   def site_url
-    "https://public.co.pinellas.fl.us/parks/ItemAttributeResults.jsp?riName=#{site.ext_site_id}&showDatesAvailable=on"
+    "https://secure.rec1.com/FL/pinellas-county-fl/catalog/index"
   end
 end
