@@ -9,7 +9,7 @@ module InitialImport::Rec1
     def self.import(facility, reset = false)
       delete_all(facility) if reset
 
-      data_hash = JSON.parse(File.read('/Users/tiwatson/Development/wandering-labs/reserve_wanderinglabs/rails/app/services/initial_import/rec1/sites.json'))
+      data_hash = JSON.parse(File.read('/home/deploy/rails.reserve.wanderinglabs/current/app/services/initial_import/rec1/sites.json'))
 
       data_hash['location']['facilities'].each do |site_hash|
         new(facility, site_hash).import

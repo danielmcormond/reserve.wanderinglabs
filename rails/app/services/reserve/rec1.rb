@@ -1,4 +1,4 @@
-class Reserve::PinellasCounty
+class Reserve::Rec1
   attr_reader :availability_match, :site, :availability_request
 
   def initialize(availability_match)
@@ -9,7 +9,7 @@ class Reserve::PinellasCounty
 
   def params
     {
-      type: 'PinellasCounty',
+      type: 'Rec1',
       site_url: site_url,
     }
   end

@@ -10,7 +10,7 @@ services:
   rec1:
     build:
       context: .
-      dockerfile: ./pinellas_county/Dockerfile
+      dockerfile: ./rec1/Dockerfile
     image: ${DOCKER_REGISTRY}/wanderinglabs/scraper-rec1
 
   recreation-gov:

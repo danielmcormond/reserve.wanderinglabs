@@ -14,8 +14,8 @@ class ReserveUrl
       Reserve::RecreationGovBa.new(availability_match).params
     elsif availability_match.site.facility.is_a?(Facility::Camis)
       Reserve::Camis.new(availability_match).params
-    elsif availability_match.site.facility.is_a?(Facility::PinellasCounty)
-      Reserve::PinellasCounty.new(availability_match).params
+    elsif availability_match.site.facility.is_a?(Facility::Rec1)
+      Reserve::Rec1.new(availability_match).params
     else
       Reserve::ReserveAmerica.new(availability_match).params
     end
