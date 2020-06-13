@@ -8,16 +8,15 @@ import dateRange from 'scraper-wandering-labs-shared/src/dateRange';
 
 import Connection from './connection';
 
-import Parse from './parse';
+import parse from './parse';
 import fromPairs from './fromPairs';
 
 export default class Scraper {
   constructor({
-    facilityId, contractCode, parkId, startDate, endDate, hash, concurrency,
+    facilityId, siteIds, startDate, endDate, hash, concurrency,
   }) {
     this.facilityId = facilityId;
-    this.contractCode = contractCode;
-    this.parkId = parkId;
+    this.siteIds = siteIds;
     this.startDate = moment(startDate, 'MM/DD/YYYY');
     this.endDate = moment(endDate, 'MM/DD/YYYY');
     this.hash = hash;
@@ -39,8 +38,19 @@ export default class Scraper {
 
     const results = await this.scrapeParseDate();
 
-    const filteredResults = results.filter(result => result[1].length > 0);
-    const resultsJson = this.resultsToJson(filteredResults);
+    const resultPairs = {};
+
+    results.forEach((availability) => {
+      resultPairs[availability[1]] = resultPairs[availability[1]] || [];
+      if (resultPairs[availability[1]].indexOf(availability[0]) < 0) {
+        resultPairs[availability[1]].push(availability[0]);
+      }
+    });
+
+    console.log(resultPairs)
+
+    const resultsJson = `{ "results": ${JSON.stringify(resultPairs, Object.keys(resultPairs).sort())} }`;
+
     const md5 = createHash(resultsJson);
 
     if (this.hash === md5) {
@@ -58,17 +68,9 @@ export default class Scraper {
   }
 
   async scrapeParseDate() {
-    const scrapeResult = await this.connection.post(this.startDate, this.endDate, [63030]);
-    const result = await new Parse(scrapeResult.body).do();
+    const scrapeResult = await this.connection.post(this.startDate, this.endDate, this.siteIds);
+    const result = await parse(scrapeResult.body);
     return Promise.resolve(result);
-  }
-
-  resultsToJson(filteredResults) {
-    return JSON.stringify({
-      results: filteredResults,
-      startDate: this.startDate.format('MM/DD/YYYY'),
-      endDate: this.endDate.format('MM/DD/YYYY'),
-    });
   }
 
   get filename() {

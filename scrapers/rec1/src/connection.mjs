@@ -4,6 +4,8 @@ const headers = {
   'user-agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.32 Safari/537.36'
 };
 
+process.env.UV_THREADPOOL_SIZE = 128;
+
 export default class Connection {
   constructor(id) {
     this.rp = rp.defaults({
@@ -11,8 +13,10 @@ export default class Connection {
       followRedirect: false,
       resolveWithFullResponse: true,
       time: true,
-      timeout: 3000,
-      forever: true
+      timeout: 30000,
+      forever: true,
+      agent: false,
+      pool: {maxSockets: 100}
     });
   }
 
