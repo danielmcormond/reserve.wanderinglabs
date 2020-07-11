@@ -14,11 +14,11 @@ export default class Connection {
       timeout: 3000,
       forever: true
     });
-    this.baseUrl = `https://www.recreation.gov/api/camps/availability/campground/${id}`;
+    this.baseUrl = `https://www.recreation.gov/api/camps/availability/campground/${id}/month`;
   }
 
-  async availability(startDate, endDate) {
-    let query = `start_date=${startDate.format('YYYY-MM-DD')}T00%3A00%3A00.000Z&end_date=${endDate.format('YYYY-MM-DD')}T00%3A00%3A00.000Z`;
+  async availability(startDate) {
+    let query = `start_date=${startDate}T00%3A00%3A00.000Z`;
     const options = {
       url: `${this.baseUrl}?${query}`
     };

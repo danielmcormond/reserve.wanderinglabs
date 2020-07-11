@@ -18,6 +18,10 @@ services:
       context: .
       dockerfile: ./recreation_gov/Dockerfile
     image: ${DOCKER_REGISTRY}/wanderinglabs/scraper-recreation-gov
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "3"
 
   reserve-america:
     build:

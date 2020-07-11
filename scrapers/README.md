@@ -30,16 +30,12 @@ AWS cli is not install on production servers. Run this locally and paste results
 
 #### Deploying
 
-./deploy.sh recreation-gov 104.248.117.218
-./deploy.sh reserve-america 104.248.117.218
-./deploy.sh reserve-ca 104.248.117.218
+./deploy.sh recreation-gov 161.35.233.150
+./deploy.sh reserve-america 161.35.233.150
+./deploy.sh reserve-ca 161.35.233.150
 
-
-104.248.117.232
-161.35.96.242
-104.248.117.17
-104.248.117.156
-104.248.117.218
+161.35.233.150
+161.35.233.151
 
 
 #### All together now
@@ -48,11 +44,11 @@ docker-compose build camis && docker-compose push camis && ./deploy.sh camis 167
 
 docker-compose build reserve-ca && docker-compose push reserve-ca && ./deploy.sh reserve-ca 165.22.157.78
 
-docker-compose build reserve-america && docker-compose push reserve-america && ./deploy.sh reserve-america 167.99.153.28
+docker-compose build reserve-america && docker-compose push reserve-america && ./deploy.sh reserve-america 104.248.117.232
 
 docker-compose build recreation-gov && docker-compose push recreation-gov && ./deploy.sh recreation-gov 167.99.153.28
 
-docker-compose build pinellas-county && docker-compose push pinellas-county && ./deploy.sh pinellas-county 167.99.153.28
+docker-compose build rec1 && docker-compose push rec1 && ./deploy.sh rec1 167.99.174.55
 
 
 

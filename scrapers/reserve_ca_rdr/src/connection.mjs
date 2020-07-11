@@ -20,6 +20,7 @@ export default class Connection {
   }
 
   async availability(startDate) {
+    const endDate = startDate.clone().add(21, 'day')
     const query = {
       "FacilityId": this.id,
       "UnitTypeId":0,
@@ -31,8 +32,8 @@ export default class Connection {
       "MinVehicleLength":0,
       "UnitCategoryId":0,
       "UnitTypesGroupIds":[],
-      "MinDate":"1/12/2020",
-      "MaxDate":"7/10/2020"
+      "MinDate": startDate.format("MM/DD/YYYY"),
+      "MaxDate": endDate.format("MM/DD/YYYY")
     }
 
     const options = {

@@ -5,7 +5,7 @@ class AvailabilityImportsController < ApplicationController
   end
 
   def scope
-    ai = AvailabilityImport.joins(:facility).includes(facility: [:sites])
+    ai = AvailabilityImport.includes(facility: [:agency]) #.joins(:facility).includes(facility: [:sites])
     ai = ai.where(facility_id: params[:facility_id]) if params[:facility_id]
     ai = ai.where(facilities: { type: filters }) unless filters.empty?
     ai
