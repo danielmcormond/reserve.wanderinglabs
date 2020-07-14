@@ -16,10 +16,12 @@ class AvailabilityImportSerializer < ActiveModel::Serializer
     return unless @instance_options[:expanded]
     return nil unless object.history_open
 
-    history_open_sites = Site.where(id: object.history_open[0..100].map { |h| h['site_id'] }).all
-    object.history_open[0..100].map do |h|
+    history = @instance_options[:site_id] ? object.history_open.select { |avail| avail['site_id'].to_i == @instance_options[:site_id].to_i } : object.history_open[0..100]
+    history_open_sites = Site.where(id: history.map { |h| h['site_id'] }).all
+    history.map do |h|
       {
-        site_id: history_open_sites.find { |s| s.id = h['site_id'] }&.site_num,
+        id: h['site_id'],
+        site_id: history_open_sites.find { |s| s.id == h['site_id'] }&.site_num,
         avail_date: h['avail_date'],
       }
     end
@@ -29,10 +31,12 @@ class AvailabilityImportSerializer < ActiveModel::Serializer
     return unless @instance_options[:expanded]
     return nil unless object.history_filled
 
-    history_filled_sites = Site.where(id: object.history_filled[0..100].map { |h| h['site_id'] }).all
-    object.history_filled[0..100].map do |h|
+    history = @instance_options[:site_id] ? object.history_filled.select { |avail| avail['site_id'].to_i == @instance_options[:site_id].to_i} : object.history_filled[0..100]
+    history_filled_sites = Site.where(id: history.map { |h| h['site_id'] }).all
+    history.map do |h|
       {
-        site_id: history_filled_sites.find { |s| s.id = h['site_id'] }&.site_num,
+        id: h['site_id'],
+        site_id: history_filled_sites.find { |s| s.id == h['site_id'] }&.site_num,
         avail_date: h['avail_date'],
       }
     end
