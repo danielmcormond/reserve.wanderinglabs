@@ -60,4 +60,8 @@ class User < ApplicationRecord
   def self.e(email)
     where(email: email).first
   end
+
+  def premium_welcome
+    NotifierMailer.premium_welcome(self).deliver!
+  end
 end

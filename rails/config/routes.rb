@@ -35,4 +35,6 @@ Rails.application.routes.draw do
     end
     resources :sites, only: %i[index]
   end
+
+  resources :sites, only: %i[show]
 end
