@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.30",
+    "@fortawesome/free-solid-svg-icons": "^5.14.0",
+    "@fortawesome/react-fontawesome": "^0.1.11",
     "axios": "^0.18.0",
     "connected-react-router": "^6.1.0",
     "debounce": "^1.2.0",
@@ -23,15 +26,22 @@
     "semantic-ui-react": "^0.84.0"
   },
   "devDependencies": {
+    "autoprefixer": "^9.8.5",
     "axios-mock-adapter": "^1.16.0",
     "enzyme": "^3.8.0",
     "enzyme-adapter-react-16": "^1.7.1",
+    "postcss-cli": "^7.1.1",
     "react-scripts": "3.4.0",
     "redux-mock-store": "^1.5.3",
-    "semantic-ui": "^2.4.2"
+    "semantic-ui": "^2.4.2",
+    "tailwindcss": "^1.5.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "build:tailwind": "postcss src/tailwind.css -o src/tailwind.generated.css",
+    "watch:tailwind": "postcss -w src/tailwind.css -o src/tailwind.generated.css",
+    "start": "run-p watch:tailwind start:react",
+    "start:react": "react-scripts start",
+    "prebuild": "npm run build:tailwind",
     "build": "react-scripts build",
     "ui-watch": "gulp --gulpfile ./src/semantic/gulpfile.js watch",
     "deploy-reserve": "react-scripts build && aws s3 sync --acl public-read build/ s3://reserve-beta.wanderinglabs.com",

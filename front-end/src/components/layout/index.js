@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Container, Sidebar } from "semantic-ui-react";
 
-import { Route } from "react-router";
+import { Route, Switch } from "react-router";
 import { ConnectedRouter } from "connected-react-router";
 
 import { history } from "../../utils/history";
@@ -31,12 +31,13 @@ import AvailabilityMatchClick from "../availabilityMatchClick/index";
 
 import PagePremium from "../pages/premium";
 import PageAbout from "../pages/about";
+import Realtime from "../Realtime/Index";
 
-const connected = connect(store => {
+const connected = connect((store) => {
   return {
-    isAuthenticated: store.session.isAuthenticated
+    isAuthenticated: store.session.isAuthenticated,
   };
-})
+});
 
 export class Layout extends Component {
   state = {};
@@ -44,7 +45,7 @@ export class Layout extends Component {
     super(props);
     this.handleSidebarToggle = this.handleSidebarToggle.bind(this);
     this.state = {
-      visibleSidebar: false
+      visibleSidebar: false,
     };
   }
 
@@ -56,66 +57,58 @@ export class Layout extends Component {
     const visibleSidebar = this.state.visibleSidebar;
     return (
       <ConnectedRouter history={history}>
-        <div>
-          <Nav onSidebarToggle={this.handleSidebarToggle} />
+        <Switch>
+          <Route exact path="/logs" component={Realtime} />
 
-          <Sidebar.Pushable>
-            <MenuBar visible={visibleSidebar} />
-            <Sidebar.Pusher className="mainContainer" as={Container}>
-              <FlashMessage />
-              <Route path="/new" component={RequestFormSteps} />
+          <Route path="/*">
+            <div>
+              <Nav onSidebarToggle={this.handleSidebarToggle} />
 
-              <Route
-                exact
-                path="/"
-                component={requireAuth(RequestAll, FrontPage)}
-              />
+              <Sidebar.Pushable>
+                <MenuBar visible={visibleSidebar} />
+                <Sidebar.Pusher className="mainContainer" as={Container}>
+                  <FlashMessage />
+                  <Route path="/new" component={RequestFormSteps} />
 
-              <Route path="/new" component={RequestForm} />
-              <Route path="/success" component={RequestSuccess} />
+                  <Route exact path="/" component={requireAuth(RequestAll, FrontPage)} />
 
-              <Route
-                path="/:uuid([a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12})"
-                component={RequestShow}
-              />
-              <Route
-                path="/:status([cag]{1})/:uuid([a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12})"
-                component={RequestShow}
-              />
+                  <Route path="/new" component={RequestForm} />
+                  <Route path="/success" component={RequestSuccess} />
 
-              <Route
-                exact
-                path="/:from([wet]{1})/:id"
-                component={AvailabilityMatchClick}
-              />
+                  <Route
+                    path="/:uuid([a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12})"
+                    component={RequestShow}
+                  />
+                  <Route
+                    path="/:status([cag]{1})/:uuid([a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12})"
+                    component={RequestShow}
+                  />
 
-              <Route exact path="/f/:id" component={Facility} />
-              <Route path="/f/:id/log" component={AvailabilityImports} />
+                  <Route exact path="/:from([wet]{1})/:id" component={AvailabilityMatchClick} />
 
-              <Route exact path="/log" component={AvailabilityImports} />
+                  <Route exact path="/f/:id" component={Facility} />
+                  <Route path="/f/:id/log" component={AvailabilityImports} />
 
-              <Route exact path="/sign-in" component={SessionNew} />
-              <Route exact path="/sign-in/:token" component={SessionCreate} />
-              <Route
-                exact
-                path="/sign-in/:token/settings"
-                render={props => (
-                  <SessionCreate {...props} redirect="/settings" />
-                )}
-              />
-              <Route exact path="/sign-out" component={SessionDestroy} />
+                  <Route exact path="/log" component={AvailabilityImports} />
 
-              <Route exact path="/premium" component={PagePremium} />
-              <Route exact path="/about" component={PageAbout} />
+                  <Route exact path="/sign-in" component={SessionNew} />
+                  <Route exact path="/sign-in/:token" component={SessionCreate} />
+                  <Route
+                    exact
+                    path="/sign-in/:token/settings"
+                    render={(props) => <SessionCreate {...props} redirect="/settings" />}
+                  />
+                  <Route exact path="/sign-out" component={SessionDestroy} />
 
-              <Route
-                exact
-                path="/settings"
-                component={requireAuth(UserSettings, SessionNew)}
-              />
-            </Sidebar.Pusher>
-          </Sidebar.Pushable>
-        </div>
+                  <Route exact path="/premium" component={PagePremium} />
+                  <Route exact path="/about" component={PageAbout} />
+
+                  <Route exact path="/settings" component={requireAuth(UserSettings, SessionNew)} />
+                </Sidebar.Pusher>
+              </Sidebar.Pushable>
+            </div>
+          </Route>
+        </Switch>
       </ConnectedRouter>
     );
   }

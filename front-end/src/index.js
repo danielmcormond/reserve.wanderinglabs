@@ -10,7 +10,7 @@ import store from "./store";
 import Layout from "./components/layout/index";
 
 // import "./normalize.css";
-import "./semantic/dist/semantic.min.css";
+import "./semantic/dist/semantic.css";
 import "./index.css";
 
 const app = document.getElementById("root");

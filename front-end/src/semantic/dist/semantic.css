@@ -90,85 +90,13 @@ body {
              Headers
 *******************************/
 
-h1,
-h2,
-h3,
-h4,
-h5 {
-  font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
-  line-height: 1.33em;
-  margin: calc(2rem -  0.165em ) 0em 1rem;
-  font-weight: 400;
-  padding: 0em;
-}
-
-h1 {
-  min-height: 1rem;
-  font-size: 2.25rem;
-}
-
-h2 {
-  font-size: 2rem;
-}
-
-h3 {
-  font-size: 1.75rem;
-}
-
-h4 {
-  font-size: 1.5rem;
-}
-
-h5 {
-  font-size: 1.25rem;
-}
-
-h1:first-child,
-h2:first-child,
-h3:first-child,
-h4:first-child,
-h5:first-child {
-  margin-top: 0em;
-}
-
-h1:last-child,
-h2:last-child,
-h3:last-child,
-h4:last-child,
-h5:last-child {
-  margin-bottom: 0em;
-}
-
 /*******************************
              Text
 *******************************/
 
-p {
-  margin: 0em 0em 1.53em;
-  line-height: 1.7em;
-}
-
-p:first-child {
-  margin-top: 0em;
-}
-
-p:last-child {
-  margin-bottom: 0em;
-}
-
 /*-------------------
         Links
 --------------------*/
-
-a {
-  color: #009FDA;
-  text-decoration: none;
-}
-
-a:hover {
-  color: #00b2f3;
-  text-decoration: none;
-}
 
 /*******************************
          Scrollbars
@@ -185,6 +113,11 @@ a:hover {
   color: #FFFFFF;
 }
 
+::-moz-selection {
+  background-color: #009FDA;
+  color: #FFFFFF;
+}
+
 ::selection {
   background-color: #009FDA;
   color: #FFFFFF;
@@ -194,6 +127,18 @@ a:hover {
 
 textarea::-webkit-selection,
 input::-webkit-selection {
+  background-color: rgba(100, 100, 100, 0.4);
+  color: #444444;
+}
+
+textarea::-moz-selection,
+input::-moz-selection {
+  background-color: rgba(100, 100, 100, 0.4);
+  color: #444444;
+}
+
+textarea::-moz-selection,
+input::-moz-selection {
   background-color: rgba(100, 100, 100, 0.4);
   color: #444444;
 }
@@ -33057,282 +33002,3 @@ body.pushable > .pusher {
 /*******************************
          Site Overrides
 *******************************/
-/*!
- * # Semantic UI 2.4.2 - Loader
- * http://github.com/semantic-org/semantic-ui/
- *
- *
- * Released under the MIT license
- * http://opensource.org/licenses/MIT
- *
- */
-
-/*-------------------
-      Content
---------------------*/
-
-.ui.placeholder {
-  position: static;
-  overflow: hidden;
-  -webkit-animation: placeholderShimmer 2s linear;
-  animation: placeholderShimmer 2s linear;
-  -webkit-animation-iteration-count: infinite;
-  animation-iteration-count: infinite;
-  background-color: #FFFFFF;
-  background-image: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, 0.08)), color-stop(15%, rgba(0, 0, 0, 0.15)), color-stop(30%, rgba(0, 0, 0, 0.08)));
-  background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.08) 0%, rgba(0, 0, 0, 0.15) 15%, rgba(0, 0, 0, 0.08) 30%);
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.08) 0%, rgba(0, 0, 0, 0.15) 15%, rgba(0, 0, 0, 0.08) 30%);
-  background-size: 1200px 100%;
-  max-width: 30rem;
-}
-
-@-webkit-keyframes placeholderShimmer {
-  0% {
-    background-position: -1200px 0;
-  }
-
-  100% {
-    background-position: 1200px 0;
-  }
-}
-
-@keyframes placeholderShimmer {
-  0% {
-    background-position: -1200px 0;
-  }
-
-  100% {
-    background-position: 1200px 0;
-  }
-}
-
-.ui.placeholder + .ui.placeholder {
-  margin-top: 2rem;
-}
-
-.ui.placeholder + .ui.placeholder {
-  -webkit-animation-delay: 0.15s;
-  animation-delay: 0.15s;
-}
-
-.ui.placeholder + .ui.placeholder + .ui.placeholder {
-  -webkit-animation-delay: 0.3s;
-  animation-delay: 0.3s;
-}
-
-.ui.placeholder + .ui.placeholder + .ui.placeholder + .ui.placeholder {
-  -webkit-animation-delay: 0.45s;
-  animation-delay: 0.45s;
-}
-
-.ui.placeholder + .ui.placeholder + .ui.placeholder + .ui.placeholder + .ui.placeholder {
-  -webkit-animation-delay: 0.6s;
-  animation-delay: 0.6s;
-}
-
-.ui.placeholder,
-.ui.placeholder > :before,
-.ui.placeholder .image.header:after,
-.ui.placeholder .line,
-.ui.placeholder .line:after {
-  background-color: #FFFFFF;
-}
-
-/* Image */
-
-.ui.placeholder .image:not(.header):not(.ui) {
-  height: 100px;
-}
-
-.ui.placeholder .square.image:not(.header) {
-  height: 0px;
-  overflow: hidden;
-  /* 1/1 aspect ratio */
-  padding-top: 100%;
-}
-
-.ui.placeholder .rectangular.image:not(.header) {
-  height: 0px;
-  overflow: hidden;
-  /* 4/3 aspect ratio */
-  padding-top: 75%;
-}
-
-/* Lines */
-
-.ui.placeholder .line {
-  position: relative;
-  height: 0.85714286em;
-}
-
-.ui.placeholder .line:before,
-.ui.placeholder .line:after {
-  top: 100%;
-  position: absolute;
-  content: '';
-  background-color: inherit;
-}
-
-.ui.placeholder .line:before {
-  left: 0px;
-}
-
-.ui.placeholder .line:after {
-  right: 0px;
-}
-
-/* Any Lines */
-
-.ui.placeholder .line {
-  margin-bottom: 0.5em;
-}
-
-.ui.placeholder .line:before,
-.ui.placeholder .line:after {
-  height: 0.5em;
-}
-
-.ui.placeholder .line:not(:first-child) {
-  margin-top: 0.5em;
-}
-
-/* Header Image + 2 Lines */
-
-.ui.placeholder .header {
-  position: relative;
-  overflow: hidden;
-}
-
-/* Line Outdent */
-
-.ui.placeholder .line:nth-child(1):after {
-  width: 0%;
-}
-
-.ui.placeholder .line:nth-child(2):after {
-  width: 50%;
-}
-
-.ui.placeholder .line:nth-child(3):after {
-  width: 10%;
-}
-
-.ui.placeholder .line:nth-child(4):after {
-  width: 35%;
-}
-
-.ui.placeholder .line:nth-child(5):after {
-  width: 65%;
-}
-
-/* Header Line 1 & 2*/
-
-.ui.placeholder .header .line {
-  margin-bottom: 0.64285714em;
-}
-
-.ui.placeholder .header .line:before,
-.ui.placeholder .header .line:after {
-  height: 0.64285714em;
-}
-
-.ui.placeholder .header .line:not(:first-child) {
-  margin-top: 0.64285714em;
-}
-
-.ui.placeholder .header .line:after {
-  width: 20%;
-}
-
-.ui.placeholder .header .line:nth-child(2):after {
-  width: 60%;
-}
-
-/* Image Header */
-
-.ui.placeholder .image.header .line {
-  margin-left: 3em;
-}
-
-.ui.placeholder .image.header .line:before {
-  width: 0.71428571rem;
-}
-
-.ui.placeholder .image.header:after {
-  display: block;
-  height: 0.85714286em;
-  content: '';
-  margin-left: 3em;
-}
-
-/* Spacing */
-
-.ui.placeholder .image .line:first-child,
-.ui.placeholder .paragraph .line:first-child,
-.ui.placeholder .header .line:first-child {
-  height: 0.01px;
-}
-
-.ui.placeholder .image:not(:first-child):before,
-.ui.placeholder .paragraph:not(:first-child):before,
-.ui.placeholder .header:not(:first-child):before {
-  height: 1.42857143em;
-  content: '';
-  display: block;
-}
-
-/* Inverted Content Loader */
-
-.ui.inverted.placeholder {
-  background-image: -webkit-gradient(linear, left top, right top, from(rgba(255, 255, 255, 0.08)), color-stop(15%, rgba(255, 255, 255, 0.14)), color-stop(30%, rgba(255, 255, 255, 0.08)));
-  background-image: -webkit-linear-gradient(left, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.14) 15%, rgba(255, 255, 255, 0.08) 30%);
-  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.14) 15%, rgba(255, 255, 255, 0.08) 30%);
-}
-
-.ui.inverted.placeholder,
-.ui.inverted.placeholder > :before,
-.ui.inverted.placeholder .image.header:after,
-.ui.inverted.placeholder .line,
-.ui.inverted.placeholder .line:after {
-  background-color: #1B1C1D;
-}
-
-/*******************************
-            Variations
-*******************************/
-
-/*-------------------
-        Sizes
---------------------*/
-
-.ui.placeholder .full.line.line.line:after {
-  width: 0%;
-}
-
-.ui.placeholder .very.long.line.line.line:after {
-  width: 10%;
-}
-
-.ui.placeholder .long.line.line.line:after {
-  width: 35%;
-}
-
-.ui.placeholder .medium.line.line.line:after {
-  width: 50%;
-}
-
-.ui.placeholder .short.line.line.line:after {
-  width: 65%;
-}
-
-.ui.placeholder .very.short.line.line.line:after {
-  width: 80%;
-}
-
-/*-------------------
-        Fluid
---------------------*/
-
-.ui.fluid.placeholder {
-  max-width: none;
-}
