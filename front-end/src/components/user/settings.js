@@ -52,12 +52,12 @@ export class UserSettings extends Component {
               />
             )}
 
-            <div className="mt-6"></div>
+            <Divider hidden />
 
             {premium ? (
               <div>
                 <UserEmail />
-                <div className="mt-6"></div>
+                <Divider hidden />
                 <UserTxt />
               </div>
             ) : (

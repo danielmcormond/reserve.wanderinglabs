@@ -108,3 +108,7 @@ table.ui.table.availabilityMatches {
 .ui.dropdown:not(.button)>.default.text {
   color: #aaa;
 }
+
+.ui.divider.hidden {
+  display: block;
+}
