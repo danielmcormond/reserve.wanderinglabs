@@ -7,10 +7,10 @@ import { Divider, Button, Header, Icon, List, Tab } from "semantic-ui-react";
 import DateFormat from "../utils/dateFormat";
 
 import FilteredAvailability from "./availability";
-import AvailabilityImports from "../availabilityImports";
 
 import { fetchFacility } from "../../actions/facilitiesActions";
 import { formSetFacility2, formStepInc } from "../../actions/requestFormActions";
+import Imports from "../Realtime/Imports";
 
 const PANE_STYLE = {
   padding: 0,
@@ -56,7 +56,7 @@ export class Facility extends Component {
         menuItem: "Change Log",
         render: () => (
           <Tab.Pane style={PANE_STYLE}>
-            <AvailabilityImports facilityId={this.state.facilityId} />
+            <Imports facilityId={this.state.facilityId} />
           </Tab.Pane>
         )
       }

@@ -26,7 +26,6 @@ import SessionDestroy from "../sessions/destroy";
 
 import UserSettings from "../user/settings";
 import requireAuth from "../sessions/authenticated";
-import AvailabilityImports from "../availabilityImports";
 import AvailabilityMatchClick from "../availabilityMatchClick/index";
 
 import PagePremium from "../pages/premium";
@@ -89,9 +88,6 @@ export class Layout extends Component {
                   <Route exact path="/:from([wet]{1})/:id" component={AvailabilityMatchClick} />
 
                   <Route exact path="/f/:id" component={Facility} />
-                  <Route path="/f/:id/log" component={AvailabilityImports} />
-
-                  <Route exact path="/log" component={AvailabilityImports} />
 
                   <Route exact path="/sign-in" component={SessionNew} />
                   <Route exact path="/sign-in/:token" component={SessionCreate} />

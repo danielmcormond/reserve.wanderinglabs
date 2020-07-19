@@ -7,9 +7,9 @@ import { Link } from "react-router-dom";
 const baseUrl =
   process.env.NODE_ENV === "production" ? "https://api-reserve.wanderinglabs.com" : "http://localhost:3232";
 
-const Imports = ({ match }) => {
-  const facilityId = match.params.facilityId
-  const siteId = match.params.siteId
+const Imports = ({ match, ...props }) => {
+  const facilityId = (match && match.params.facilityId) || props.facilityId
+  const siteId = (match && match.params.siteId)
   const [loading, setLoading] = useState(false);
   const [imports, setImports] = useState([]);
   const [expanded, setExpanded] = useState(siteId ? true : false);

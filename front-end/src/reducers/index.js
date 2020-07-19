@@ -3,7 +3,6 @@ import { combineForms } from "react-redux-form";
 
 import { connectRouter } from 'connected-react-router'
 
-import availabilityImports from "./availabilityImportsReducer";
 import availabilityMatches from "./availabilityMatchesReducer";
 import availabilityRequests from "./availabilityRequestsReducer";
 import facilities from "./facilitiesReducer";
@@ -49,7 +48,6 @@ export default (history) => combineReducers({
     "availabilityRequestForm"
   ),
   sessionForm: combineForms({ user: { email: "" } }, "sessionForm"),
-  availabilityImports,
   availabilityMatches,
   availabilityRequests,
   facilities,
