@@ -1,13 +1,10 @@
 import React from "react";
-// import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
-const liClasses = "mr-8 text-gray-700 hover:text-green-800 text-xl font-bold px-6 pb-1 -mb-2px";
-const activeLiClasses = "border-b-2 border-green-600";
+const liClasses = "mr-8 text-gray-600 hover:text-gray-900 text-xl font-bold px-6 pb-1 -mb-2px";
+const activeLiClasses = "border-b-2 text-gray-700 border-green-600";
 
 const RealtimeNav = (props) => {
-  // const isAuthenticated = useSelector(store => store.session.isAuthenticated)
-
   const navItems = [
     { path: "/logs", title: "Logs" },
     { path: "/facilities", title: "Facilities" },

@@ -1,14 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import {
-  Button,
-  Checkbox,
-  Divider,
-  Grid,
-  Header,
-  Icon,
-  List
-} from "semantic-ui-react";
+import { Button, Checkbox, Divider, Grid, Header, Icon, List } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 
 import DateFormat from "../utils/dateFormat";
@@ -16,44 +8,31 @@ import DateFormat from "../utils/dateFormat";
 import {
   fetchAvailabilityRequest,
   updateAvailabilityRequest,
-  updateAvailabilityRequestStatus
+  updateAvailabilityRequestStatus,
 } from "../../actions/availabilityRequestsActions";
 import AvailabilityMatches from "../availabilityMatches";
 import Premium from "../user/premium.js";
 
-const connected = connect(store => {
+const connected = connect((store) => {
   return {
-    ar: store.availabilityRequests.ar
+    ar: store.availabilityRequests.ar,
   };
 });
 export class RequestShow extends Component {
   componentWillMount() {
     if (this.props.match.params.status !== undefined) {
       this.props.dispatch(
-        updateAvailabilityRequestStatus(
-          this.props.match.params.uuid,
-          this.props.match.params.status
-        )
+        updateAvailabilityRequestStatus(this.props.match.params.uuid, this.props.match.params.status)
       );
     } else {
-      this.props.dispatch(
-        fetchAvailabilityRequest(this.props.match.params.uuid)
-      );
+      this.props.dispatch(fetchAvailabilityRequest(this.props.match.params.uuid));
     }
   }
 
   // TODO: refactor a better solution.. componentWillMount does not rerun when route calls same component again (click cancel button)
   componentWillReceiveProps(newProps) {
-    if (
-      newProps.match.params.status !== undefined &&
-      newProps.match.params.status !== this.props.match.params.status
-    ) {
-      this.props.dispatch(
-        updateAvailabilityRequestStatus(
-          newProps.match.params.uuid,
-          newProps.match.params.status
-        )
-      );
+    if (newProps.match.params.status !== undefined && newProps.match.params.status !== this.props.match.params.status) {
+      this.props.dispatch(updateAvailabilityRequestStatus(newProps.match.params.uuid, newProps.match.params.status));
     } else if (newProps.match.params.uuid !== this.props.match.params.uuid) {
       this.props.dispatch(fetchAvailabilityRequest(newProps.match.params.uuid));
     }
@@ -61,9 +40,7 @@ export class RequestShow extends Component {
 
   toggleSms = () => {
     const uuid = this.props.ar.uuid;
-    this.props.dispatch(
-      updateAvailabilityRequest(uuid, { notify_sms: !this.props.ar.notify_sms })
-    );
+    this.props.dispatch(updateAvailabilityRequest(uuid, { notify_sms: !this.props.ar.notify_sms }));
   };
 
   get statusButtonProps() {
@@ -73,19 +50,19 @@ export class RequestShow extends Component {
         content: "Cancel",
         to: `/c/${this.props.ar.uuid}`,
         color: "orange",
-        negative: true
+        negative: true,
       };
     } else if (this.props.ar.status === "canceled") {
       return {
         content: "Activate",
         to: `/a/${this.props.ar.uuid}`,
-        color: "green"
+        color: "green",
       };
     } else if (this.props.ar.status === "paused") {
       return {
         content: "UnPause",
         to: `/a/${this.props.ar.uuid}`,
-        color: "orange"
+        color: "orange",
       };
     } else {
       return { content: "Create New", to: "/new" };
@@ -93,10 +70,7 @@ export class RequestShow extends Component {
   }
 
   get titleStatus() {
-    return (
-      this.props.ar.status.charAt(0).toUpperCase() +
-      this.props.ar.status.slice(1)
-    );
+    return this.props.ar.status.charAt(0).toUpperCase() + this.props.ar.status.slice(1);
   }
 
   render() {
@@ -105,7 +79,7 @@ export class RequestShow extends Component {
     const halfGridProps = {
       tablet: 8,
       computer: 8,
-      mobile: 8
+      mobile: 8,
     };
 
     return (
@@ -128,16 +102,14 @@ export class RequestShow extends Component {
                     <List.Item>
                       <List.Header>Arriving between</List.Header>
                       <List.Description>
-                        <DateFormat format="MM/DD/YYYY" date={ar.date_start} />{" "}
-                        & <DateFormat format="MM/DD/YYYY" date={ar.date_end} />
+                        <DateFormat format="MM/DD/YYYY" date={ar.date_start} /> &{" "}
+                        <DateFormat format="MM/DD/YYYY" date={ar.date_end} />
                       </List.Description>
                     </List.Item>
 
                     <List.Item>
                       <List.Header>Stay Length</List.Header>
-                      <List.Description>
-                        {ar.stay_length} nights
-                      </List.Description>
+                      <List.Description>{ar.stay_length} nights</List.Description>
                     </List.Item>
 
                     <List.Item>
@@ -164,38 +136,23 @@ export class RequestShow extends Component {
                       <List.Description>{ar.checked_count}</List.Description>
                     </List.Item>
 
-                    {ar.checked_at && (
-                      <List.Item>
-                        <List.Header>Last Checked</List.Header>
-                        <List.Description>
-                          <DateFormat
-                            format="M/D/YYYY hh:mm"
-                            date={ar.checked_at}
-                          />
-                          {' '}
-                          (<Link to={`/f/${ar.facility.id}/log`}>Log</Link>)
-                        </List.Description>
-                      </List.Item>
-                    )}
+                    <List.Item>
+                      <List.Header>Last Checked</List.Header>
+                      <List.Description>
+                        {ar.checked_at && <DateFormat format="M/D/YYYY hh:mm" date={ar.checked_at} />} (
+                        <Link to={`/logs/${ar.facility.id}`}>Log</Link>)
+                      </List.Description>
+                    </List.Item>
                   </List>
                 </Grid.Column>
               </Grid.Row>
 
               <Grid.Row>
                 <Grid.Column {...halfGridProps}>
-                  <Checkbox
-                    label="SMS Notifications"
-                    checked={ar.notify_sms}
-                    onChange={this.toggleSms}
-                  />
+                  <Checkbox label="SMS Notifications" checked={ar.notify_sms} onChange={this.toggleSms} />
                 </Grid.Column>
                 <Grid.Column {...halfGridProps}>
-                  <Button
-                    as={Link}
-                    fluid
-                    size="medium"
-                    {...this.statusButtonProps}
-                  />
+                  <Button as={Link} fluid size="medium" {...this.statusButtonProps} />
                 </Grid.Column>
               </Grid.Row>
             </Grid>

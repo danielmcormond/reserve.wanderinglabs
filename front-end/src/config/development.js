@@ -1,3 +1,3 @@
 module.exports = {
-  reserveApiUrl: "http://wl.test"
+  reserveApiUrl: "http://localhost:3232"
 };

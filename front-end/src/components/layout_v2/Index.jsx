@@ -15,7 +15,7 @@ const LayoutV2 = () => {
 
   return (
     <div className="antialiased sans-serif bg-white text-gray-900 min-h-screen">
-      <header className="flex bg-green-500 inset-x-0 z-100 h-12 items-center pl-3">
+      <header className="flex bg-green-500 inset-x-0 z-100 h-16 items-center pl-3">
         <FontAwesomeIcon
           icon={faBars}
           className="md:hidden cursor-pointer text-xl font-bold text-white mr-2"
