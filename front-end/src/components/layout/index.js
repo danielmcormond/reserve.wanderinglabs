@@ -31,7 +31,8 @@ import AvailabilityMatchClick from "../availabilityMatchClick/index";
 
 import PagePremium from "../pages/premium";
 import PageAbout from "../pages/about";
-import Realtime from "../Realtime/Index";
+
+import LayoutV2 from "../layout_v2/Index";
 
 const connected = connect((store) => {
   return {
@@ -58,7 +59,8 @@ export class Layout extends Component {
     return (
       <ConnectedRouter history={history}>
         <Switch>
-          <Route exact path="/logs" component={Realtime} />
+          <Route exact path="/logs/*" component={LayoutV2} />
+          <Route exact path="/logs" component={LayoutV2} />
 
           <Route path="/*">
             <div>

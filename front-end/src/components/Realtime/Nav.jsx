@@ -1,36 +1,33 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus, faClipboardList } from "@fortawesome/free-solid-svg-icons";
+// import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
-const navItem = "mb-6 text-center";
+const liClasses = "mr-8 text-gray-700 hover:text-green-800 text-xl font-bold px-6 pb-1 -mb-2px";
+const activeLiClasses = "border-b-2 border-green-600";
 
-const Nav = ({ navOpen }) => {
-  return (
-    <nav
-      className={`md:flex w-32 flex-col z-0 min-h-screen items-center bg-gray-900 py-4 text-white ${navOpen ? "flex" : "hidden"}`}
-    >
+const RealtimeNav = (props) => {
+  // const isAuthenticated = useSelector(store => store.session.isAuthenticated)
 
+  const navItems = [
+    { path: "/logs", title: "Logs" },
+    { path: "/facilities", title: "Facilities" },
+    { path: "/calendar", title: "Calendar" },
+  ];
 
+  const navList = () => {
+    return navItems.map((item) => {
+      return (
+        <li
+          key={item.path}
+          className={`${liClasses} ${props.location.pathname.includes(item.path) && activeLiClasses}`}
+        >
+          <Link to={item.path}>{item.title}</Link>
+        </li>
+      );
+    });
+  };
 
-      <div className={navItem}>
-        <a href="https://reserve.wanderinglabs.com/new">
-          <FontAwesomeIcon icon={faPlus} className="text-3xl font-bold" />
-        </a>
-        <a href="https://reserve.wanderinglabs.com/new" className="font-bold text-sm block">
-          New Request
-        </a>
-      </div>
-
-      <div className={navItem}>
-        <a to="/logs">
-          <FontAwesomeIcon icon={faClipboardList} className="text-3xl font-bold" />
-        </a>
-        <a to="/logs" className="font-bold text-sm block">
-          Logs
-        </a>
-      </div>
-    </nav>
-  );
+  return <ul className="flex mt-6 mb-6 border-b-2 border-gray-400 px-4">{navList()}</ul>;
 };
 
-export default Nav;
+export default RealtimeNav;

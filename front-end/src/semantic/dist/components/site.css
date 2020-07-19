@@ -26,9 +26,7 @@ body {
   overflow-x: hidden;
   min-width: 320px;
   background: #F9F9F9;
-  font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
   font-size: 13px;
-  line-height: 1.33;
   color: #444444;
   font-smoothing: antialiased;
 }
