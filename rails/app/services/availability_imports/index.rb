@@ -1,4 +1,5 @@
 class AvailabilityImports::Index
+  extend Resque::Plugins::JobStats
   @queue = :import
 
   attr_reader :facility, :run_id, :hash
