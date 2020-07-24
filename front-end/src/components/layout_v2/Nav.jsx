@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus, faClipboardList, faList, faCog, faStar, faInfo } from "@fortawesome/free-solid-svg-icons";
+import { faPlus, faClipboardList, faList, faCog, faStar, faInfo, faUser } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
 const NavItem = ({ path, title, icon, yellow }) => {
@@ -25,6 +25,7 @@ const Nav = ({ navOpen }) => {
       }`}
     >
       <NavItem path="/new" title="New Request" icon={faPlus} />
+      {!isAuthenticated && <NavItem path="/sign-in" title="Your Account" icon={faUser} />}
       {isAuthenticated && <NavItem path="/" title="Requests" icon={faList} />}
       {isAuthenticated && <NavItem path="/settings" title="Settings" icon={faCog} />}
 
