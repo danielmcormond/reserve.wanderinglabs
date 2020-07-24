@@ -1,9 +1,4 @@
-require "resque_web"
-require "resque_web"
-
 Rails.application.routes.draw do
-  mount ResqueWeb::Engine => "/jobs"
-
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   post   '/sign-in'       => 'sessions#create'
   delete '/sign-out'      => 'sessions#destroy'
@@ -42,6 +37,4 @@ Rails.application.routes.draw do
   end
 
   resources :sites, only: %i[show]
-
-  root to: 'home#index'
 end
