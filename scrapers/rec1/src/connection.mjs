@@ -1,14 +1,18 @@
 import rp from 'request-promise';
 
 const headers = {
-  'user-agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.32 Safari/537.36'
+  'content-type': 'application/json',
+  'user-agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.32 Safari/537.36',
 };
 
 process.env.UV_THREADPOOL_SIZE = 128;
 
 export default class Connection {
   constructor(id) {
+    const jar = rp.jar();
+
     this.rp = rp.defaults({
+      jar,
       headers,
       followRedirect: false,
       resolveWithFullResponse: true,
@@ -20,10 +24,18 @@ export default class Connection {
     });
   }
 
-  async post(startDate, endDate, facilityIds) {
+  async setSession() {
+    const options = {
+      url: `https://secure.rec1.com/FL/pinellas-county-fl/catalog/index`,
+    };
+
+    return this.rp(options);
+  }
+
+  async post(session, startDate, endDate, facilityIds) {
     console.log('POST', startDate.format('MM/DD/YYYY'))
     const options = {
-      url: 'https://secure.rec1.com/FL/pinellas-county-fl/permits/getMultiFacilityAvailability/1fed99f759e3986c394f71ae9854c696',
+      url: `https://secure.rec1.com/FL/pinellas-county-fl/permits/getMultiFacilityAvailability/${session}`,
       method: 'POST',
       form: {
         facilityIds,
@@ -31,6 +43,7 @@ export default class Connection {
         to: endDate.format('YYYY-MM-DD'),
       }
     };
+
     return this.rp(options);
   }
 }

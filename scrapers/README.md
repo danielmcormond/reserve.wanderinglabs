@@ -48,8 +48,6 @@ docker-compose build recreation-gov && docker-compose push recreation-gov && ./d
 
 docker-compose build rec1 && docker-compose push rec1 && ./deploy.sh rec1 {ip}
 
-
-
 ---
 
 ## TODO

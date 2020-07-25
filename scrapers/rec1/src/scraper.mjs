@@ -68,7 +68,9 @@ export default class Scraper {
   }
 
   async scrapeParseDate() {
-    const scrapeResult = await this.connection.post(this.startDate, this.endDate, this.siteIds);
+    const session = await this.connection.setSession();
+    const sessionHash = session.body.match(/checkoutData&quot;:\{&quot;key&quot;:&quot;(.*)&quot;,&quot;cart/)
+    const scrapeResult = await this.connection.post(sessionHash[1], this.startDate, this.endDate, this.siteIds);
     const result = await parse(scrapeResult.body);
     return Promise.resolve(result);
   }
