@@ -22,7 +22,6 @@ module InitialImport::RecreationGovBa
     def update_or_create
       # puts "site_type: #{site_type} // #{attrs['PERMITTEDEQUIPMENT'].map { |e| e['EquipmentName'] } }"
       # puts "site_layout: #{site_layout_clean} // #{site_layout} // #{attrs['type']}"
-      puts attributes[:site_num]
       Site.where(facility_id: facility_id).where(ext_site_id: attributes[:ext_site_id]).first_or_initialize(attributes).tap { |e| e.update!(attributes) }
     end
 
@@ -89,7 +88,7 @@ module InitialImport::RecreationGovBa
     end
 
     def site_type_rv?
-      equipment.any? { |e| e.include?('rv') || e.include?('camper') } ||
+      equipment.any? { |e| e.include?('rv') || e.include?('camper') || e.include?('pop up') } ||
         (equipment.empty? && site_layout_clean == :back_in)
     end
 
@@ -98,8 +97,15 @@ module InitialImport::RecreationGovBa
     end
 
     def site_layout
-      return '' unless attrs['ATTRIBUTES'].select { |a| a['AttributeName'] == 'Driveway Entry' || a['attribute_id'] == 79 }.first
-      attrs['ATTRIBUTES'].select { |a| a['AttributeName'] == 'Driveway Entry' || a['attribute_id'] == 79 }.first['AttributeValue'].downcase
+      attr = attrs['ATTRIBUTES'].select do |a|
+        a['AttributeName'] == 'Driveway Entry' ||
+          a['AttributeName'] == 'Site Access' ||
+          a['attribute_id'] == 79
+      end.first
+
+      return '' unless attr
+
+      attr['AttributeValue'].downcase
     end
 
     def site_layout_clean

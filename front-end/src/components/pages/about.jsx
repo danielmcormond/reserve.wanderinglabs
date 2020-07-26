@@ -1,6 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+const fanMail = [
+  `My wife and I are HUGE fans of your app. You helped us to find incredible places to stay for the two weeks that we spent traveling our national parks a couple years back, plus we've found it increasingly helpful now that we live in the PNW. Thanks for building such a great tool/service AND for sharing it!`,
+  `You are amazing! Thank you so much. This is the only way we have been able to get these sites and they are a treat for our whole family. Really appreciate your help!`,
+  `I am so grateful for your program! This is a game changer for those who can’t book a year in advance! I was able to go camping last weekend and it was due to your program. Thank You, thank you, thank you!!!`,
+  `Great job! Another vacation reservation thanks to your great website! Keep up the good work!`,
+  `I think your site is worthless...`,
+  `Your site is amazing!`,
+  `Thanks for providing such a great service! I'm grateful that this exists since I love last-minute trips to paradise in the great outdoors`,
+  `Words cannot convey how much I appreciate your website!`,
+  `Just wanted to say Thank You sooooooooo much – this makes camping for our family possible at our favorite spots.`,
+  `Hi, I just wanted to thank you for this service. It is priceless to me! I have been able to snag many FL state park reservations (and other states as well) using this service. I appreciate this so much and just wanted to say thank you!`,
+  `Let me say that Wandering Labs is an amazing site. I thank you for all the opportunities that you gave us to go camping when we couldn’t get a site. You created memories for us.`,
+];
+
 const PageAbout = () => {
   return (
     <div>
@@ -31,44 +45,8 @@ const PageAbout = () => {
 
             <h2>Fan Mail</h2>
 
-            <p>
-              You are amazing! Thank you so much. This is the only way we have been able to get these sites and they are
-              a treat for our whole family. Really appreciate your help!
-            </p>
+            {fanMail.map((item, i) => <p key={i}>{item}</p>)}
 
-            <p>
-              I am so grateful for your program! This is a game changer for those who can’t book a year in advance! I
-              was able to go camping last weekend and it was due to your program. Thank You, thank you, thank you!!!
-            </p>
-
-            <p>Great job! Another vacation reservation thanks to your great website! Keep up the good work!</p>
-
-            <p>I think your site is worthless...</p>
-
-            <p>Your site is amazing!</p>
-
-            <p>
-              Thanks for providing such a great service! I'm grateful that this exists since I love last-minute trips to
-              paradise in the great outdoors{" "}
-            </p>
-
-            <p>Words cannot convey how much I appreciate your website!</p>
-
-            <p>
-              Just wanted to say Thank You sooooooooo much – this makes camping for our family possible at our favorite
-              spots.
-            </p>
-
-            <p>
-              Hi, I just wanted to thank you for this service. It is priceless to me! I have been able to snag many FL
-              state park reservations (and other states as well) using this service. I appreciate this so much and just
-              wanted to say thank you!
-            </p>
-
-            <p>
-              Let me say that Wandering Labs is an amazing site. I thank you for all the opportunities that you gave us
-              to go camping when we couldn’t get a site. You created memories for us.
-            </p>
           </article>
         </div>
         <div className="md:flex w-full">
