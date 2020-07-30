@@ -40,7 +40,7 @@ module InitialImport::RecreationGovBa
     end
 
     def url
-      "https://ridb.recreation.gov/api/v1/facilities/?activity=CAMPING&apikey=#{ENV['RIDB_API_KEY']}&full=true&offset=#{offset}&lastupdated=2020-07-01"
+      "https://ridb.recreation.gov/api/v1/facilities/?activity=CAMPING&apikey=#{ENV['RIDB_API_KEY']}&full=true&offset=#{offset}&lastupdated=2020-01-01"
     end
 
     def body
