@@ -2,15 +2,16 @@ class Stats
   @queue = :other
 
   FACILITIES = [
-    Facility::Camis,
+    Facility::Rec1,
     Facility::ReserveCalifornia,
     Facility::ReserveAmerica,
     Facility::RecreationGovBa,
-    Facility::PinellasCounty,
   ].freeze
 
   TIMEFRAMES = {
+    total: 100.year,
     year: 1.year,
+    ytd: ActiveSupport::Duration.build(Time.zone.now - Time.zone.now.at_beginning_of_year + (14*3600 + 54*60 + 36)),
     month: 1.month,
     week: 1.week,
     day: 1.day,
