@@ -8,6 +8,8 @@ import { ConnectedRouter } from "connected-react-router";
 import { history } from "../../utils/history";
 
 import RequestAll from "../request/all";
+import Requests from "../request/Index";
+
 import RequestForm from "../request/form/index";
 import RequestFormSteps from "../request/form/steps";
 import RequestShow from "../request/show";
@@ -71,7 +73,7 @@ export class Layout extends Component {
                   <FlashMessage />
                   <Route path="/new" component={RequestFormSteps} />
 
-                  <Route exact path="/" component={requireAuth(RequestAll, FrontPage)} />
+                  <Route exact path="/" component={requireAuth(Requests, FrontPage)} />
 
                   <Route path="/new" component={RequestForm} />
                   <Route path="/success" component={RequestSuccess} />
