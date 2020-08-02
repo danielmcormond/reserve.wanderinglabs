@@ -4,7 +4,7 @@ class AvailabilitiesController < ApplicationController
   def index
     last_import = facility.availability_imports.last
 
-    availabilities = last_import.availabilities.includes(:site).order(:avail_at)
+    availabilities = last_import.availabilities.includes(:site).order(:avail_at).limit(500)
     availabilities = availabilities.where(avail_date: Date.parse(params[:date])) if params[:date].present?
 
     render json: availabilities
