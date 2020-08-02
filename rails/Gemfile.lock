@@ -275,6 +275,9 @@ GEM
     resque-sentry (1.2.0)
       resque (>= 1.18.0)
       sentry-raven (>= 0.4.6)
+    resque_mailer (2.4.3)
+      actionmailer (>= 3.0)
+      activesupport (>= 3.0)
     rspec-core (3.6.0)
       rspec-support (~> 3.6.0)
     rspec-expectations (3.6.0)
@@ -404,6 +407,7 @@ DEPENDENCIES
   resque-job-stats
   resque-scheduler
   resque-sentry
+  resque_mailer
   rspec-rails (~> 3.5)
   rubocop (~> 0.61.1)
   sentry-raven

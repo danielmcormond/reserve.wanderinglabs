@@ -31,12 +31,8 @@ module AvailabilityRequests
 
     def notify_for(nm)
       if nm.notification_type == :sms
-        if availability_request.notify_sms && AvailabilityNotification.where(notification_method_id: nm.id).count < nm.user.sms_limit
-          begin
-            Sms.new(availability_request, nm).send
-          rescue Twilio::REST::RestError => e
-            Rails.logger.fatal(e)
-          end
+        if availability_request.notify_sms && nm.user.sms_under_limit
+          Resque.enqueue(Sms, availability_request.id, nm.id)
         end
       else
         NotifierMailer.new_availabilities(availability_request, nm).deliver
@@ -49,7 +45,7 @@ module AvailabilityRequests
         matches: availability_request.available_matches.count,
         matches_new: availability_request.available_matches.where(notified_at: nil).count,
       )
-      availability_request.user.sms_cache if nm.notification_type == :sms
+      # availability_request.user.sms_cache if nm.notification_type == :sms
     end
   end
 end

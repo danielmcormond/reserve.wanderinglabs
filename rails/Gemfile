@@ -24,6 +24,7 @@ gem 'rack-cors'
 gem 'resque' #, "~> 1.22.0"
 gem 'resque-scheduler'
 gem 'resque-job-stats'
+gem 'resque_mailer'
 
 gem 'base62-rb'
 

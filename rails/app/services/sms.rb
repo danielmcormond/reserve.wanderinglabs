@@ -1,5 +1,6 @@
 class Sms
   require 'twilio-ruby'
+  @queue = :other
 
   attr_reader :availability_request, :notification_method
 
@@ -8,13 +9,19 @@ class Sms
     @notification_method = notification_method
   end
 
+  def self.perform(availability_request_id, notification_method_id)
+    availability_request = AvailabilityRequest.find(availability_request_id)
+    notification_method = NotificationMethod.find(notification_method_id)
+    new(availability_request, notification_method).send
+    availability_request.user.sms_cache if nm.notification_type == :sms
+  end
+
   def client
-    @_client ||= Twilio::REST::Client.new(ENV['TWILIO_SID'], ENV['TWILIO_TOK'])
+    @client ||= Twilio::REST::Client.new(ENV['TWILIO_SID'], ENV['TWILIO_TOK'])
   end
 
   def send
-    msg = client.messages.create(params)
-    puts msg.sid
+    client.messages.create(params)
   end
 
   def params
