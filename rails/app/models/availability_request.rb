@@ -12,6 +12,7 @@ class AvailabilityRequest < ApplicationRecord
   enumerize :status, in: %i[active paused canceled ended], predicates: { prefix: true }
 
   scope :active, (-> { where(status: :active).where('date_end > ?', Time.now.to_date) })
+  scope :inactive, (-> { where.not(status: :active).where('date_end <= ?', Time.now.to_date) })
 
   scope :premium, (-> { includes(:user).where(users: { premium: true }) })
   scope :not_premium, (-> { includes(:user).where(users: { premium: false }) })

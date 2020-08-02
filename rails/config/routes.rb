@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :availability_requests do
     resources :availability_matches, only: %i[index]
     collection do
+      get :inactive
       post :sites_count
     end
   end

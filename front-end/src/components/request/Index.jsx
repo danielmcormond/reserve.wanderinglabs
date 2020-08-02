@@ -11,6 +11,9 @@ import reserveApi from "../../utils/axios";
 import DateFormat from "../utils/dateFormat";
 import { Link } from "react-router-dom";
 
+const StatusClassNames = "flex cursor-pointer text-lg font-semibold justify-center px-3 ml-6 text-gray-600 ";
+const StatusActiveClassNames = "border-b-2 border-green-600 text-gray-900";
+
 const connected = connect((store) => {
   return {
     isAuthenticated: store.session.isAuthenticated,
@@ -21,12 +24,18 @@ const connected = connect((store) => {
 
 const Requests = ({ dispatch, premium }) => {
   const [requests, setRequests] = useState([]);
+  const [status, setStatus] = useState("active");
+  const [{ loading, loaded }, setLoading] = useState({ loading: false, loaded: null });
 
   useEffect(() => {
-    reserveApi({ method: "get", url: "/availability_requests.json" }).then((response) => {
+    if (status === loaded) return;
+
+    setLoading({ loading: true, loaded });
+    reserveApi({ method: "get", url: `/availability_requests${status !== 'active' ? '/inactive' : ''}.json` }).then((response) => {
       setRequests(response.data);
+      setLoading({ loading: false, loaded: status });
     });
-  }, []);
+  }, [status]);
 
   const mappedArs = () => {
     return requests.map((ar) => {
@@ -67,8 +76,21 @@ const Requests = ({ dispatch, premium }) => {
             <div className="flex text-3xl font-semibold justify-center">Your Requests:</div>
           </div>
 
-          {requests.length > 0 && <ul className="flex flex-col mt-4 space-y-2 overflow-y-auto">{mappedArs()}</ul>}
-          {requests.length === 0 && <div className="my-12 text-gray-400 text-2xl font-semibold">No active requests</div>}
+          <div className="flex border-b border-gray-300 mt-6 mb-2">
+            <div className={`${StatusClassNames} ${status === "active" && StatusActiveClassNames}`}>
+              <span onClick={() => setStatus("active")}>Active</span>
+            </div>
+            <div className={`${StatusClassNames} ${status !== "active" && StatusActiveClassNames}`}>
+              <span onClick={() => setStatus("inactive")}>Expired</span>
+            </div>
+          </div>
+
+          {loading && <div className="my-12 text-gray-400 text-2xl font-semibold">Loading....</div>}
+
+          {!loading && requests.length > 0 && <ul className="flex flex-col mt-4 space-y-2 overflow-y-auto">{mappedArs()}</ul>}
+          {!loading && requests.length === 0 && (
+            <div className="my-12 text-gray-400 text-2xl font-semibold">No requests found</div>
+          )}
         </Grid.Column>
         <Grid.Column computer="8" tablet="8" mobile="16">
           {premium && (

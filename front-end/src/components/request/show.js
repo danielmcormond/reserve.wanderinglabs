@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Button, Checkbox, Divider, Grid, Header, Icon, List } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 
-import DateFormat from "../utils/dateFormat";
+import DateFormat, { dateHasPast } from "../utils/dateFormat";
 
 import {
   fetchAvailabilityRequest,
@@ -148,12 +148,24 @@ export class RequestShow extends Component {
               </Grid.Row>
 
               <Grid.Row>
-                <Grid.Column {...halfGridProps}>
-                  <Checkbox label="SMS Notifications" checked={ar.notify_sms} onChange={this.toggleSms} />
-                </Grid.Column>
-                <Grid.Column {...halfGridProps}>
-                  <Button as={Link} fluid size="medium" {...this.statusButtonProps} />
-                </Grid.Column>
+                {dateHasPast(ar.date_end) && (
+                  <Grid.Column computer="16" tablet="16" mobile="16">
+                    <div className="text-gray-400 text-2xl font-semibold">
+                      This request has expired and is no longer being checked.
+                    </div>
+                  </Grid.Column>
+                )}
+
+                {!dateHasPast(ar.date_end) && (
+                  <>
+                    <Grid.Column {...halfGridProps}>
+                      <Checkbox label="SMS Notifications" checked={ar.notify_sms} onChange={this.toggleSms} />
+                    </Grid.Column>
+                    <Grid.Column {...halfGridProps}>
+                      <Button as={Link} fluid size="medium" {...this.statusButtonProps} />
+                    </Grid.Column>
+                  </>
+                )}
               </Grid.Row>
             </Grid>
           </Grid.Column>

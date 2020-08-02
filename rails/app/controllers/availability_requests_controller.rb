@@ -6,6 +6,11 @@ class AvailabilityRequestsController < ApplicationController
     render json: @availability_requests
   end
 
+  def inactive
+    @availability_requests = current_user.availability_requests.inactive.includes(:facility)
+    render json: @availability_requests
+  end
+
   def show
     @availability_request = AvailabilityRequest.find_by_uuid(params[:id])
     render json: @availability_request
