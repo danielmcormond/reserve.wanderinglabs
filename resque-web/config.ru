@@ -4,10 +4,12 @@ require 'thin'
 require 'resque'
 require 'resque/server'
 require 'resque/scheduler/server'
+require 'resque-job-stats/server'
 
-Resque.redis = Redis.new(host: ENV['REDIS_HOST'], port: ENV['REDIS_PORT'], db: '0', password: ENV['REDIS_PASSWORD'])
+Resque.redis = Redis.new(host: 'localhost', port: 6379, db: '0')
 
-puts Resque.redis.keys
+Resque::Server.use(Rack::Auth::Basic) do |user, password|
+  user == "username" && password == "password"
+end
 
-run Rack::URLMap.new \
-     "/" => Resque::Server.new
+run Rack::URLMap.new "/resque-web" => Resque::Server.new
