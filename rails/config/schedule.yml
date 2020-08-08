@@ -4,5 +4,5 @@ Stats:
   every: '30m'
 StatsMonth:
   every: '1d'
-Payments::Sync
+Payments::Sync:
   every: '1m'
