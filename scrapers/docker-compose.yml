@@ -1,11 +1,11 @@
 version: "3"
 
 services:
-  camis:
+  goingtocamp:
     build:
       context: .
-      dockerfile: ./camis/Dockerfile
-    image: ${DOCKER_REGISTRY}/wanderinglabs/scraper-camis
+      dockerfile: ./goingtocamp/Dockerfile
+    image: ${DOCKER_REGISTRY}/wanderinglabs/scraper-goingtocamp
 
   rec1:
     build:

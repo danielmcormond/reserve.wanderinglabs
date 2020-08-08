@@ -3,7 +3,6 @@ import dateRange from 'scraper-wandering-labs-shared/src/dateRange';
 export default class Parse {
   constructor(response) {
     this.body = response;
-    console.log(this.body)
   }
 
   async do(startDate, endDate) {

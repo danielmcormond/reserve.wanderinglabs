@@ -14,6 +14,10 @@ class Payments::Creator
     current_user || User.find_or_create_by(email: paypal_payment.payer.payer_info.email)
   end
 
+  def exists?
+    Payment.where('details @> ?', { id: params_id }.to_json).count.positive?
+  end
+
   def create
     payment = Payment.new(payment_params)
     if payment.save
@@ -49,3 +53,13 @@ class Payments::Creator
     params.dig(:id) || params.dig(:details, :paymentID) || params.dig(:payment, :details, :paymentID)
   end
 end
+
+__END__
+
+pc = Payments::Creator.new(params[0])
+
+failed_params.map { |p| Payments::Creator.new(p).create }
+
+failed_params = params.select { |p| !Payments::Creator.new(p).exists? }
+
+Payments::Creator.new(failed_params[0]).create
