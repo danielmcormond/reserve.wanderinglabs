@@ -1,4 +1,7 @@
 class Payments::Sync
+  @queue = :other
+  extend Resque::Plugins::JobStats
+
   attr_reader :paypal_payment
 
   def initialize(paypal_payment)
@@ -19,7 +22,7 @@ class Payments::Sync
     Payment.where('details @> ?', { id: paypal_payment.id }.to_json).count.positive?
   end
 
-  def self.sync
+  def self.perfom
     paypal_payments.each do |p|
       new(p).sync
     end

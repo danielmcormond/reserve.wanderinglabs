@@ -1,5 +1,7 @@
 class Scrape
   @queue = :scrape
+  extend Resque::Plugins::JobStats
+
   attr_reader :facility
 
   PERCENT_PER_MINUTE = 33

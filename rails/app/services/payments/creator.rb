@@ -19,8 +19,9 @@ class Payments::Creator
   end
 
   def create
-    payment = Payment.new(payment_params)
-    if payment.save
+    payment = Payment.create(user: user, provider: :paypal, params: params)
+
+    if payment.update_attributes(payment_params)
       if user
         user.mark_premium
         NotifierMailer.premium_welcome(user).deliver!
@@ -33,12 +34,9 @@ class Payments::Creator
 
   def payment_params
     {
-      user: user,
-      provider: :paypal,
       status: paypal_payment.state,
       total: paypal_payment.transactions[0].amount.total,
       email: paypal_payment.payer.payer_info.email,
-      params: params,
       details: paypal_payment.to_hash,
       paid_at: Time.now,
     }
