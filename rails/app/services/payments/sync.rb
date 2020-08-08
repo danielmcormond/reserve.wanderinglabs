@@ -22,7 +22,7 @@ class Payments::Sync
     Payment.where('details @> ?', { id: paypal_payment.id }.to_json).count.positive?
   end
 
-  def self.perfom
+  def self.perform
     paypal_payments.each do |p|
       new(p).sync
     end
