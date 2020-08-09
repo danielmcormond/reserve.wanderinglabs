@@ -8,7 +8,7 @@ class User < ApplicationRecord
   after_create :init_notification_method
 
   def mark_premium
-    update_attributes(premium: true, premium_until: 1.year.from_now)
+    update_attributes(premium: true, premium_until: 1.year.from_now, sms_limit: sms_limit + 250)
   end
 
   def generate_auth_token(force = false)
