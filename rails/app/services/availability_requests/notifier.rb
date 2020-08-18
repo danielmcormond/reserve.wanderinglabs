@@ -31,6 +31,7 @@ module AvailabilityRequests
 
     def notify_for(nm)
       if nm.notification_type == :sms
+        Rails.logger.warn("NOTIFY_FOR #{nm.id} / #{availability_request.notify_sms} / #{nm.user.sms_under_limit} / #{nm.user.sms_count} / #{nm.user.sms_limit} / #{nm.user.reload.sms_under_limit} / #{nm.user.sms_count}")
         if availability_request.notify_sms && nm.user.sms_under_limit
           begin
             Sms.new(availability_request, nm).send
