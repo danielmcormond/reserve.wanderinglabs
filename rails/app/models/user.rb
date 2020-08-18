@@ -39,9 +39,9 @@ class User < ApplicationRecord
 
   def sms_cache
     count = AvailabilityNotification
+      .where(throttled: false)
       .where(notification_method_id: notification_methods
       .where(notification_type: :sms)
-      .where(throttled: false)
       .map(&:id))
       .count
     update_attributes(sms_count: count)
