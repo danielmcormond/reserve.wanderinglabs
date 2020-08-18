@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200315172231) do
+ActiveRecord::Schema.define(version: 2020_08_18_022610) do
 
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-  enable_extension "citext"
-  enable_extension "uuid-ossp"
   enable_extension "btree_gist"
+  enable_extension "citext"
+  enable_extension "plpgsql"
+  enable_extension "uuid-ossp"
 
   create_table "agencies", force: :cascade do |t|
     t.string "name"
@@ -79,6 +79,7 @@ ActiveRecord::Schema.define(version: 20200315172231) do
     t.jsonb "matches"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "throttled", default: false
     t.index ["availability_request_id"], name: "index_availability_notifications_on_availability_request_id"
     t.index ["notification_method_id"], name: "index_availability_notifications_on_notification_method_id"
   end

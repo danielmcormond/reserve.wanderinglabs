@@ -47,6 +47,11 @@ RSpec.describe AvailabilityRequests::Notifier do
       expect { notifier.notify }.to change { AvailabilityNotification.count }.by(1)
     end
 
+    it 'is not throttled' do
+      notifications = notifier.notify
+      expect(notifications.first.throttled).to be false
+    end
+
     it 'updates the notified_at timestamp' do
       expect { notifier.notify }.to(change { availability_match.reload.notified_at })
     end

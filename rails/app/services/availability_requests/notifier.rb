@@ -15,12 +15,12 @@ module AvailabilityRequests
     def notify
       return unless needed?
 
-      availability_request.user.notification_methods.where(active: true).each do |nm|
-        notify_for(nm)
+      notifications = availability_request.user.notification_methods.where(active: true).map do |nm|
+        notify_for(nm) if nm.allow?
         log_notify(nm)
       end
       mark_notified
-      nil
+      notifications
     end
 
     private
@@ -31,8 +31,7 @@ module AvailabilityRequests
 
     def notify_for(nm)
       if nm.notification_type == :sms
-        if availability_request.notify_sms && nm.user.sms_under_limit
-          Resque.logger.warn("NOTIFY_FOR #{nm.id} / #{availability_request.notify_sms} / #{nm.user.sms_under_limit} / #{nm.user.sms_count} / #{nm.user.sms_limit} / #{nm.user.reload.sms_under_limit} / #{nm.user.sms_count}")
+        if availability_request.notify_sms
           begin
             Sms.new(availability_request, nm).send
           rescue Twilio::REST::RestError => e
@@ -45,12 +44,14 @@ module AvailabilityRequests
     end
 
     def log_notify(nm)
-      availability_request.availability_notifications.create(
+      ln = availability_request.availability_notifications.create(
         notification_method: nm,
+        throttled: !nm.allow?,
         matches: availability_request.available_matches.count,
         matches_new: availability_request.available_matches.where(notified_at: nil).count,
       )
       availability_request.user.sms_cache if nm.notification_type == :sms
+      ln
     end
   end
 end

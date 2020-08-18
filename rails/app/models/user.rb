@@ -41,6 +41,7 @@ class User < ApplicationRecord
     count = AvailabilityNotification
       .where(notification_method_id: notification_methods
       .where(notification_type: :sms)
+      .where(throttled: false)
       .map(&:id))
       .count
     update_attributes(sms_count: count)
