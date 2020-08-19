@@ -38,15 +38,25 @@ class User < ApplicationRecord
   end
 
   def sms_cache
-    count = AvailabilityNotification
-      .where(throttled: false)
-      .where(notification_method_id: notification_methods
-      .where(notification_type: :sms)
-      .map(&:id))
-      .count
-    update_attributes(sms_count: count)
+    update_attributes(sms_count: sms.count)
   end
 
+  def sms
+    AvailabilityNotification
+      .where(throttled: false)
+      .where(
+        notification_method_id: notification_methods.where(notification_type: :sms).map(&:id)
+      )
+  end
+
+  def sms_realtime
+    @sms_realtime ||= notification_methods.sum(&:sms_count)
+  end
+
+  def sms_reset
+    sms.offset([sms_limit, sms_realtime].max).update_all(throttled: true)
+    sms_cache
+  end
 
   # Little helpful admin methods
   def login_url

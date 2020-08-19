@@ -11,4 +11,8 @@ class NotificationMethod < ApplicationRecord
 
     user.sms_under_limit
   end
+
+  def sms_count
+    SmsCount.new(self).count
+  end
 end
