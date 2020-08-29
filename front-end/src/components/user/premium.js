@@ -1,32 +1,26 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import {
-  Checkbox,
-  Divider,
-  Grid,
-  Header,
-  Label,
-  List,
-  Segment
-} from "semantic-ui-react";
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { Checkbox, Divider, Grid, Header, Label, List, Segment } from 'semantic-ui-react'
 
-import PaypalButton from "./paypal";
-import SemanticInput from "../semanticInput";
+import PaypalButton from './paypal'
+import SemanticInput from '../semanticInput'
+import SmsOverLimit from './SmsOverLimit'
+import SmsSettingsAlert from './SmsSettingsAlert'
 
-const amounts = [15, 20, 25, 50];
+const amounts = [15, 20, 25, 50]
 
 const connected = connect(store => {
   return {
     premium: store.user.premium,
-    premiumAmount: store.user.premiumAmount
-  };
+    premiumAmount: store.user.premiumAmount,
+    smsUnderLimit: store.user.user.sms_under_limit
+  }
 })
-export class Premium extends Component {
-  premiumAmountChange = (e, { value }) =>
-    this.props.dispatch({ type: "SET_PREMIUM_AMOUNT", payload: value });
+export class PremiumAsk extends Component {
+  premiumAmountChange = (e, { value }) => this.props.dispatch({ type: 'SET_PREMIUM_AMOUNT', payload: value })
 
   render() {
-    const { premium, premiumAmount } = this.props;
+    const { premium, premiumAmount, smsUnderLimit } = this.props
 
     const amountCheckboxes = amounts.map(a => {
       return (
@@ -41,16 +35,16 @@ export class Premium extends Component {
             />
           </div>
         </Grid.Column>
-      );
-    });
+      )
+    })
 
     function premiumAsk() {
       return (
         <div>
           <Header as="h4">Premium Membership</Header>
           <p>
-            Become a premium member by sending a few bucks our way and we will
-            upgrade your request to include these benefits:
+            Become a premium member by sending a few bucks our way and we will upgrade your request to include these
+            benefits:
           </p>
           <List bulleted>
             <List.Item>Check twice as often (every 3-5 minutes)</List.Item>
@@ -58,10 +52,7 @@ export class Premium extends Component {
             <List.Item>Txt alerts</List.Item>
           </List>
 
-          <p>
-            Any amount will get you premium status for a year. Send what you
-            think this service is worth.
-          </p>
+          <p>Any amount will get you premium status for a year. Send what you think this service is worth.</p>
 
           <div className="ui big form">
             <Grid>{amountCheckboxes}</Grid>
@@ -74,7 +65,7 @@ export class Premium extends Component {
             </Grid.Column>
           </Grid>
         </div>
-      );
+      )
     }
 
     const premiumMember = e => {
@@ -83,14 +74,11 @@ export class Premium extends Component {
           <Header as="h4">Thank You!</Header>
           <p>You are a premium member. Extra benefits have been activated. </p>
 
-          <p>
-            I greatly appreciate your support. Please do not hesitate to contact
-            me if you have a question or an idea! info@wanderinglabs.com
-          </p>
+          {smsUnderLimit && <p>Consider continuing your support if this service is working for you.</p>}
 
           <Divider hidden />
 
-          <p>If you ever feel the need to send a bit more:</p>
+          <p></p>
 
           <Grid>
             <Grid.Column width="4">
@@ -109,14 +97,17 @@ export class Premium extends Component {
             </Grid.Column>
           </Grid>
         </div>
-      );
-    };
+      )
+    }
 
     return (
-      <Segment color="green">
-        {premium ? premiumMember() : premiumAsk()}
-      </Segment>
-    );
+      <>
+        {premium && !smsUnderLimit && <SmsOverLimit />}
+        {premium && smsUnderLimit && <SmsSettingsAlert />}
+
+        <Segment color="green">{premium ? premiumMember() : premiumAsk()}</Segment>
+      </>
+    )
   }
 }
-export default connected(Premium);
+export default connected(PremiumAsk)

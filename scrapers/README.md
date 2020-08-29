@@ -34,9 +34,9 @@ AWS cli is not install on production servers. Run this locally and paste results
 ./deploy.sh reserve-america {ip}
 ./deploy.sh reserve-ca {ip}
 
-./deploy-all.sh reserve-america scraper-jul-15
-./deploy-all.sh reserve-ca scraper-jul-15
-./deploy-all.sh recreation-gov scraper-jul-15
+./deploy-all.sh reserve-america scraper-aug-27
+./deploy-all.sh reserve-ca scraper-aug-27
+./deploy-all.sh recreation-gov scraper-aug-27
 
 #### All together now
 
