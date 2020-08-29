@@ -53,8 +53,10 @@ class User < ApplicationRecord
     @sms_realtime ||= notification_methods.sum(&:sms_count)
   end
 
-  def sms_reset
-    sms.offset([sms_limit, sms_realtime].max).update_all(throttled: true)
+  def sms_reset(realtime = false)
+    new_count = realtime ? sms_realtime : [sms_limit, sms_realtime].max
+    update_attributes(sms_limit: new_count) if realtime
+    sms.offset(new_count).update_all(throttled: true)
     sms_cache
   end
 
@@ -78,5 +80,23 @@ class User < ApplicationRecord
 
   def premium_welcome
     NotifierMailer.premium_welcome(self).deliver!
+  end
+
+  def about
+    {
+      email: email,
+      created_at: created_at,
+      request_count: availability_requests.count,
+      payments: payments.sum(:total),
+      payments_dates: payments.map(&:created_at),
+      last: availability_requests.last.created_at,
+      sms_limit: sms_limit,
+      sms_count: sms_count,
+      sms_realtime: sms_realtime
+    }
+  end
+
+  def self.n(c)
+    User.where('sms_count >= sms_limit').offset(c).first
   end
 end
