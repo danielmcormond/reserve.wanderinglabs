@@ -4,6 +4,17 @@
     font-size: 1.3em;
   }
 
+  .smsHeader {
+    font-weight: 500;
+    font-size: 1.2em;
+    color: #9b2c2c;
+  }
+
+  .btn-red a {
+    color: #9b2c2c;
+    border: solid 1px #9b2c2c;
+  }
+
   .availHeader {
     color: #a3a3a3;
     font-weight: bold;
@@ -34,9 +45,38 @@
   }
 </style>
 
+<h2 class="h2Header">We found an open reservation. Be quick and reserve it now!!</h2>
 
+<% if @availability_request.user.sms_over_limit %>
+  <br />
+  <h3 class="smsHeader">SMS Limits Reached!</h3>
+  <p>
+    SMS alerting on your account is currently disabled.
+    <br />
+    Any payment amount will automatically add 250 more SMS alerts to your account. (Or reach out to info@wanderinglabs.com)
+    <br />
+    <table border="0" cellpadding="0" cellspacing="0" class="btn btn-red">
+      <tbody>
+        <tr>
+          <td align="left">
+            <table border="0" cellpadding="0" cellspacing="0">
+              <tbody>
+                <tr>
+                  <td>
+                    <a href="<%= ENV['RESERVE_URL'] -%>/<%= @availability_request.uuid -%>">Make a Payment</a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br />
+    <br />
+  </p>
+<% end %>
 
-<h2 class="h2Header">We found a possible campsite... Be quick and reserve it now!!</h2>
 <p>
   You asked us to look at
   <%= @availability_request.facility.name -%> for <%= @availability_request.stay_length -%> nights arriving between

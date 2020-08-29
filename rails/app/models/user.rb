@@ -33,6 +33,10 @@ class User < ApplicationRecord
     notification_methods.create(notification_type: :email, param: email, locked: true)
   end
 
+  def sms_over_limit
+    !sms_under_limit
+  end
+
   def sms_under_limit
     sms_count < sms_limit
   end
