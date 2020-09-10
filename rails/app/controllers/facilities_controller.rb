@@ -1,18 +1,10 @@
 class FacilitiesController < ApplicationController
   def index
     @facilities = facility_scope.limit(15)
-    @facilities = @facilities.where('name ILIKE ?', "#{params[:q]}%") if params[:q]
+    @facilities = @facilities.lookup(params[:q]) if params[:q] && params[:q].length.positive?
     @facilities = filters_scope(@facilities)
 
-    if params[:q].present? && @facilities.count < 15
-      @more_facilities = Facility.order('LOWER(parent_name) ASC, LOWER(name) ASC').limit(15 - @facilities.count)
-      @more_facilities = @more_facilities.where('parent_name ILIKE ?', "#{params[:q]}%") if params[:q]
-      @more_facilities = filters_scope(@more_facilities)
-      @combined_facilities = @facilities + @more_facilities
-      render json: @combined_facilities
-    else
-      render json: @facilities
-    end
+    render json: @facilities
   end
 
   def show
@@ -27,7 +19,7 @@ class FacilitiesController < ApplicationController
 
   def facility_scope
     if params[:q].present?
-      Facility.active.order('LOWER(name) ASC')
+      Facility.active
     else
       Facility.active.top_facilities
     end

@@ -213,6 +213,9 @@ GEM
       multi_json (~> 1.0)
       xml-simple
     pg (0.21.0)
+    pg_search (2.3.2)
+      activerecord (>= 5.2)
+      activesupport (>= 5.2)
     powerpack (0.1.2)
     premailer (1.10.4)
       addressable
@@ -396,6 +399,7 @@ DEPENDENCIES
   nokogiri (~> 1.8.1)
   paypal-sdk-rest
   pg (~> 0.18)
+  pg_search
   puma (= 3.8.2)
   rack-cors
   rails (= 5.2.4.3)

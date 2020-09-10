@@ -3,14 +3,22 @@ class Facility < ApplicationRecord
   extend FriendlyId
   friendly_id :name, use: :slugged
 
+  include PgSearch::Model
+  pg_search_scope :lookup,
+                  against: :name,
+                  using: {
+                    tsearch: { prefix: true, any_word: true },
+                    dmetaphone: { any_word: true, sort_only: true }
+                  }
+
   belongs_to :agency
   has_many :sites, dependent: :destroy
   has_many :availability_requests, dependent: :destroy
   has_many :availability_imports, dependent: :destroy
 
-  scope :lookup, (lambda do |start|
-    where('name ILIKE ?', "#{start}%").order('name ASC').limit(15)
-  end)
+  # scope :lookup, (lambda do |start|
+  #   where('name ILIKE ?', "#{start}%").order('name ASC').limit(15)
+  # end)
 
   scope :active, (-> { where(active: true) })
 
