@@ -33,7 +33,7 @@ const initialAvailabilityRequestFormState = {
     sewer: false,
     pullthru: false,
     sitePremium: false,
-    ignoreAda: false,
+    ignoreAda: true,
     sites: []
   },
   step4: {
