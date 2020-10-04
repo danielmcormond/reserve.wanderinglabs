@@ -1,14 +1,7 @@
-## TODO
+## TODO / COULD DO
 
-- better SMS handling / limits / entry / etc
-- Finish react tests (can be slowly done)
-- rails stats/monitoring (bit higher) Freeboard
-- local copy of DB
-- https
-- more tests
-- CI/CD
-- Rails errors
-- Security alerts (github) - https://github.com/tiwatson/reserve.wanderinglabs/network/alerts
+- Notification Rate limiting
+
 
 ## Bugs
 

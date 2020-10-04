@@ -28,6 +28,8 @@ gem 'resque-job-stats'
 
 gem 'base62-rb'
 
+gem 'newrelic_rpm'
+
 gem "sentry-raven"
 gem "resque-sentry"
 
