@@ -12,12 +12,11 @@ module InitialImport::ReserveCalifornia
         site_ids = InitialImport::ReserveCalifornia::SiteIds.new(session, facility).ids
       end
       site_ids.each do |site_id|
-        attrs = InitialImport::ReserveCalifornia::SiteJson.new(facility, site_id).perform
-
-        # puts attrs
-        site = first_or_create(attrs)
-        site.update(attrs)
+        InitialImport::ReserveCalifornia::SiteJson.new(facility, site_id).perform
       end
+      facility.cache_sites_count
+      facility.populate_sites_details
+      nil
     end
 
     def delete_all

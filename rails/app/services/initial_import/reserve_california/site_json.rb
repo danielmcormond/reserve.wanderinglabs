@@ -7,7 +7,7 @@ module InitialImport::ReserveCalifornia
     end
 
     def perform
-      puts "\n#{site_id}\n"
+      puts "\n#{ext_site_id}\n"
       if meta.nil?
         puts "SITE DETAILS ARE NIL #{ext_site_id}"
         return
@@ -55,20 +55,20 @@ module InitialImport::ReserveCalifornia
     end
 
     def water
-      body['Amenities'].key?('92.Water Hookup') && body['Amenities']['92.Water Hookup']['Value'] == 'Yes'
+      body.dig('Amenities', '92.Water Hookup', 'Value') == 'Yes'
     end
 
     def sewer
-      body['Amenities'].key?('72.Sewer Hookup') && body['Amenities']['72.Sewer Hookup']['Value'] == 'Yes'
+      body.dig('Amenities', '72.Sewer Hookup', 'Value') == 'Yes'
     end
 
     def electric
-      return 50 if body['Amenities']['24.Electricity Hookup'].include?('50')
-      return 30 if body['Amenities']['24.Electricity Hookup'].include?('30')
+      return 50 if body.dig('Amenities', '24.Electricity Hookup', 'Values')&.include?('50')
+      return 30 if body.dig('Amenities', '24.Electricity Hookup', 'Values')&.include?('30')
     end
 
     def pad_length
-      body['Unit']['VehicleLength'] || body['Amenities']['60.Pad Length']['Value']
+      body.dig('Amenities', '60.Pad Length', 'Value')
     end
 
     def site_type
@@ -87,7 +87,7 @@ module InitialImport::ReserveCalifornia
     end
 
     def premium
-      body['Amenities']['26.Feature Filter']['Value'] == 'Premium'
+      body.dig('Amenities', '26.Feature Filter', 'Value') == 'Premium'
     end
 
     def ada
