@@ -35,7 +35,7 @@ module InitialImport::ReserveCalifornia
         site_type: site_type,
         site_layout: site_layout_clean,
         premium: amenities['feature_filter_premium']&.downcase&.include?('premium') || false,
-        ada: amenities['ada'] == '1' || false,
+        ada: amenities['ada'] == '1' || amenities['ada'] == 'Yes' || false,
       }
     end
 
@@ -43,12 +43,14 @@ module InitialImport::ReserveCalifornia
       begin
         site_num_text.text.match(/\#(.*)/)[1]
       rescue
-        '28FT'
+        '(UNKNOWN)'
       end
     end
 
     def site_num_text
-      if parsed.css('#myModalLabels').present?
+      if parsed.css('#popupHeading1').present?
+        parsed.css('#popupHeading1')
+      elsif parsed.css('#myModalLabels').present?
         parsed.css('.popup-heading')
       else
         parsed.css('h1') || parsed.css('.popup-heading')

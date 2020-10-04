@@ -12,10 +12,11 @@ module InitialImport::ReserveCalifornia
         site_ids = InitialImport::ReserveCalifornia::SiteIds.new(session, facility).ids
       end
       site_ids.each do |site_id|
-        attrs = InitialImport::ReserveCalifornia::SiteParse.new(session, facility, site_id).details
+        attrs = InitialImport::ReserveCalifornia::SiteJson.new(facility, site_id).perform
 
-        puts attrs
-        update_or_create(attrs)
+        # puts attrs
+        site = first_or_create(attrs)
+        site.update(attrs)
       end
     end
 
@@ -23,7 +24,7 @@ module InitialImport::ReserveCalifornia
       facility.sites.delete_all
     end
 
-    def update_or_create(attrs)
+    def first_or_create(attrs)
       Site.where(facility_id: facility.id).where(ext_site_id: attrs[:ext_site_id]).first_or_create(attrs)
     end
   end
