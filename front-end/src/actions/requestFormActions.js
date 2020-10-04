@@ -25,7 +25,7 @@ export function matchingSiteCount(values) {
       min_length: values.step3.length,
       min_electric: values.step3.electric,
       site_premium: values.step3.sitePremium,
-      ignore_ada: values.step2.ignoreAda,
+      ignore_ada: values.step3.ignoreAda,
       site_type: values.step3.type,
       specific_site_ids: values.step3.siteIds,
       arrival_days: values.step2.arrivalDays
@@ -65,7 +65,7 @@ export function formSubmit(values) {
       min_length: values.step3.length,
       min_electric: values.step3.electric,
       site_premium: values.step3.sitePremium,
-      ignore_ada: values.step2.ignoreAda,
+      ignore_ada: values.step3.ignoreAda,
       site_type: values.step3.type,
       specific_site_ids: values.step3.siteIds,
       arrival_days: values.step2.arrivalDays
