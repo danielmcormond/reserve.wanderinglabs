@@ -10,19 +10,10 @@ class AvailabilityImports::FromJson
   end
 
   def perform
-    # t1 = Process.clock_gettime(Process::CLOCK_MONOTONIC)
     create_availabilities
     update_import
     delete_availabilities
 
-    # t2 = Process.clock_gettime(Process::CLOCK_MONOTONIC)
-    # timing = (t2 - t1) * 1000
-    # GRAYLOG.notify!(
-    #   facility: 'import',
-    #   short_message: "Import Complete: #{import.id}:#{import.facility_id}",
-    #   facility_id: import.facility_id,
-    #   timing: timing,
-    # )
     nil
   end
 

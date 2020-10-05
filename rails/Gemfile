@@ -44,8 +44,6 @@ gem 'awesome_print', github: 'awesome-print/awesome_print', branch: 'master'
 
 gem 'twilio-ruby', '~> 5.6.3'
 
-gem 'gelf'
-
 gem 'friendly_id', '~> 5.2.4'
 
 group :development, :test do

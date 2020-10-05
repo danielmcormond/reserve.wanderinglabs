@@ -37,11 +37,5 @@ class Scrape
 
   def log
     return if Rails.env.test?
-
-    GRAYLOG.notify!(
-      facility: 'scrape-init',
-      short_message: "Scrape: #{facility.id}:#{facility.name[0..25]}",
-      facility_id: facility.id,
-    )
   end
 end
