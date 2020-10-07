@@ -33,7 +33,7 @@ module InitialImport::MaricopaCounty
       {
         agency_id: agency.id,
         name: name,
-        ext_facility_id: url.split('/')[-1],
+        ext_facility_id: park_id,
         details: {
           url: url,
           reserve: reserve,

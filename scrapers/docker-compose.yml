@@ -7,6 +7,12 @@ services:
       dockerfile: ./goingtocamp/Dockerfile
     image: ${DOCKER_REGISTRY}/wanderinglabs/scraper-goingtocamp
 
+  maricopa-county:
+    build:
+      context: .
+      dockerfile: ./maricopa_county/Dockerfile
+    image: ${DOCKER_REGISTRY}/wanderinglabs/scraper-maricopa-county
+
   rec1:
     build:
       context: .

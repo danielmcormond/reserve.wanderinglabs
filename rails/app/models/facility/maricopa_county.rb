@@ -19,7 +19,8 @@ class Facility::MaricopaCounty < Facility
     {
       name: "#{id}:#{name[0..25]}",
       facilityId: id,
-      siteIds: sites.map(&:ext_site_id),
+      parkUrl: details['reserve'],
+      parkId: ext_facility_id,
       startDate: scrape_start.strftime('%m/%d/%Y'),
       endDate: scrape_end.strftime('%m/%d/%Y'),
       hash: last_import_hash,
