@@ -2,6 +2,7 @@ class Stats
   @queue = :other
 
   FACILITIES = [
+    Facility::MaricopaCounty,
     Facility::Rec1,
     Facility::ReserveCalifornia,
     Facility::ReserveAmerica,
