@@ -5,7 +5,7 @@ class Scrape
   attr_reader :facility
 
   def self.perform
-    Rails.logger.info("Scrape: #{query.count.sort_by {|k, v| [-v, k]}}")
+    Rails.logger.info("Scrape: #{query.count.sort_by { |k, v| [-v, k] }}")
     query.limit(limit).each do |facility|
       new(facility).work
     end
@@ -19,7 +19,7 @@ class Scrape
   end
 
   def self.limit
-    @limit ||= 50
+    @limit ||= 100
   end
 
   def initialize(facility)
