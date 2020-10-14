@@ -4,10 +4,9 @@ class Scrape
 
   attr_reader :facility
 
-  PERCENT_PER_MINUTE = 33
-
   def self.perform
-    query.each do |facility|
+    Rails.logger.info("Scrape: #{query.count}")
+    query.limit(limit).each do |facility|
       new(facility).work
     end
   end
@@ -16,13 +15,11 @@ class Scrape
     Facility
       .active_facilities
       .order('last_scrape_attempt ASC NULLS FIRST')
-      .limit(limit)
+      .where("last_scrape_attempt + scrape_every * interval '1 second' < NOW()")
   end
 
   def self.limit
-    @limit ||= (
-      Facility.active_facilities.count.keys.size * (PERCENT_PER_MINUTE / 100.to_f)
-    ).round
+    @limit ||= 50
   end
 
   def initialize(facility)

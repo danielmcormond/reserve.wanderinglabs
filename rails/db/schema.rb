@@ -10,11 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_18_022610) do
+ActiveRecord::Schema.define(version: 2020_10_14_005114) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "btree_gist"
   enable_extension "citext"
+  enable_extension "pgcrypto"
   enable_extension "plpgsql"
   enable_extension "uuid-ossp"
 
@@ -76,7 +77,7 @@ ActiveRecord::Schema.define(version: 2020_08_18_022610) do
     t.bigint "availability_request_id"
     t.bigint "notification_method_id"
     t.jsonb "matches_new"
-    t.jsonb "matches"
+    t.jsonb "matches", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "throttled", default: false
@@ -138,8 +139,23 @@ ActiveRecord::Schema.define(version: 2020_08_18_022610) do
     t.boolean "active", default: false, null: false
     t.string "ext_facility_id"
     t.string "slug"
+    t.integer "scrape_every", default: 3600
     t.index ["agency_id"], name: "index_facilities_on_agency_id"
     t.index ["slug"], name: "index_facilities_on_slug", unique: true
+  end
+
+  create_table "good_jobs", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.text "queue_name"
+    t.integer "priority"
+    t.jsonb "serialized_params"
+    t.datetime "scheduled_at"
+    t.datetime "performed_at"
+    t.datetime "finished_at"
+    t.text "error"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["queue_name", "scheduled_at"], name: "index_good_jobs_on_queue_name_and_scheduled_at", where: "(finished_at IS NULL)"
+    t.index ["scheduled_at"], name: "index_good_jobs_on_scheduled_at", where: "(finished_at IS NULL)"
   end
 
   create_table "notification_methods", force: :cascade do |t|

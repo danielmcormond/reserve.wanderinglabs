@@ -8,20 +8,18 @@ RSpec.describe Scrape do
           :facility,
           name: "Scrape Facility #{x}",
           last_scrape_attempt: x.minutes.ago,
+          scrape_every: 120
         )
         FactoryGirl.create(:availability_request, facility: f)
         f
       end
     end
 
-    describe '#limit' do
-      it 'is a set percentage of the total active facilities' do
-        limit = Scrape.limit
-        expect(limit).to be(7)
-      end
-    end
-
     describe '#query' do
+      it 'only returns facilities due or a scrape' do
+        expect(Scrape.query.count.keys.size).to eq(17)
+      end
+
       it 'grabs the first two facilities' do
         ids = Scrape.query.map(&:id)
         expect(ids).to include(facilities[-1].id)
@@ -34,7 +32,7 @@ RSpec.describe Scrape do
         allow_any_instance_of(Scrape).to receive(:work) { call_count += 1 }
 
         Scrape.perform
-        expect(call_count).to eq(7)
+        expect(call_count).to eq(17)
       end
     end
   end
