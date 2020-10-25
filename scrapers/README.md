@@ -33,10 +33,11 @@ AWS cli is not install on production servers. Run this locally and paste results
 ./deploy.sh recreation-gov {ip}
 ./deploy.sh reserve-america {ip}
 ./deploy.sh reserve-ca {ip}
+./deploy.sh rec1 157.230.187.97
 
-./deploy-all.sh reserve-america scraper-aug-27
-./deploy-all.sh reserve-ca scraper-aug-27
-./deploy-all.sh recreation-gov scraper-aug-27
+./deploy-all.sh reserve-america scraper-oct-21
+./deploy-all.sh reserve-ca scraper-oct-21
+./deploy-all.sh recreation-gov scraper-oct-21
 
 #### All together now
 
@@ -48,6 +49,36 @@ docker-compose build recreation-gov && docker-compose push recreation-gov && ./d
 
 docker-compose build rec1 && docker-compose push rec1 && ./deploy.sh rec1 {ip}
 
+#### Helpful Commands
+
+doctl compute droplet list --tag-name scraper-oct-24
+doctl compute droplet list --format PublicIPv4 --tag-name scraper-oct-24 --no-header
+
+doctl compute droplet delete --tag-name scraper-oct-24
+
+doctl compute droplet create --image 72304486 --size s-1vcpu-1gb --region nyc1 --tag-name scraper-oct-24 --wait --ssh-keys xxx ReserveScraper1 ReserveScraper2
+
 ---
 
 ## TODO
+
+
+# Add the New Relic Infrastructure Agent gpg key \
+curl -s https://download.newrelic.com/infrastructure_agent/gpg/newrelic-infra.gpg | sudo apt-key add - && \
+\
+# Create a configuration file and add your license key \
+echo "license_key: XXX" | sudo tee -a /etc/newrelic-infra.yml && \
+\
+# Create the agent’s yum repository \
+printf "deb [arch=amd64] https://download.newrelic.com/infrastructure_agent/linux/apt bionic main" | sudo tee -a /etc/apt/sources.list.d/newrelic-infra.list && \
+\
+# Update your apt cache \
+sudo apt-get update && \
+\
+# Run the installation script \
+sudo apt-get install newrelic-infra -y
+
+
+logs:
+  - name: docker-logs
+    file: /var/lib/docker/containers/*/*.log

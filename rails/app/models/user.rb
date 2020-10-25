@@ -100,6 +100,10 @@ class User < ApplicationRecord
     }
   end
 
+  def sms_add(number)
+    notification_methods.create(notification_type: :sms, param: number)
+  end
+
   def self.n(c)
     User.where('sms_count >= sms_limit').offset(c).first
   end

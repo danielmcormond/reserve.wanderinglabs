@@ -40,7 +40,6 @@ export default class Scraper {
 
     const numSites = session.body.match(/Sites 1 - 20 of ([0-9]*)/)[1];
     const pages = parseInt(numSites / 50, 10) + 1;
-    console.log('ALL', numSites, pages);
 
     const timePeriodsPages = [];
 

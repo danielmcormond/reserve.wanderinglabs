@@ -1,5 +1,5 @@
 import { redisBrpopAsync } from 'scraper-wandering-labs-shared/src/redis';
-import logger from 'scraper-wandering-labs-shared/src/logger';
+// import logger from 'scraper-wandering-labs-shared/src/logger';
 
 import Scraper from './scraper';
 
@@ -13,11 +13,11 @@ const scraperQueue = async function scraperQueue() {
     try {
       const scraper = new Scraper(jsonData);
       const logMsg = await scraper.scrape();
-      console.log({ ...logMsg, request: jsonData });
-      logger.log({ ...logMsg, request: jsonData });
+      console.log(JSON.stringify({ ...logMsg, request: jsonData }));
+      // logger.log({ ...logMsg, request: jsonData });
     } catch (err) {
-      console.log('FATAL', err);
-      logger.error({ ...err, request: jsonData });
+      console.error(JSON.stringify({ ScrapeStatus: 'FATAL', message: err.message, request: jsonData }));
+      // logger.error({ ...err, request: jsonData });
     }
   }
   setTimeout(() => {
