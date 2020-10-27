@@ -42,7 +42,7 @@ export default class Scraper {
   async scrape() {
     const hrstart = process.hrtime();
 
-    console.log(this.timePeriods)
+    // console.log(this.timePeriods)
     const results = await BluebirdPromise.map(this.timePeriods, scrapeDate => this.scrapeParseDate(scrapeDate), {
       concurrency: this.concurrency
     });

@@ -47,7 +47,7 @@ export default class Scraper {
       }
     });
 
-    console.log(resultPairs)
+    // console.log(resultPairs)
 
     const resultsJson = `{ "results": ${JSON.stringify(resultPairs, Object.keys(resultPairs).sort())} }`;
 

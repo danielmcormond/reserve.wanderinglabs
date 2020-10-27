@@ -23,7 +23,7 @@ export default class Connection {
       url: `${this.baseUrl}?${query}`
     };
 
-    console.log(options)
+    // console.log(options)
     // return this.rp(options).then((response) => {
     //   console.log('Request time in ms', response.elapsedTime);
     //   return Promise.resolve(response)

@@ -33,7 +33,7 @@ export default class Connection {
   }
 
   async post(session, startDate, endDate, facilityIds) {
-    console.log('POST', startDate.format('MM/DD/YYYY'))
+    // console.log('POST', startDate.format('MM/DD/YYYY'))
     const options = {
       url: `https://secure.rec1.com/FL/pinellas-county-fl/permits/getMultiFacilityAvailability/${session}`,
       method: 'POST',
