@@ -13,6 +13,7 @@ class Scrape
 
   def self.query
     Facility
+      .active
       .active_facilities
       .order('last_scrape_attempt ASC NULLS FIRST')
       .where("last_scrape_attempt + scrape_every * interval '1 second' < NOW()")
