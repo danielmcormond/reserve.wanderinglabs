@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_14_005114) do
+ActiveRecord::Schema.define(version: 2020_10_28_043323) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "btree_gist"
@@ -140,8 +140,18 @@ ActiveRecord::Schema.define(version: 2020_10_14_005114) do
     t.string "ext_facility_id"
     t.string "slug"
     t.integer "scrape_every", default: 3600
+    t.integer "facility_group_id"
     t.index ["agency_id"], name: "index_facilities_on_agency_id"
     t.index ["slug"], name: "index_facilities_on_slug", unique: true
+  end
+
+  create_table "facility_groups", force: :cascade do |t|
+    t.bigint "agency_id"
+    t.string "name"
+    t.jsonb "details"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["agency_id"], name: "index_facility_groups_on_agency_id"
   end
 
   create_table "good_jobs", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -232,6 +242,7 @@ ActiveRecord::Schema.define(version: 2020_10_14_005114) do
   add_foreign_key "availability_requests", "facilities"
   add_foreign_key "availability_requests", "users"
   add_foreign_key "facilities", "agencies"
+  add_foreign_key "facility_groups", "agencies"
   add_foreign_key "notification_methods", "users"
   add_foreign_key "payments", "users"
   add_foreign_key "sites", "facilities"

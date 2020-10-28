@@ -1,4 +1,4 @@
-module InitialImport::ReserveCalifornia
+module InitialImport::UseDirect
   class Facilities
     attr_accessor :agency
 
@@ -7,7 +7,7 @@ module InitialImport::ReserveCalifornia
     end
 
     def all_facilities
-      session = InitialImport::ReserveCalifornia::Request.new
+      session = InitialImport::UseDirect::Request.new
       2.upto(1000).each do |x|
         facilities_from_place(session, x)
       end
@@ -27,7 +27,7 @@ module InitialImport::ReserveCalifornia
         name: result['DisplayName'],
       }
       result['JsonFacilityInfos'].each do |facility_json|
-        facility_attrs = InitialImport::ReserveCalifornia::FacilityParse.new(parent, facility_json).details
+        facility_attrs = InitialImport::UseDirect::FacilityParse.new(parent, facility_json).details
 
         update_or_create(facility_attrs)
       end
