@@ -22,6 +22,8 @@ class Facility < ApplicationRecord
 
   scope :active, (-> { where(active: true) })
 
+  scope :scrape_needed, -> { active.active_facilities.where("(last_scrape_attempt IS NULL OR last_scrape_attempt + scrape_every * interval '1 second' < NOW())") }
+
   enumerize :status,
             in: %i[active removed requires_attention],
             predicates: { prefix: true }

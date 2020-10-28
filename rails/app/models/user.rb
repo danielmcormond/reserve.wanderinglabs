@@ -74,8 +74,10 @@ class User < ApplicationRecord
     login_url + "/settings"
   end
 
-  def ar
-    availability_requests.map { |ar| ar.serialized }
+  def ar(active = true)
+    scope = availability_requests
+    scope = scope.active if active
+    scope.map { |ar| ar.serialized }
   end
 
   def self.e(email)

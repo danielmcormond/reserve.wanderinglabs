@@ -12,11 +12,7 @@ class Scrape
   end
 
   def self.query
-    Facility
-      .active
-      .active_facilities
-      .order('last_scrape_attempt ASC NULLS FIRST')
-      .where("last_scrape_attempt + scrape_every * interval '1 second' < NOW()")
+    Facility.scrape_needed.order('last_scrape_attempt ASC NULLS FIRST')
   end
 
   def self.limit

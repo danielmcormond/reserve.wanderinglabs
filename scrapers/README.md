@@ -56,7 +56,9 @@ doctl compute droplet list --format PublicIPv4 --tag-name scraper-oct-24 --no-he
 
 doctl compute droplet delete --tag-name scraper-oct-24
 
-doctl compute droplet create --image 72304486 --size s-1vcpu-1gb --region nyc1 --tag-name scraper-oct-24 --wait --ssh-keys xxx ReserveScraper1 ReserveScraper2
+doctl compute droplet create --image 72318240 --size s-1vcpu-1gb --region nyc1 --tag-name scraper-oct-24 --wait --ssh-keys $DIGITAL_OCEAN_SSH ReserveScraper1 ReserveScraper2 ReserveScraper3 ReserveScraper4 ReserveScraper5
+
+doctl compute droplet create --image 72318240 --size s-1vcpu-1gb --region sfo2 --tag-name scraper-sfo-oct-24 --wait --ssh-keys $DIGITAL_OCEAN_SSH ReserveScraper6 ReserveScraper7 ReserveScraper8 ReserveScraper9 ReserveScraper10
 
 ---
 
