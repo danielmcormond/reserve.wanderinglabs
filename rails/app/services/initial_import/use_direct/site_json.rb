@@ -78,6 +78,7 @@ module InitialImport::UseDirect
 
     def site_layout
       return 'back_in' if body['PullInTypeName'] == 'Back In'
+      return 'pull_thru' if body['PullInTypeName']&.include?('Pull')
 
       puts "LAYOUT #{body['PullInTypeName']}"
       'other'

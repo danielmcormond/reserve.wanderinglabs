@@ -17,10 +17,8 @@ module InitialImport::UseDirect
       return unless do_sites
 
       facility.reload
-      sites.each do |site|
-        InitialImport::UseDirect::Site.new(facility, site).import
-      end
-      facility.populate_sites_details
+      InitialImport::UseDirect::Sites.new(facility).import
+
       nil
     end
 

@@ -7,7 +7,7 @@ module InitialImport::UseDirect
     end
 
     def import_facility_groups
-      90.upto(150).each do |x|
+      90.upto(1000).each do |x|
         InitialImport::UseDirect::FacilityGroup.new(agency, x).first_or_create
       end
     end
@@ -24,6 +24,5 @@ module InitialImport::UseDirect
       end
       nil
     end
-
   end
 end

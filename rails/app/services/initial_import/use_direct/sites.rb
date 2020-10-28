@@ -27,8 +27,7 @@ module InitialImport::UseDirect
   end
 end
 
+# InitialImport::UseDirect::Facilities.new(InitialImport::UseDirect::Agency.ohio).import_facilities
 # InitialImport::UseDirect::Sites.new(facility).import
 # Facility::UseDirect.where(sites_count: 0).limit(50).each { |facility| InitialImport::UseDirect::Sites.new(facility).import; facility.cache_sites_count }
-
-
 # Facility::UseDirect.where(sites_count: 0).where('id > 4902').limit(50).each { |facility| begin; InitialImport::UseDirect::Sites.new(facility).import; rescue; end; facility.cache_sites_count }

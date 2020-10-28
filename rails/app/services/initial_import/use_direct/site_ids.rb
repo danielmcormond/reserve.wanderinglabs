@@ -7,7 +7,7 @@ module InitialImport::UseDirect
     end
 
     def ids
-      json["Facility"]["Units"].map { |site| site[1]["UnitId"] }
+      Array.wrap(json.dig("Facility", "Units")).map { |site| site[1]["UnitId"] }
     end
 
     def data
