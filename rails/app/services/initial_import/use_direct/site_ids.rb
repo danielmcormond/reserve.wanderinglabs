@@ -7,7 +7,14 @@ module InitialImport::UseDirect
     end
 
     def ids
-      Array.wrap(json.dig("Facility", "Units")).map { |site| site[1]["UnitId"] }
+      units = json.dig("Facility", "Units")
+      return [] unless units
+
+      if units.is_a?(Array)
+        units.map { |site| site[1]["UnitId"] }
+      else
+        [units.first[1]["UnitId"]]
+      end
     end
 
     def data
