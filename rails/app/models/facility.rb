@@ -12,7 +12,7 @@ class Facility < ApplicationRecord
                   }
 
   belongs_to :agency
-  belongs_to :facility_group
+  belongs_to :facility_group, optional: true
 
   has_many :sites, dependent: :destroy
   has_many :availability_requests, dependent: :destroy
