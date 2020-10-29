@@ -52,6 +52,8 @@ docker-compose build rec1 && docker-compose push rec1 && ./deploy.sh rec1 {ip}
 
 #### Helpful Commands
 
+doctl compute tag list
+
 doctl compute droplet list --tag-name scraper-oct-24
 doctl compute droplet list --format PublicIPv4 --tag-name scraper-oct-24 --no-header
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_28_043323) do
+ActiveRecord::Schema.define(version: 2020_10_29_063142) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "btree_gist"
@@ -141,6 +141,9 @@ ActiveRecord::Schema.define(version: 2020_10_28_043323) do
     t.string "slug"
     t.integer "scrape_every", default: 3600
     t.integer "facility_group_id"
+    t.boolean "out_of_order", default: false, null: false
+    t.text "out_of_order_reason"
+    t.date "out_of_order_date"
     t.index ["agency_id"], name: "index_facilities_on_agency_id"
     t.index ["slug"], name: "index_facilities_on_slug", unique: true
   end

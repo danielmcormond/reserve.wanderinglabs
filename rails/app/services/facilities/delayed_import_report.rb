@@ -4,7 +4,7 @@ module Facilities
 
     attr_reader :scope
 
-    def initialize(scope = Facility.active.active_facilities)
+    def initialize(scope = Facility.active.inservice.active_facilities)
       @scope = scope
     end
 
