@@ -14,7 +14,7 @@ module Facilities
         channel: '#scraper',
         username: 'WanderingBot'
       )
-      notifier.ping output
+      notifier.ping output.pretty_inspect
     end
 
     def output

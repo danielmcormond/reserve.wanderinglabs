@@ -12,7 +12,7 @@ import fromPairs from './utils/fromPairs';
 
 export default class Scraper {
   constructor({
-    facilityId, contractCode, parkId, startDate, endDate, hash, concurrency,
+    facilityId, contractCode, parkId, startDate, endDate, hash, concurrency, numSites
   }) {
     this.facilityId = facilityId;
     this.contractCode = contractCode;
@@ -23,6 +23,8 @@ export default class Scraper {
 
     this.runId = moment().format('YY_MM_DD_HH_mm');
     this.concurrency = concurrency || 10;
+
+    this.numSites = numSites || 20;
 
     this.connection = new Connection(this.contractCode, this.parkId);
 
@@ -36,13 +38,12 @@ export default class Scraper {
   async scrape() {
     const hrstart = process.hrtime();
 
-    const session = await this.connection.setSession();
+    await this.connection.setSession();
 
-    const numSites = session.body.match(/Sites 1 - 20 of ([0-9]*)/)[1];
-    const pages = parseInt(numSites / 50, 10) + 1;
-
+    const pages = parseInt(this.numSites / 50, 10) + 1;
     const timePeriodsPages = [];
 
+    console.log(this.timePeriods)
     this.timePeriods.forEach((timePeriod) => {
       for (let page = 0; page < pages; page++) {
         timePeriodsPages.push([timePeriod, page]);

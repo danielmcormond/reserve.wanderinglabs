@@ -28,6 +28,7 @@ class Facility::ReserveAmerica < Facility
       startDate: scrape_start.strftime('%m/%d/%Y'),
       endDate: scrape_end.strftime('%m/%d/%Y'),
       hash: last_import_hash,
+      numSites: sites_count
     }
   end
 end
