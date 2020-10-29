@@ -40,3 +40,9 @@ services:
       context: .
       dockerfile: ./reserve_ca_rdr/Dockerfile
     image: ${DOCKER_REGISTRY}/wanderinglabs/scraper-reserve-ca
+
+  use-direct:
+    build:
+      context: .
+      dockerfile: ./use_direct/Dockerfile
+    image: ${DOCKER_REGISTRY}/wanderinglabs/scraper-use-direct

@@ -8,6 +8,10 @@ export default class NotifyComplete {
   }
 
   post(runId, hash) {
+    if (this.base.includes('wl.dev')) {
+      console.log('DEV ENV: NOT POSTING TO RAILS', {runId, hash})
+      return Promise.resolve
+    }
     // console.log('posting to', this.base)
     const options = {
       url: `${this.base}/facilities/${this.facilityId}/availabilities/import`,

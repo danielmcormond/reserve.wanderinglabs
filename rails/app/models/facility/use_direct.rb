@@ -1,12 +1,4 @@
 class Facility::UseDirect < Facility
-  def place_id
-    details['place_id']
-  end
-
-  def rc_facility_id
-    details['facility_id']
-  end
-
   def sub_name
     'UseDirect'
   end
@@ -25,9 +17,8 @@ class Facility::UseDirect < Facility
     {
       name: "#{id}:#{name[0..25]}",
       facilityId: id,
-      rcFacilityId: rc_facility_id,
-      rcPlaceId: place_id,
-      rcName: details['parent'],
+      rcFacilityId: ext_facility_id,
+      rdrUrl: agency.details['rdr'],
       startDate: scrape_start.strftime('%m/%d/%Y'),
       endDate: scrape_end.strftime('%m/%d/%Y'),
       hash: last_import_hash,
