@@ -7,6 +7,7 @@ class Stats
     Facility::ReserveCalifornia,
     Facility::ReserveAmerica,
     Facility::RecreationGovBa,
+    Facility::UseDirect
   ].freeze
 
   TIMEFRAMES = {
