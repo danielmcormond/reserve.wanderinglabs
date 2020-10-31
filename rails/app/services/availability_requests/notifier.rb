@@ -51,6 +51,7 @@ module AvailabilityRequests
         matches_new: availability_request.available_matches.where(notified_at: nil).count,
       )
       availability_request.user.sms_cache if nm.notification_type == :sms
+      ::NewRelic::Agent.increment_metric("Notification/#{nm.allow? ? 'Live' : 'Throttled'}/#{nm.notifcation_type}")
       ln
     end
   end
