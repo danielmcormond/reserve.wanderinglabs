@@ -32,6 +32,9 @@ export class RequestFormStep1Table extends Component {
           </List.Header>
           <List.Description>
             {facility.sub_name}
+            { facility.out_of_order && (
+              <div className="font-semibold text-lg text-red-800 pl-2 inline">Reservations unavailable: {facility.out_of_order_reason}</div>
+            )}
           </List.Description>
         </List.Content>
       </List.Item>

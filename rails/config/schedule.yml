@@ -4,7 +4,5 @@ Stats:
   every: '30m'
 StatsMonth:
   every: '1d'
-Facilities::DelayedImportReport:
-  every: '12h'
 Payments::Sync:
   every: '1h'

@@ -17,6 +17,13 @@ class FacilitiesController < ApplicationController
     render json: @facilities
   end
 
+  def overdue
+    @facilities = Facility.active.inservice.active_facilities.order(last_import: :asc).limit(100).map do |facility|
+      facility.slice(:id, :type, :name, :sub_name, :ext_facility_id, :last_import, :last_scrape_attempt).merge(active_requests: facility.availability_requests.count)
+    end
+    render json: @facilities, serializer: nil
+  end
+
   def facility_scope
     if params[:q].present?
       Facility.active

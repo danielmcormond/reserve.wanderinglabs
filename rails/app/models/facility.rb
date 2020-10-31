@@ -107,4 +107,8 @@ class Facility < ApplicationRecord
   def scrape
     Scrape.new(self).work
   end
+
+  def ooo(reason = 'Covid19 Closure')
+    update(out_of_order: true, out_of_order_date: Date.today, out_of_order_reason: reason)
+  end
 end

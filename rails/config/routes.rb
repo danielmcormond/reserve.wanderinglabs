@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   resources :facilities, only: %i[index show] do
     collection do
       get :active
+      get :overdue
     end
     resources :availabilities do
       collection do
