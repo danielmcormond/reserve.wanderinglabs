@@ -43,7 +43,6 @@ export default class Scraper {
     const pages = parseInt(this.numSites / 50, 10) + 1;
     const timePeriodsPages = [];
 
-    console.log(this.timePeriods)
     this.timePeriods.forEach((timePeriod) => {
       for (let page = 0; page < pages; page++) {
         timePeriodsPages.push([timePeriod, page]);
