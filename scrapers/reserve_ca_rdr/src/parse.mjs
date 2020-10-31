@@ -3,6 +3,9 @@ import moment from "moment";
 export default class Parse {
   constructor(response) {
     this.body = response;
+    if (this.body.Facility.Units === null) {
+      throw new Error('No units found. Facility not in operation')
+    }
   }
 
   do() {
