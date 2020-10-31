@@ -31,7 +31,7 @@ export default class Scraper {
     this.runId = moment().format("YY_MM_DD_HH_mm");
 
     this.connection = new Connection(this.rgFacilityId);
-    this.concurrency = concurrency || 10;
+    this.concurrency = concurrency || 3;
   }
 
   get timePeriods() {
@@ -76,7 +76,7 @@ export default class Scraper {
 
   async scrapeParseDate(scrapeDate) {
     const scrapeResult = await this.connection.availability(scrapeDate);
-    const result = new Parse(scrapeResult.body).do();
+    const result = new Parse(scrapeResult.data).do();
     return Promise.resolve(result);
   }
 

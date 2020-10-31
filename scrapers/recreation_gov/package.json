@@ -10,9 +10,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.21.0",
     "bluebird": "^3.5.3",
     "esm": "^3.0.84",
     "moment": "^2.22.2",
+    "qs": "^6.9.4",
     "request": "^2.88.0",
     "request-promise": "^4.2.2"
   },

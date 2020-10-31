@@ -6,7 +6,7 @@ export default class Parse {
   }
 
   do() {
-    const json = JSON.parse(this.body);
+    const json = this.body;
 
     // console.log(json)
     var final = new Array();
