@@ -20,7 +20,7 @@ class Reserve::UseDirect
   end
 
   def site_url
-    "#{facility.agency.details['url']}/Facilities/MapView.aspx?map_id=#{facility.rc_facility_id}&map_level=Facility&nights=#{availability_request.stay_length}&arrival_date=#{arvdate}"
+    "#{facility.agency.details['url']}/Facilities/MapView.aspx?map_id=#{facility.ext_facility_id}&map_level=Facility&nights=#{availability_request.stay_length}&arrival_date=#{arvdate}"
   end
 
   def default_url
