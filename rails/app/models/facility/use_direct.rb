@@ -1,6 +1,6 @@
 class Facility::UseDirect < Facility
   def sub_name
-    'UseDirect'
+    [parent_name, agency.name].compact.join(', ')
   end
 
   def scraper_type
