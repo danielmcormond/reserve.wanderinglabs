@@ -11,7 +11,7 @@ class Reserve::UseDirect
     {
       type: 'UseDirect',
       site_url: site_url,
-      default_url: default_url,
+      default_url: default_url
     }
   end
 
@@ -20,10 +20,14 @@ class Reserve::UseDirect
   end
 
   def site_url
-    "https://reservecalifornia.com/CaliforniaWebHome/Facilities/MapView.aspx?map_id=#{site.facility.rc_facility_id}&map_level=Facility&nights=#{availability_request.stay_length}&arrival_date=#{arvdate}"
+    "#{facility.agency.details['url']}/Facilities/MapView.aspx?map_id=#{facility.rc_facility_id}&map_level=Facility&nights=#{availability_request.stay_length}&arrival_date=#{arvdate}"
   end
 
   def default_url
-    'https://www.reservecalifornia.com/CaliforniaWebHome/Default.aspx'
+    "#{facility.agency.details['url']}/Facilities/SearchViewUnitAvailabity.aspx?map_id=#{facility.facility_group.details['PlaceId']}"
+  end
+
+  def facility
+    @facility ||= site.facility
   end
 end
