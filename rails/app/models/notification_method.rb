@@ -4,7 +4,7 @@ class NotificationMethod < ApplicationRecord
   belongs_to :user
   has_many :availability_notifications
 
-  enumerize :notification_type, in: %i[email sms]
+  enumerize :notification_type, in: %i[email sms web]
 
   def allow?
     return true unless notification_type == :sms

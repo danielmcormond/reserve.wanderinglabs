@@ -1,6 +1,10 @@
 ## TODO / COULD DO
 
 - Notification Rate limiting
+- No premium welcome email on additional payments
+- Ignore sites
+- pusher beam web notifications
+- redo paypal
 
 
 ## Bugs

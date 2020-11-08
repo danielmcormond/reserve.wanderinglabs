@@ -116,6 +116,8 @@ GEM
       puma (~> 3.4)
     case_transform (0.2)
       activesupport
+    caze (0.2.2)
+      activesupport (>= 3)
     concurrent-ruby (1.1.6)
     crack (0.4.3)
       safe_yaml (~> 1.0.0)
@@ -151,6 +153,7 @@ GEM
       activesupport (>= 4.2.0)
     hashdiff (1.0.1)
     htmlentities (4.3.4)
+    http-accept (1.7.0)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
     httparty (0.15.6)
@@ -200,6 +203,7 @@ GEM
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (4.2.0)
+    netrc (0.11.0)
     newrelic_rpm (6.13.1)
     nio4r (2.5.2)
     nokogiri (1.8.5)
@@ -222,6 +226,10 @@ GEM
       htmlentities (>= 4.0.0)
     public_suffix (4.0.3)
     puma (3.8.2)
+    pusher-push-notifications (1.3.0)
+      caze (~> 0)
+      jwt (~> 2.1, >= 2.1.0)
+      rest-client (~> 2.0, >= 2.0.2)
     rack (2.2.2)
     rack-cors (1.0.1)
     rack-protection (2.0.0)
@@ -277,6 +285,11 @@ GEM
     resque-sentry (1.2.0)
       resque (>= 1.18.0)
       sentry-raven (>= 0.4.6)
+    rest-client (2.1.0)
+      http-accept (>= 1.7.0, < 2.0)
+      http-cookie (>= 1.0.2, < 2.0)
+      mime-types (>= 1.16, < 4.0)
+      netrc (~> 0.8)
     rspec-core (3.6.0)
       rspec-support (~> 3.6.0)
     rspec-expectations (3.6.0)
@@ -400,6 +413,7 @@ DEPENDENCIES
   pg (~> 0.18)
   pg_search
   puma (= 3.8.2)
+  pusher-push-notifications
   rack-cors
   rails (= 5.2.4.3)
   rb-readline

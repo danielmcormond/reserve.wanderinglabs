@@ -8,6 +8,7 @@ import { userSettings } from "../../actions/userActions";
 import Premium from "./premium.js";
 import UserEmail from "./email.js";
 import UserTxt from "./txt.js";
+import WebNotifications from "./WebNotifications";
 
 const connected = connect(store => {
   return {
@@ -59,6 +60,7 @@ export class UserSettings extends Component {
                 <UserEmail />
                 <Divider hidden />
                 <UserTxt />
+                <WebNotifications />
               </div>
             ) : (
               <p>Premium members can get notified via SMS.</p>
