@@ -112,3 +112,7 @@ table.ui.table.availabilityMatches {
 .ui.divider.hidden {
   display: block;
 }
+
+input:checked + svg {
+  display: block;
+}

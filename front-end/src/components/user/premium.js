@@ -6,6 +6,8 @@ import PaypalButton from './paypal'
 import SemanticInput from '../semanticInput'
 import SmsOverLimit from './SmsOverLimit'
 import SmsSettingsAlert from './SmsSettingsAlert'
+import PremiumMember from './PremiumMember'
+import PremiumCTA from "./PremiumCTA"
 
 const amounts = [15, 20, 25, 50]
 
@@ -104,8 +106,8 @@ export class PremiumAsk extends Component {
       <>
         {premium && !smsUnderLimit && <SmsOverLimit />}
         {premium && smsUnderLimit && <SmsSettingsAlert />}
-
-        <Segment color="green">{premium ? premiumMember() : premiumAsk()}</Segment>
+        {premium && <PremiumMember /> }
+        {!premium && <PremiumCTA /> }
       </>
     )
   }
