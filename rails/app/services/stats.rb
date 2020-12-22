@@ -15,7 +15,7 @@ class Stats
     year: 365.days,
     ytd: ActiveSupport::Duration.build(Time.zone.now - Time.zone.now.at_beginning_of_year + (14*3600 + 54*60 + 36)),
     month: 1.month,
-    mtd: (Time.now.zone.mday - 1).days,
+    mtd: (Time.zone.now.mday - 1).days,
     week: 1.week,
     day: 1.day,
     hour: 1.hour,
