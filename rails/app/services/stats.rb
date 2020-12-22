@@ -12,9 +12,10 @@ class Stats
 
   TIMEFRAMES = {
     total: 100.year,
-    year: 1.year,
+    year: 365.days,
     ytd: ActiveSupport::Duration.build(Time.zone.now - Time.zone.now.at_beginning_of_year + (14*3600 + 54*60 + 36)),
     month: 1.month,
+    mtd: (Time.now.zone.mday - 1).days,
     week: 1.week,
     day: 1.day,
     hour: 1.hour,
@@ -43,7 +44,7 @@ class Stats
 
   def self.currency
     TIMEFRAMES.map do |frame, duration|
-      sum = Payment.where('created_at > ?', duration.ago).sum(:total)
+      sum = Payment.approved.where('created_at > ?', duration.ago).sum(:total)
       sum_per_day = if duration > 1.day
                       sum / (duration / 1.day)
                     else
