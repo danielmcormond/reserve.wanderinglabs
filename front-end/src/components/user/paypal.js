@@ -6,7 +6,6 @@ import { paymentSuccess } from "../../actions/userActions";
 
 const connected = connect(store => {
   return {
-    premiumAmount: store.user.premiumAmount
   };
 })
 export class PaypalButton extends React.Component {
