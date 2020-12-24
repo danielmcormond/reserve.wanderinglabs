@@ -21,7 +21,7 @@ const PremiumMember = () => {
           <label className="inline-flex text-2xl align-top mb-2">
             <span className="leading-loose">$</span>
             <input
-              className="w-1/2 border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="w-1/2 border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring"
               type="number"
               onChange={e => setAmount(parseInt(e.target.value || 0))}
               defaultValue={amount}

@@ -1,79 +1,91 @@
-/*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
+/*! modern-normalize v1.0.0 | MIT License | https://github.com/sindresorhus/modern-normalize */
 
-/* Document
-   ========================================================================== */
+/*
+Document
+========
+*/
 
 /**
- * 1. Correct the line height in all browsers.
- * 2. Prevent adjustments of font size after orientation changes in iOS.
- */
+Use a better box model (opinionated).
+*/
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/**
+Use a more readable tab size (opinionated).
+*/
+
+:root {
+  -moz-tab-size: 4;
+  tab-size: 4;
+}
+
+/**
+1. Correct the line height in all browsers.
+2. Prevent adjustments of font size after orientation changes in iOS.
+*/
 
 html {
   line-height: 1.15; /* 1 */
   -webkit-text-size-adjust: 100%; /* 2 */
 }
 
-/* Sections
-   ========================================================================== */
+/*
+Sections
+========
+*/
 
 /**
- * Remove the margin in all browsers.
- */
+Remove the margin in all browsers.
+*/
 
 body {
   margin: 0;
 }
 
 /**
- * Render the `main` element consistently in IE.
- */
+Improve consistency of default fonts in all browsers. (https://github.com/sindresorhus/modern-normalize/issues/3)
+*/
 
-main {
-  display: block;
+body {
+  font-family:
+		system-ui,
+		-apple-system, /* Firefox supports this but not yet `system-ui` */
+		'Segoe UI',
+		Roboto,
+		Helvetica,
+		Arial,
+		sans-serif,
+		'Apple Color Emoji',
+		'Segoe UI Emoji';
 }
 
-/**
- * Correct the font size and margin on `h1` elements within `section` and
- * `article` contexts in Chrome, Firefox, and Safari.
- */
-
-h1 {
-  font-size: 2em;
-  margin: 0.67em 0;
-}
-
-/* Grouping content
-   ========================================================================== */
+/*
+Grouping content
+================
+*/
 
 /**
- * 1. Add the correct box sizing in Firefox.
- * 2. Show the overflow in Edge and IE.
- */
+1. Add the correct height in Firefox.
+2. Correct the inheritance of border color in Firefox. (https://bugzilla.mozilla.org/show_bug.cgi?id=190655)
+*/
+
+/*
+Text-level semantics
+====================
+*/
 
 /**
- * 1. Correct the inheritance and scaling of font size in all browsers.
- * 2. Correct the odd `em` font sizing in all browsers.
- */
-
-/* Text-level semantics
-   ========================================================================== */
+Add the correct text decoration in Chrome, Edge, and Safari.
+*/
 
 /**
- * Remove the gray background on active links in IE 10.
- */
-
-a {
-  background-color: transparent;
-}
-
-/**
- * 1. Remove the bottom border in Chrome 57-
- * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
- */
-
-/**
- * Add the correct font weight in Chrome, Edge, and Safari.
- */
+Add the correct font weight in Edge and Safari.
+*/
 
 b,
 strong {
@@ -81,27 +93,32 @@ strong {
 }
 
 /**
- * 1. Correct the inheritance and scaling of font size in all browsers.
- * 2. Correct the odd `em` font sizing in all browsers.
- */
+1. Improve consistency of default fonts in all browsers. (https://github.com/sindresorhus/modern-normalize/issues/3)
+2. Correct the odd 'em' font sizing in all browsers.
+*/
 
 code {
-  font-family: monospace, monospace; /* 1 */
+  font-family:
+		ui-monospace,
+		SFMono-Regular,
+		Consolas,
+		'Liberation Mono',
+		Menlo,
+		monospace; /* 1 */
   font-size: 1em; /* 2 */
 }
 
 /**
- * Add the correct font size in all browsers.
- */
+Add the correct font size in all browsers.
+*/
 
 small {
   font-size: 80%;
 }
 
 /**
- * Prevent `sub` and `sup` elements from affecting the line height in
- * all browsers.
- */
+Prevent 'sub' and 'sup' elements from affecting the line height in all browsers.
+*/
 
 sub {
   font-size: 75%;
@@ -114,24 +131,30 @@ sub {
   bottom: -0.25em;
 }
 
-/* Embedded content
-   ========================================================================== */
+/*
+Tabular data
+============
+*/
 
 /**
- * Remove the border on images inside links in IE 10.
- */
+1. Remove text indentation from table contents in Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=999088, https://bugs.webkit.org/show_bug.cgi?id=201297)
+2. Correct table border color inheritance in all Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=935729, https://bugs.webkit.org/show_bug.cgi?id=195016)
+*/
 
-img {
-  border-style: none;
+table {
+  text-indent: 0; /* 1 */
+  border-color: inherit; /* 2 */
 }
 
-/* Forms
-   ========================================================================== */
+/*
+Forms
+=====
+*/
 
 /**
- * 1. Change the font styles in all browsers.
- * 2. Remove the margin in Firefox and Safari.
- */
+1. Change the font styles in all browsers.
+2. Remove the margin in Firefox and Safari.
+*/
 
 button,
 input,
@@ -144,19 +167,9 @@ textarea {
 }
 
 /**
- * Show the overflow in IE.
- * 1. Show the overflow in Edge.
- */
-
-button,
-input { /* 1 */
-  overflow: visible;
-}
-
-/**
- * Remove the inheritance of text transform in Edge, Firefox, and IE.
- * 1. Remove the inheritance of text transform in Firefox.
- */
+Remove the inheritance of text transform in Edge and Firefox.
+1. Remove the inheritance of text transform in Firefox.
+*/
 
 button,
 select { /* 1 */
@@ -164,145 +177,75 @@ select { /* 1 */
 }
 
 /**
- * Correct the inability to style clickable types in iOS and Safari.
- */
+Correct the inability to style clickable types in iOS and Safari.
+*/
 
 button,
-[type="button"],
-[type="reset"],
-[type="submit"] {
+[type='button'],
+[type='reset'],
+[type='submit'] {
   -webkit-appearance: button;
 }
 
 /**
- * Remove the inner border and padding in Firefox.
- */
-
-button::-moz-focus-inner,
-[type="button"]::-moz-focus-inner,
-[type="reset"]::-moz-focus-inner,
-[type="submit"]::-moz-focus-inner {
-  border-style: none;
-  padding: 0;
-}
+Remove the inner border and padding in Firefox.
+*/
 
 /**
- * Restore the focus styles unset by the previous rule.
- */
-
-button:-moz-focusring,
-[type="button"]:-moz-focusring,
-[type="reset"]:-moz-focusring,
-[type="submit"]:-moz-focusring {
-  outline: 1px dotted ButtonText;
-}
+Restore the focus styles unset by the previous rule.
+*/
 
 /**
- * Correct the padding in Firefox.
- */
+Remove the additional ':invalid' styles in Firefox.
+See: https://github.com/mozilla/gecko-dev/blob/2f9eacd9d3d995c937b4251a5557d95d494c9be1/layout/style/res/forms.css#L728-L737
+*/
 
 /**
- * 1. Correct the text wrapping in Edge and IE.
- * 2. Correct the color inheritance from `fieldset` elements in IE.
- * 3. Remove the padding so developers are not caught out when they zero out
- *    `fieldset` elements in all browsers.
- */
+Remove the padding so developers are not caught out when they zero out 'fieldset' elements in all browsers.
+*/
 
 /**
- * Add the correct vertical alignment in Chrome, Firefox, and Opera.
- */
+Add the correct vertical alignment in Chrome and Firefox.
+*/
 
 progress {
   vertical-align: baseline;
 }
 
 /**
- * Remove the default vertical scrollbar in IE 10+.
- */
-
-textarea {
-  overflow: auto;
-}
+Correct the cursor style of increment and decrement buttons in Safari.
+*/
 
 /**
- * 1. Add the correct box sizing in IE 10.
- * 2. Remove the padding in IE 10.
- */
+1. Correct the odd appearance in Chrome and Safari.
+2. Correct the outline style in Safari.
+*/
 
-[type="checkbox"],
-[type="radio"] {
-  box-sizing: border-box; /* 1 */
-  padding: 0; /* 2 */
-}
-
-/**
- * Correct the cursor style of increment and decrement buttons in Chrome.
- */
-
-[type="number"]::-webkit-inner-spin-button,
-[type="number"]::-webkit-outer-spin-button {
-  height: auto;
-}
-
-/**
- * 1. Correct the odd appearance in Chrome and Safari.
- * 2. Correct the outline style in Safari.
- */
-
-[type="search"] {
+[type='search'] {
   -webkit-appearance: textfield; /* 1 */
   outline-offset: -2px; /* 2 */
 }
 
 /**
- * Remove the inner padding in Chrome and Safari on macOS.
- */
-
-[type="search"]::-webkit-search-decoration {
-  -webkit-appearance: none;
-}
+Remove the inner padding in Chrome and Safari on macOS.
+*/
 
 /**
- * 1. Correct the inability to style clickable types in iOS and Safari.
- * 2. Change font properties to `inherit` in Safari.
- */
-
-/* Interactive
-   ========================================================================== */
+1. Correct the inability to style clickable types in iOS and Safari.
+2. Change font properties to 'inherit' in Safari.
+*/
 
 /*
- * Add the correct display in Edge, IE 10+, and Firefox.
- */
-
-details {
-  display: block;
-}
+Interactive
+===========
+*/
 
 /*
- * Add the correct display in all browsers.
- */
+Add the correct display in Chrome and Safari.
+*/
 
 summary {
   display: list-item;
-}
-
-/* Misc
-   ========================================================================== */
-
-/**
- * Add the correct display in IE 10+.
- */
-
-template {
-  display: none;
-}
-
-/**
- * Add the correct display in IE 10.
- */
-
-[hidden] {
-  display: none;
 }
 
 /**
@@ -360,8 +303,18 @@ ul {
  */
 
 html {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; /* 1 */
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; /* 1 */
   line-height: 1.5; /* 2 */
+}
+
+/**
+ * Inherit font-family and line-height from `html` so users can set them as
+ * a class directly on the `html` element.
+ */
+
+body {
+  font-family: inherit;
+  line-height: inherit;
 }
 
 /**
@@ -396,7 +349,7 @@ html {
   box-sizing: border-box; /* 1 */
   border-width: 0; /* 2 */
   border-style: solid; /* 2 */
-  border-color: #d4d5d7; /* 2 */
+  border-color: #e9eaeb; /* 2 */
 }
 
 /*
@@ -422,16 +375,16 @@ textarea {
 }
 
 input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
-  color: #a0aec0;
+  color: #bfc0c4;
 }
 
 input::-ms-input-placeholder, textarea::-ms-input-placeholder {
-  color: #a0aec0;
+  color: #bfc0c4;
 }
 
 input::placeholder,
 textarea::placeholder {
-  color: #a0aec0;
+  color: #bfc0c4;
 }
 
 button {
@@ -487,7 +440,7 @@ textarea {
 
 
 code {
-  font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
 /**
@@ -549,13 +502,19 @@ video {
   }
 }
 
+@media (min-width: 1536px) {
+  .container {
+    max-width: 1536px;
+  }
+}
+
 .prose {
-  color: #4a5568;
+  color: #555962;
   max-width: 65ch;
 }
 
 .prose [class~="lead"] {
-  color: #4a5568;
+  color: #7f8289;
   font-size: 1.25em;
   line-height: 1.6;
   margin-top: 1.2em;
@@ -563,12 +522,13 @@ video {
 }
 
 .prose a {
-  color: #1a202c;
+  color: #2b303b;
   text-decoration: underline;
+  font-weight: 500;
 }
 
 .prose strong {
-  color: #1a202c;
+  color: #2b303b;
   font-weight: 600;
 }
 
@@ -580,7 +540,7 @@ video {
 .prose ul > li::before {
   content: "";
   position: absolute;
-  background-color: #cbd5e0;
+  background-color: #d4d5d7;
   border-radius: 50%;
   width: 0.375em;
   height: 0.375em;
@@ -589,7 +549,7 @@ video {
 }
 
 .prose h1 {
-  color: #1a202c;
+  color: #2b303b;
   font-weight: 800;
   font-size: 2.25em;
   margin-top: 0;
@@ -598,7 +558,7 @@ video {
 }
 
 .prose h2 {
-  color: #1a202c;
+  color: #2b303b;
   font-weight: 700;
   font-size: 1.5em;
   margin-top: 2em;
@@ -607,7 +567,7 @@ video {
 }
 
 .prose h3 {
-  color: #1a202c;
+  color: #2b303b;
   font-weight: 600;
   font-size: 1.25em;
   margin-top: 1.6em;
@@ -616,7 +576,7 @@ video {
 }
 
 .prose h4 {
-  color: #1a202c;
+  color: #2b303b;
   font-weight: 600;
   margin-top: 1.5em;
   margin-bottom: 0.5em;
@@ -624,7 +584,7 @@ video {
 }
 
 .prose code {
-  color: #1a202c;
+  color: #2b303b;
   font-weight: 600;
   font-size: 0.875em;
 }
@@ -635,6 +595,10 @@ video {
 
 .prose code::after {
   content: "`";
+}
+
+.prose a code {
+  color: #2b303b;
 }
 
 .prose table {
@@ -648,10 +612,10 @@ video {
 }
 
 .prose thead {
-  color: #1a202c;
+  color: #2b303b;
   font-weight: 600;
   border-bottom-width: 1px;
-  border-bottom-color: #cbd5e0;
+  border-bottom-color: #d4d5d7;
 }
 
 .prose thead th {
@@ -663,7 +627,7 @@ video {
 
 .prose tbody tr {
   border-bottom-width: 1px;
-  border-bottom-color: #e2e8f0;
+  border-bottom-color: #e9eaeb;
 }
 
 .prose tbody tr:last-child {
@@ -953,118 +917,105 @@ video {
   margin-bottom: -2px;
 }
 
-.space-y-2 > :not(template) ~ :not(template) {
-  --space-y-reverse: 0;
-  margin-top: calc(0.5rem * calc(1 - var(--space-y-reverse)));
-  margin-bottom: calc(0.5rem * var(--space-y-reverse));
+.space-y-2 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(0.5rem * var(--tw-space-y-reverse));
 }
 
 .bg-white {
-  --bg-opacity: 1;
-  background-color: #fff;
-  background-color: rgba(255, 255, 255, var(--bg-opacity));
+  --tw-bg-opacity: 1;
+  background-color: rgba(255, 255, 255, var(--tw-bg-opacity));
 }
 
 .bg-gray-100 {
-  --bg-opacity: 1;
-  background-color: #ffffff;
-  background-color: rgba(255, 255, 255, var(--bg-opacity));
+  --tw-bg-opacity: 1;
+  background-color: rgba(255, 255, 255, var(--tw-bg-opacity));
 }
 
 .bg-gray-800 {
-  --bg-opacity: 1;
-  background-color: #40444e;
-  background-color: rgba(64, 68, 78, var(--bg-opacity));
+  --tw-bg-opacity: 1;
+  background-color: rgba(64, 68, 78, var(--tw-bg-opacity));
 }
 
 .bg-gray-900 {
-  --bg-opacity: 1;
-  background-color: #2b303b;
-  background-color: rgba(43, 48, 59, var(--bg-opacity));
+  --tw-bg-opacity: 1;
+  background-color: rgba(43, 48, 59, var(--tw-bg-opacity));
 }
 
 .bg-red-100 {
-  --bg-opacity: 1;
-  background-color: #fff5f5;
-  background-color: rgba(255, 245, 245, var(--bg-opacity));
+  --tw-bg-opacity: 1;
+  background-color: rgba(254, 226, 226, var(--tw-bg-opacity));
 }
 
 .bg-red-200 {
-  --bg-opacity: 1;
-  background-color: #fed7d7;
-  background-color: rgba(254, 215, 215, var(--bg-opacity));
+  --tw-bg-opacity: 1;
+  background-color: rgba(254, 202, 202, var(--tw-bg-opacity));
 }
 
 .bg-red-300 {
-  --bg-opacity: 1;
-  background-color: #feb2b2;
-  background-color: rgba(254, 178, 178, var(--bg-opacity));
+  --tw-bg-opacity: 1;
+  background-color: rgba(252, 165, 165, var(--tw-bg-opacity));
 }
 
 .bg-green-100 {
-  --bg-opacity: 1;
-  background-color: #F1F8F2;
-  background-color: rgba(241, 248, 242, var(--bg-opacity));
+  --tw-bg-opacity: 1;
+  background-color: rgba(241, 248, 242, var(--tw-bg-opacity));
 }
 
 .bg-green-200 {
-  --bg-opacity: 1;
-  background-color: #DDEDDE;
-  background-color: rgba(221, 237, 222, var(--bg-opacity));
+  --tw-bg-opacity: 1;
+  background-color: rgba(221, 237, 222, var(--tw-bg-opacity));
 }
 
 .bg-green-300 {
-  --bg-opacity: 1;
-  background-color: #C9E1CA;
-  background-color: rgba(201, 225, 202, var(--bg-opacity));
+  --tw-bg-opacity: 1;
+  background-color: rgba(201, 225, 202, var(--tw-bg-opacity));
 }
 
 .bg-green-500 {
-  --bg-opacity: 1;
-  background-color: #77B57A;
-  background-color: rgba(119, 181, 122, var(--bg-opacity));
+  --tw-bg-opacity: 1;
+  background-color: rgba(119, 181, 122, var(--tw-bg-opacity));
 }
 
 .bg-green-600 {
-  --bg-opacity: 1;
-  background-color: #6BA36E;
-  background-color: rgba(107, 163, 110, var(--bg-opacity));
+  --tw-bg-opacity: 1;
+  background-color: rgba(107, 163, 110, var(--tw-bg-opacity));
 }
 
 .hover\:bg-gray-100:hover {
-  --bg-opacity: 1;
-  background-color: #ffffff;
-  background-color: rgba(255, 255, 255, var(--bg-opacity));
+  --tw-bg-opacity: 1;
+  background-color: rgba(255, 255, 255, var(--tw-bg-opacity));
 }
 
 .border-gray-300 {
-  --border-opacity: 1;
-  border-color: #d4d5d7;
-  border-color: rgba(212, 213, 215, var(--border-opacity));
+  --tw-border-opacity: 1;
+  border-color: rgba(212, 213, 215, var(--tw-border-opacity));
 }
 
 .border-gray-400 {
-  --border-opacity: 1;
-  border-color: #bfc0c4;
-  border-color: rgba(191, 192, 196, var(--border-opacity));
+  --tw-border-opacity: 1;
+  border-color: rgba(191, 192, 196, var(--tw-border-opacity));
 }
 
 .border-red-800 {
-  --border-opacity: 1;
-  border-color: #9b2c2c;
-  border-color: rgba(155, 44, 44, var(--border-opacity));
+  --tw-border-opacity: 1;
+  border-color: rgba(153, 27, 27, var(--tw-border-opacity));
 }
 
 .border-green-300 {
-  --border-opacity: 1;
-  border-color: #C9E1CA;
-  border-color: rgba(201, 225, 202, var(--border-opacity));
+  --tw-border-opacity: 1;
+  border-color: rgba(201, 225, 202, var(--tw-border-opacity));
 }
 
 .border-green-600 {
-  --border-opacity: 1;
-  border-color: #6BA36E;
-  border-color: rgba(107, 163, 110, var(--border-opacity));
+  --tw-border-opacity: 1;
+  border-color: rgba(107, 163, 110, var(--tw-border-opacity));
+}
+
+.focus-within\:border-blue-500:focus-within {
+  --tw-border-opacity: 1;
+  border-color: rgba(59, 130, 246, var(--tw-border-opacity));
 }
 
 .rounded {
@@ -1131,6 +1082,10 @@ video {
 
 .grid {
   display: grid;
+}
+
+.contents {
+  display: contents;
 }
 
 .hidden {
@@ -1207,38 +1162,47 @@ video {
 
 .text-xs {
   font-size: 0.75rem;
+  line-height: 1rem;
 }
 
 .text-sm {
   font-size: 0.875rem;
+  line-height: 1.25rem;
 }
 
 .text-base {
   font-size: 1rem;
+  line-height: 1.5rem;
 }
 
 .text-lg {
   font-size: 1.125rem;
+  line-height: 1.75rem;
 }
 
 .text-xl {
   font-size: 1.25rem;
+  line-height: 1.75rem;
 }
 
 .text-2xl {
   font-size: 1.5rem;
+  line-height: 2rem;
 }
 
 .text-3xl {
   font-size: 1.875rem;
+  line-height: 2.25rem;
 }
 
 .text-4xl {
   font-size: 2.25rem;
+  line-height: 2.5rem;
 }
 
 .text-5xl {
   font-size: 3rem;
+  line-height: 1;
 }
 
 .leading-tight {
@@ -1352,7 +1316,8 @@ video {
 }
 
 .focus\:outline-none:focus {
-  outline: 0;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
 }
 
 .overflow-y-auto {
@@ -1457,28 +1422,44 @@ video {
 }
 
 .inset-x-0 {
-  right: 0;
-  left: 0;
+  right: 0px;
+  left: 0px;
 }
 
 .top-0 {
-  top: 0;
+  top: 0px;
 }
 
 .right-0 {
-  right: 0;
+  right: 0px;
 }
 
 .resize {
   resize: both;
 }
 
-.shadow {
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+* {
+  --tw-shadow: 0 0 #0000;
 }
 
-.focus\:shadow-outline:focus {
-  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
+.shadow {
+  --tw-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+* {
+  --tw-ring-inset: var(--tw-empty,/*!*/ /*!*/);
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgba(59, 130, 246, 0.5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+}
+
+.focus\:ring:focus {
+  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(3px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
 }
 
 .fill-current {
@@ -1498,99 +1479,83 @@ video {
 }
 
 .text-white {
-  --text-opacity: 1;
-  color: #fff;
-  color: rgba(255, 255, 255, var(--text-opacity));
+  --tw-text-opacity: 1;
+  color: rgba(255, 255, 255, var(--tw-text-opacity));
 }
 
 .text-gray-100 {
-  --text-opacity: 1;
-  color: #ffffff;
-  color: rgba(255, 255, 255, var(--text-opacity));
+  --tw-text-opacity: 1;
+  color: rgba(255, 255, 255, var(--tw-text-opacity));
 }
 
 .text-gray-300 {
-  --text-opacity: 1;
-  color: #d4d5d7;
-  color: rgba(212, 213, 215, var(--text-opacity));
+  --tw-text-opacity: 1;
+  color: rgba(212, 213, 215, var(--tw-text-opacity));
 }
 
 .text-gray-400 {
-  --text-opacity: 1;
-  color: #bfc0c4;
-  color: rgba(191, 192, 196, var(--text-opacity));
+  --tw-text-opacity: 1;
+  color: rgba(191, 192, 196, var(--tw-text-opacity));
 }
 
 .text-gray-500 {
-  --text-opacity: 1;
-  color: #aaacb0;
-  color: rgba(170, 172, 176, var(--text-opacity));
+  --tw-text-opacity: 1;
+  color: rgba(170, 172, 176, var(--tw-text-opacity));
 }
 
 .text-gray-600 {
-  --text-opacity: 1;
-  color: #7f8289;
-  color: rgba(127, 130, 137, var(--text-opacity));
+  --tw-text-opacity: 1;
+  color: rgba(127, 130, 137, var(--tw-text-opacity));
 }
 
 .text-gray-700 {
-  --text-opacity: 1;
-  color: #555962;
-  color: rgba(85, 89, 98, var(--text-opacity));
+  --tw-text-opacity: 1;
+  color: rgba(85, 89, 98, var(--tw-text-opacity));
 }
 
 .text-gray-800 {
-  --text-opacity: 1;
-  color: #40444e;
-  color: rgba(64, 68, 78, var(--text-opacity));
+  --tw-text-opacity: 1;
+  color: rgba(64, 68, 78, var(--tw-text-opacity));
 }
 
 .text-gray-900 {
-  --text-opacity: 1;
-  color: #2b303b;
-  color: rgba(43, 48, 59, var(--text-opacity));
+  --tw-text-opacity: 1;
+  color: rgba(43, 48, 59, var(--tw-text-opacity));
 }
 
 .text-red-800 {
-  --text-opacity: 1;
-  color: #9b2c2c;
-  color: rgba(155, 44, 44, var(--text-opacity));
+  --tw-text-opacity: 1;
+  color: rgba(153, 27, 27, var(--tw-text-opacity));
 }
 
 .text-yellow-500 {
-  --text-opacity: 1;
-  color: #ecc94b;
-  color: rgba(236, 201, 75, var(--text-opacity));
+  --tw-text-opacity: 1;
+  color: rgba(245, 158, 11, var(--tw-text-opacity));
 }
 
 .text-green-200 {
-  --text-opacity: 1;
-  color: #DDEDDE;
-  color: rgba(221, 237, 222, var(--text-opacity));
+  --tw-text-opacity: 1;
+  color: rgba(221, 237, 222, var(--tw-text-opacity));
 }
 
 .text-green-500 {
-  --text-opacity: 1;
-  color: #77B57A;
-  color: rgba(119, 181, 122, var(--text-opacity));
+  --tw-text-opacity: 1;
+  color: rgba(119, 181, 122, var(--tw-text-opacity));
 }
 
 .text-green-600 {
-  --text-opacity: 1;
-  color: #6BA36E;
-  color: rgba(107, 163, 110, var(--text-opacity));
+  --tw-text-opacity: 1;
+  color: rgba(107, 163, 110, var(--tw-text-opacity));
 }
 
 .text-green-800 {
-  --text-opacity: 1;
-  color: #365137;
-  color: rgba(54, 81, 55, var(--text-opacity));
+  --tw-text-opacity: 1;
+  color: rgba(54, 81, 55, var(--tw-text-opacity));
 }
 
 .hover\:text-gray-900:hover {
-  --text-opacity: 1;
-  color: #2b303b;
-  color: rgba(43, 48, 59, var(--text-opacity));
+  --tw-text-opacity: 1;
+  color: rgba(43, 48, 59, var(--tw-text-opacity));
 }
 
 .uppercase {
@@ -1604,7 +1569,6 @@ video {
 
 .select-none {
   -webkit-user-select: none;
-     -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
 }
@@ -1658,22 +1622,65 @@ video {
 }
 
 .transform {
-  --transform-translate-x: 0;
-  --transform-translate-y: 0;
-  --transform-rotate: 0;
-  --transform-skew-x: 0;
-  --transform-skew-y: 0;
-  --transform-scale-x: 1;
-  --transform-scale-y: 1;
-  transform: translateX(var(--transform-translate-x)) translateY(var(--transform-translate-y)) rotate(var(--transform-rotate)) skewX(var(--transform-skew-x)) skewY(var(--transform-skew-y)) scaleX(var(--transform-scale-x)) scaleY(var(--transform-scale-y));
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  transform: translateX(var(--tw-translate-x)) translateY(var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
 .transition {
   transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+@-webkit-keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes ping {
+  75%, 100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+@keyframes pulse {
+  50% {
+    opacity: .5;
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(-25%);
+    -webkit-animation-timing-function: cubic-bezier(0.8,0,1,1);
+            animation-timing-function: cubic-bezier(0.8,0,1,1);
+  }
+
+  50% {
+    transform: none;
+    -webkit-animation-timing-function: cubic-bezier(0,0,0.2,1);
+            animation-timing-function: cubic-bezier(0,0,0.2,1);
+  }
+}
+
+@media (min-width: 640px) {
 }
 
 @media (min-width: 768px) {
-
   .md\:flex {
     display: flex;
   }
@@ -1681,4 +1688,13 @@ video {
   .md\:hidden {
     display: none;
   }
+}
+
+@media (min-width: 1024px) {
+}
+
+@media (min-width: 1280px) {
+}
+
+@media (min-width: 1536px) {
 }
