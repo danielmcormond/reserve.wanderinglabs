@@ -98,6 +98,14 @@ export class RequestShow extends Component {
 
             <Grid>
               <Grid.Row divided>
+              {dateHasPast(ar.date_end) && (
+                  <Grid.Column computer="16" tablet="16" mobile="16">
+                    <div className="text-gray-400 text-2xl font-semibold mb-8">
+                      This request has expired and is no longer being checked.
+                    </div>
+                  </Grid.Column>
+                )}
+
                 <Grid.Column {...halfGridProps}>
                   <List relaxed>
                     <List.Item>
@@ -152,14 +160,6 @@ export class RequestShow extends Component {
                 {ar.facility.out_of_order && (
                   <Grid.Column computer="16" tablet="16" mobile="16">
                     <OutOfOrder facility={ar.facility} />
-                  </Grid.Column>
-                )}
-
-                {dateHasPast(ar.date_end) && (
-                  <Grid.Column computer="16" tablet="16" mobile="16">
-                    <div className="text-gray-400 text-2xl font-semibold">
-                      This request has expired and is no longer being checked.
-                    </div>
                   </Grid.Column>
                 )}
 
