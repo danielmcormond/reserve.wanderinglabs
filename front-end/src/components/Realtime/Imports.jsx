@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import moment from "moment";
+import dayjs from "dayjs"
 
 import ImportHistory from "./ImportHistory";
 import { Link } from "react-router-dom";
@@ -41,7 +41,7 @@ const Imports = ({ match, ...props }) => {
             <td className="border px-4 py-2 text-xl">
               <Link to={`/logs/${i.facility.id}`}>{i.facility.name}</Link>
             </td>
-            <td className="border px-4 py-2 text-xl"> {moment(i.created_at).format("YYYY/MM/DD HH:mm")}</td>
+            <td className="border px-4 py-2 text-xl"> {dayjs(i.created_at).format("YYYY/MM/DD HH:mm")}</td>
             <td className="border px-4 py-2 text-xl">{i.history_open_count}</td>
             <td className="border px-4 py-2 text-xl">{i.history_filled_count}</td>
           </tr>

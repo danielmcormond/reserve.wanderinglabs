@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import DayPicker, { DateUtils } from "react-day-picker";
-import moment from "moment";
+import dayjs from "dayjs"
 import { Divider, Grid, Header, Label, Icon } from "semantic-ui-react";
 import { actions, Control, Errors } from "react-redux-form";
 
@@ -64,8 +64,8 @@ export class RequestFormStep2 extends Component {
               <div>
                 <Label size="large">
                   <Icon name="calendar" />
-                  {moment(dateStart).format("L")} -{" "}
-                  {moment(dateEnd).format("L")}
+                  {dayjs(dateStart).format("MM/DD/YYYY")} -{" "}
+                  {dayjs(dateEnd).format("MM/DD/YYYY")}
                   <Icon name="delete" onClick={this.handleResetClick} />
                 </Label>
               </div>}
