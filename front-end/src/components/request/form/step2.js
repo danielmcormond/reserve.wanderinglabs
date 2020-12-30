@@ -12,9 +12,9 @@ import "../../../dayPicker.css";
 
 const connected = connect(store => {
   return {
-    dateStart: store.availabilityRequestForm.step2.dateStart,
-    dateEnd: store.availabilityRequestForm.step2.dateEnd,
-    step2Valid: store.availabilityRequestForm.forms.step2.$form.valid
+    dateStart: store.availabilityRequestForm.dateStart,
+    dateEnd: store.availabilityRequestForm.dateEnd,
+    step2Valid: store.forms.availabilityRequestForm.$form.valid
   };
 })
 export class RequestFormStep2 extends Component {
@@ -24,19 +24,19 @@ export class RequestFormStep2 extends Component {
       to: this.props.dateEnd
     });
     this.props.dispatch(
-      actions.change("availabilityRequestForm.step2.dateStart", range.from)
+      actions.change("availabilityRequestForm.dateStart", range.from)
     );
     this.props.dispatch(
-      actions.change("availabilityRequestForm.step2.dateEnd", range.to)
+      actions.change("availabilityRequestForm.dateEnd", range.to)
     );
   };
   handleResetClick = e => {
     e.preventDefault();
     this.props.dispatch(
-      actions.change("availabilityRequestForm.step2.dateStart", null)
+      actions.change("availabilityRequestForm.dateStart", null)
     );
     this.props.dispatch(
-      actions.change("availabilityRequestForm.step2.dateEnd", null)
+      actions.change("availabilityRequestForm.dateEnd", null)
     );
   };
 
@@ -81,7 +81,7 @@ export class RequestFormStep2 extends Component {
             }}
           />
           <Errors
-            model="availabilityRequestForm.step2.dateStart"
+            model="availabilityRequestForm.dateStart"
             messages={{
               required: "Select a date"
             }}
@@ -93,14 +93,14 @@ export class RequestFormStep2 extends Component {
         </Grid.Column>
         <Grid.Column computer="8" tablet="16" mobile="16">
           <Control
-            model=".step2.stayLength"
+            model=".stayLength"
             component={SemanticInput}
             controlProps={{
               label: "Length of stay (in days):"
             }}
           />
           <Errors
-            model="availabilityRequestForm.step2.stayLength"
+            model="availabilityRequestForm.stayLength"
             messages={{
               required: "Enter a stay length"
             }}

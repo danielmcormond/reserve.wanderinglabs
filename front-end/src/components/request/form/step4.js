@@ -17,7 +17,7 @@ export class RequestFormStep4 extends Component {
       <Grid padded="vertically">
         <Grid.Column computer="8" tablet="8" mobile="16">
           <Control
-            model=".step4.email"
+            model=".email"
             component={SemanticInput}
             controlProps={{
               label: "Email Address"
@@ -27,7 +27,7 @@ export class RequestFormStep4 extends Component {
             }}
           />
           <Errors
-            model="availabilityRequestForm.step4.email"
+            model="availabilityRequestForm.email"
             messages={{
               required: "Enter Your Email Address"
             }}

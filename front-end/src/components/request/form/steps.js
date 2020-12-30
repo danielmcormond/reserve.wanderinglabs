@@ -7,7 +7,7 @@ const connected = connect(store => {
   return {
     currentStep: store.requestForm.step,
     isAuthenticated: store.session.isAuthenticated,
-    step1: store.availabilityRequestForm.step1,
+    availabilityRequestForm: store.availabilityRequestForm,
   };
 })
 export class RequestFormSteps extends Component {
@@ -24,7 +24,7 @@ export class RequestFormSteps extends Component {
   }
 
   render() {
-    const { currentStep, step1: { facility } } = this.props;
+    const { currentStep, availabilityRequestForm: { facility } } = this.props;
 
     const step_titles = [
       "_padding_",

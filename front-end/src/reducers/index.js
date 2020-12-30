@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import { combineForms } from "react-redux-form";
+import { combineForms, createForms } from "react-redux-form";
 
 import { connectRouter } from 'connected-react-router'
 
@@ -13,40 +13,13 @@ import requestForm from "./requestFormReducer";
 import flash from "./flashReducer";
 import session from "./sessionReducer";
 import user from "./userReducer";
-
-const initialAvailabilityRequestFormState = {
-  step1: {
-    facility: {},
-    facilityId: ""
-  },
-  step2: {
-    dateStart: null,
-    dateEnd: null,
-    stayLength: "",
-    arrivalDays: []
-  },
-  step3: {
-    length: "",
-    type: "rv",
-    electric: "",
-    water: false,
-    sewer: false,
-    pullthru: false,
-    sitePremium: false,
-    ignoreAda: true,
-    sites: []
-  },
-  step4: {
-    email: ""
-  }
-};
+import availabilityRequestForm from "./availabilityRequestFormReducer";
 
 export default (history) => combineReducers({
   router: connectRouter(history),
-  availabilityRequestForm: combineForms(
-    initialAvailabilityRequestFormState,
-    "availabilityRequestForm"
-  ),
+  ...createForms({
+    availabilityRequestForm: availabilityRequestForm
+  }),
   sessionForm: combineForms({ user: { email: "" } }, "sessionForm"),
   availabilityMatches,
   availabilityRequests,

@@ -18,11 +18,11 @@ const connected = connect(store => {
   };
 })
 class RequestForm extends Component {
-  handleSubmit(values) {
-    this.props.dispatch(formSubmit(values));
+  handleSubmit() {
+    this.props.dispatch(formSubmit());
   }
-  handleChange(values) {
-    this.props.dispatch(matchingSiteCount(values));
+  handleChange() {
+    this.props.dispatch(matchingSiteCount());
   }
   render() {
     const { currentStep } = this.props;
@@ -31,8 +31,8 @@ class RequestForm extends Component {
       <Form
         className="ui form big"
         model="availabilityRequestForm"
-        onSubmit={values => this.handleSubmit(values)}
-        onChange={values => this.handleChange(values)}
+        onSubmit={() => this.handleSubmit()}
+        onChange={() => this.handleChange()}
       >
         {currentStep === 1 && <RequestFormStep1 />}
         {currentStep === 2 && <RequestFormStep2 />}

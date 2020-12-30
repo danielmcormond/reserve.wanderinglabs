@@ -8,14 +8,14 @@ import { fetchSites } from "../../../actions/sitesActions";
 const connected = connect(store => {
   return {
     sites: store.sites.sites,
-    siteIds: store.availabilityRequestForm.step3.siteIds,
-    facilityId: store.availabilityRequestForm.step1.facilityId
+    siteIds: store.availabilityRequestForm.siteIds,
+    facilityId: store.availabilityRequestForm.facilityId
   };
 })
 export class RequestFormStep1 extends Component {
   handleChange = (e, value) => {
     this.props.dispatch(
-      actions.change("availabilityRequestForm.step3.siteIds", value.value)
+      actions.change("availabilityRequestForm.siteIds", value.value)
     );
   };
 

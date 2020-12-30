@@ -66,25 +66,25 @@ const electricOptions = [
 
 const connected = connect(store => {
   return {
-    type: store.availabilityRequestForm.step3.type,
-    electric: store.availabilityRequestForm.step3.electric,
-    sitePremium: store.availabilityRequestForm.step3.sitePremium,
+    type: store.availabilityRequestForm.type,
+    electric: store.availabilityRequestForm.electric,
+    sitePremium: store.availabilityRequestForm.sitePremium,
     matchingSiteCount: store.availabilityRequests.matchingSiteCount,
-    facility: store.availabilityRequestForm.step1.facility
+    facility: store.availabilityRequestForm.facility
   };
 })
 export class RequestFormStep3 extends Component {
   handleSiteTypeClick = (e, data) => {
     e.preventDefault();
     this.props.dispatch(
-      actions.change("availabilityRequestForm.step3.type", data.value)
+      actions.change("availabilityRequestForm.type", data.value)
     );
   };
 
   handleElectricClick = (e, data) => {
     e.preventDefault();
     this.props.dispatch(
-      actions.change("availabilityRequestForm.step3.electric", data.value)
+      actions.change("availabilityRequestForm.electric", data.value)
     );
   };
 
@@ -121,7 +121,7 @@ export class RequestFormStep3 extends Component {
         {facility.sites_details.max_length > 0 && (
           <Grid.Column mobile="8">
             <label>Min Site Length</label>
-            <Control model=".step3.length" component={SemanticInput} />
+            <Control model=".length" component={SemanticInput} />
           </Grid.Column>
         )}
 
@@ -145,7 +145,7 @@ export class RequestFormStep3 extends Component {
             {facility.sites_details.water && (
               <Grid.Column width="4">
                 <Control.checkbox
-                  model=".step3.water"
+                  model=".water"
                   component={SemanticCheckbox}
                   controlProps={{
                     label: "Water"
@@ -156,7 +156,7 @@ export class RequestFormStep3 extends Component {
             {facility.sites_details.sewer && (
               <Grid.Column width="4">
                 <Control.checkbox
-                  model=".step3.sewer"
+                  model=".sewer"
                   component={SemanticCheckbox}
                   controlProps={{
                     label: "Sewer"
@@ -167,7 +167,7 @@ export class RequestFormStep3 extends Component {
             {facility.sites_details.pullthru && (
               <Grid.Column width="4">
                 <Control.checkbox
-                  model=".step3.pullthru;"
+                  model=".pullthru;"
                   component={SemanticCheckbox}
                   controlProps={{
                     label: "PullThru"
@@ -184,7 +184,7 @@ export class RequestFormStep3 extends Component {
               {facility.sites_details.premium && (
                 <Grid.Column width="8">
                   <Control.checkbox
-                    model=".step3.sitePremium"
+                    model=".sitePremium"
                     component={SemanticCheckbox}
                     controlProps={{
                       label: "Only Premium Sites"
@@ -196,7 +196,7 @@ export class RequestFormStep3 extends Component {
               {facility.sites_details.ada && (
                 <Grid.Column width="8">
                   <Control.checkbox
-                    model=".step3.ignoreAda"
+                    model=".ignoreAda"
                     component={SemanticCheckbox}
                     controlProps={{
                       label: "Don't include ADA Sites"

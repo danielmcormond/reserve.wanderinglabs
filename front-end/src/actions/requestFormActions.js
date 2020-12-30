@@ -6,29 +6,31 @@ import { setFlashMessage } from "../actions/flashActions";
 import reserveApi from "../utils/axios";
 import store from "../store";
 
-export function matchingSiteCount(values) {
+export function matchingSiteCount() {
   return function(dispatch) {
     let currentStep = store.getState().requestForm.step;
+    const availability_request = store.getState().availabilityRequestForm
+
     if (currentStep !== 3) {
       return;
     }
 
     let apiValues = {
-      facility_id: values.step1.facilityId,
-      date_start: values.step2.dateStart,
-      date_end: values.step2.dateEnd,
-      stay_length: values.step2.stayLength,
-      email: values.step4.email,
-      sewer: values.step3.sewer,
-      water: values.step3.water,
-      pullthru: values.step3.pullthru,
-      min_length: values.step3.length,
-      min_electric: values.step3.electric,
-      site_premium: values.step3.sitePremium,
-      ignore_ada: values.step3.ignoreAda,
-      site_type: values.step3.type,
-      specific_site_ids: values.step3.siteIds,
-      arrival_days: values.step2.arrivalDays
+      facility_id: availability_request.facilityId,
+      date_start: availability_request.dateStart,
+      date_end: availability_request.dateEnd,
+      stay_length: availability_request.stayLength,
+      email: availability_request.email,
+      sewer: availability_request.sewer,
+      water: availability_request.water,
+      pullthru: availability_request.pullthru,
+      min_length: availability_request.length,
+      min_electric: availability_request.electric,
+      site_premium: availability_request.sitePremium,
+      ignore_ada: availability_request.ignoreAda,
+      site_type: availability_request.type,
+      specific_site_ids: availability_request.siteIds,
+      arrival_days: availability_request.arrivalDays
     };
     reserveApi({
       method: "post",
@@ -49,26 +51,27 @@ export function matchingSiteCount(values) {
   };
 }
 
-export function formSubmit(values) {
+export function formSubmit() {
   return function(dispatch) {
     dispatch({ type: "SUBMIT_REQUEST_FORM" });
+    const availability_request = store.getState().availabilityRequestForm
 
     let apiValues = {
-      facility_id: values.step1.facilityId,
-      date_start: values.step2.dateStart,
-      date_end: values.step2.dateEnd,
-      stay_length: values.step2.stayLength,
-      email: values.step4.email,
-      sewer: values.step3.sewer,
-      water: values.step3.water,
-      pullthru: values.step3.pullthru,
-      min_length: values.step3.length,
-      min_electric: values.step3.electric,
-      site_premium: values.step3.sitePremium,
-      ignore_ada: values.step3.ignoreAda,
-      site_type: values.step3.type,
-      specific_site_ids: values.step3.siteIds,
-      arrival_days: values.step2.arrivalDays
+      facility_id: availability_request.facilityId,
+      date_start: availability_request.dateStart,
+      date_end: availability_request.dateEnd,
+      stay_length: availability_request.stayLength,
+      email: availability_request.email,
+      sewer: availability_request.sewer,
+      water: availability_request.water,
+      pullthru: availability_request.pullthru,
+      min_length: availability_request.length,
+      min_electric: availability_request.electric,
+      site_premium: availability_request.sitePremium,
+      ignore_ada: availability_request.ignoreAda,
+      site_type: availability_request.type,
+      specific_site_ids: availability_request.siteIds,
+      arrival_days: availability_request.arrivalDays
     };
     reserveApi({
       method: "post",
@@ -121,10 +124,8 @@ export function formStepGo(step) {
 
     if (step > current_step) {
       dispatch(formStepValidate());
-      let stepValid = store.getState().availabilityRequestForm.forms[
-        `step${current_step}`
-      ].$form.valid;
-      stepValid && dispatch({ type: "FORM_STEP_GO", payload: step });
+      let stepValid = store.getState().forms.availabilityRequestForm.$form.valid;
+      stepValid && dispatch({ type: "FORM_STEP_GO", payload: step }) && dispatch(matchingSiteCount());
       stepValid && window.scrollTo(0, 0);
     } else {
       dispatch({ type: "FORM_STEP_GO", payload: step });
@@ -138,10 +139,10 @@ export function formSetFacility(facilityId) {
     let facilities = store.getState().facilities.facilities;
     let facility = _.find(facilities, { id: facilityId });
     dispatch(
-      actions.change("availabilityRequestForm.step1.facilityId", facilityId)
+      actions.change("availabilityRequestForm.facilityId", facilityId)
     );
     dispatch(
-      actions.change("availabilityRequestForm.step1.facility", facility)
+      actions.change("availabilityRequestForm.facility", facility)
     );
     dispatch(formStepValidate()); // Get rid of errors upon selection
   };
@@ -152,10 +153,10 @@ export function formSetFacility2() {
   return function(dispatch) {
     let facility = store.getState().facilities.facility;
     dispatch(
-      actions.change("availabilityRequestForm.step1.facilityId", facility.id)
+      actions.change("availabilityRequestForm.facilityId", facility.id)
     );
     dispatch(
-      actions.change("availabilityRequestForm.step1.facility", facility)
+      actions.change("availabilityRequestForm.facility", facility)
     );
     dispatch(formStepValidate()); // Get rid of errors upon selection
   };
@@ -167,13 +168,13 @@ export function formStepValidate() {
 
     if (current_step === 1) {
       dispatch(
-        actions.validateFields("availabilityRequestForm.step1", {
+        actions.validateFields("availabilityRequestForm", {
           facilityId: { required: val => val && val > 0 }
         })
       );
     } else if (current_step === 2) {
       dispatch(
-        actions.validateFields("availabilityRequestForm.step2", {
+        actions.validateFields("availabilityRequestForm", {
           dateStart: { required: val => val },
           stayLength: { required: val => val && val > 0 }
         })

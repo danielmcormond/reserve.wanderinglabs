@@ -5,13 +5,13 @@ import { actions } from "react-redux-form";
 
 const connected = connect(store => {
   return {
-    arrivalDays: store.availabilityRequestForm.step2.arrivalDays
+    arrivalDays: store.availabilityRequestForm.arrivalDays
   };
 })
 export class RequestFormStep2ArrivalDays extends Component {
   handleChange = (e, value) => {
     this.props.dispatch(
-      actions.change("availabilityRequestForm.step2.arrivalDays", value.value)
+      actions.change("availabilityRequestForm.arrivalDays", value.value)
     );
   };
 

@@ -11,8 +11,8 @@ import { fetchFacilities } from "../../../actions/facilitiesActions";
 const connected = connect(store => {
   return {
     facilities: store.facilities.facilities,
-    step1: store.availabilityRequestForm.step1,
-    step1Valid: store.availabilityRequestForm.forms.step1.$form.valid,
+    step1: store.availabilityRequestForm,
+    step1Valid: store.forms.availabilityRequestForm.$form.valid,
     loading: store.facilities.fetching
   };
 });
@@ -56,7 +56,7 @@ export class RequestFormStep1Facility extends Component {
           style={{ margin: ".25em 0" }}
         />
         <Errors
-          model="availabilityRequestForm.step1.facilityId"
+          model="availabilityRequestForm.facilityId"
           messages={{
             required: "You must select a campground"
           }}
