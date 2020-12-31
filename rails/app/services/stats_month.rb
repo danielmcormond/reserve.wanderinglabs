@@ -15,7 +15,7 @@ class StatsMonth
   end
 
   def self.months
-    Payment.select("to_char(created_at,'YYYY-MM') as yyyymm, sum(total) as sum_total").group("to_char(created_at,'YYYY-MM')").order("to_char(created_at,'YYYY-MM')")
+    Payment.approved.select("to_char(created_at,'YYYY-MM') as yyyymm, sum(total) as sum_total").group("to_char(created_at,'YYYY-MM')").order("to_char(created_at,'YYYY-MM')")
   end
 
   def self.currency
