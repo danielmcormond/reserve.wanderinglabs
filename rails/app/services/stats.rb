@@ -10,16 +10,40 @@ class Stats
     Facility::UseDirect
   ].freeze
 
-  TIMEFRAMES = {
-    total: 100.year,
-    year: 365.days,
-    ytd: ActiveSupport::Duration.build(Time.zone.now - Time.zone.now.at_beginning_of_year + (14*3600 + 54*60 + 36)),
-    month: 1.month,
-    mtd: (Time.zone.now.mday - 1).days,
-    week: 1.week,
-    day: 1.day,
-    hour: 1.hour,
-  }.freeze
+  TIMEFRAMES = [
+    {
+      name: 'total',
+      value: ->{ Payment.approved.first.created_at }
+    },
+    {
+      name: 'Year',
+      value: ->{ 365.days.ago }
+    },
+    {
+      name: 'YTD',
+      value: -> { Time.now.at_beginning_of_year }
+    },
+    {
+      name: 'Month',
+      value: -> { 1.month.ago }
+    },
+    {
+      name: 'MTD',
+      value: -> { Time.now.at_beginning_of_month }
+    },
+    {
+      name: '24hrs',
+      value: -> { 1.day.ago }
+    },
+    {
+      name: 'Day',
+      value: -> { Time.now.at_beginning_of_day }
+    },
+    {
+      name: 'Hour',
+      value: -> { 1.hour.ago }
+    }
+  ].freeze
 
   def self.perform
     notifier = Slack::Notifier.new(
@@ -43,16 +67,18 @@ class Stats
   end
 
   def self.currency
-    TIMEFRAMES.map do |frame, duration|
-      sum = Payment.approved.where('created_at > ?', duration.ago).sum(:total)
-      sum_per_day = if duration > 1.day
-                      sum / (duration / 1.day)
+    TIMEFRAMES.map do |timeframe|
+      ago = timeframe[:value].call
+      duration = (0.day.ago - ago).round / 86400
+      sum = Payment.approved.where('created_at > ?', ago).sum(:total)
+      sum_per_day = if duration > 1
+                      sum / duration
                     else
                       '-'
                     end
       sum_formatted = ActionController::Base.helpers.number_to_currency(sum)
       sum_per_day_formatted = ActionController::Base.helpers.number_to_currency(sum_per_day)
-      "#{frame}: #{sum_formatted} (#{sum_per_day_formatted})"
+      "#{timeframe[:name]}: #{sum_formatted} (#{sum_per_day_formatted})"
     end.join("\n")
   end
 
