@@ -113,8 +113,6 @@ export class RequestFormStep2 extends Component {
           <Divider hidden />
           <Divider hidden />
 
-
-          <label>Only arrive on specific weekdays (optional):</label>
           <RequestFormStep2ArrivalDays />
         </Grid.Column>
 
