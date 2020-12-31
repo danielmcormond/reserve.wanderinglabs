@@ -1,6 +1,8 @@
 import _ from "lodash";
 import { actions } from "react-redux-form";
 import { push } from "connected-react-router";
+import camelcaseKeys from 'camelcase-keys'
+
 import { setFlashMessage } from "../actions/flashActions";
 
 import reserveApi from "../utils/axios";
@@ -11,9 +13,9 @@ export function matchingSiteCount() {
     let currentStep = store.getState().requestForm.step;
     const availability_request = store.getState().availabilityRequestForm
 
-    if (currentStep !== 3) {
-      return;
-    }
+    // if (currentStep !== 3) {
+    //   return;
+    // }
 
     let apiValues = {
       facility_id: availability_request.facilityId,
@@ -42,7 +44,7 @@ export function matchingSiteCount() {
       .then(response => {
         dispatch({
           type: "FETCH_AR_SITE_COUNT_FULFILLED",
-          payload: response.data.count
+          payload: camelcaseKeys(response.data)
         });
       })
       .catch(err => {

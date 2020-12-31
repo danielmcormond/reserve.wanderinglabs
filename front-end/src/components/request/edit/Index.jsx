@@ -8,7 +8,8 @@ import { matchingSiteCount } from '../../../actions/requestFormActions'
 import { fetchAvailabilityRequest } from '../../../actions/availabilityRequestsActions'
 import SiteType from './SiteType'
 
-dayjs.extend(localeData)
+import { matchingSiteCount } from "../../../actions/requestFormActions"
+import { fetchAvailabilityRequest } from "../../../actions/availabilityRequestsActions"
 
 const connected = connect(store => {
   return {

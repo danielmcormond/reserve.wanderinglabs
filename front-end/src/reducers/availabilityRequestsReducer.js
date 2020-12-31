@@ -58,7 +58,7 @@ export default function reducer(
       };
     }
     case "FETCH_AR_SITE_COUNT_FULFILLED": {
-      return { ...state, matchingSiteCount: action.payload };
+      return { ...state, sites: action.payload, matchingSiteCount: action.payload.size };
     }
     default: {
       return state;
