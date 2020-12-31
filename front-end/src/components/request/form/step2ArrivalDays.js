@@ -35,7 +35,7 @@ const RequestFormStep2ArrivalDays = ({ dispatch, arrivalDaysForm }) => {
 
   return (
     <div>
-      <label className="filter-label" onClick={toggleEditArrivalDays}>
+      <label className="filter-label cursor-pointer" onClick={toggleEditArrivalDays}>
         Only arrive on specific weekdays (optional):
         <FontAwesomeIcon icon={faCaretSquareDown} className="ml-6" />
       </label>

@@ -6,11 +6,15 @@ import { useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faPlus, faUserAlt } from "@fortawesome/free-solid-svg-icons";
 
-import "../../tailwind.generated.css";
-
 import Nav from "./Nav";
 import Imports from "../Realtime/Imports";
 import RealtimeNav from "../Realtime/Nav";
+
+if (process.env.NODE_ENV === "production") {
+  require("../../tailwind.generated.css");
+} else {
+  require("../../tailwind.all.css");
+}
 
 const LayoutV2 = () => {
   const [navOpen, setNavOpen] = useState(false);

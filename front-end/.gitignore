@@ -22,4 +22,4 @@ yarn-error.log*
 
 /src/semantic/dist
 
-/src/tailwind.generated.css
+/src/tailwind.all.css
