@@ -8,8 +8,8 @@ import { matchingSiteCount } from '../../../actions/requestFormActions'
 import { fetchAvailabilityRequest } from '../../../actions/availabilityRequestsActions'
 import SiteType from './SiteType'
 
-import { matchingSiteCount } from "../../../actions/requestFormActions"
-import { fetchAvailabilityRequest } from "../../../actions/availabilityRequestsActions"
+import { matchingSiteCount } from '../../../actions/requestFormActions'
+import { fetchAvailabilityRequest } from '../../../actions/availabilityRequestsActions'
 
 const connected = connect(store => {
   return {

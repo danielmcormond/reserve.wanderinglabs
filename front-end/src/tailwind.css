@@ -26,4 +26,8 @@
   margin-bottom: -2px;
 }
 
+.space-x-2-right > button {
+  margin-right: 0.5rem;
+}
+
 @tailwind utilities;

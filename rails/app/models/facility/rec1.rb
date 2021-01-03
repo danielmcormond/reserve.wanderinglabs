@@ -25,4 +25,9 @@ class Facility::Rec1 < Facility
       hash: last_import_hash,
     }
   end
+
+  def loop_from_site(site)
+    puts "lookup #{site.details['code']} : #{site.details['code'].split("/")}"
+    site.details['code'].split("/")[1] # FDSCamp/A1/041
+  end
 end

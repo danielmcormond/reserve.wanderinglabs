@@ -31,4 +31,8 @@ class Facility::ReserveAmerica < Facility
       numSites: sites_count
     }
   end
+
+  def loop_from_site(site)
+    site.details['Loop']
+  end
 end
