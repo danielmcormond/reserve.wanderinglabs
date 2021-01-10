@@ -28,6 +28,14 @@ RSpec.describe AvailabilityImports::Index do
     it 'creates a AvailabilityImport' do
       expect { import.import }.to change { AvailabilityImport.count }.by(1)
     end
+
+    context 'when there is a site group' do
+      let(:site_group) { FactoryGirl.create(:site_group, facility_id: facility.id) }
+
+      it 'relates the AvailabilityImport to the site group' do
+        expect(import.import.site_group_id).to eq(site_group.id)
+      end
+    end
   end
 
   describe '#parse_and_match' do
@@ -49,6 +57,21 @@ RSpec.describe AvailabilityImports::Index do
         expect(import.import_needed?).to be false
       end
     end
+
+    context 'when there is a site group' do
+      let(:site_group) { FactoryGirl.create(:site_group, facility_id: facility.id, last_import_hash: 'site_group_hash') }
+
+      it 'true' do
+        expect(import.import_needed?).to be true
+      end
+
+      context 'same hashes' do
+        let(:hash) { 'site_group_hash' }
+        it 'false when hashes are equal' do
+          expect(import.import_needed?).to be false
+        end
+      end
+    end
   end
 
   describe '#update_facility' do
@@ -58,6 +81,18 @@ RSpec.describe AvailabilityImports::Index do
 
     it 'updates the timestamp' do
       expect { import.update_facility }.to(change { facility.reload.last_import })
+    end
+  end
+
+  describe '#update_site_group' do
+    let(:site_group) { FactoryGirl.create(:site_group, facility_id: facility.id, last_import_hash: 'site_group_hash') }
+
+    it 'sets the new hash' do
+      expect { import.update_site_group }.to change { site_group.reload.last_import_hash }.to eq(hash)
+    end
+
+    it 'updates the timestamp' do
+      expect { import.update_site_group }.to(change { site_group.reload.last_import })
     end
   end
 end

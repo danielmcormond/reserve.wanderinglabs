@@ -15,6 +15,7 @@ class Facility < ApplicationRecord
   belongs_to :facility_group, optional: true
 
   has_many :sites, dependent: :destroy
+  has_many :site_groups, dependent: :destroy
   has_many :availability_requests, dependent: :destroy
   has_many :availability_imports, dependent: :destroy
 
