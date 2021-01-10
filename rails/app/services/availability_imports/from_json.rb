@@ -22,7 +22,7 @@ class AvailabilityImports::FromJson
       history_open: history_open,
       history_filled: history_filled,
       date_start: date_start,
-      date_end: date_end,
+      date_end: date_end
     )
   end
 
@@ -37,7 +37,7 @@ class AvailabilityImports::FromJson
           availabilities.add(
             availability_import_id: import.id,
             site_id: site_id,
-            avail_at: avail_date_range,
+            avail_at: avail_date_range
           )
         end
       end
@@ -45,27 +45,29 @@ class AvailabilityImports::FromJson
   end
 
   def delete_availabilities
-    Availability.where(site_id: facility_sites.map(&:id)).where.not(availability_import_id: import.id).delete_all
+    Availability.where(site_id: sites.map(&:id)).where.not(availability_import_id: import.id).delete_all
   end
 
   def history_open
-    AvailabilityImports::History.all_open(import.id, facility_sites.map(&:id))
+    AvailabilityImports::History.all_open(import.id, sites.map(&:id))
   end
 
   def history_filled
-    AvailabilityImports::History.all_filled(import.id, facility_sites.map(&:id))
+    AvailabilityImports::History.all_filled(import.id, sites.map(&:id))
   end
 
   def sites_for(ids)
     ids = ids.map(&:to_s)
-    facility_sites.select { |site| ids.include?(site.ext_site_id) }
+    sites.select { |site| ids.include?(site.ext_site_id) }
   end
 
-  def facility_sites
-    @facility_sites ||= Site
-                        .where(facility_id: import.facility_id)
-                        .select(:id, :ext_site_id)
-                        .all
+  def sites
+    @sites ||= Site
+               .where(
+                 import.site_group_id ? { site_group_id: import.site_group_id } : { facility_id: import.facility_id }
+               )
+               .select(:id, :ext_site_id)
+               .all
   end
 
   def url
@@ -105,8 +107,8 @@ class AvailabilityImports::FromJson
     return @range_format if @range_format.present?
 
     @range_format = {}
-    results.each do |avail_date, sites|
-      sites.each do |site|
+    results.each do |avail_date, date_sites|
+      date_sites.each do |site|
         @range_format[site] ||= []
         @range_format[site].push(avail_date)
       end

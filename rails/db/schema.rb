@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_29_063142) do
+ActiveRecord::Schema.define(version: 2021_01_10_172938) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "btree_gist"
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 2020_10_29_063142) do
     t.jsonb "history_open"
     t.jsonb "history_filled"
     t.datetime "created_at"
+    t.integer "site_group_id"
     t.index ["facility_id"], name: "index_availability_imports_on_facility_id"
   end
 
@@ -77,7 +78,7 @@ ActiveRecord::Schema.define(version: 2020_10_29_063142) do
     t.bigint "availability_request_id"
     t.bigint "notification_method_id"
     t.jsonb "matches_new"
-    t.jsonb "matches", null: false
+    t.jsonb "matches"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "throttled", default: false
@@ -195,6 +196,20 @@ ActiveRecord::Schema.define(version: 2020_10_29_063142) do
     t.index ["user_id"], name: "index_payments_on_user_id"
   end
 
+  create_table "site_groups", force: :cascade do |t|
+    t.bigint "facility_id"
+    t.string "name"
+    t.string "ext_id"
+    t.jsonb "details"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "active", default: false, null: false
+    t.datetime "last_scrape_attempt"
+    t.datetime "last_import"
+    t.string "last_import_hash"
+    t.index ["facility_id"], name: "index_site_groups_on_facility_id"
+  end
+
   create_table "sites", force: :cascade do |t|
     t.bigint "facility_id"
     t.string "ext_site_id"
@@ -211,6 +226,8 @@ ActiveRecord::Schema.define(version: 2020_10_29_063142) do
     t.boolean "premium", default: false, null: false
     t.boolean "ada", default: false, null: false
     t.boolean "active", default: true, null: false
+    t.string "loop"
+    t.integer "site_group_id"
     t.index ["active"], name: "index_sites_on_active"
     t.index ["facility_id"], name: "index_sites_on_facility_id"
   end
@@ -248,5 +265,6 @@ ActiveRecord::Schema.define(version: 2020_10_29_063142) do
   add_foreign_key "facility_groups", "agencies"
   add_foreign_key "notification_methods", "users"
   add_foreign_key "payments", "users"
+  add_foreign_key "site_groups", "facilities"
   add_foreign_key "sites", "facilities"
 end
