@@ -10,8 +10,8 @@ module InitialImport::UseDirect
     def first_or_create
       puts "Group: #{place_id}"
       return unless json["SelectedPlace"]
-      puts "\t\tImporting: #{attributes[:name]}"
-      ::FacilityGroup.where("details->>'place_id' = ?", attributes["PlaceId"]).first_or_create(attributes)
+      puts "\t\tImporting: #{attributes[:details]["PlaceId"]}: #{attributes[:name]}"
+      ::FacilityGroup.where(agency_id: agency.id).where("details->>'PlaceId' = ?", place_id.to_s).first_or_create(attributes)
     end
 
     def data

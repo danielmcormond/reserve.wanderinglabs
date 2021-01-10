@@ -7,7 +7,28 @@ module InitialImport::UseDirect
     end
 
     def import_facility_groups
-      90.upto(1000).each do |x|
+      0.upto(90).each do |x|
+        InitialImport::UseDirect::FacilityGroup.new(agency, x).first_or_create
+      end
+    end
+
+    def import_facility_groups_from_search
+      park_ids = []
+      ('a'..'z').to_a.each do |a1|
+        ('a'..'z').to_a.each do |a2|
+
+          park_ids += InitialImport::UseDirect::ParkSearch.new(agency, [a1, a2].join('')).park_ids
+          puts "#{[a1, a2].join('')}: #{park_ids.uniq}"
+        end
+      end
+
+      park_ids.uniq.each do |x|
+        InitialImport::UseDirect::FacilityGroup.new(agency, x).first_or_create
+      end
+    end
+
+    def import_facility_groups_from_ids(ids)
+      ids.each do |x|
         InitialImport::UseDirect::FacilityGroup.new(agency, x).first_or_create
       end
     end
