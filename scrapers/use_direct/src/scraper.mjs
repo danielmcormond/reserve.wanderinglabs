@@ -9,8 +9,9 @@ import Connection from "./connection";
 import Parse from "./parse.mjs";
 
 export default class Scraper {
-  constructor({ facilityId, rcFacilityId, rdrUrl, startDate, endDate, hash }) {
+  constructor({ facilityId, siteGroupId, rcFacilityId, rdrUrl, startDate, endDate, hash }) {
     this.facilityId = facilityId;
+    this.siteGroupId = siteGroupId;
     this.rcFacilityId = rcFacilityId;
     this.rdrUrl = rdrUrl;
 
@@ -20,7 +21,7 @@ export default class Scraper {
     this.endDate = moment(endDate, "MM/DD/YYYY");
     this.hash = hash;
 
-    this.runId = moment().format("YY_MM_DD_HH_mm");
+    this.runId = siteGroupId + '_' + moment().format("YY_MM_DD_HH_mm");
     this.concurrency = 2;
 
     this.connection = new Connection(this.rdrUrl, this.rcFacilityId);

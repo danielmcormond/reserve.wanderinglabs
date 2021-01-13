@@ -15,6 +15,7 @@ class Facility < ApplicationRecord
   belongs_to :facility_group, optional: true
 
   has_many :sites, dependent: :destroy
+  has_many :site_groups, dependent: :destroy
   has_many :availability_requests, dependent: :destroy
   has_many :availability_imports, dependent: :destroy
 
@@ -110,5 +111,14 @@ class Facility < ApplicationRecord
 
   def ooo(reason = 'Covid19 Closure')
     update(out_of_order: true, out_of_order_date: Date.today, out_of_order_reason: reason)
+  end
+
+  def self.reset_site_group_counter
+    ActiveRecord::Base.connection.execute <<-SQL.squish
+      UPDATE facilities
+      SET site_groups_count = (SELECT count(1)
+                               FROM site_groups
+                              WHERE site_groups.facility_id = facilities.id)
+    SQL
   end
 end

@@ -1,8 +1,9 @@
 module InitialImport::UseDirect
   class SiteJson
-    attr_reader :facility, :ext_site_id
-    def initialize(facility, ext_site_id)
-      @facility = facility
+    attr_reader :site_group, :facility, :ext_site_id
+    def initialize(site_group, ext_site_id)
+      @site_group = site_group
+      @facility = site_group.facility
       @ext_site_id = ext_site_id
     end
 
@@ -27,7 +28,7 @@ module InitialImport::UseDirect
     end
 
     def site
-      @site ||= ::Site.where(facility_id: facility.id, ext_site_id: ext_site_id).first || ::Site.new(facility_id: facility.id, ext_site_id: ext_site_id)
+      @site ||= ::Site.where(site_group_id: site_group.id, ext_site_id: ext_site_id).first || ::Site.new(site_group_id: site_group.id, ext_site_id: ext_site_id)
     end
 
     def meta
@@ -37,6 +38,7 @@ module InitialImport::UseDirect
     def attributes
       {
         facility_id: facility.id,
+        site_group_id: site_group.id,
         ext_site_id: ext_site_id,
         site_num: body['Unit']['ShortName'],
         details: meta,

@@ -25,7 +25,14 @@ class Scrape
 
   def work
     # log
-    ScrapeTypes::Queue.publish(facility)
+    if facility.site_groups_count.positive?
+      facility.site_groups.each do |site_group|
+        ScrapeTypes::Queue.publish(facility, site_group)
+        site_group.update(last_scrape_attempt: Time.now)
+      end
+    else
+      ScrapeTypes::Queue.publish(facility)
+    end
     Facilities::Checked.mark_as(facility)
   end
 
