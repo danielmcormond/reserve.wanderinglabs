@@ -54,7 +54,7 @@ class AvailabilityImports::Index
     @site_group ||= facility.site_groups.where(id: site_group_id).first
   end
 
-  def self.perform(facility_id, import, hash, site_group_id = nil)
-    new(facility_id, import, hash, site_group_id).perform
+  def self.perform(facility_id, import, hash)
+    new(facility_id, import, hash).perform
   end
 end
