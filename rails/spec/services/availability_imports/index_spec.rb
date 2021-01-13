@@ -4,7 +4,7 @@ RSpec.describe AvailabilityImports::Index do
   let(:hash) { 'foobar' }
   let(:facility) { FactoryGirl.create(:facility, last_import_hash: '123456abc') }
   let(:site_group) { nil }
-  let(:import) { AvailabilityImports::Index.new(facility.id, '17_06_08_17_22', hash, site_group ? site_group.id : nil) }
+  let(:import) { AvailabilityImports::Index.new(facility.id, "#{site_group ? "#{site_group.id}_" : ''}17_06_08_17_22", hash) }
 
   describe '#perform' do
     it 'calls other methods' do

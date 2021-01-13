@@ -4,12 +4,13 @@ class AvailabilityImports::Index
 
   attr_reader :facility, :run_id, :hash, :site_group_id
 
-  def initialize(facility_id, run_id, hash, site_group_id = nil)
+  def initialize(facility_id, run_id, hash)
     @facility = Facility.find(facility_id)
     @run_id = run_id
     @hash = hash
 
-    @site_group_id = site_group_id
+    # SITE_GROUP ID IS AT THE START OF A RUN_ID
+    @site_group_id = run_id.split('_')[0] if @facility.site_groups_count.positive?
   end
 
   def perform
