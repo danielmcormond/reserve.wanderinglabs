@@ -14,7 +14,7 @@ class Facility::UseDirect < Facility
   end
 
   def scraper_details(site_group = nil)
-    raise Exception, 'Site Group Required for UseDirect' unless site_group
+    raise Exception, 'Site Group Required for UseDirect' if site_groups_count.positive? && !site_group
 
     {
       name: "#{id}:#{name[0..25]}",
