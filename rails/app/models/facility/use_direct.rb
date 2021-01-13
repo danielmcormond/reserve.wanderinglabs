@@ -24,7 +24,7 @@ class Facility::UseDirect < Facility
       rdrUrl: agency.details['rdr'],
       startDate: scrape_start.strftime('%m/%d/%Y'),
       endDate: scrape_end.strftime('%m/%d/%Y'),
-      hash: last_import_hash
+      hash: site_group.last_import_hash
     }
   end
 end
