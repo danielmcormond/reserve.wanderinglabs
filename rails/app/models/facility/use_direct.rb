@@ -9,19 +9,22 @@ class Facility::UseDirect < Facility
 
   def scraper_meta
     {
-      key: 'ScraperUseDirect',
+      key: 'ScraperUseDirect'
     }
   end
 
-  def scraper_details
+  def scraper_details(site_group = nil)
+    raise Exception, 'Site Group Required for UseDirect' unless site_group
+
     {
       name: "#{id}:#{name[0..25]}",
       facilityId: id,
-      rcFacilityId: ext_facility_id,
+      siteGroupId: site_group.id,
+      rcFacilityId: site_group.ext_id,
       rdrUrl: agency.details['rdr'],
       startDate: scrape_start.strftime('%m/%d/%Y'),
       endDate: scrape_end.strftime('%m/%d/%Y'),
-      hash: last_import_hash,
+      hash: last_import_hash
     }
   end
 end
