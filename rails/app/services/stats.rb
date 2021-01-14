@@ -1,6 +1,8 @@
 class Stats
   @queue = :other
 
+  Time.zone = 'MST'
+
   FACILITIES = [
     Facility::MaricopaCounty,
     Facility::Rec1,
@@ -21,7 +23,7 @@ class Stats
     },
     {
       name: 'YTD',
-      value: -> { Time.now.at_beginning_of_year }
+      value: -> { Time.zone.now.at_beginning_of_year }
     },
     {
       name: 'Month',
@@ -29,7 +31,7 @@ class Stats
     },
     {
       name: 'MTD',
-      value: -> { Time.now.at_beginning_of_month }
+      value: -> { Time.zone.now.at_beginning_of_month }
     },
     {
       name: '24hrs',
@@ -37,7 +39,7 @@ class Stats
     },
     {
       name: 'Day',
-      value: -> { Time.now.at_beginning_of_day }
+      value: -> { Time.zone.now.at_beginning_of_day }
     },
     {
       name: 'Hour',
