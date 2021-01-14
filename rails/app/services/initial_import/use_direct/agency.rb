@@ -218,5 +218,36 @@ module InitialImport::UseDirect
       }
       ::Agency.where(name: attrs[:name]).first_or_create(attrs)
     end
+
+    def self.ohio_migration
+      agency = InitialImport::UseDirect::Agency.ohio
+
+      agency.facility_groups.each do |fg|
+        Facility.create(agency: agency, details: fg.details, name: fg.name)
+      end
+
+      agency.facilities.where.not(ext_facility_id: nil).each do |f|
+        new_facility =
+          agency
+          .facilities
+          .where(ext_facility_id: nil)
+          .where('details @> ?', { PlaceId: f.facility_group.details['PlaceId'] }.to_json)
+          .first
+
+        # sg = SiteGroup.create(facility: new_facility, name: f.name, ext_id: f.ext_facility_id, details: f.details)
+
+        # f.sites.update_all(site_group_id: sg.id, facility_id: new_facility.id)
+        f.availability_requests.update_all(facility_id: new_facility.id)
+      end
+
+      agency.facilities.each { |f| f.sites.each { |s| s.availabilities.delete_all } }
+
+      agency.facilities.where.not(ext_facility_id: nil).each { |f| f.availability_imports.delete_all }
+      agency.facilities.where.not(ext_facility_id: nil).delete_all
+      agency.facility_groups.delete_all
+      agency.reload
+      agency.facilities.each { |f| f.slug = nil; f.save! }
+      nil
+    end
   end
 end
