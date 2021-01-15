@@ -3,6 +3,7 @@ class Site < ApplicationRecord
   has_many :availabilities, dependent: :destroy
   has_many :availability_matches, dependent: :destroy
   belongs_to :facility
+  belongs_to :site_group, optional: true
 
   enumerize :site_type,
             in: %i[group tent_walk_in tent other rv],

@@ -4,7 +4,7 @@ module InitialImport::UseDirect
       attrs = {
         name: 'Ohio State Parks (UseDirect)',
         details: {
-          url: 'https://ohiocamp.usedirect.com/OhioCampWeb',
+          url: 'https://reserveohio.com/OhioCampWeb',
           rdr: 'https://ohiordr.usedirect.com/Ohiordr',
           facility_ids: ['1',
                          '12',
@@ -223,7 +223,7 @@ module InitialImport::UseDirect
       agency = InitialImport::UseDirect::Agency.ohio
 
       agency.facility_groups.each do |fg|
-        Facility.create(agency: agency, details: fg.details, name: fg.name)
+        ::Facility.create(agency: agency, details: fg.details, name: fg.name)
       end
 
       agency.facilities.where.not(ext_facility_id: nil).each do |f|
@@ -234,9 +234,9 @@ module InitialImport::UseDirect
           .where('details @> ?', { PlaceId: f.facility_group.details['PlaceId'] }.to_json)
           .first
 
-        # sg = SiteGroup.create(facility: new_facility, name: f.name, ext_id: f.ext_facility_id, details: f.details)
+        sg = ::SiteGroup.create(facility: new_facility, name: f.name, ext_id: f.ext_facility_id, details: f.details)
 
-        # f.sites.update_all(site_group_id: sg.id, facility_id: new_facility.id)
+        f.sites.update_all(site_group_id: sg.id, facility_id: new_facility.id)
         f.availability_requests.update_all(facility_id: new_facility.id)
       end
 
