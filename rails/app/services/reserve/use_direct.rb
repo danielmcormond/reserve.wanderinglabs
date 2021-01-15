@@ -20,12 +20,12 @@ class Reserve::UseDirect
   end
 
   def site_url
-    "#{facility.agency.details['url']}/Facilities/SearchViewUnitAvailabity.aspx?map_id=#{facility.ext_facility_id}&facility_id=#{site.site_group.ext_id}&waitlist_id=00001&nights=#{availability_request.stay_length}&available_Date=#{arvdate}%2012:00:00%20AM"
+    default_url
     # "#{facility.agency.details['url']}/Facilities/MapView.aspx?map_id=#{facility.ext_facility_id}&map_level=Facility&nights=#{availability_request.stay_length}&arrival_date=#{arvdate}"
   end
 
   def default_url
-    "#{facility.agency.details['url']}/Facilities/SearchViewUnitAvailabity.aspx?map_id=#{facility.facility_group.details['PlaceId']}"
+    "#{facility.agency.details['url']}/Facilities/SearchViewUnitAvailabity.aspx?map_id=#{facility.ext_facility_id}&facility_id=#{site.site_group.ext_id}&waitlist_id=00001&nights=#{availability_request.stay_length}&available_Date=#{arvdate}%2012:00:00%20AM"
   end
 
   def facility
