@@ -22,7 +22,7 @@ module InitialImport::ReserveAmerica
           puts "Site Exists.. #{set['SiteId']} // #{set['Site']}"
           next
         end
-        Site.create(
+        ::Site.create(
           facility_id: facility.id,
           ext_site_id: set['SiteId'],
           site_num: set['Site'],
