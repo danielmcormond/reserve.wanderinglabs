@@ -1,3 +1,5 @@
+import camelcaseKeys from 'camelcase-keys'
+
 export default function reducer(
   state = {
     ars: [],
@@ -5,6 +7,12 @@ export default function reducer(
       facility: {},
       status: ""
     },
+    request: {
+      facility: {},
+      status: "",
+      specificSiteIds: []
+    },
+    sites: [],
     matchingSiteCount: 0,
     fetching: false,
     fetched: false,
@@ -45,7 +53,8 @@ export default function reducer(
       return {
         ...state,
         fetching: false,
-        ar: action.payload
+        ar: action.payload,
+        request: camelcaseKeys(action.payload)
       };
     }
     case "FETCH_AR_SITE_COUNT_FULFILLED": {

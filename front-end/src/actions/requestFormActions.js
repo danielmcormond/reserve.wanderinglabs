@@ -179,6 +179,15 @@ export function formStepValidate() {
           stayLength: { required: val => val && val > 0 }
         })
       );
+
+      const availabilityRequestForm = store.getState().availabilityRequestForm
+      const isTypeOk = Object.keys(availabilityRequestForm.facility.sites_details.types).includes(availabilityRequestForm.type)
+
+      if (!isTypeOk) {
+        dispatch(
+          actions.change("availabilityRequestForm.type", Object.keys(availabilityRequestForm.facility.sites_details.types)[0])
+        );
+      }
     }
   };
 }

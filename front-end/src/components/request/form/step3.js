@@ -7,39 +7,7 @@ import RequestFormStepButtons from "./stepButtons";
 import SemanticCheckbox from "../../inputs/checkbox";
 import SemanticInput from "../../semanticInput";
 import RequestFormStep3Sites from "./step3Sites";
-
-const siteTypeOptions = [
-  {
-    text: "RV Sites",
-    description: "Only sites suitable for RV's",
-    value: "rv",
-    values: ["rv"]
-  },
-  {
-    text: "Tent or RV Sites",
-    description: "You can tent in an RV site",
-    value: "rv_tent",
-    values: ["rv", "tent"]
-  },
-  {
-    text: "Tent Only Sites",
-    description: "No RV's",
-    value: "tent",
-    values: ["tent", "tent_walk_in"]
-  },
-  {
-    text: "Group Sites",
-    description: "You and your friends",
-    value: "group",
-    values: ["group"]
-  },
-  {
-    text: "Other",
-    description: "Cabins, Day Use, etc",
-    value: "other",
-    values: ["other"]
-  }
-];
+import SiteType from "../edit/SiteType";
 
 const electricOptions = [
   {
@@ -88,34 +56,14 @@ export class RequestFormStep3 extends Component {
     );
   };
 
-  siteTypeOptionsReduced = () => {
-    const { facility } = this.props;
-    const facilitySiteTypes = Object.keys(facility.sites_details.types);
-
-    return siteTypeOptions.filter(option => {
-      const isMatch = [...new Set(facilitySiteTypes)].filter(x =>
-        new Set(option.values).has(x)
-      );
-      return isMatch.length > 0;
-    });
-  };
-
   render() {
-    const { facility, type, electric, matchingSiteCount } = this.props;
+    const { facility, electric, matchingSiteCount } = this.props;
 
     return (
       <Grid style={{ marginTop: ".25em" }}>
         <Grid.Column mobile="16">
           <label>Site Type</label>
-          <div>
-            <Dropdown
-              fluid
-              selection
-              options={this.siteTypeOptionsReduced()}
-              onChange={this.handleSiteTypeClick}
-              value={type}
-            />
-          </div>
+          <SiteType />
         </Grid.Column>
 
         {facility.sites_details.max_length > 0 && (
