@@ -60,6 +60,7 @@ export class Layout extends Component {
     return (
       <ConnectedRouter history={history}>
         <Switch>
+        <Route exact path="/edit/*" component={LayoutV2} />
           <Route exact path="/logs/*" component={LayoutV2} />
           <Route exact path="/logs" component={LayoutV2} />
 

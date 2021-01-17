@@ -9,6 +9,7 @@ import { faBars, faPlus, faUserAlt } from "@fortawesome/free-solid-svg-icons";
 import Nav from "./Nav";
 import Imports from "../Realtime/Imports";
 import RealtimeNav from "../Realtime/Nav";
+import RequestEdit from "../request/edit/Index"
 
 if (process.env.NODE_ENV === "production") {
   require("../../tailwind.generated.css");
@@ -57,6 +58,11 @@ const LayoutV2 = () => {
               <Route path="/logs/:facilityId/:siteId" component={Imports} />
               <Route path="/logs/:facilityId" component={Imports} />
               <Route path="/logs" component={Imports} />
+
+              <Route
+                    path="/edit/:uuid([a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12})"
+                    component={RequestEdit}
+                  />
             </Switch>
           </div>
         </div>

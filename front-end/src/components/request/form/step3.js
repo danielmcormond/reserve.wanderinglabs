@@ -7,6 +7,7 @@ import RequestFormStepButtons from "./stepButtons";
 import SemanticCheckbox from "../../inputs/checkbox";
 import SemanticInput from "../../semanticInput";
 import RequestFormStep3Sites from "./step3Sites";
+import SiteType from "../edit/SiteType";
 
 const siteTypeOptions = [
   {
@@ -107,15 +108,7 @@ export class RequestFormStep3 extends Component {
       <Grid style={{ marginTop: ".25em" }}>
         <Grid.Column mobile="16">
           <label>Site Type</label>
-          <div>
-            <Dropdown
-              fluid
-              selection
-              options={this.siteTypeOptionsReduced()}
-              onChange={this.handleSiteTypeClick}
-              value={type}
-            />
-          </div>
+          <SiteType />
         </Grid.Column>
 
         {facility.sites_details.max_length > 0 && (
