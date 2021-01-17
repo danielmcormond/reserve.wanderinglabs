@@ -31,7 +31,6 @@ class RequestForm extends Component {
       <Form
         className="ui form big"
         model="availabilityRequestForm"
-        onSubmit={() => this.handleSubmit()}
         onChange={() => this.handleChange()}
       >
         {currentStep === 1 && <RequestFormStep1 />}

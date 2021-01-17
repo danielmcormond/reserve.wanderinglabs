@@ -8,6 +8,7 @@ import SemanticCheckbox from "../../inputs/checkbox";
 import SemanticInput from "../../semanticInput";
 import RequestFormStep3Sites from "./step3Sites";
 import SiteType from "../edit/SiteType";
+import SitesSelector from "../edit/SitesSelector";
 
 const electricOptions = [
   {
@@ -157,8 +158,7 @@ export class RequestFormStep3 extends Component {
         )}
 
         <Grid.Column mobile="16">
-          <label>Only Specific Sites:</label>
-          <RequestFormStep3Sites />
+          <SitesSelector/>
         </Grid.Column>
 
         <Grid.Row>
