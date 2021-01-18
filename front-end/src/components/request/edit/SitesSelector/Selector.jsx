@@ -85,19 +85,25 @@ const Selector = ({ dispatch, availabilityRequest, sites, ar }) => {
           <div className="">
             {Object.keys(ar.facility.sites_details.loops).map(loop => (
               <div key={loop} className={`mb-6 ${filteredSites(loop).length > 0 ? '' : 'hidden'}`}>
-                <div className="border-b border-gray-400 px-1 cursor-pointer" onClick={() => toggleLoopExpanded(loop)}>
-                  <span className="text-xl mr-6">{loop}</span>
-                  <span className="text-sm text-green-600">
-                    {filteredSites(loop).filter(site => specificSiteIds.includes(site.id)).length}
-                  </span>
-                  <span className="text-sm text-gray-600"> of {filteredSites(loop).length}</span>
-
-                  <button className="float-right">
+                <div
+                  className="border-b border-gray-400 px-1 cursor-pointer flex"
+                  onClick={() => toggleLoopExpanded(loop)}
+                >
+                  <div className="flex-grow">
+                    <span className="text-xl mr-6">{loop}</span>
+                    <span className="whitespace-nowrap">
+                      <span className="text-sm text-green-600">
+                        {filteredSites(loop).filter(site => specificSiteIds.includes(site.id)).length}
+                      </span>
+                      <span className="text-sm text-gray-600"> of {filteredSites(loop).length}</span>
+                    </span>
+                  </div>
+                  <div className="flex-initial">
                     <FontAwesomeIcon
                       icon={siteStartsWith || loopExpanded.includes(loop) ? faChevronUp : faChevronDown}
-                      className="text-4xl float-right pb-2"
+                      className="text-4xl pb-2"
                     />
-                  </button>
+                  </div>
                 </div>
 
                 <div

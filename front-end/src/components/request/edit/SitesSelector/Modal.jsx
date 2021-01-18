@@ -46,10 +46,10 @@ const SitesSelector = ({ dispatch, availabilityRequest, sites, sitesSelectorOpen
                 transform
                 transition-all
                 mt-16
-                mb-1 sm:mb-8
+                mb-1 sm:mb-4
                 sm:align-middle
                 sm:max-w-2xl
-                sm:w-full
+                w-full
               "
             role="dialog"
             aria-modal="true"
@@ -59,18 +59,28 @@ const SitesSelector = ({ dispatch, availabilityRequest, sites, sitesSelectorOpen
               <div className="flex-grow">
                 <h3 className="text-xl font-semibold text-gray-900 ">Site Specific Selections</h3>
                 <h5 className="font-semibold text-gray-700 ">
-                  {availabilityRequest.specificSiteIds.length > 0
-                    ? `${availabilityRequest.specificSiteIds.length} sites selected.`
-                    : `All ${sites.length} sites selected. Optional filtering below.`}
+                  {availabilityRequest.specificSiteIds.length > 0 && (
+                    <span className="">{availabilityRequest.specificSiteIds.length} sites selected.</span>
+                  )}
+
+                  {availabilityRequest.specificSiteIds.length < 1 && (
+                    <>
+                      <span className="">All {sites.length} sites selected. </span>
+                      <span className="block md:inline">Optional filtering below.</span>
+                    </>
+                  )}
                 </h5>
               </div>
 
-              <button
-                className="flex-initial bg-gray-700 text-white font-semibold p-3 rounded-xl"
-                onClick={() => handleCloseModal()}
-              >
-                Save and Close
-              </button>
+              <div className="flex-initial">
+                <button
+                  className="bg-gray-700 text-white font-semibold p-3 rounded-xl"
+                  onClick={() => handleCloseModal()}
+                >
+                  <span className="hidden md:inline">Save and Close</span>
+                  <span className="inline md:hidden">Save</span>
+                </button>
+              </div>
             </div>
             <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
               <Selector />
