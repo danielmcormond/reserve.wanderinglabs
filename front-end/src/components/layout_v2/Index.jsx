@@ -10,6 +10,7 @@ import Nav from "./Nav";
 import Imports from "../Realtime/Imports";
 import RealtimeNav from "../Realtime/Nav";
 import RequestEdit from "../request/edit/Index"
+import SiteSelectorModal from "../request/edit/SitesSelector/Modal";
 
 if (process.env.NODE_ENV === "production") {
   require("../../tailwind.generated.css");
@@ -48,6 +49,8 @@ const LayoutV2 = () => {
         </div>
       </div>
       <div className="container">
+        <SiteSelectorModal />
+
         <div className="flex w-full">
           <Nav navOpen={navOpen} />
 

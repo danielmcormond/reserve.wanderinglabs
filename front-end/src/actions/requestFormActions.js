@@ -193,3 +193,10 @@ export function formStepValidate() {
     }
   };
 }
+
+export function siteSelectorToggle() {
+  return function(dispatch) {
+    const siteSelector = store.getState().requestForm.siteSelector;
+    dispatch({type: 'SITE_SELECTOR', payload: !siteSelector })
+  }
+}

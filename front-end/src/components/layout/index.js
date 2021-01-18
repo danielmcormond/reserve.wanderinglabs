@@ -34,6 +34,7 @@ import PagePremium from "../pages/premium";
 import PageAbout from "../pages/about";
 
 import LayoutV2 from "../layout_v2/Index";
+import SiteSelectorModal from "../request/edit/SitesSelector/Modal";
 
 const connected = connect((store) => {
   return {
@@ -66,6 +67,7 @@ export class Layout extends Component {
 
           <Route path="/*">
             <div>
+              <SiteSelectorModal />
               <Nav onSidebarToggle={this.handleSidebarToggle} />
 
               <Sidebar.Pushable>
