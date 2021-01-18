@@ -7,10 +7,7 @@ import RequestFormStep2 from "./step2";
 import RequestFormStep3 from "./step3";
 import RequestFormStep4 from "./step4";
 
-import {
-  formSubmit,
-  matchingSiteCount
-} from "../../../actions/requestFormActions";
+import { matchingSiteCount } from "../../../actions/requestFormActions";
 
 const connected = connect(store => {
   return {
@@ -18,9 +15,6 @@ const connected = connect(store => {
   };
 })
 class RequestForm extends Component {
-  handleSubmit() {
-    this.props.dispatch(formSubmit());
-  }
   handleChange() {
     this.props.dispatch(matchingSiteCount());
   }

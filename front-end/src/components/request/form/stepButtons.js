@@ -1,27 +1,30 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { Button, Icon } from "semantic-ui-react";
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { Button, Icon } from 'semantic-ui-react'
 
-import { formStepInc } from "../../../actions/requestFormActions";
+import { formSubmit, formStepInc } from '../../../actions/requestFormActions'
 
 const connected = connect(store => {
   return {
     currentStep: store.requestForm.step,
     submitting: store.requestForm.submitting,
     isAuthenticated: store.session.isAuthenticated
-  };
-});
+  }
+})
 export class RequestFormStepButtons extends Component {
   nextStep() {
-    this.props.dispatch(formStepInc());
+    this.props.dispatch(formStepInc())
   }
 
+  handleSubmit() {
+    this.props.dispatch(formSubmit())
+  }
   get lastStep() {
-    return this.props.isAuthenticated ? 3 : 4;
+    return this.props.isAuthenticated ? 3 : 4
   }
 
   render() {
-    const { currentStep, submitting } = this.props;
+    const { currentStep, submitting } = this.props
 
     return (
       <div>
@@ -45,12 +48,13 @@ export class RequestFormStepButtons extends Component {
             fluid
             disabled={this.props.disabled || submitting}
             loading={submitting}
+            onClick={() => this.handleSubmit()}
           >
             Submit Request
           </Button>
         )}
       </div>
-    );
+    )
   }
 }
-export default connected(RequestFormStepButtons);
+export default connected(RequestFormStepButtons)
