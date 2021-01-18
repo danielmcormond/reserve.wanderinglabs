@@ -56,9 +56,9 @@ export class RequestFormStep3 extends Component {
     const { facility, electric, matchingSiteCount } = this.props
 
     return (
-      <Grid style={{ marginTop: '.25em' }}>
+      <Grid className="mt-1 mb-4">
         <Grid.Column mobile="16">
-          <label>Site Type</label>
+          <label className="filter-label">Site Type</label>
           <SiteType />
         </Grid.Column>
 
@@ -155,17 +155,17 @@ export class RequestFormStep3 extends Component {
           <SitesSelector />
         </Grid.Column>
 
-        <Grid.Row>
-          <Grid.Column computer="8" tablet="8" mobile="8">
-            <Label basic size="huge" color={matchingSiteCount > 0 ? 'green' : 'red'}>
+        <div className="flex flex-wrap w-full mb-1 mt-6">
+          <div className="flex-auto sm:flex-none mb-2 sm:mb-0 mr-0 sm:mr-3">
+            <Label className="w-full sm:w-auto" basic size="huge" color={matchingSiteCount > 0 ? 'green' : 'red'}>
               Matching site count:
               <Label.Detail>{matchingSiteCount}</Label.Detail>
             </Label>
-          </Grid.Column>
-          <Grid.Column computer="8" tablet="8" mobile="8">
+          </div>
+          <div className="flex-auto self-center">
             <RequestFormStepButtons disabled={matchingSiteCount === 0} />
-          </Grid.Column>
-        </Grid.Row>
+          </div>
+        </div>
       </Grid>
     )
   }
