@@ -29,9 +29,13 @@ class AvailabilityRequestsController < ApplicationController
   end
 
   def sites_count
-    availability_request = AvailabilityRequests::Creator.new(availability_request_params, current_user).object
-    # render json: { count: availability_request.site_ids.size }
-    render json: Site.where(id: availability_request.site_ids)
+    availability_request_site_specific = AvailabilityRequests::Creator.new(availability_request_params, current_user).object
+    availability_request = AvailabilityRequests::Creator.new(availability_request_params.merge(specific_site_ids: []), current_user).object
+
+    render json: {
+      count: availability_request_site_specific.site_ids.size,
+      sites: Site.where(id: availability_request.site_ids)
+    }
   end
 
   private
