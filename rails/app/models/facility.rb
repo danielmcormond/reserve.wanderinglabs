@@ -127,7 +127,7 @@ class Facility < ApplicationRecord
     SQL
   end
 
-  def loop_from_site(_)
-
+  def loop_from_site(_site)
+    'Other'
   end
 end
