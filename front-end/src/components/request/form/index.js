@@ -29,14 +29,13 @@ class RequestForm extends Component {
 
     return (
       <Form
-        className="ui form big"
         model="availabilityRequestForm"
         onChange={() => this.handleChange()}
       >
-        {currentStep === 1 && <RequestFormStep1 />}
-        {currentStep === 2 && <RequestFormStep2 />}
+        {currentStep === 1 && <div className="ui form big"><RequestFormStep1 /></div> }
+        {currentStep === 2 && <div className="ui form big"><RequestFormStep2 /></div>}
         {currentStep === 3 && <RequestFormStep3 />}
-        {currentStep === 4 && <RequestFormStep4 />}
+        {currentStep === 4 && <div className="ui form big"><RequestFormStep4 /></div>}
       </Form>
     );
   }
