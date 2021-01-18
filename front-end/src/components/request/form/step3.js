@@ -8,7 +8,7 @@ import SemanticCheckbox from "../../inputs/checkbox";
 import SemanticInput from "../../semanticInput";
 import RequestFormStep3Sites from "./step3Sites";
 import SiteType from "../edit/SiteType";
-import SitesSelector from "../edit/SitesSelector";
+import SitesSelector from "../edit/SitesSelector/Index";
 
 const electricOptions = [
   {

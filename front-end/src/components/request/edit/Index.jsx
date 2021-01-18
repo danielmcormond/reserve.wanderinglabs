@@ -7,10 +7,7 @@ import localeData from 'dayjs/plugin/localeData'
 import { matchingSiteCount } from '../../../actions/requestFormActions'
 import { fetchAvailabilityRequest } from '../../../actions/availabilityRequestsActions'
 import SiteType from './SiteType'
-import SitesSelector from './SitesSelector'
-
-import { matchingSiteCount } from '../../../actions/requestFormActions'
-import { fetchAvailabilityRequest } from '../../../actions/availabilityRequestsActions'
+import SitesSelector from './SitesSelector/Index'
 
 const connected = connect(store => {
   return {
