@@ -11,7 +11,7 @@
 }
 
 .filter-label {
-  @apply block text-gray-700 text-2xl font-semibold mb-2 mt-6 tracking-wide;
+  @apply block text-2xl font-semibold mb-2 mt-6 tracking-wide;
 }
 
 .filter-input {
@@ -28,23 +28,6 @@
 
 .space-x-2-right > button {
   margin-right: 0.5rem;
-}
-
-.site-specific {
-  @apply relative h-60 overflow-hidden
-}
-
-.site-specific::before {
-  @apply absolute w-full h-60 bg-gradient-to-b from-transparent to-white;
-  content: "\00a0";
-}
-
-.site-specific-open {
-  @apply h-full;
-}
-
-.site-specific-open::before {
-  @apply hidden;
 }
 
 @tailwind utilities;

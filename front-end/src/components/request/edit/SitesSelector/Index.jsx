@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons'
+import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
 
 import { siteSelectorToggle } from '../../../../actions/requestFormActions'
 
@@ -15,19 +15,28 @@ const connected = connect(store => {
   }
 })
 
-const SitesSelector = ({ dispatch, sitesSelectorOpen }) => {
+const SitesSelector = ({ dispatch, sitesSelectorOpen, availabilityRequest }) => {
   const toggleSitesSelectorOpen = () => dispatch(siteSelectorToggle())
 
   return (
     <div className="border-b border-gray-400 px-1 cursor-pointer flex" onClick={() => toggleSitesSelectorOpen()}>
       <div className="flex-grow">
         <label className="filter-label inline">Select Sites</label>
-        <span className="text-sm text-gray-600 md:ml-3 block md:inline">
+        <span className="text-sm text-gray-700 md:ml-3 block md:inline">
           (Optional. Limit your request to specific sites)
         </span>
       </div>
-      <div className="flex-initial">
-        <FontAwesomeIcon icon={sitesSelectorOpen ? faChevronUp : faChevronDown} className="text-4xl" />
+      <div className="flex-initial self-center">
+        {availabilityRequest.specificSiteIds.length > 0 && (
+          <span className="font-semibold text-gray-700 px-2 py-1 bg-green-200 rounded-md">
+            {availabilityRequest.specificSiteIds.length}
+            <span className="hidden md:inline"> Selected</span>
+          </span>
+        )}
+
+        {availabilityRequest.specificSiteIds.length === 0 && (
+          <FontAwesomeIcon icon={faChevronRight} className="text-3xl" />
+        )}
       </div>
     </div>
   )
