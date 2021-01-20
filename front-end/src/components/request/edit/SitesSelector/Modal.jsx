@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { connect } from 'react-redux'
+import { actions } from 'react-redux-form'
 import { Transition } from '@headlessui/react'
 
 import Selector from './Selector'
@@ -16,7 +17,12 @@ const connected = connect(store => {
 })
 
 const SitesSelector = ({ dispatch, availabilityRequest, sites, sitesSelectorOpen }) => {
+  const [selectorKey, setselectorKey] = useState(0)
   const handleCloseModal = () => dispatch(siteSelectorToggle())
+  const resetSpecificSiteIds = () => {
+    dispatch(actions.change('availabilityRequestForm.specificSiteIds', []))
+    setselectorKey(selectorKey + 1)
+  }
 
   return (
     <Transition
@@ -72,7 +78,7 @@ const SitesSelector = ({ dispatch, availabilityRequest, sites, sitesSelectorOpen
                 </h5>
               </div>
 
-              <div className="flex-initial">
+              <div className="flex-initial self-center">
                 <button
                   className="bg-gray-700 text-white font-semibold p-3 rounded-xl"
                   onClick={() => handleCloseModal()}
@@ -82,8 +88,34 @@ const SitesSelector = ({ dispatch, availabilityRequest, sites, sitesSelectorOpen
                 </button>
               </div>
             </div>
+
             <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-              <Selector />
+              <Selector key={selectorKey} />
+            </div>
+
+            <div className="bg-gray-50 px-4 py-3 sm:px-6 flex">
+              <div className="flex-grow">
+
+              </div>
+
+              <div className="flex-initial self-center mr-3">
+                <button
+                  className="bg-red-300 text-white font-semibold p-3 rounded-xl"
+                  onClick={() => resetSpecificSiteIds()}
+                >
+                  <span className="hidden md:inline">Reset</span>
+                  <span className="inline md:hidden">Reset</span>
+                </button>
+              </div>
+              <div className="flex-initial self-center">
+                <button
+                  className="bg-gray-700 text-white font-semibold p-3 rounded-xl"
+                  onClick={() => handleCloseModal()}
+                >
+                  <span className="hidden md:inline">Save and Close</span>
+                  <span className="inline md:hidden">Save</span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
