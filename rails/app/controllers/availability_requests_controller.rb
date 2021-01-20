@@ -34,7 +34,7 @@ class AvailabilityRequestsController < ApplicationController
 
     render json: {
       count: availability_request_site_specific.site_ids.size,
-      sites: Site.where(id: availability_request.site_ids)
+      sites: Site.where(id: availability_request.site_ids).map { |s| SiteSerializer.new(s) }
     }
   end
 

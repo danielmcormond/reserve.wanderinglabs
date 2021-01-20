@@ -33,6 +33,6 @@ class Facility::ReserveAmerica < Facility
   end
 
   def loop_from_site(site)
-    site.details['Loop'].trim
+    site.details['Loop'].strip
   end
 end
