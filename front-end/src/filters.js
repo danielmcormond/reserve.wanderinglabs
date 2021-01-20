@@ -13,10 +13,5 @@ export const filters = [
     key: "reserve_california",
     name: "reserve_california",
     content: "Reserve California"
-  },
-  {
-    key: "washington_state_parks",
-    name: "washington_state_parks",
-    content: "Washington State Parks"
   }
 ];
