@@ -14,7 +14,8 @@ const initialState = {
   sitePremium: false,
   ignoreAda: true,
   sites: [],
-  email: ''
+  email: '',
+  specificSiteIds: []
 }
 
 export default (state = initialState, { type, payload }) => {

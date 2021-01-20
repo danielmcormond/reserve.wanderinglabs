@@ -17,4 +17,9 @@ class Site < ApplicationRecord
 
   scope :electric, (->(lngth) { where('electric >= ?', lngth) })
   scope :site_length, (->(lngth) { where('length >= ?', lngth) })
+
+  def populate_loop
+    self.loop = facility.loop_from_site(self)
+    save
+  end
 end

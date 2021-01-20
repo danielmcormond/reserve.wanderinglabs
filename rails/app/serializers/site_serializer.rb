@@ -3,12 +3,6 @@ class SiteSerializer < ActiveModel::Serializer
   has_many :availabilities, if: -> { @instance_options[:render_availabilities] }
   belongs_to :facility, if: -> { @instance_options[:render_facility] }
 
-  def loop
-    return unless object.details.is_a?(Hash)
-
-    object.details.try(:[], 'Loop')
-  end
-
   def site_type2
     return unless object.details.is_a?(Hash)
 

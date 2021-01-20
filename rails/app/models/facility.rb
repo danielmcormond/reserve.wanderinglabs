@@ -84,7 +84,12 @@ class Facility < ApplicationRecord
     self.sites_details[:site_layout] = sites.group(:site_layout).count.key?('pullthru')
     self.sites_details[:premium] = sites.where(premium: true).count.positive?
     self.sites_details[:ada] = sites.where(ada: true).count.positive?
+    self.sites_details[:loops] = loops
     save
+  end
+
+  def loops
+    sites.group(:loop).count
   end
 
   def sub_name
@@ -120,5 +125,9 @@ class Facility < ApplicationRecord
                                FROM site_groups
                               WHERE site_groups.facility_id = facilities.id)
     SQL
+  end
+
+  def loop_from_site(_site)
+    'Other'
   end
 end

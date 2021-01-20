@@ -1,6 +1,8 @@
 import _ from "lodash";
 import { actions } from "react-redux-form";
 import { push } from "connected-react-router";
+import camelcaseKeys from 'camelcase-keys'
+
 import { setFlashMessage } from "../actions/flashActions";
 
 import reserveApi from "../utils/axios";
@@ -8,30 +10,26 @@ import store from "../store";
 
 export function matchingSiteCount() {
   return function(dispatch) {
-    let currentStep = store.getState().requestForm.step;
-    const availability_request = store.getState().availabilityRequestForm
+    const availabilityRequest = store.getState().availabilityRequestForm
 
-    if (currentStep !== 3) {
-      return;
-    }
-
-    let apiValues = {
-      facility_id: availability_request.facilityId,
-      date_start: availability_request.dateStart,
-      date_end: availability_request.dateEnd,
-      stay_length: availability_request.stayLength,
-      email: availability_request.email,
-      sewer: availability_request.sewer,
-      water: availability_request.water,
-      pullthru: availability_request.pullthru,
-      min_length: availability_request.length,
-      min_electric: availability_request.electric,
-      site_premium: availability_request.sitePremium,
-      ignore_ada: availability_request.ignoreAda,
-      site_type: availability_request.type,
-      specific_site_ids: availability_request.siteIds,
-      arrival_days: availability_request.arrivalDays
+    const apiValues = {
+      facility_id: availabilityRequest.facilityId,
+      date_start: availabilityRequest.dateStart,
+      date_end: availabilityRequest.dateEnd,
+      stay_length: availabilityRequest.stayLength,
+      email: availabilityRequest.email,
+      sewer: availabilityRequest.sewer,
+      water: availabilityRequest.water,
+      pullthru: availabilityRequest.pullthru,
+      min_length: availabilityRequest.length,
+      min_electric: availabilityRequest.electric,
+      site_premium: availabilityRequest.sitePremium,
+      ignore_ada: availabilityRequest.ignoreAda,
+      site_type: availabilityRequest.type,
+      specific_site_ids: availabilityRequest.specificSiteIds,
+      arrival_days: availabilityRequest.arrivalDays
     };
+
     reserveApi({
       method: "post",
       url: "/availability_requests/sites_count.json",
@@ -42,7 +40,7 @@ export function matchingSiteCount() {
       .then(response => {
         dispatch({
           type: "FETCH_AR_SITE_COUNT_FULFILLED",
-          payload: response.data.count
+          payload: camelcaseKeys(response.data, { deep: true })
         });
       })
       .catch(err => {
@@ -70,7 +68,7 @@ export function formSubmit() {
       site_premium: availability_request.sitePremium,
       ignore_ada: availability_request.ignoreAda,
       site_type: availability_request.type,
-      specific_site_ids: availability_request.siteIds,
+      specific_site_ids: availability_request.specificSiteIds,
       arrival_days: availability_request.arrivalDays
     };
     reserveApi({
@@ -190,4 +188,11 @@ export function formStepValidate() {
       }
     }
   };
+}
+
+export function siteSelectorToggle() {
+  return function(dispatch) {
+    const siteSelector = store.getState().requestForm.siteSelector;
+    dispatch({type: 'SITE_SELECTOR', payload: !siteSelector })
+  }
 }

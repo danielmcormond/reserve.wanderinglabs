@@ -5,8 +5,8 @@ class SiteMatcher
   end
 
   def matching_site_ids
-    return availability_request.specific_site_ids unless availability_request.specific_site_ids.empty?
     matches = availability_request.facility.sites
+    matches = matches.where(id: availability_request.specific_site_ids) unless availability_request.specific_site_ids.empty?
     matches = matches.where(water: true) if availability_request.water?
     matches = matches.where(sewer: true) if availability_request.sewer?
     matches = matches.electric(availability_request.min_electric) if availability_request.min_electric

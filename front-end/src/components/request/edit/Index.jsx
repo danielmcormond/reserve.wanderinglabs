@@ -7,8 +7,7 @@ import localeData from 'dayjs/plugin/localeData'
 import { matchingSiteCount } from '../../../actions/requestFormActions'
 import { fetchAvailabilityRequest } from '../../../actions/availabilityRequestsActions'
 import SiteType from './SiteType'
-
-dayjs.extend(localeData)
+import SitesSelector from './SitesSelector/Index'
 
 const connected = connect(store => {
   return {
@@ -43,6 +42,7 @@ const RequestEdit = ({ dispatch, match, ar }) => {
   return (
     <div className="">
       <SiteType />
+      <SitesSelector />
     </div>
   )
 }

@@ -7,10 +7,7 @@ import RequestFormStep2 from "./step2";
 import RequestFormStep3 from "./step3";
 import RequestFormStep4 from "./step4";
 
-import {
-  formSubmit,
-  matchingSiteCount
-} from "../../../actions/requestFormActions";
+import { matchingSiteCount } from "../../../actions/requestFormActions";
 
 const connected = connect(store => {
   return {
@@ -18,9 +15,6 @@ const connected = connect(store => {
   };
 })
 class RequestForm extends Component {
-  handleSubmit() {
-    this.props.dispatch(formSubmit());
-  }
   handleChange() {
     this.props.dispatch(matchingSiteCount());
   }
@@ -29,15 +23,13 @@ class RequestForm extends Component {
 
     return (
       <Form
-        className="ui form big"
         model="availabilityRequestForm"
-        onSubmit={() => this.handleSubmit()}
         onChange={() => this.handleChange()}
       >
-        {currentStep === 1 && <RequestFormStep1 />}
-        {currentStep === 2 && <RequestFormStep2 />}
+        {currentStep === 1 && <div className="ui form big"><RequestFormStep1 /></div> }
+        {currentStep === 2 && <div className="ui form big"><RequestFormStep2 /></div>}
         {currentStep === 3 && <RequestFormStep3 />}
-        {currentStep === 4 && <RequestFormStep4 />}
+        {currentStep === 4 && <div className="ui form big"><RequestFormStep4 /></div>}
       </Form>
     );
   }
