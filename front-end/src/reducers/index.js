@@ -6,7 +6,6 @@ import { connectRouter } from 'connected-react-router'
 import availabilityMatches from "./availabilityMatchesReducer";
 import availabilityRequests from "./availabilityRequestsReducer";
 import facilities from "./facilitiesReducer";
-import sites from "./sitesReducer";
 import groupedAvailabilities from "./groupedAvailabilitiesReducer";
 
 import requestForm from "./requestFormReducer";
@@ -28,6 +27,5 @@ export default (history) => combineReducers({
   groupedAvailabilities,
   requestForm,
   session,
-  sites,
   user
 });
