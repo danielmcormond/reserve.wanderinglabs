@@ -6,8 +6,8 @@ import { Dropdown, Grid, Label } from 'semantic-ui-react'
 import RequestFormStepButtons from './stepButtons'
 import SemanticCheckbox from '../../inputs/checkbox'
 import SemanticInput from '../../semanticInput'
-import SiteType from '../edit/SiteType'
-import SitesSelector from '../edit/SitesSelector/Index'
+import SiteType from './SiteType'
+import SitesSelector from './SitesSelector/Index'
 
 const electricOptions = [
   {

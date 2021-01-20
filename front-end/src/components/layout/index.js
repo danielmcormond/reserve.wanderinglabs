@@ -34,7 +34,7 @@ import PagePremium from "../pages/premium";
 import PageAbout from "../pages/about";
 
 import LayoutV2 from "../layout_v2/Index";
-import SiteSelectorModal from "../request/edit/SitesSelector/Modal";
+import SiteSelectorModal from "../request/form/SitesSelector/Modal";
 
 const connected = connect((store) => {
   return {
