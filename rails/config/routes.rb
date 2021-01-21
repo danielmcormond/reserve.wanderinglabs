@@ -24,6 +24,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :agencies, only: %i[index]
+
   resources :facilities, only: %i[index show] do
     collection do
       get :active

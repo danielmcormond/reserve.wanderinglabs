@@ -1970,6 +1970,14 @@ video {
     display: block;
   }
 
+  .sm\:inline {
+    display: inline;
+  }
+
+  .sm\:hidden {
+    display: none;
+  }
+
   .sm\:flex-none {
     flex: none;
   }

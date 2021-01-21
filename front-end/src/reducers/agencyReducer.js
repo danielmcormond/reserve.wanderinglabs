@@ -1,9 +1,8 @@
 export default function reducer(
   state = {
-    facility: { name: 'Loading' },
-    facilities: [],
-    filter: { agency: null },
-    facilityLookup: "",
+    agency: { name: 'Loading' },
+    agencies: [],
+    agencyLookup: "",
     search: true,
     fetching: false,
     fetched: false,
@@ -12,46 +11,39 @@ export default function reducer(
   action
 ) {
   switch (action.type) {
-    case "FETCH_FACILITY": {
+    case "FETCH_AGENCY": {
       return { ...state, fetching: true };
     }
-    case "FETCH_FACILITY_REJECTED": {
+    case "FETCH_AGENCY_REJECTED": {
       return { ...state, fetching: false, error: action.payload };
     }
-    case "FETCH_FACILITY_FULFILLED": {
+    case "FETCH_AGENCY_FULFILLED": {
       return {
         ...state,
         fetching: false,
         fetched: true,
-        facility: action.payload
+        agency: action.payload
       };
     }
-    case "FETCH_FACILITIES": {
+    case "FETCH_AGENCIES": {
       return { ...state, fetching: true };
     }
-    case "FETCH_FACILITIES_REJECTED": {
+    case "FETCH_AGENCIES_REJECTED": {
       return { ...state, fetching: false, error: action.payload };
     }
-    case "FETCH_FACILITIES_FULFILLED": {
+    case "FETCH_AGENCIES_FULFILLED": {
       return {
         ...state,
         fetching: false,
         fetched: true,
-        facilities: action.payload
+        agencies: action.payload
       };
     }
-    case "SET_FACILITY_LOOKUP": {
+    case "SET_AGENCY_LOOKUP": {
       return {
         ...state,
         search: false,
-        facilityLookup: action.payload
-      };
-    }
-    case "SET_FACILITY_FILTER": {
-      return {
-        ...state,
-        search: false,
-        filter: action.payload
+        agencyLookup: action.payload
       };
     }
     default: {

@@ -43,6 +43,7 @@ class FacilitiesController < ApplicationController
     type_filters.push('Facility::RecreationGovBa') if filter_include?('recreation_gov')
 
     agency_ids = []
+    agency_ids.push(params[:agencyId]) if params[:agencyId]
     agency_ids.push(52) if filter_include?('washington_state_parks')
 
     if type_filters.any? || agency_ids.any?

@@ -30,4 +30,8 @@
   margin-right: 0.5rem;
 }
 
+.ReactModal__Html--open,
+.ReactModal__Body--open {
+  overflow: hidden;
+}
 @tailwind utilities;
