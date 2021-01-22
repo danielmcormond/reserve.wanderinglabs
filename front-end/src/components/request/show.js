@@ -1,87 +1,86 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { Button, Checkbox, Divider, Grid, Header, Icon, List } from "semantic-ui-react";
-import { Link } from "react-router-dom";
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { Button, Checkbox, Divider, Grid, Header, Icon, List } from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
 
-import DateFormat, { dateHasPast } from "../utils/dateFormat";
+import DateFormat, { dateHasPast } from '../utils/dateFormat'
 
 import {
   fetchAvailabilityRequest,
   updateAvailabilityRequest,
-  updateAvailabilityRequestStatus,
-} from "../../actions/availabilityRequestsActions";
-import AvailabilityMatches from "../availabilityMatches";
-import Premium from "../user/premium.js";
-import OutOfOrder from "./OutOfOrder"
+  updateAvailabilityRequestStatus
+} from '../../actions/availabilityRequestsActions'
+import AvailabilityMatches from '../availabilityMatches'
+import Premium from '../user/premium.js'
+import OutOfOrder from './OutOfOrder'
+import Sites from './Sites'
 
-const connected = connect((store) => {
+const connected = connect(store => {
   return {
-    ar: store.availabilityRequests.ar,
-  };
-});
+    ar: store.availabilityRequests.ar
+  }
+})
 export class RequestShow extends Component {
   componentWillMount() {
     if (this.props.match.params.status !== undefined) {
-      this.props.dispatch(
-        updateAvailabilityRequestStatus(this.props.match.params.uuid, this.props.match.params.status)
-      );
+      this.props.dispatch(updateAvailabilityRequestStatus(this.props.match.params.uuid, this.props.match.params.status))
     } else {
-      this.props.dispatch(fetchAvailabilityRequest(this.props.match.params.uuid));
+      this.props.dispatch(fetchAvailabilityRequest(this.props.match.params.uuid))
     }
   }
 
   // TODO: refactor a better solution.. componentWillMount does not rerun when route calls same component again (click cancel button)
   componentWillReceiveProps(newProps) {
     if (newProps.match.params.status !== undefined && newProps.match.params.status !== this.props.match.params.status) {
-      this.props.dispatch(updateAvailabilityRequestStatus(newProps.match.params.uuid, newProps.match.params.status));
+      this.props.dispatch(updateAvailabilityRequestStatus(newProps.match.params.uuid, newProps.match.params.status))
     } else if (newProps.match.params.uuid !== this.props.match.params.uuid) {
-      this.props.dispatch(fetchAvailabilityRequest(newProps.match.params.uuid));
+      this.props.dispatch(fetchAvailabilityRequest(newProps.match.params.uuid))
     }
   }
 
   toggleSms = () => {
-    const uuid = this.props.ar.uuid;
-    this.props.dispatch(updateAvailabilityRequest(uuid, { notify_sms: !this.props.ar.notify_sms }));
-  };
+    const uuid = this.props.ar.uuid
+    this.props.dispatch(updateAvailabilityRequest(uuid, { notify_sms: !this.props.ar.notify_sms }))
+  }
 
   get statusButtonProps() {
     // TODO: Refactor.. ugly and check if dates in past.
-    if (this.props.ar.status === "active") {
+    if (this.props.ar.status === 'active') {
       return {
-        content: "Cancel",
+        content: 'Cancel',
         to: `/c/${this.props.ar.uuid}`,
-        color: "orange",
-        negative: true,
-      };
-    } else if (this.props.ar.status === "canceled") {
+        color: 'orange',
+        negative: true
+      }
+    } else if (this.props.ar.status === 'canceled') {
       return {
-        content: "Activate",
+        content: 'Activate',
         to: `/a/${this.props.ar.uuid}`,
-        color: "green",
-      };
-    } else if (this.props.ar.status === "paused") {
+        color: 'green'
+      }
+    } else if (this.props.ar.status === 'paused') {
       return {
-        content: "UnPause",
+        content: 'UnPause',
         to: `/a/${this.props.ar.uuid}`,
-        color: "orange",
-      };
+        color: 'orange'
+      }
     } else {
-      return { content: "Create New", to: "/new" };
+      return { content: 'Create New', to: '/new' }
     }
   }
 
   get titleStatus() {
-    return this.props.ar.status.charAt(0).toUpperCase() + this.props.ar.status.slice(1);
+    return this.props.ar.status.charAt(0).toUpperCase() + this.props.ar.status.slice(1)
   }
 
   render() {
-    const { ar } = this.props;
+    const { ar } = this.props
 
     const halfGridProps = {
       tablet: 8,
       computer: 8,
-      mobile: 8,
-    };
+      mobile: 8
+    }
 
     return (
       <div>
@@ -98,7 +97,7 @@ export class RequestShow extends Component {
 
             <Grid>
               <Grid.Row divided>
-              {dateHasPast(ar.date_end) && (
+                {dateHasPast(ar.date_end) && (
                   <Grid.Column computer="16" tablet="16" mobile="16">
                     <div className="text-gray-400 text-2xl font-semibold mb-8">
                       This request has expired and is no longer being checked.
@@ -111,7 +110,7 @@ export class RequestShow extends Component {
                     <List.Item>
                       <List.Header>Arriving between</List.Header>
                       <List.Description>
-                        <DateFormat format="MM/DD/YYYY" date={ar.date_start} /> &{" "}
+                        <DateFormat format="MM/DD/YYYY" date={ar.date_start} /> &{' '}
                         <DateFormat format="MM/DD/YYYY" date={ar.date_end} />
                       </List.Description>
                     </List.Item>
@@ -128,7 +127,9 @@ export class RequestShow extends Component {
 
                     <List.Item>
                       <List.Header>Matching Site Count</List.Header>
-                      <List.Description>{ar.site_count}</List.Description>
+                      <List.Description>
+                        {ar.site_count} {ar.site_count > 0 && <Sites />}
+                      </List.Description>
                     </List.Item>
                   </List>
                 </Grid.Column>
@@ -184,10 +185,10 @@ export class RequestShow extends Component {
 
         <AvailabilityMatches {...this.props} />
       </div>
-    );
+    )
   }
 }
-export default connected(RequestShow);
+export default connected(RequestShow)
 
 // <Button
 //   as={Link}

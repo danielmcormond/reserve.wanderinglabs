@@ -69,8 +69,12 @@ export default function reducer(
     case "FETCH_AR_SITE_COUNT_FULFILLED": {
       return { ...state, sites: action.payload.sites, matchingSiteCount: action.payload.count };
     }
+    case "FETCH_AR_SITES_FULFILLED": {
+      return { ...state, fetching: false, sites: action.payload };
+    }
     default: {
       return state;
     }
+
   }
 }
