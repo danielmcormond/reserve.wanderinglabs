@@ -14,6 +14,7 @@ const fanMail = [
   `Hi, I just wanted to thank you for this service. It is priceless to me! I have been able to snag many FL state park reservations (and other states as well) using this service. I appreciate this so much and just wanted to say thank you!`,
   `Let me say that Wandering Labs is an amazing site. I thank you for all the opportunities that you gave us to go camping when we couldn’t get a site. You created memories for us.`,
   `I just stumbled upon your site, and just wanted to say thank you!!! This is exactly what we've been looking for, and thanks to you we were able to snag a campsite for next week! `,
+  `Last summer we ended up at the most amazing site at a campground on the coast here in Oregon. It was absolutely magical and we never would have discovered it without you (the campground has a reputation for being overcrowded and impossible to book, so we've avoided it in the past). Thank you, thank you!!!`
 ];
 
 const PageAbout = () => {

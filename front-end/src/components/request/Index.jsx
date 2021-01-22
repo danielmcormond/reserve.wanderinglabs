@@ -1,44 +1,41 @@
-import React, { useState, useEffect } from "react";
-import { connect } from "react-redux";
+import React, { useState, useEffect } from 'react'
+import { connect } from 'react-redux'
 
-import { Grid } from "semantic-ui-react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSms, faThList } from "@fortawesome/free-solid-svg-icons";
-import { push } from "connected-react-router";
+import { Grid } from 'semantic-ui-react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSms, faThList } from '@fortawesome/free-solid-svg-icons'
+import { push } from 'connected-react-router'
 
-import Premium from "../user/premium.js";
-import reserveApi from "../../utils/axios";
-import DateFormat from "../utils/dateFormat";
-import { Link } from "react-router-dom";
+import Premium from '../user/premium.js'
+import DateFormat from '../utils/dateFormat'
+import { fetchAvailabilityRequests } from '../../actions/availabilityRequestsActions'
 
-const StatusClassNames = "flex cursor-pointer text-lg font-semibold justify-center px-3 ml-6 text-gray-600 ";
-const StatusActiveClassNames = "border-b-2 border-green-600 text-gray-900";
+const StatusClassNames = 'flex cursor-pointer text-lg font-semibold justify-center px-3 ml-6 text-gray-600 '
+const StatusActiveClassNames = 'border-b-2 border-green-600 text-gray-900'
 
-const connected = connect((store) => {
+const connected = connect(store => {
   return {
     isAuthenticated: store.session.isAuthenticated,
     user: store.user.user,
     premium: store.user.premium,
-  };
-});
+    requests: store.availabilityRequests.ars,
+    requestsExpired: store.availabilityRequests.arsExpired,
+    fetching: store.availabilityRequests.fetching,
+    fetched: store.availabilityRequests.fetched
+  }
+})
 
-const Requests = ({ dispatch, premium }) => {
-  const [requests, setRequests] = useState([]);
-  const [status, setStatus] = useState("active");
-  const [{ loading, loaded }, setLoading] = useState({ loading: false, loaded: null });
+const Requests = ({ dispatch, requests, requestsExpired, fetching }) => {
+  const [expired, setExpired] = useState(false)
 
   useEffect(() => {
-    if (status === loaded) return;
-
-    setLoading({ loading: true, loaded });
-    reserveApi({ method: "get", url: `/availability_requests${status !== 'active' ? '/inactive' : ''}.json` }).then((response) => {
-      setRequests(response.data);
-      setLoading({ loading: false, loaded: status });
-    });
-  }, [status]);
+    if ((expired ? requestsExpired : requests).length === 0) {
+      dispatch(fetchAvailabilityRequests(expired))
+    }
+  }, [expired])
 
   const mappedArs = () => {
-    return requests.map((ar) => {
+    return (expired ? requestsExpired : requests).map(ar => {
       return (
         <li
           key={ar.uuid}
@@ -63,9 +60,9 @@ const Requests = ({ dispatch, premium }) => {
             </div>
           </div>
         </li>
-      );
-    });
-  };
+      )
+    })
+  }
 
   return (
     <>
@@ -77,18 +74,20 @@ const Requests = ({ dispatch, premium }) => {
           </div>
 
           <div className="flex border-b border-gray-300 mt-6 mb-2">
-            <div className={`${StatusClassNames} ${status === "active" && StatusActiveClassNames}`}>
-              <span onClick={() => setStatus("active")}>Active</span>
+            <div className={`${StatusClassNames} ${!expired && StatusActiveClassNames}`}>
+              <span onClick={() => setExpired(false)}>Active</span>
             </div>
-            <div className={`${StatusClassNames} ${status !== "active" && StatusActiveClassNames}`}>
-              <span onClick={() => setStatus("inactive")}>Expired</span>
+            <div className={`${StatusClassNames} ${expired && StatusActiveClassNames}`}>
+              <span onClick={() => setExpired(true)}>Expired</span>
             </div>
           </div>
 
-          {loading && <div className="my-12 text-gray-400 text-2xl font-semibold">Loading....</div>}
+          {fetching && <div className="my-12 text-gray-400 text-2xl font-semibold">Loading....</div>}
 
-          {!loading && requests.length > 0 && <ul className="flex flex-col mt-4 space-y-2 overflow-y-auto">{mappedArs()}</ul>}
-          {!loading && requests.length === 0 && (
+          {!fetching && (expired ? requestsExpired : requests).length > 0 && (
+            <ul className="flex flex-col mt-4 space-y-2 overflow-y-auto">{mappedArs()}</ul>
+          )}
+          {!fetching && (expired ? requestsExpired : requests).length === 0 && (
             <div className="my-12 text-gray-400 text-2xl font-semibold">No requests found</div>
           )}
         </Grid.Column>
@@ -98,7 +97,7 @@ const Requests = ({ dispatch, premium }) => {
       </Grid>
       <div className="flex mt-2"></div>
     </>
-  );
-};
+  )
+}
 
-export default connected(Requests);
+export default connected(Requests)

@@ -4,12 +4,16 @@ import reserveApi from "../utils/axios";
 import store from "../store";
 import { sessionCreateNoRedirect } from "../actions/sessionActions";
 
-export function fetchAvailabilityRequests() {
+export function fetchAvailabilityRequests(expired = false) {
   return function(dispatch) {
     dispatch({ type: "FETCH_ARS" });
-    reserveApi({ method: "get", url: "/availability_requests.json" })
+    reserveApi({ method: "get", url: `/availability_requests${expired ? '/inactive' : ''}.json` })
       .then(response => {
+        if (expired) {
+        dispatch({ type: "FETCH_ARS_EXPIRED_FULFILLED", payload: response.data });
+        }else {
         dispatch({ type: "FETCH_ARS_FULFILLED", payload: response.data });
+        }
       })
       .catch(err => {
         dispatch({ type: "FETCH_ARS_REJECTED", payload: err });

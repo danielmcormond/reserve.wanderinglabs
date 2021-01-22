@@ -3,6 +3,7 @@ import camelcaseKeys from 'camelcase-keys'
 export default function reducer(
   state = {
     ars: [],
+    arsExpired: [],
     ar: {
       facility: {},
       status: ""
@@ -38,6 +39,14 @@ export default function reducer(
         fetching: false,
         fetched: true,
         ars: action.payload
+      };
+    }
+    case "FETCH_ARS_EXPIRED_FULFILLED": {
+      return {
+        ...state,
+        fetching: false,
+        fetched: true,
+        arsExpired: action.payload
       };
     }
     case "ARS_RESET": {
