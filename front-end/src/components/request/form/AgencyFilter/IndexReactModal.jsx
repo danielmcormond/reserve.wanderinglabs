@@ -11,6 +11,8 @@ import AgencySelector from './Select'
 import { facilityFilterAgency } from '../../../../actions/facilitiesActions'
 
 ReactModal.setAppElement('#root')
+// ReactModal__Html--open ReactModal__Body--open
+// Fool purgecss into seeing these classes.
 
 const connected = connect(store => {
   return {

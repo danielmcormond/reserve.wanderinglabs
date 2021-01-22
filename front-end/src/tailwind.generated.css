@@ -959,6 +959,10 @@ video {
   margin-right: 0.5rem;
 }
 
+.ReactModal__Html--open, .ReactModal__Body--open {
+  overflow: hidden;
+}
+
 .space-y-2 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-y-reverse: 0;
   margin-top: calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));
@@ -984,6 +988,11 @@ video {
 .bg-gray-100 {
   --tw-bg-opacity: 1;
   background-color: rgba(255, 255, 255, var(--tw-bg-opacity));
+}
+
+.bg-gray-200 {
+  --tw-bg-opacity: 1;
+  background-color: rgba(233, 234, 235, var(--tw-bg-opacity));
 }
 
 .bg-gray-500 {
@@ -1056,6 +1065,10 @@ video {
   background-color: rgba(255, 255, 255, var(--tw-bg-opacity));
 }
 
+.bg-opacity-75 {
+  --tw-bg-opacity: 0.75;
+}
+
 .border-gray-300 {
   --tw-border-opacity: 1;
   border-color: rgba(212, 213, 215, var(--tw-border-opacity));
@@ -1079,6 +1092,11 @@ video {
 .border-green-300 {
   --tw-border-opacity: 1;
   border-color: rgba(201, 225, 202, var(--tw-border-opacity));
+}
+
+.border-green-400 {
+  --tw-border-opacity: 1;
+  border-color: rgba(160, 203, 162, var(--tw-border-opacity));
 }
 
 .border-green-600 {
@@ -1209,6 +1227,10 @@ video {
   align-items: stretch;
 }
 
+.self-end {
+  align-self: flex-end;
+}
+
 .self-center {
   align-self: center;
 }
@@ -1251,6 +1273,10 @@ video {
 
 .float-right {
   float: right;
+}
+
+.font-light {
+  font-weight: 300;
 }
 
 .font-semibold {
@@ -1458,6 +1484,10 @@ video {
 
 .opacity-75 {
   opacity: 0.75;
+}
+
+.opacity-95 {
+  opacity: 0.95;
 }
 
 .opacity-100 {
