@@ -27,4 +27,8 @@ class Facility::RecreationGovBa < Facility
       hash: last_import_hash,
     }
   end
+
+  def loop_from_site(site)
+    site.details['Loop'].strip
+  end
 end

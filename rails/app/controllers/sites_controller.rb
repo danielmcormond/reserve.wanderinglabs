@@ -2,7 +2,7 @@ class SitesController < ApplicationController
   def index
     if params[:availability_request_id]
       availability_request = AvailabilityRequest.find_by_uuid(params[:availability_request_id])
-      sites = Site.where(id: availability_request.site_ids)
+      sites = Site.where(id: availability_request.site_ids).order(:site_num)
     else
       facility = Facility.find(params[:facility_id])
       sites = facility.sites.lookup(params[:q])
