@@ -46,10 +46,11 @@
   "scripts": {
     "build:tailwind": "postcss src/tailwind.css -o src/tailwind.generated.css",
     "watch:tailwind": "postcss -w src/tailwind.css -o src/tailwind.all.css",
+    "build:service-worker": "rm build/service-worker.js && cp public/service-worker.js build/service-worker.js",
     "start": "run-p watch:tailwind start:react",
     "start:react": "react-scripts start",
     "prebuild": "npm run build:tailwind",
-    "build": "react-scripts build",
+    "build": "react-scripts build && npm run build:service-worker",
     "ui-watch": "gulp --gulpfile ./src/semantic/gulpfile.js watch",
     "deploy-reserve": "aws s3 sync --acl public-read build/ s3://reserve-beta.wanderinglabs.com",
     "deploy": "aws s3 sync --acl public-read build/ s3://reserve.wanderinglabs.com",
