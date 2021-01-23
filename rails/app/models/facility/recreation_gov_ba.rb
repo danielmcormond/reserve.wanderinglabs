@@ -29,6 +29,6 @@ class Facility::RecreationGovBa < Facility
   end
 
   def loop_from_site(site)
-    site.details['Loop'].strip
+    site.details['Loop']&.to_s&.strip
   end
 end
