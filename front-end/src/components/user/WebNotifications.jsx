@@ -22,7 +22,7 @@ const WebNotifications = () => {
   }, [user])
 
   const beamInterest = useMemo(() => {
-    return `user_${userId}`
+    return `debug-user-${userId}`
   }, [userId])
 
   const resetBeam = () => {
