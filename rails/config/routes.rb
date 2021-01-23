@@ -7,7 +7,11 @@ Rails.application.routes.draw do
   resource :login_tokens, only: %i[create]
   resource :users
   resources :payments, only: %i[create]
-  resources :notification_methods, only: %i[create destroy]
+  resources :notification_methods, only: %i[create destroy] do
+    member do
+      post :test_notification
+    end
+  end
 
   resources :availability_imports
   resources :availability_requests do

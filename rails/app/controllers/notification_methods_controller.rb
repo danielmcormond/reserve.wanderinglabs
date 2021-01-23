@@ -2,7 +2,9 @@ class NotificationMethodsController < ApplicationController
   before_action :login_required
 
   def create
-    NotificationMethod.create(notification_method_params.merge(user_id: current_user.id))
+    nm = NotificationMethod.find_or_create_by(notification_method_params.merge(user_id: current_user.id))
+    nm.update(active: true) unless nm.active?
+
     render json: current_user.reload
   end
 
@@ -10,6 +12,11 @@ class NotificationMethodsController < ApplicationController
     nm = current_user.notification_methods.where(id: params[:id]).first
     nm.update_attributes(active: false)
     render json: current_user.reload
+  end
+
+  def test_notification
+    nm = current_user.notification_methods.where(id: params[:id]).first
+    nm.test_notification
   end
 
   private

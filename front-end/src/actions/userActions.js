@@ -77,3 +77,13 @@ export function deleteNotificationMethod(data) {
       .catch(function(error) {});
   };
 }
+
+export function testNotificationMethod(data) {
+  return function(dispatch) {
+    reserveApi({
+      method: "post",
+      url: `/notification_methods/${data}/test_notification`
+    })
+      .catch(function(error) {});
+  };
+}

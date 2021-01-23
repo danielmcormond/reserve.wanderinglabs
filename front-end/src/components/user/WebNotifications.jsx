@@ -1,45 +1,145 @@
 import * as PusherPushNotifications from '@pusher/push-notifications-web'
-import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
+import React, { useEffect, useMemo, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+
+import { addNotificationMethod, deleteNotificationMethod, testNotificationMethod } from '../../actions/userActions'
 
 const beamsClient = new PusherPushNotifications.Client({
   instanceId: '648dec95-3352-4ffa-97d8-6abca6416845'
 })
 
 const WebNotifications = () => {
-  const [beamStatus, setBeamStatus] = useState('')
-  const [deviceId, setDeviceId] = useState('')
+  const dispatch = useDispatch()
+  const [beamLoading, setBeamLoading] = useState(true)
+  const [beamStatus, setBeamStatus] = useState(false)
+  const [beamLog, setBeamLog] = useState([])
 
   const userId = useSelector(store => store.user.user.id)
+  const user = useSelector(store => store.user.user)
 
-  useEffect(() => {
-    console.log('beamit')
+  const notificationMethod = useMemo(() => {
+    return user.notification_methods.filter(nm => nm.notification_type === 'web')[0]
+  }, [user])
+
+  const beamInterest = useMemo(() => {
+    return `user_${userId}`
+  }, [userId])
+
+  const resetBeam = () => {
     beamsClient
       .start()
-      .then(beamsClient => beamsClient.getDeviceId())
-      .then(deviceId => setDeviceId(deviceId))
       .then(() => beamsClient.getDeviceInterests())
-      .then(interests => setBeamStatus(interests))
-      .catch(console.error)
-  }, [])
+      .then(interests => {
+        const userIterest = interests.filter(i => i === beamInterest)[0]
+        if (userIterest) {
+          setBeamStatus(true)
+          setBeamLog(beamLog.concat(['Web Notifications Active!']))
+        }
+      })
+      .then(() => setBeamLoading(false))
+      .catch((e) => {
+        console.log('caught')
+        setBeamStatus(false)
+        setBeamLoading(false)
+        setBeamLog(beamLog.concat(['Error - Please Re-enable Notifications']))
+      })
+  }
+
+  useEffect(() => {
+    if (notificationMethod) {
+      resetBeam()
+    } else {
+      setBeamStatus(false)
+      setBeamLoading(false)
+    }
+  }, [notificationMethod])
+
+  useEffect(() => {
+    if (beamStatus) {
+      dispatch(addNotificationMethod('web', beamInterest))
+    }
+  }, [beamStatus])
 
   const addBeam = () => {
-    beamsClient.start().then(() => beamsClient.addDeviceInterest(`user_${userId}`))
+    beamsClient
+      .start()
+      .then(() => beamsClient.addDeviceInterest(beamInterest))
+      .then(() => {
+        setBeamLog(beamLog.concat(['Web Notifications Enabled']))
+        setBeamStatus(true)
+      })
+  }
+
+  const deleteBeam = () => {
+    beamsClient
+      .start()
+      .then(() => beamsClient.removeDeviceInterest(beamInterest))
+      .then(() => {
+        setBeamStatus(false)
+        dispatch(deleteNotificationMethod(notificationMethod.id))
+        setBeamLog(beamLog.concat(['Notifications Disabled']))
+      })
+  }
+
+  const testBeam = () => {
+    dispatch(testNotificationMethod(notificationMethod.id))
+    setBeamLog(beamLog.concat(['Test Notification Sent']))
   }
 
   return (
-    <div className="flex flex-row items-center bg-gray-200 p-5 mt-5 rounded border-t-2 border-gray-800">
-      <div className="ml-4">
-        <div className="font-semibold text-lg">Web Browser Notifications</div>
-        <div className="text-sm">An experimental feature!</div>
+    <div className="flex flex-row items-center p-5 mt-5 rounded border border-b-2 border-gray-300 shadow-md mb-16">
+      <div className="">
+        <div className="font-semibold text-xl">Web Browser Notifications</div>
+        <div className="text-lg mb-4">An experimental feature!</div>
 
-        <div>userId: {userId}</div>
-        <div>Status: {beamStatus}</div>
-        <div>deviceId: {deviceId}</div>
-        <button onClick={addBeam}>Allow Web Notifications</button>
+        {beamLoading && <div className="text-sm my-4">Loading Notification Settings....</div>}
+        {!beamLoading && !beamStatus && (
+          <div className="prose my-4">
+            Great for those spending lots of time behind a laptop. Once enabled this website does not have to remain
+            open.
+          </div>
+        )}
+        {!beamLoading && (
+          <div className="flex space-x-2">
+            {beamStatus && (
+              <>
+                <button className="button-flex button-gray" onClick={testBeam}>
+                  Test Notification
+                </button>
+
+                <button className="button-flex button-green" onClick={addBeam}>
+                  Refresh Setup
+                </button>
+                <button className="button-flex button-red" onClick={deleteBeam}>
+                  Disable Feature
+                </button>
+              </>
+            )}
+
+            {!beamStatus && (
+              <>
+                <button className="button-flex button-green" onClick={addBeam}>
+                  Enable Web Notifications
+                </button>
+              </>
+            )}
+          </div>
+        )}
+
+        <div className="flex-col-reverse flex mt-4">
+          {beamLog.map((beam, i) => (
+            <div key={i + beam} className="flex-grow text-gray-400">
+              {beam}
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   )
 }
 
 export default WebNotifications
+
+//   const [deviceId, setDeviceId] = useState('')
+// .then(beamsClient => beamsClient.getDeviceId())
+// .then(deviceId => setDeviceId(deviceId))

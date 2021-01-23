@@ -7,27 +7,27 @@ class Notifiers::Web
   end
 
   def send
-    Pusher::PushNotifications.publish_to_interests(interests: Array.wrap(interests), payload: params)
+    Pusher::PushNotifications.publish_to_interests(interests: Array.wrap(interests), payload: payload)
   end
 
   def interests
     "user_#{availability_request.user_id}"
   end
 
-  def params
+  def payload
     {
-    web: {
-      notification: {
-        title: title,
-        body: body,
-        deep_link: "#{ENV['RESERVE_URL']}/t/#{availability_request.last_match[:short]}"
+      web: {
+        notification: {
+          title: title,
+          body: body,
+          deep_link: "#{ENV['RESERVE_URL']}/t/#{availability_request.last_match[:short]}"
+        }
       }
     }
-  }
   end
 
   def title
-    "-- Availability Alert --\n#{availability_request.serialized[:facility][:name]}"
+    availability_request.serialized[:facility][:name]
   end
 
   def body
@@ -41,3 +41,10 @@ class Notifiers::Web
     alert.join("\n")
   end
 end
+
+
+__END__
+
+ar = AvailabilityRequest.find(149057)
+nm = NotificationMethod.find(21242)
+Notifiers::Web.new(ar, nm).send
