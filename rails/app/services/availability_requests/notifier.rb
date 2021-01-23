@@ -30,7 +30,7 @@ module AvailabilityRequests
     end
 
     def notify_for(nm)
-      if nm.notification_type == :sms
+      if nm.notification_type.sms?
         if availability_request.notify_sms
           begin
             Sms.new(availability_request, nm).send
@@ -38,6 +38,8 @@ module AvailabilityRequests
             Rails.logger.fatal(e)
           end
         end
+      elsif nm.notification_type.web?
+        Notifiers::Web.new(availability_request, nm).send
       else
         NotifierMailer.new_availabilities(availability_request, nm).deliver
       end
@@ -50,7 +52,8 @@ module AvailabilityRequests
         matches: availability_request.available_matches.count,
         matches_new: availability_request.available_matches.where(notified_at: nil).count,
       )
-      availability_request.user.sms_cache if nm.notification_type == :sms
+      availability_request.user.sms_cache if nm.notification_type.sms?
+      availability_request.user.web_cache if nm.notification_type.web?
       ::NewRelic::Agent.increment_metric("Custom/Notification/#{nm.allow? ? 'Live' : 'Throttled'}/#{nm.notification_type}")
       ln
     end

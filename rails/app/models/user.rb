@@ -42,7 +42,7 @@ class User < ApplicationRecord
   end
 
   def sms_cache
-    update_attributes(sms_count: sms.count)
+    update(sms_count: sms.count)
   end
 
   def sms
@@ -59,9 +59,21 @@ class User < ApplicationRecord
 
   def sms_reset(realtime = false)
     new_count = realtime ? sms_realtime : [sms_limit, sms_realtime].max
-    update_attributes(sms_limit: new_count) if realtime
+    update(sms_limit: new_count) if realtime
     sms.offset(new_count).update_all(throttled: true)
     sms_cache
+  end
+
+  def web
+    AvailabilityNotification
+      .where(throttled: false)
+      .where(
+        notification_method_id: notification_methods.where(notification_type: :web).map(&:id)
+      )
+  end
+
+  def web_cache
+    update(web_count: web.count)
   end
 
   # Little helpful admin methods

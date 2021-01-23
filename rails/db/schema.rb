@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_21_010149) do
+ActiveRecord::Schema.define(version: 2021_01_23_210446) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "btree_gist"
@@ -249,6 +249,9 @@ ActiveRecord::Schema.define(version: 2021_01_21_010149) do
     t.integer "priority", default: 1000
     t.integer "sms_limit", default: 250
     t.integer "sms_count", default: 0
+    t.boolean "feature_web_notifications", default: false, null: false
+    t.integer "web_count", default: 0, null: false
+    t.integer "web_limit", default: 5000, null: false
     t.index ["auth_token"], name: "index_users_on_auth_token"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["login_token"], name: "index_users_on_login_token"
