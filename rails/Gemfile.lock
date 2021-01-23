@@ -230,7 +230,7 @@ GEM
       caze (~> 0)
       jwt (~> 2.1, >= 2.1.0)
       rest-client (~> 2.0, >= 2.0.2)
-    rack (2.2.2)
+    rack (2.2.3)
     rack-cors (1.0.1)
     rack-protection (2.0.0)
       rack
