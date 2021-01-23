@@ -1,4 +1,5 @@
 class AvailabilityMatch < ApplicationRecord
+  has_many :availability_match_clicks
   belongs_to :availability_request
   belongs_to :site
 

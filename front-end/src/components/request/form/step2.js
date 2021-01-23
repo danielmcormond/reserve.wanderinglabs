@@ -96,7 +96,7 @@ export class RequestFormStep2 extends Component {
             model=".stayLength"
             component={SemanticInput}
             controlProps={{
-              label: "Length of stay (in days):"
+              label: "Length of stay (# Nights):"
             }}
           />
           <Errors
