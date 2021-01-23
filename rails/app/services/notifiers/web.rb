@@ -20,7 +20,8 @@ class Notifiers::Web
         notification: {
           title: title,
           body: body,
-          deep_link: "#{ENV['RESERVE_URL']}/t/#{availability_request.last_match[:short]}"
+          deep_link: "#{ENV['RESERVE_URL']}/t/#{availability_request.last_match[:short]}",
+          icon: "#{ENV['RESERVE_URL']}/caravan-solid.png"
         }
       }
     }

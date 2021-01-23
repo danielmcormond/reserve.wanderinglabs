@@ -29,7 +29,8 @@ class NotificationMethod < ApplicationRecord
           notification: {
             title: 'WanderingLabs Push Notifications',
             body: 'If you got this, it worked.',
-            deep_link: (ENV['RESERVE_URL']).to_s
+            deep_link: (ENV['RESERVE_URL']).to_s,
+            icon: "#{ENV['RESERVE_URL']}/caravan-solid.png"
           }
         }
       }
