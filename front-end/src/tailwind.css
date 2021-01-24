@@ -47,4 +47,14 @@
   @apply bg-red-200 border-red-400 text-red-600
 }
 
+.sub-nav-wrapper {
+  @apply flex border-b border-gray-300 mt-6 mb-2
+}
+.sub-nav{
+  @apply flex cursor-pointer text-lg font-semibold justify-center px-3 ml-6 text-gray-600
+}
+.sub-nav-active {
+  @apply border-b-2 border-green-600 text-gray-900
+}
+
 @tailwind utilities;

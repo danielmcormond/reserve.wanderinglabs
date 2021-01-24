@@ -14,11 +14,12 @@ import AvailabilityMatches from '../availabilityMatches'
 import Premium from '../user/premium.js'
 import OutOfOrder from './OutOfOrder'
 import Sites from './Sites'
-// import Calendar from '../Calendar/Calendar'
+import Calendar from '../Calendar/Calendar'
 
 const connected = connect(store => {
   return {
-    ar: store.availabilityRequests.ar
+    ar: store.availabilityRequests.ar,
+    availabilityRequestExtra: store.availabilityRequests.extra
   }
 })
 export class RequestShow extends Component {
@@ -42,6 +43,10 @@ export class RequestShow extends Component {
   toggleSms = () => {
     const uuid = this.props.ar.uuid
     this.props.dispatch(updateAvailabilityRequest(uuid, { notify_sms: !this.props.ar.notify_sms }))
+  }
+
+  setExtra = (extra) => {
+    this.props.dispatch({ type: 'SET_AR_EXTRA', payload: extra })
   }
 
   get statusButtonProps() {
@@ -75,7 +80,7 @@ export class RequestShow extends Component {
   }
 
   render() {
-    const { ar } = this.props
+    const { ar, availabilityRequestExtra } = this.props
 
     const halfGridProps = {
       tablet: 8,
@@ -184,8 +189,20 @@ export class RequestShow extends Component {
           </Grid.Column>
         </Grid>
 
+        <div className="sub-nav-wrapper">
+            <div className={`sub-nav ${availabilityRequestExtra === 'matches' && 'sub-nav-active'}`}>
+              <span onClick={() => this.setExtra('matches')}>Availabilities</span>
+            </div>
+            <div className={`sub-nav ${availabilityRequestExtra === 'calendar' && 'sub-nav-active'}`}>
+              <span onClick={() => this.setExtra('calendar')}>Calendar</span>
+            </div>
+            <div className={`sub-nav ${availabilityRequestExtra === 'noifications' && 'sub-nav-active'}`}>
+              <span onClick={() => this.setExtra('notifications')}>Notifications</span>
+            </div>
+        </div>
 
-        <AvailabilityMatches {...this.props} />
+        {availabilityRequestExtra === 'matches' && <AvailabilityMatches {...this.props} /> }
+        {availabilityRequestExtra === 'calendar' && <Calendar /> }
       </div>
     )
   }

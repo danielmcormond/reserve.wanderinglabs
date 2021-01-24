@@ -17,7 +17,8 @@ export default function reducer(
     matchingSiteCount: 0,
     fetching: false,
     fetched: false,
-    error: null
+    error: null,
+    extra: 'matches'
   },
   action
 ) {
@@ -71,6 +72,9 @@ export default function reducer(
     }
     case "FETCH_AR_SITES_FULFILLED": {
       return { ...state, fetching: false, sites: action.payload };
+    }
+    case "SET_AR_EXTRA": {
+      return { ...state, extra: action.payload };
     }
     default: {
       return state;

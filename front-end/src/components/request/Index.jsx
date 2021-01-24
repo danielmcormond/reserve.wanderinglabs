@@ -10,8 +10,8 @@ import Premium from '../user/premium.js'
 import DateFormat from '../utils/dateFormat'
 import { fetchAvailabilityRequests } from '../../actions/availabilityRequestsActions'
 
-const StatusClassNames = 'flex cursor-pointer text-lg font-semibold justify-center px-3 ml-6 text-gray-600 '
-const StatusActiveClassNames = 'border-b-2 border-green-600 text-gray-900'
+const StatusClassNames = 'sub-nav'
+const StatusActiveClassNames = 'sub-nav-active'
 
 const connected = connect(store => {
   return {
@@ -73,7 +73,7 @@ const Requests = ({ dispatch, requests, requestsExpired, fetching }) => {
             <div className="flex text-3xl font-semibold justify-center">Your Requests:</div>
           </div>
 
-          <div className="flex border-b border-gray-300 mt-6 mb-2">
+          <div className="sub-nav-wrapper">
             <div className={`${StatusClassNames} ${!expired && StatusActiveClassNames}`}>
               <span onClick={() => setExpired(false)}>Active</span>
             </div>
