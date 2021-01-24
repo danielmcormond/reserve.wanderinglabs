@@ -8,7 +8,8 @@ export const initialState = {
   premium: false,
   fetching: false,
   fetched: false,
-  error: null
+  error: null,
+  notificationLoading: null
 }
 
 export default (state = initialState, { type, payload }) => {
@@ -33,6 +34,9 @@ export default (state = initialState, { type, payload }) => {
         user: payload,
         premium: payload.premium
       };
+    }
+    case 'NOTIFICATION_LOADING': {
+      return { ...state, notificationLoading: payload };
     }
     default: {
       return { ...state };

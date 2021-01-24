@@ -76,7 +76,7 @@ const WebNotifications = () => {
       .then(() => beamsClient.removeDeviceInterest(beamInterest))
       .then(() => {
         setBeamStatus(false)
-        dispatch(deleteNotificationMethod(notificationMethod.id))
+        dispatch(deleteNotificationMethod('web', notificationMethod.id))
         setBeamLog(beamLog.concat(['Notifications Disabled']))
       })
   }

@@ -10,6 +10,7 @@ import Add from './Add'
 const Email = () => {
   const dispatch = useDispatch()
   const user = useSelector(store => store.user.user)
+  const notificationLoading = useSelector(store => store.user.notificationLoading)
 
   const notifications = useMemo(() => {
     return user.notification_methods.filter(nm => nm.notification_type === 'email')
@@ -20,11 +21,11 @@ const Email = () => {
   }
 
   const deleteNotification = id => {
-    dispatch(deleteNotificationMethod(id))
+    dispatch(deleteNotificationMethod('email', id))
   }
 
   return (
-    <Wrapper title="Email Notifications" icon={faEnvelope}>
+    <Wrapper title="Email Notifications" icon={faEnvelope} loading={notificationLoading === 'email'}>
       {notifications.map(notificationMethod => (
         <div key={notificationMethod.id} className="flex mb-3 text-xl tracking-wide font-light text-gray-600">
           <div className="flex-grow">{notificationMethod.param}</div>

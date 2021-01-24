@@ -46,6 +46,8 @@ export function paymentSuccess(data) {
 
 export function addNotificationMethod(nmType, data) {
   return function(dispatch) {
+    dispatch({ type: 'NOTIFICATION_LOADING', payload: nmType})
+
     let apiValues = {
       notification_type: nmType,
       param: data
@@ -59,19 +61,23 @@ export function addNotificationMethod(nmType, data) {
       }
     })
       .then(function(response) {
+        dispatch({ type: 'NOTIFICATION_LOADING', payload: null })
         dispatch({ type: "FETCH_USER_FULFILLED", payload: response.data });
       })
       .catch(function(error) {});
   };
 }
 
-export function deleteNotificationMethod(data) {
+export function deleteNotificationMethod(nmType, id) {
   return function(dispatch) {
+    dispatch({ type: 'NOTIFICATION_LOADING', payload: nmType })
+
     reserveApi({
       method: "delete",
-      url: `/notification_methods/${data}`
+      url: `/notification_methods/${id}`
     })
       .then(function(response) {
+        dispatch({ type: 'NOTIFICATION_LOADING', payload: null })
         dispatch({ type: "FETCH_USER_FULFILLED", payload: response.data });
       })
       .catch(function(error) {});

@@ -4,7 +4,6 @@ class NotificationMethodsController < ApplicationController
   def create
     nm = NotificationMethod.find_or_create_by(notification_method_params.merge(user_id: current_user.id))
     nm.update(active: true) unless nm.active?
-
     render json: current_user.reload
   end
 
