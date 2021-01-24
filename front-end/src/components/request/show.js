@@ -14,6 +14,7 @@ import AvailabilityMatches from '../availabilityMatches'
 import Premium from '../user/premium.js'
 import OutOfOrder from './OutOfOrder'
 import Sites from './Sites'
+// import Calendar from '../Calendar/Calendar'
 
 const connected = connect(store => {
   return {
@@ -183,6 +184,7 @@ export class RequestShow extends Component {
           </Grid.Column>
         </Grid>
 
+
         <AvailabilityMatches {...this.props} />
       </div>
     )
@@ -190,6 +192,8 @@ export class RequestShow extends Component {
 }
 export default connected(RequestShow)
 
+//         <Calendar />
+// <AvailabilityMatches {...this.props} />
 // <Button
 //   as={Link}
 //   to={`/w/${ar.uuid}`}
