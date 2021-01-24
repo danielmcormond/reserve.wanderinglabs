@@ -58,3 +58,7 @@
 }
 
 @tailwind utilities;
+
+:-moz-focusring {
+  outline: none;
+}

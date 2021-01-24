@@ -1,29 +1,29 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { Divider, Grid, Header, Icon, Button } from "semantic-ui-react";
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { Divider, Grid, Header, Icon, Button } from 'semantic-ui-react'
 
-import { Link } from "react-router-dom";
-import { userSettings } from "../../actions/userActions";
+import { Link } from 'react-router-dom'
+import { userSettings } from '../../actions/userActions'
 
-import Premium from "./premium.js";
-import UserEmail from "./email.js";
-import UserTxt from "./txt.js";
-import WebNotificationsWrapper from "./WebNotificationsWrapper";
+import Premium from './premium.js'
+import UserEmail from './Email'
+import UserSms from './Sms'
+import WebNotificationsWrapper from './WebNotificationsWrapper'
 
 const connected = connect(store => {
   return {
     isAuthenticated: store.session.isAuthenticated,
     user: store.user.user,
     premium: store.user.premium
-  };
-});
+  }
+})
 export class UserSettings extends Component {
   componentWillMount() {
-    this.props.dispatch(userSettings());
+    this.props.dispatch(userSettings())
   }
 
   render() {
-    const { user, isAuthenticated, premium } = this.props;
+    const { user, isAuthenticated, premium } = this.props
 
     return (
       <div>
@@ -34,32 +34,19 @@ export class UserSettings extends Component {
         <Grid>
           <Grid.Column computer="8" tablet="8" mobile="16">
             {isAuthenticated && (
-              <Button
-                name="sessionDestroy"
-                as={Link}
-                to="/sign-out"
-                content="Sign Out"
-                color="grey"
-              />
+              <Button name="sessionDestroy" as={Link} to="/sign-out" content="Sign Out" color="grey" />
             )}
 
-            {!!!isAuthenticated && (
-              <Button
-                name="sessionNew"
-                as={Link}
-                to="/sign-in"
-                content="Sign In"
-                color="green"
-              />
-            )}
+            {!!!isAuthenticated && <Button name="sessionNew" as={Link} to="/sign-in" content="Sign In" color="green" />}
 
             <Divider hidden />
 
             {premium ? (
               <div>
+                <UserSms />
+                <Divider hidden />
                 <UserEmail />
                 <Divider hidden />
-                <UserTxt />
                 {user.feature_web_notifications && <WebNotificationsWrapper />}
               </div>
             ) : (
@@ -71,7 +58,7 @@ export class UserSettings extends Component {
           </Grid.Column>
         </Grid>
       </div>
-    );
+    )
   }
 }
 
@@ -80,4 +67,4 @@ export class UserSettings extends Component {
 //   <Menu.Item as={Link} to="/settings">
 //     Account
 //   </Menu.Item>}
-export default connected(UserSettings);
+export default connected(UserSettings)

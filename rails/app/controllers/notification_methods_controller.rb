@@ -10,7 +10,7 @@ class NotificationMethodsController < ApplicationController
 
   def destroy
     nm = current_user.notification_methods.where(id: params[:id]).first
-    nm.update_attributes(active: false)
+    nm.update(active: false)
     render json: current_user.reload
   end
 
