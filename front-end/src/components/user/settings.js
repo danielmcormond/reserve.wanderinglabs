@@ -60,7 +60,6 @@ export class UserSettings extends Component {
                 <UserEmail />
                 <Divider hidden />
                 <UserTxt />
-                {user.feature_web_notifications && <WebNotifications />}
               </div>
             ) : (
               <p>Premium members can get notified via SMS.</p>
