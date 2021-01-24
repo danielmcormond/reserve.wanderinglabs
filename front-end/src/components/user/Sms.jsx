@@ -25,7 +25,7 @@ const Sms = () => {
   }
 
   return (
-    <Wrapper title="SMS/TXT Notifications" subTitle={`${user.sms_count} of ${user.sms_limit} messages used.`} icon={faSms}  loading={notificationLoading === 'email'}>
+    <Wrapper title="SMS/TXT Notifications" subTitle={`${user.sms_count} of ${user.sms_limit} messages used.`} icon={faSms}  loading={notificationLoading === 'sms'}>
       {notifications.map(notificationMethod => (
         <div key={notificationMethod.id} className="flex mb-3 text-xl tracking-wide font-light text-gray-600">
           <div className="flex-grow">{notificationMethod.param}</div>
