@@ -4,12 +4,12 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import { addNotificationMethod, deleteNotificationMethod, testNotificationMethod } from '../../actions/userActions'
 
-const beamsClient = new PusherPushNotifications.Client({
-  instanceId: '648dec95-3352-4ffa-97d8-6abca6416845'
-})
-
 const WebNotifications = () => {
   const dispatch = useDispatch()
+  const beamsClient = new PusherPushNotifications.Client({
+    instanceId: '648dec95-3352-4ffa-97d8-6abca6416845'
+  })
+
   const [beamLoading, setBeamLoading] = useState(true)
   const [beamStatus, setBeamStatus] = useState(false)
   const [beamLog, setBeamLog] = useState([])
@@ -37,7 +37,7 @@ const WebNotifications = () => {
         }
       })
       .then(() => setBeamLoading(false))
-      .catch((e) => {
+      .catch(e => {
         console.log('caught')
         setBeamStatus(false)
         setBeamLoading(false)
@@ -46,7 +46,7 @@ const WebNotifications = () => {
   }
 
   useEffect(() => {
-    if (notificationMethod) {
+    if (beamsClient && notificationMethod) {
       resetBeam()
     } else {
       setBeamStatus(false)
@@ -87,52 +87,46 @@ const WebNotifications = () => {
   }
 
   return (
-    <div className="flex flex-row items-center p-5 mt-5 rounded border border-b-2 border-gray-300 shadow-md mb-16">
-      <div className="">
-        <div className="font-semibold text-xl">Web Browser Notifications</div>
-        <div className="text-lg mb-4">An experimental feature!</div>
-
-        {beamLoading && <div className="text-sm my-4">Loading Notification Settings....</div>}
-        {!beamLoading && !beamStatus && (
-          <div className="prose my-4">
-            Great for those spending lots of time behind a laptop. Once enabled this website does not have to remain
-            open.
-          </div>
-        )}
-        {!beamLoading && (
-          <div className="flex space-x-2">
-            {beamStatus && (
-              <>
-                <button className="button-flex button-gray" onClick={testBeam}>
-                  Test Notification
-                </button>
-
-                <button className="button-flex button-green" onClick={addBeam}>
-                  Refresh Setup
-                </button>
-                <button className="button-flex button-red" onClick={deleteBeam}>
-                  Disable Feature
-                </button>
-              </>
-            )}
-
-            {!beamStatus && (
-              <>
-                <button className="button-flex button-green" onClick={addBeam}>
-                  Enable Web Notifications
-                </button>
-              </>
-            )}
-          </div>
-        )}
-
-        <div className="flex-col-reverse flex mt-4">
-          {beamLog.map((beam, i) => (
-            <div key={i + beam} className="flex-grow text-gray-400">
-              {beam}
-            </div>
-          ))}
+    <div className="">
+      {beamLoading && <div className="text-sm my-4">Loading Notification Settings....</div>}
+      {!beamLoading && !beamStatus && (
+        <div className="prose my-4">
+          Great for those spending lots of time behind a laptop. Once enabled this website does not have to remain open.
         </div>
+      )}
+      {!beamLoading && (
+        <div className="flex space-x-2">
+          {beamStatus && (
+            <>
+              <button className="button-flex button-gray" onClick={testBeam}>
+                Test Notification
+              </button>
+
+              <button className="button-flex button-green" onClick={addBeam}>
+                Refresh Setup
+              </button>
+              <button className="button-flex button-red" onClick={deleteBeam}>
+                Disable Feature
+              </button>
+            </>
+          )}
+
+          {!beamStatus && (
+            <>
+              <button className="button-flex button-green" onClick={addBeam}>
+                Enable Web Notifications
+              </button>
+            </>
+          )}
+        </div>
+      )}
+
+      <div className="flex-col-reverse flex mt-4">
+        {beamLog.map((beam, i) => (
+          <div key={i + beam} className="flex-grow text-gray-400">
+            {beam}
+          </div>
+        ))}
       </div>
     </div>
   )

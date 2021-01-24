@@ -914,6 +914,21 @@ video {
   margin-bottom: 0;
 }
 
+.day-label {
+  background-image: linear-gradient(to right, #77B57A, #DDEDDE);
+}
+
+.calendar-day {
+  border-right-width: 1px;
+  border-bottom-width: 1px;
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-top: 0.5rem;
+  padding-bottom: 1rem;
+  position: relative;
+  width: 14.2857%;
+}
+
 .filter-label {
   display: block;
   font-weight: 600;
@@ -998,6 +1013,37 @@ video {
   border-color: rgba(248, 113, 113, var(--tw-border-opacity));
   --tw-text-opacity: 1;
   color: rgba(220, 38, 38, var(--tw-text-opacity))
+}
+
+.sub-nav-wrapper {
+  --tw-border-opacity: 1;
+  border-color: rgba(212, 213, 215, var(--tw-border-opacity));
+  border-bottom-width: 1px;
+  display: flex;
+  margin-bottom: 0.5rem;
+  margin-top: 1.5rem
+}
+
+.sub-nav{
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  margin-left: 1.5rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  --tw-text-opacity: 1;
+  color: rgba(127, 130, 137, var(--tw-text-opacity))
+}
+
+.sub-nav-active {
+  --tw-border-opacity: 1;
+  border-color: rgba(107, 163, 110, var(--tw-border-opacity));
+  border-bottom-width: 2px;
+  --tw-text-opacity: 1;
+  color: rgba(43, 48, 59, var(--tw-text-opacity))
 }
 
 .space-y-2 > :not([hidden]) ~ :not([hidden]) {
@@ -1182,6 +1228,16 @@ video {
   border-bottom-left-radius: 0.375rem;
 }
 
+.rounded-r-full {
+  border-top-right-radius: 9999px;
+  border-bottom-right-radius: 9999px;
+}
+
+.rounded-l-full {
+  border-top-left-radius: 9999px;
+  border-bottom-left-radius: 9999px;
+}
+
 .border-2 {
   border-width: 2px;
 }
@@ -1198,8 +1254,20 @@ video {
   border-bottom-width: 2px;
 }
 
+.border-t {
+  border-top-width: 1px;
+}
+
+.border-r {
+  border-right-width: 1px;
+}
+
 .border-b {
   border-bottom-width: 1px;
+}
+
+.border-l {
+  border-left-width: 1px;
 }
 
 .cursor-pointer {
@@ -1322,8 +1390,20 @@ video {
   float: right;
 }
 
+.float-left {
+  float: left;
+}
+
+.clear-both {
+  clear: both;
+}
+
 .font-light {
   font-weight: 300;
+}
+
+.font-medium {
+  font-weight: 500;
 }
 
 .font-semibold {
@@ -1405,6 +1485,10 @@ video {
 
 .leading-loose {
   line-height: 2;
+}
+
+.m-auto {
+  margin: auto;
 }
 
 .my-1 {
@@ -1514,8 +1598,16 @@ video {
   margin-bottom: 2rem;
 }
 
+.mt-12 {
+  margin-top: 3rem;
+}
+
 .mr-12 {
   margin-right: 3rem;
+}
+
+.mb-12 {
+  margin-bottom: 3rem;
 }
 
 .mt-16 {
@@ -1524,6 +1616,10 @@ video {
 
 .mb-16 {
   margin-bottom: 4rem;
+}
+
+.mt-40 {
+  margin-top: 10rem;
 }
 
 .-ml-32 {
@@ -1756,6 +1852,11 @@ video {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
+.shadow-lg {
+  --tw-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
 .shadow-xl {
   --tw-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
@@ -1807,6 +1908,10 @@ video {
   text-align: center;
 }
 
+.text-right {
+  text-align: right;
+}
+
 .text-white {
   --tw-text-opacity: 1;
   color: rgba(255, 255, 255, var(--tw-text-opacity));
@@ -1850,6 +1955,11 @@ video {
 .text-gray-900 {
   --tw-text-opacity: 1;
   color: rgba(43, 48, 59, var(--tw-text-opacity));
+}
+
+.text-red-300 {
+  --tw-text-opacity: 1;
+  color: rgba(252, 165, 165, var(--tw-text-opacity));
 }
 
 .text-red-800 {
@@ -1905,6 +2015,10 @@ video {
   letter-spacing: -0.05em;
 }
 
+.tracking-wide {
+  letter-spacing: 0.025em;
+}
+
 .select-none {
   -webkit-user-select: none;
       -ms-user-select: none;
@@ -1949,6 +2063,10 @@ video {
 
 .w-1\/3 {
   width: 33.333333%;
+}
+
+.w-2\/3 {
+  width: 66.666667%;
 }
 
 .w-1\/5 {
@@ -2179,6 +2297,13 @@ video {
 }
 
 @media (min-width: 1024px) {
+  .lg\:inline {
+    display: inline;
+  }
+
+  .lg\:hidden {
+    display: none;
+  }
 }
 
 @media (min-width: 1280px) {
