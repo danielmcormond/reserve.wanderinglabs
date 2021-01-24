@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :availability_imports
   resources :availability_requests do
     resources :availability_matches, only: %i[index]
+    resources :availability_notifications, only: %i[index]
     resources :sites, only: %i[index]
     collection do
       get :inactive

@@ -15,6 +15,7 @@ import Premium from '../user/premium.js'
 import OutOfOrder from './OutOfOrder'
 import Sites from './Sites'
 import Calendar from '../Calendar/Calendar'
+import Notifications from '../Notifications/Index'
 
 const connected = connect(store => {
   return {
@@ -196,13 +197,14 @@ export class RequestShow extends Component {
             <div className={`sub-nav ${availabilityRequestExtra === 'calendar' && 'sub-nav-active'}`}>
               <span onClick={() => this.setExtra('calendar')}>Calendar</span>
             </div>
-            <div className={`sub-nav ${availabilityRequestExtra === 'noifications' && 'sub-nav-active'}`}>
+            <div className={`sub-nav ${availabilityRequestExtra === 'notifications' && 'sub-nav-active'}`}>
               <span onClick={() => this.setExtra('notifications')}>Notifications</span>
             </div>
         </div>
 
         {availabilityRequestExtra === 'matches' && <AvailabilityMatches {...this.props} /> }
         {availabilityRequestExtra === 'calendar' && <Calendar /> }
+        {availabilityRequestExtra === 'notifications' && <Notifications /> }
       </div>
     )
   }
