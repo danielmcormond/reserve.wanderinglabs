@@ -2216,6 +2216,11 @@ video {
   }
 }
 
+.animate-spin {
+  -webkit-animation: spin 1s linear infinite;
+          animation: spin 1s linear infinite;
+}
+
 @media (min-width: 640px) {
   .sm\:block {
     display: block;

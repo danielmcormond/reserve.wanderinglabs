@@ -41,18 +41,18 @@ const Calendar = () => {
         const matchDayPlus = matchDay.add(addDay, 'day')
         const dayKey = matchDayPlus.format('YYYY-MM-DD')
 
-        const arrivable = addDay < match.length - availabilityRequest.stay_length
-        const departable = addDay > 0
+        const arrivable = addDay < (match.length - availabilityRequest.stay_length + 1)
+        const occupiable = addDay > 0
 
         if (activeDates[dayKey]) {
           activeDates[dayKey] = {
-            arrive: activeDates[dayKey].arrive + (arrivable ? 1 : 0),
-            depart: activeDates[dayKey].depart + (departable ? 1 : 0)
+            arrivable: activeDates[dayKey].arrivable + (arrivable ? 1 : 0),
+            occupiable: activeDates[dayKey].occupiable || occupiable
           }
         } else {
-          activeDates[dayKey] = { arrive: arrivable ? 1 : 0, depart: departable ? 1 : 0 }
+          activeDates[dayKey] = { arrivable: arrivable ? 1 : 0, occupiable }
         }
-        if (arrivable || departable) {
+        if (arrivable || occupiable) {
           activeWeeks.push(matchDayPlus.week())
         }
       }
@@ -69,16 +69,14 @@ const Calendar = () => {
 
     console.log({ activeDates, activeWeeks })
     while (day <= endDate) {
-      const { depart, arrive } = activeDates[day.format('YYYY-MM-DD')] || { depart: 0, arrive: 0 }
-
       if (activeWeeks.indexOf(day.week()) > -1) {
         timePeriod.push(
           <CalendarDay
             key={day.format('YYYY-MM-DD')}
-            day={day}
-            dayAvail={arrive}
-            depart={depart > 0}
-            arrive={arrive > 0 || depart > 0}
+            dayObj={day}
+            day={activeDates[day.format('YYYY-MM-DD')] || { arrivable: 0, occupiable: false }}
+            dayPrev={activeDates[day.subtract(1, 'day').format('YYYY-MM-DD')] || { arrivable: 0, occupiable: false }}
+            dayNext={activeDates[day.add(1, 'day').format('YYYY-MM-DD')] || { arrivable: 0, occupiable: false }}
           />
         )
       } else if (day.format('YYYY-MM-DD') === endDate.format('YYYY-MM-DD')) {
