@@ -12,7 +12,8 @@ export default function reducer(
     },
     fetching: false,
     fetched: false,
-    error: null
+    error: null,
+    matchesCalendar: []
   },
   action
 ) {
@@ -29,6 +30,14 @@ export default function reducer(
         fetching: false,
         fetched: true,
         matches: action.payload
+      };
+    }
+    case "FETCH_MATCHES_CALENDAR_FULFILLED": {
+      return {
+        ...state,
+        fetching: false,
+        fetched: true,
+        matchesCalendar: action.payload
       };
     }
     case "FETCH_MATCH": {

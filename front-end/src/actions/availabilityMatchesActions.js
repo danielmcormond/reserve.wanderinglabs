@@ -16,6 +16,22 @@ export function fetchAvailabilityMatches(uuid) {
   };
 }
 
+export function fetchAvailabilityMatchesCalendar(uuid) {
+  return function(dispatch) {
+    dispatch({ type: "FETCH_MATCHES_CALENDAR" });
+    reserveApi({
+      method: "get",
+      url: `/availability_requests/${uuid}/availability_matches/calendar.json`
+    })
+      .then(response => {
+        dispatch({ type: "FETCH_MATCHES_CALENDAR_FULFILLED", payload: response.data });
+      })
+      .catch(err => {
+        dispatch({ type: "FETCH_MATCHES_CALENDAR_REJECTED", payload: err });
+      });
+  };
+}
+
 export function fetchAvailabilityMatch(id, from) {
   return function(dispatch) {
     dispatch({ type: "FETCH_MATCH" });

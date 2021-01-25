@@ -2,20 +2,26 @@ import React, { useMemo, useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import dayjs from 'dayjs'
 import weekOfYear from 'dayjs/plugin/weekOfYear'
+import isBetween from 'dayjs/plugin/isBetween'
 
-import { fetchAvailabilityMatches } from '../../actions/availabilityMatchesActions'
+import { fetchAvailabilityMatchesCalendar } from '../../actions/availabilityMatchesActions'
 
 import CalendarDay from './CalendarDay'
 import CalendarGap from './CalendarGap'
 import DaysOfWeek from './DaysOfWeek'
 import CalendarLoading from './CalendarLoading'
+import AvailabilitiesModal from './AvailabilitiesModal'
 
 dayjs.extend(weekOfYear)
+dayjs.extend(isBetween)
 
 const Calendar = () => {
   const dispatch = useDispatch()
   const availabilityRequest = useSelector(store => store.availabilityRequests.ar)
   const availabilities = useSelector(store => store.availabilityMatches.matches)
+  const calendarDays = useSelector(store => store.availabilityMatches.matchesCalendar)
+
+  const [selectedDay, setSelectedDay] = useState()
 
   const startDate = useMemo(() => {
     return dayjs(availabilityRequest.date_start).startOf('week')
@@ -27,56 +33,44 @@ const Calendar = () => {
 
   useEffect(() => {
     if (availabilityRequest.uuid) {
-      dispatch(fetchAvailabilityMatches(availabilityRequest.uuid))
+      dispatch(fetchAvailabilityMatchesCalendar(availabilityRequest.uuid))
     }
   }, [availabilityRequest])
 
-  const generateAvailabilityCalendar = () => {
-    let activeDates = {}
-    let activeWeeks = []
-
-    availabilities.forEach(match => {
-      const matchDay = dayjs(match.avail_date)
-      for (let addDay = 0; addDay < match.length; addDay++) {
-        const matchDayPlus = matchDay.add(addDay, 'day')
-        const dayKey = matchDayPlus.format('YYYY-MM-DD')
-
-        const arrivable = addDay < (match.length - availabilityRequest.stay_length + 1)
-        const occupiable = addDay > 0
-
-        if (activeDates[dayKey]) {
-          activeDates[dayKey] = {
-            arrivable: activeDates[dayKey].arrivable + (arrivable ? 1 : 0),
-            occupiable: activeDates[dayKey].occupiable || occupiable
-          }
-        } else {
-          activeDates[dayKey] = { arrivable: arrivable ? 1 : 0, occupiable }
-        }
-        if (arrivable || occupiable) {
-          activeWeeks.push(matchDayPlus.week())
-        }
-      }
+  const selectedAvailabilities = useMemo(() => {
+    if (!selectedDay) {
+      console.log('no selected day')
+      return []
+    }
+    return availabilities.filter(match => {
+      const availDate = dayjs(match.avail_date)
+      const isB = dayjs(selectedDay).isBetween(
+        availDate,
+        availDate.add(match.length - availabilityRequest.stay_length + 1, 'day'),
+        null,
+        '[)'
+      )
+      console.log({ isB, selectedDay, availDate, added: availDate.add(match.length - availabilityRequest.stay_length + 1, 'day') })
+      return isB
     })
-
-    return { activeDates, activeWeeks }
-  }
+  }, [selectedDay, availabilities, availabilityRequest])
 
   const mappedDays = () => {
     var timePeriod = []
     var day = startDate.clone()
     let soldOutStart = startDate.clone()
-    const { activeDates, activeWeeks } = generateAvailabilityCalendar()
+    const activeWeeks = {}
 
-    console.log({ activeDates, activeWeeks })
     while (day <= endDate) {
-      if (activeWeeks.indexOf(day.week()) > -1) {
+      if (true || activeWeeks.indexOf(day.week()) > -1) {
         timePeriod.push(
           <CalendarDay
             key={day.format('YYYY-MM-DD')}
             dayObj={day}
-            day={activeDates[day.format('YYYY-MM-DD')] || { arrivable: 0, occupiable: false }}
-            dayPrev={activeDates[day.subtract(1, 'day').format('YYYY-MM-DD')] || { arrivable: 0, occupiable: false }}
-            dayNext={activeDates[day.add(1, 'day').format('YYYY-MM-DD')] || { arrivable: 0, occupiable: false }}
+            day={calendarDays[day.format('YYYY-MM-DD')] || { arrivable: 0, occupiable: false }}
+            dayPrev={calendarDays[day.subtract(1, 'day').format('YYYY-MM-DD')] || { arrivable: 0, occupiable: false }}
+            dayNext={calendarDays[day.add(1, 'day').format('YYYY-MM-DD')] || { arrivable: 0, occupiable: false }}
+            onDayClick={setSelectedDay}
           />
         )
       } else if (day.format('YYYY-MM-DD') === endDate.format('YYYY-MM-DD')) {
@@ -105,6 +99,7 @@ const Calendar = () => {
           {Object.keys(availabilities).length === 0 && <CalendarLoading />}
         </div>
       </div>
+      {selectedDay && <AvailabilitiesModal onClose={() => setSelectedDay(null)} availabilities={selectedAvailabilities} />}
     </>
   )
 }
