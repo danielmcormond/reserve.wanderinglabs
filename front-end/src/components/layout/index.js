@@ -64,6 +64,7 @@ export class Layout extends Component {
         <Route exact path="/edit/*" component={LayoutV2} />
           <Route exact path="/logs/*" component={LayoutV2} />
           <Route exact path="/logs" component={LayoutV2} />
+          <Route exact path="/plan" component={LayoutV2} />
 
           <Route path="/*">
             <div>

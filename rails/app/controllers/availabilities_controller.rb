@@ -15,27 +15,24 @@ class AvailabilitiesController < ApplicationController
 
   def calendar
     availability_request = AvailabilityRequest.new(
-      availability_request_params.merge(
-        facility_id: facility.id,
-        date_start: Time.now,
-        date_end: 1.year.from_now
-      )
+      availability_request_params
+        .except(:email)
+        .merge(
+          facility_id: facility.id,
+          date_start: Time.now,
+          date_end: 1.year.from_now
+        )
     )
+    availability_request.cache_site_ids
 
-    availability_request.site_ids = SiteMatcher.new(availability_request).matching_site_ids
-    search = AvailabilityMatcher::Search.new(availability_request).search
+    resp = {
+      type: 'Facility',
+      id: facility.id,
+      typeName: facility.name,
+      availabilities: AvailabilityMatcher::Calendar.new(availability_request).results
+    }
 
-    dates = {}
-    search.each do |sr|
-      days_to_add = sr[:length] - availability_request.stay_length + 1
-      days_to_add.times do |x|
-        avail_date = (Date.parse(sr[:avail_min]) + x.days).to_s
-        dates[avail_date] ||= 0
-        dates[avail_date] = dates[avail_date] + 1
-      end
-    end
-
-    render json: dates.sort.to_h
+    render json: resp
   end
 
   def import

@@ -6,8 +6,16 @@ module AvailabilityMatcher
       @availability_request = availability_request
     end
 
+    def results
+      hash = {}
+      execute.each do |row|
+        hash[row['date']] = row.except('date')
+      end
+      hash
+    end
+
     def execute
-      ActiveRecord::Base.connection.execute(to_sql).map(&:symbolize_keys)
+      ActiveRecord::Base.connection.execute(to_sql)
     end
 
     def daterange

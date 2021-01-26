@@ -16,6 +16,7 @@ import flash from './flashReducer'
 import session from './sessionReducer'
 import user from './userReducer'
 import availabilityRequestForm from './availabilityRequestFormReducer'
+import calendar from './calendarReducer'
 
 export default history =>
   combineReducers({
@@ -33,5 +34,6 @@ export default history =>
     requestForm,
     session,
     user,
-    notifications
+    notifications,
+    calendar
   })

@@ -11,10 +11,8 @@ class AvailabilityMatchesController < ApplicationController
 
   def calendar
     availability_request = AvailabilityRequest.find_by_uuid(params[:availability_request_id])
-    cal_results = AvailabilityMatcher::Calendar.new(availability_request).execute
-    results_hash = Hash.new { |h, k| h[k] = [] }
-    cal_results.each { |a| results_hash[a[:date]] = a }
-    render json: results_hash
+    cal_results = AvailabilityMatcher::Calendar.new(availability_request).results
+    render json: cal_results
   end
 
   def click

@@ -44,7 +44,7 @@ Rails.application.routes.draw do
     resources :availabilities do
       collection do
         post :import
-        get :calendar
+        post :calendar
       end
     end
     resources :sites, only: %i[index]

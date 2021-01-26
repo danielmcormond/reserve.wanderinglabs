@@ -11,6 +11,7 @@ import Imports from "../Realtime/Imports";
 import RealtimeNav from "../Realtime/Nav";
 import RequestEdit from "../request/edit/Index"
 import SiteSelectorModal from "../request/form/SitesSelector/Modal";
+import Plan from '../Plan/Index'
 
 if (process.env.NODE_ENV === "production") {
   require("../../tailwind.generated.css");
@@ -58,6 +59,8 @@ const LayoutV2 = () => {
             <Route path="/logs" component={RealtimeNav} />
 
             <Switch>
+              <Route path="/plan" component={Plan} />
+
               <Route path="/logs/:facilityId/:siteId" component={Imports} />
               <Route path="/logs/:facilityId" component={Imports} />
               <Route path="/logs" component={Imports} />
