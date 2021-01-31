@@ -12,6 +12,7 @@ import RealtimeNav from "../Realtime/Nav";
 import RequestEdit from "../request/edit/Index"
 import SiteSelectorModal from "../request/form/SitesSelector/Modal";
 import Plan from '../Plan/Index'
+import Show from "../request/show/Index";
 
 if (process.env.NODE_ENV === "production") {
   require("../../tailwind.generated.css");
@@ -24,7 +25,7 @@ const LayoutV2 = () => {
   const isAuthenticated = useSelector((store) => store.session.isAuthenticated);
 
   return (
-    <div className="antialiased sans-serif bg-white text-gray-900 min-h-screen">
+    <div className="sans bg-white text-gray-700 min-h-screen">
       <div className="flex items-center justify-between h-16 bg-green-500">
         <div className="flex items-center">
           <div className="flex-shrink-0 inset-x-0 z-100 items-center pl-3">
@@ -67,7 +68,7 @@ const LayoutV2 = () => {
 
               <Route
                     path="/edit/:uuid([a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12})"
-                    component={RequestEdit}
+                    component={Show}
                   />
             </Switch>
           </div>

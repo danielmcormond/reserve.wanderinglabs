@@ -36,7 +36,7 @@ AWS cli is not install on production servers. Run this locally and paste results
 ./deploy.sh rec1 157.230.187.97
 ./deploy.sh use-direct 104.248.226.121
 
-./deploy-all.sh reserve-america scraper-oct-21
+./deploy-all.sh reserve-america scraper-oct-24
 ./deploy-all.sh reserve-ca scraper-oct-21
 ./deploy-all.sh recreation-gov scraper-sfo-oct-24
 
@@ -61,7 +61,7 @@ doctl compute droplet delete --tag-name scraper-oct-24
 
 doctl compute droplet create --image 72318240 --size s-1vcpu-1gb --region nyc1 --tag-name scraper-oct-24 --wait --ssh-keys $DIGITAL_OCEAN_SSH ReserveScraper1 ReserveScraper2 ReserveScraper3 ReserveScraper4 ReserveScraper5
 
-doctl compute droplet create --image 72318240 --size s-1vcpu-1gb --region sfo2 --tag-name scraper-sfo-oct-24 --wait --ssh-keys $DIGITAL_OCEAN_SSH ReserveScraper-1-11-21-1 ReserveScraper-1-11-21-2 ReserveScraper-1-11-21-3 ReserveScraper-1-11-21-4 ReserveScraper-1-11-21-5 ReserveScraper-1-11-21-6 ReserveScraper-1-11-21-7 ReserveScraper-1-11-21-8 ReserveScraper-1-11-21-9
+doctl compute droplet create --image 72318240 --size s-1vcpu-1gb --region sfo2 --tag-name scraper-oct-24 --wait --ssh-keys $DIGITAL_OCEAN_SSH ReserveScraper-1-29-21-1 ReserveScraper-1-29-21-2 ReserveScraper-1-29-21-3 ReserveScraper-1-29-21-4 ReserveScraper-1-29-21-5 ReserveScraper-1-29-21-6 ReserveScraper-1-29-21-7 ReserveScraper-1-29-21-8 ReserveScraper-1-29-21-9
 
 ---
 

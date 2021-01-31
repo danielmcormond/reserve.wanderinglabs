@@ -2,9 +2,6 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import ReactModal from 'react-modal'
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTimes } from '@fortawesome/free-solid-svg-icons'
-
 import useToggle from '../../hooks/useToggle'
 
 import { fetchAvailabilitySites } from '../../actions/availabilityRequestsActions'

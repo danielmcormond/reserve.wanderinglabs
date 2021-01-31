@@ -11,6 +11,7 @@
     "axios": "^0.18.0",
     "camelcase-keys": "^6.2.2",
     "classnames": "^2.2.6",
+    "clsx": "^1.1.1",
     "connected-react-router": "^6.1.0",
     "dayjs": "^1.9.7",
     "debounce": "^1.2.0",
@@ -46,6 +47,7 @@
   },
   "scripts": {
     "build:tailwind": "postcss src/tailwind.css -o src/tailwind.generated.css",
+    "build-dev:tailwind": "postcss src/tailwind.css -o src/tailwind.all.css",
     "watch:tailwind": "postcss -w src/tailwind.css -o src/tailwind.all.css",
     "build:service-worker": "rm build/service-worker.js && cp public/service-worker.js build/service-worker.js",
     "start": "run-p watch:tailwind start:react",
