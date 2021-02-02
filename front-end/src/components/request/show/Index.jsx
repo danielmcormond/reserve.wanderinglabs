@@ -6,32 +6,38 @@ import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons'
 
+import Loading from '../../Loading'
+
 import { fetchAvailabilityRequest } from '../../../actions/availabilityRequestsActions'
 
-import DateFormat, { dateHasPast } from '../../utils/dateFormat'
-import Sites from '../Sites'
-import Status from './Status'
+import AvailabilityMatches from '../../availabilityMatches'
+import Calendar from '../../Calendar/Calendar'
+import Notifications from '../../Notifications/Index'
+
+import Details from './Details'
 import Premium from '../../user/premium.js'
 
-const MetaWrapper = ({ children }) => <div className="">{children}</div>
-const MetaHeader = ({ children }) => <div className="font-bold font-sans">{children}</div>
-const MetaDetail = ({ children }) => <div className="text-sm text-gray-600">{children}</div>
-
-const Show = ({ match }) => {
+const Show = ({ match, ...props }) => {
   const dispatch = useDispatch()
+  const fetching = useSelector(store => store.availabilityRequests.fetching)
   const ar = useSelector(store => store.availabilityRequests.request)
   const facility = useSelector(store => store.availabilityRequests.request.facility)
+
+  const [availabilityRequestExtra, setAvailabilityRequestExtra] = useState('matches')
 
   useEffect(() => {
     dispatch(fetchAvailabilityRequest(match.params.uuid))
   }, [match.params.uuid])
+
+  if (fetching) {
+    return <Loading />
+  }
 
   return (
     <>
       <div className="w-full md:w-1/2">
         <div className="flex items-center h-full mr-2 mb-8">
           <FontAwesomeIcon icon={faMapMarkerAlt} className="flex text-4xl sm:text-6xl text-gray-500" />
-
           <div className="ml-4">
             <h2 className="text-lg sm:text-3xl">{facility.name}</h2>
             <h5 className="text-md sm:text-xl text-gray-500">{ar.facility.sub_name}</h5>
@@ -39,58 +45,27 @@ const Show = ({ match }) => {
         </div>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 items-start">
-        <div className="grid grid-rows-4 grid-flow-col gap-y-4 ">
-          <MetaWrapper>
-            <MetaHeader>Arriving between</MetaHeader>
-            <MetaDetail>
-              <DateFormat format="MM/DD/YYYY" date={ar.dateStart} /> &{' '}
-              <DateFormat format="MM/DD/YYYY" date={ar.dateEnd} />
-            </MetaDetail>
-          </MetaWrapper>
-
-          <MetaWrapper>
-            <MetaHeader>Stay Length</MetaHeader>
-            <MetaDetail>{ar.stayLength} nights</MetaDetail>
-          </MetaWrapper>
-
-          <MetaWrapper>
-            <MetaHeader>Filters</MetaHeader>
-            <MetaDetail>{ar.summary}</MetaDetail>
-          </MetaWrapper>
-
-          <MetaWrapper>
-            <MetaHeader>Matching Sites Count</MetaHeader>
-            <MetaDetail>
-              {ar.siteCount} {ar.siteCount > 0 && <Sites />}
-            </MetaDetail>
-          </MetaWrapper>
-
-          <MetaWrapper>
-            <MetaHeader>Status</MetaHeader>
-            <MetaDetail>
-              <span className="capitalize">{ar.status}</span>
-            </MetaDetail>
-          </MetaWrapper>
-
-          <MetaWrapper>
-            <MetaHeader>Checked Count</MetaHeader>
-            <MetaDetail>{ar.checkedCount}</MetaDetail>
-          </MetaWrapper>
-
-          <MetaWrapper>
-            <MetaHeader>Last Checked</MetaHeader>
-            <MetaDetail>
-              {ar.checked_at && <DateFormat format="M/D/YYYY hh:mm" date={ar.checkedAt} />} (
-              <Link to={`/logs/${facility.id}`}>Log</Link>)
-            </MetaDetail>
-          </MetaWrapper>
-
-          <Status />
-        </div>
+        <Details />
         <div>
           <Premium />
         </div>
       </div>
+
+      <div className="sub-nav-wrapper">
+        <div className={`sub-nav ${availabilityRequestExtra === 'matches' && 'sub-nav-active'}`}>
+          <span onClick={() => setAvailabilityRequestExtra('matches')}>Availabilities</span>
+        </div>
+        <div className={`sub-nav ${availabilityRequestExtra === 'calendar' && 'sub-nav-active'}`}>
+          <span onClick={() => setAvailabilityRequestExtra('calendar')}>Calendar</span>
+        </div>
+        <div className={`sub-nav ${availabilityRequestExtra === 'notifications' && 'sub-nav-active'}`}>
+          <span onClick={() => setAvailabilityRequestExtra('notifications')}>Notifications</span>
+        </div>
+      </div>
+
+      {availabilityRequestExtra === 'matches' && <AvailabilityMatches uuid={match.params.uuid} />}
+      {availabilityRequestExtra === 'calendar' && <Calendar />}
+      {availabilityRequestExtra === 'notifications' && <Notifications />}
     </>
   )
 }

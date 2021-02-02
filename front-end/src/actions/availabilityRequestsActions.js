@@ -85,7 +85,6 @@ export function fetchAvailabilitySites() {
   const uuid = store.getState().availabilityRequests.ar.uuid
 
   return function (dispatch) {
-    dispatch({ type: 'FETCH_AR' })
     reserveApi({
       method: 'get',
       url: `/availability_requests/${uuid}/sites.json`

@@ -21,7 +21,7 @@ const connected = connect(store => {
 })
 export class AvailabilityMatches extends Component {
   componentWillMount() {
-    this.props.dispatch(fetchAvailabilityMatches(this.props.match.params.uuid));
+    this.props.dispatch(fetchAvailabilityMatches(this.props.uuid || this.props.match.params.uuid));
   }
 
   render() {
