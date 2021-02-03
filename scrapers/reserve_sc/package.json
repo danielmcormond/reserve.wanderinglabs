@@ -9,6 +9,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "html-to-json": "^0.6.0"
+    "axios": "^0.21.1",
+    "esm": "^3.2.25",
+    "html-to-json": "^0.6.0",
+    "moment": "^2.29.1"
   }
 }
