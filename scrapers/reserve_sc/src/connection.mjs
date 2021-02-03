@@ -11,7 +11,7 @@ export default class Connection {
     return await axios.post(this.baseUrl, qs.stringify({
       accountKey: this.parkId,
       park_id: this.parkId,
-      pwFromDate: '12/28/21', // TODO: use startDate here
+      pwFromDate: startDate.format('MM/DD/YY'),
       stage: 1
     }))
   }
