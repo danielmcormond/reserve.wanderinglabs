@@ -15,12 +15,13 @@ module AvailabilityMatcher
 
     def self.perform(import_id, premium = false)
       import = AvailabilityImport.find(import_id)
-      facility = import.facility
-      facility.availability_requests.active.each do |ar|
+      AvailabilityRequest.active.where(facility_id: import.facility_id).joins(:user).order(Arel.sql('users.premium desc, RANDOM()')).each do |ar|
         next if premium && ar.user&.premium != true
+
         call(import, ar)
       end
       return nil unless premium
+
       Resque.enqueue_in(1.minutes, AvailabilityMatcher::Index, import_id)
       nil
     end
