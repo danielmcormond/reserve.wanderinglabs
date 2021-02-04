@@ -1,4 +1,5 @@
 import htmlToJson from 'html-to-json'
+import moment from 'moment'
 
 export default class Parse {
   constructor(response) {
@@ -8,15 +9,9 @@ export default class Parse {
   async do() {
     const html = this.body
 
-    return htmlToJson.parse(html, function($doc, $) {
-      return this.map('.tent, .rv-tent', function(tr) {
-
-        // Dates are only available in the table header row
-        // TODO: determine year and make these MM/DD/YYYY format
-        const dates = $doc.find('.dateTemplate > .date')
-          .map((index, element) => $(element).text()).toArray()
-
-        // Determine availability by class name and merge actual date
+    return htmlToJson.parse(html, {
+      dates: ['.dateTemplate > .date', date => date.text()],
+      sites: ['.tent, .rv-tent', function(tr) {
         return {
           name: tr.data('site'),
 
@@ -24,22 +19,16 @@ export default class Parse {
           // which is only available when site is not reserved.
           inventoryKey: tr.children('.avail, .ctr').first().data('invkey'),
 
-          // There is also a `pakey` attribute which stands for packageKey,
-          // but I'm not exactly sure of it's purpose yet.
-          // These fields are both sent as POST data when reserving a site
-          packageKey: tr.children('.avail, .ctr').first().data('pakey'),
-
           // Parse the child table cells to determine availability
-          availabilities: tr.children().not('.site')
-            .map((index, element) => ({
-              available: $(element).hasClass('avail') || $(element).hasClass('ctr'), // Call to reserve
-              date: dates[index],
-              price: $(element).text(),
-              sold: $(element).hasClass('sold')
+          dates: tr.children().not('.site')
+            .map((i, el) => ({
+              available: this.$(el).hasClass('avail') || this.$(el).hasClass('ctr'), // Call to reserve
+              price: this.$(el).text(),
+              sold: this.$(el).hasClass('sold')
             })).toArray()
         }
+      }]
 
-      })
     })
   }
 }
