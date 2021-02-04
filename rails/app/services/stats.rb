@@ -3,15 +3,6 @@ class Stats
 
   Time.zone = 'MST'
 
-  FACILITIES = [
-    Facility::MaricopaCounty,
-    Facility::Rec1,
-    Facility::ReserveCalifornia,
-    Facility::ReserveAmerica,
-    Facility::RecreationGovBa,
-    Facility::UseDirect
-  ].freeze
-
   TIMEFRAMES = [
     {
       name: 'total',
@@ -86,9 +77,9 @@ class Stats
 
   def self.imports
     i = []
-    Stats::FACILITIES.each do |klass|
-      ids = klass.pluck(:id)
-      i << "#{klass}: #{AvailabilityImport.where(facility_id: ids).count} / #{AvailabilityImport.where(facility_id: ids).where('created_at > ?', 1.day.ago).count} / #{AvailabilityImport.where(facility_id: ids).where('created_at > ?', 1.hour.ago).count}"
+    Facility.active.distinct().pluck(:type).sort.each do |klass|
+      scope = AvailabilityImport.joins(:facility).where(facilities: { type: klass.to_s })
+      i << "#{klass}: #{scope.count} / #{scope.where('availability_imports.created_at > ?', 1.day.ago).count} / #{scope.where('availability_imports.created_at > ?', 1.hour.ago).count}"
     end
     i.join("\n")
   end

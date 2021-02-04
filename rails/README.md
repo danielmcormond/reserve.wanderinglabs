@@ -43,3 +43,8 @@ sudo systemctl stop resque && sudo systemctl stop resque-importer && sudo system
 f.update(out_of_order: true, out_of_order_date: Date.today, out_of_order_reason: 'Covid19 Closure')
 
 Facility.top_facilities.limit(10).each { |f| f.sites.each(&:populate_loop); f.populate_sites_details }; nil
+
+AvailabilityImport.where(facility_id: 3509).order(id: :desc).limit(100).all.each { |a| puts [a.run_id.split("_").last, a.created_at.min, a.run_id, a.created_at].join(" :: ") }; nil
+
+
+AvailabilityImport.order(id: :desc).limit(100).all.each { |a| puts [a.run_id.split("_").last, a.created_at.min, a.run_id, a.created_at].join(" :: ") }; nil
