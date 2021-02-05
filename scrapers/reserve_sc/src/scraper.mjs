@@ -1,6 +1,5 @@
 import moment from 'moment'
 import BluebirdPromise from 'bluebird'
-import merge from 'lodash.merge'
 
 import dateRange from 'scraper-wandering-labs-shared/src/dateRange'
 import Connection from './connection'
@@ -11,7 +10,7 @@ export default class Scraper {
     this.connection = new Connection(parkId)
     this.startDate = moment(startDate, 'MM/DD/YYYY')
     this.endDate = moment(endDate, 'MM/DD/YYYY')
-    this.concurrency = concurrency || 2
+    this.concurrency = concurrency || 1
   }
 
   get timePeriods() {
@@ -25,46 +24,17 @@ export default class Scraper {
       { concurrency: this.concurrency }
     )
 
-    const resultPairs = {};
-    results.forEach(page => {
-
-      // None of the response body contains the calendar year,
-      // So we have to do this manually to add year to result dates
-      const correctedDates = page.dates.map(date => {
-        const resultDate = moment(date.split(' ')[1], 'MM/DD') // Example: 'Wed 02/03'
-        if (resultDate.isBefore(this.startDate)) {
-          resultDate.add(1, 'year')
-        }
-        return {date: resultDate.format('MM/DD/YYYY')}
-      })
-
-      const foo = page.sites.map(site => {
-        merge(site.dates, correctedDates)
-        const avail = []
-        site.dates.forEach(date => {
-          if (date.available) {
-            avail.push([site.inventoryKey, date.date])
-          }
-        })
-        return avail
-      })
-
-      debugger
-
+    // Merge all result pages and fix dates (which have no year)
+    const resultPairs = results.flat().map(([date, availableSiteIds]) => {
+      const resultDate = moment(date.split(' ')[1], 'MM/DD') // Example: 'Wed 02/03'
+      if (resultDate.isBefore(this.startDate)) {
+        resultDate.add(1, 'year')
+      }
+      return [resultDate.format('MM/DD/YYYY'), availableSiteIds]
     })
 
-    // [siteId, date]
-    // [248555, "05/14/2021"]
-    // [248555, "05/15/2021"]
-    // [248555, "05/19/2021"]
-    // [248555, "05/20/2021"]
-    // [248555, "05/21/2021"]
-
+    const resultsJson = `{ "results": ${JSON.stringify(Object.fromEntries(resultPairs))} }`
     debugger
-
-    // '05/14/2021': [248555, 248505, 248506, 248507, 248487, 248489, 248490, 248502, 248553, 248556, 248557, 248491, 248508, 248510, 248512, 248558, 248514, 248515, 248516, 248517, 248492, 248520, 248543, 248521, 248485, 248496, 248525, 248526, 248528, 248529, 248530, 248532]
-    // '05/15/2021': [248555, 248505, 248506, 248507, 248487, 248489, 248490, 248502, 248553, 248556, 248557, 248491, 248508, 248510, 248512, 248558, 248514, 248515, 248516, 248517, 248492, 248520, 248543, 248521, 248485, 248496, 248525, 248526, 248528, 248529, 248530, 248532]
-    // '05/16/2021': [248505, 248506, 248507, 248487, 248488, 248489, 248490, 248502, 248553, 248556, 248557, 248491, 248508, 248510, 248512, 248558, 248515, 248516, 248517, 248518, 248519, 248492, 248493, 248520, 248543, 248521, 248547, 248522, 248494, 248523, 248504, 248485, 248496, 248525, 248526, 248528, 248529, 248530, 248531, 248532]
   }
 
   async scrapeParseDate(scrapeDate) {

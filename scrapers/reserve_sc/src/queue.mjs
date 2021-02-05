@@ -2,7 +2,7 @@ import Scraper from './scraper'
 
 const scraperQueue = async function scraperQueue() {
   // TODO: use data from Redis here instead
-  const jsonData = { parkId: 14, startDate: '12/28/2021', endDate: '01/05/2022' }
+  const jsonData = { parkId: 12, startDate: '07/01/2021', endDate: '07/14/2021' }
 
   try {
     const scraper = new Scraper(jsonData)
