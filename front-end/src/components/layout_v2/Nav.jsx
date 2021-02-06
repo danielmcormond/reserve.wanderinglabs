@@ -20,7 +20,7 @@ const Nav = ({ navOpen }) => {
 
   return (
     <nav
-      className={`md:flex w-32 flex-col z-0 min-h-screen items-center bg-gray-900 py-4 text-white ${
+      className={`lg:flex w-32 flex-col z-0 min-h-screen items-center bg-gray-900 py-4 text-white ${
         navOpen ? "flex" : "hidden"
       }`}
     >

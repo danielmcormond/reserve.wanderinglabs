@@ -17,7 +17,7 @@ import Details from './Details'
 import Premium from '../../user/premium.js'
 import Content from './Content'
 
-const ShowSegment = ({ children }) => <div className="md:w-1/2">{children}</div>
+const ShowSegment = ({ className, children }) => <div className={clsx(className, 'w-full')}>{children}</div>
 
 const Show = ({ match, ...props }) => {
   const dispatch = useDispatch()
@@ -36,7 +36,7 @@ const Show = ({ match, ...props }) => {
   return (
     <>
       <div className="md:flex space-x-0 md:space-x-4">
-        <ShowSegment>
+        <ShowSegment className="md:w-2/3 lg:w-1/2">
           <div className="flex items-center mb-12 mt-4">
             <FontAwesomeIcon icon={faMapMarkerAlt} className="flex text-4xl sm:text-6xl text-gray-500" />
             <div className="ml-4">
@@ -52,12 +52,13 @@ const Show = ({ match, ...props }) => {
           <div className="flex mb-12 space-x-4">
             <Button color="green">Edit</Button>
             <Button color="green">Clone</Button>
-            <Button color="red" className="flex-grow">Cancel</Button>
+            <Button color="red" className="flex-grow">
+              Cancel
+            </Button>
           </div>
-
         </ShowSegment>
 
-        <ShowSegment>
+        <ShowSegment className="md:w-1/3 lg:w-1/2">
           <Premium />
         </ShowSegment>
       </div>

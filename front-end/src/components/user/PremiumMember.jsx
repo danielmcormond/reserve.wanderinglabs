@@ -8,11 +8,15 @@ const PremiumMember = () => {
   const [amount, setAmount] = useState(20)
 
   return (
-    <div className="flex flex-row items-start bg-green-100 p-5 mt-2 rounded border-t-2 border-green-300">
-      <FontAwesomeIcon icon={faIdBadge} className="mt-2 text-5xl" />
-      <div className="ml-4 prose prose-lg">
-        <h3 className="">Premium Status: Active!</h3>
-
+    <div className=" bg-green-100 p-5 mt-2 rounded border-t-2 border-green-300">
+      <div className="flex items-center mb-4">
+        <FontAwesomeIcon icon={faIdBadge} className="mt-2 text-xl md:text-2xl lg:text-3xl" />
+        <div className="ml-4 prose prose-lg">
+          <h3 className="inline md:hidden lg:inline ">Premium Status: Active!</h3>
+          <h3 className="hidden md:inline lg:hidden">Premium Active!</h3>
+        </div>
+      </div>
+      <div className="prose prose-lg">
         <p>You are a premium member. Extra benefits have been activated. </p>
 
         <p>Has this service worked for you? Consider giving an extra thank you.</p>
