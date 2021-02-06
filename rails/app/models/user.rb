@@ -36,6 +36,7 @@ class User < ApplicationRecord
   def sms_over_limit
     !sms_under_limit
   end
+  alias sms_over_limit? sms_over_limit
 
   def sms_under_limit
     sms_count < sms_limit

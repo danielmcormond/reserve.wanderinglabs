@@ -1,0 +1,36 @@
+<table>
+  <tr>
+    <td>
+      <p>I appreciate your continued support of the WanderingLabs reservation service.</p>
+
+      <% if @sms_over_limit -%>
+        <p>
+          Your sms balance has been refilled and you will start receiving alerts via txt msg again.
+        </p>
+      <% end -%>
+
+      <p><b>New Feature: Browser Notifications</b></p>
+      <p>
+        If you spend a lot of time in front of a laptop or desktop computer, this could be the fastest way to receive availability notifications. <br/>
+        Activating browser notifications can be done on your settings page.
+      </p>
+
+      <p><b>Settings page:</b></p>
+      <h4>
+        <a href="<%= ENV['RESERVE_URL'] -%>/sign-in/<%= @user.login_token -%>/settings" target="_blank">Settings Page</a>
+      </h4>
+
+      <p><b>Active requests:</b></p>
+      <h4>
+        <a href="<%= ENV['RESERVE_URL'] -%>/sign-in/<%= @user.login_token -%>" target="_blank"><%= ENV['RESERVE_URL'] -%>/sign-in/<%= @user.login_token -%></a>
+      </h4>
+
+      <p><b>Questions.. Suggestions.. Ideas.. Comments.. ?</b></p>
+      <p>Send them my way. Reply to this email or email info@wanderinglabs.com.</p>
+      <p>Thanks again for the support.
+        <br/>
+        - Tim Watson
+      </p>
+    </td>
+  </tr>
+</table>

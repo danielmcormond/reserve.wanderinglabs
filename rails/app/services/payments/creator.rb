@@ -23,8 +23,15 @@ class Payments::Creator
 
     if payment.update_attributes(payment_params)
       if user
-        user.mark_premium
-        NotifierMailer.premium_welcome(user).deliver!
+        if user.premium?
+          sms_over_limit = user.sms_over_limit?
+          user.mark_premium
+          user.update(feature_web_notifications: true)
+          NotifierMailer.premium_again(user, sms_over_limit).deliver!
+        else
+          user.mark_premium
+          NotifierMailer.premium_welcome(user).deliver!
+        end
       end
     else
       Rails.logger.fatal("CREATE PAYMENT: #{payment.to_json}")
@@ -38,13 +45,13 @@ class Payments::Creator
       total: paypal_payment.transactions[0].amount.total,
       email: paypal_payment.payer.payer_info.email,
       details: paypal_payment.to_hash,
-      paid_at: Time.now,
+      paid_at: Time.now
     }
   end
 
   def paypal_payment
     # Rails.logger.warn("PAYMENT - #{params_id} - #{ENV['PAYPAL_ID']} - #{params.inspect}")
-    @_paypal ||= PayPal::SDK::REST::Payment.find(params_id)
+    @paypal_payment ||= PayPal::SDK::REST::Payment.find(params_id)
   end
 
   def params_id

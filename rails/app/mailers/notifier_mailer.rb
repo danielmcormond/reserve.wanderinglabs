@@ -30,4 +30,10 @@ class NotifierMailer < ApplicationMailer
     @user = user
     mail(to: user.email, subject: 'WanderingLabs::Reserve - Premium Status Activated')
   end
+
+  def premium_again(user, sms_over_limit)
+    @user = user
+    @sms_over_limit = sms_over_limit
+    mail(to: user.email, subject: 'WanderingLabs::Reserve - Thanks again')
+  end
 end
