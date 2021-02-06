@@ -5,25 +5,25 @@ import localeData from 'dayjs/plugin/localeData'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons'
+import clsx from 'clsx'
 
+import DateFormat from '../../utils/dateFormat'
 import Loading from '../../Loading'
+import Button from '../../utils/Button'
 
 import { fetchAvailabilityRequest } from '../../../actions/availabilityRequestsActions'
 
-import AvailabilityMatches from '../../availabilityMatches'
-import Calendar from '../../Calendar/Calendar'
-import Notifications from '../../Notifications/Index'
-
 import Details from './Details'
 import Premium from '../../user/premium.js'
+import Content from './Content'
+
+const ShowSegment = ({ children }) => <div className="md:w-1/2">{children}</div>
 
 const Show = ({ match, ...props }) => {
   const dispatch = useDispatch()
   const fetching = useSelector(store => store.availabilityRequests.fetching)
   const ar = useSelector(store => store.availabilityRequests.request)
   const facility = useSelector(store => store.availabilityRequests.request.facility)
-
-  const [availabilityRequestExtra, setAvailabilityRequestExtra] = useState('matches')
 
   useEffect(() => {
     dispatch(fetchAvailabilityRequest(match.params.uuid))
@@ -35,37 +35,33 @@ const Show = ({ match, ...props }) => {
 
   return (
     <>
-      <div className="w-full md:w-1/2">
-        <div className="flex items-center h-full mr-2 mb-8">
-          <FontAwesomeIcon icon={faMapMarkerAlt} className="flex text-4xl sm:text-6xl text-gray-500" />
-          <div className="ml-4">
-            <h2 className="text-lg sm:text-3xl">{facility.name}</h2>
-            <h5 className="text-md sm:text-xl text-gray-500">{ar.facility.sub_name}</h5>
+      <div className="md:flex space-x-0 md:space-x-4">
+        <ShowSegment>
+          <div className="flex items-center mb-12 mt-4">
+            <FontAwesomeIcon icon={faMapMarkerAlt} className="flex text-4xl sm:text-6xl text-gray-500" />
+            <div className="ml-4">
+              <h2 className="text-lg sm:text-3xl">{facility.name}</h2>
+              <h5 className="text-md sm:text-xl text-gray-500">{ar.facility.sub_name}</h5>
+            </div>
           </div>
-        </div>
-      </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 items-start">
-        <Details />
-        <div>
+
+          <div className="mb-12">
+            <Details />
+          </div>
+
+          <div className="flex mb-12 space-x-4">
+            <Button color="green">Edit</Button>
+            <Button color="green">Clone</Button>
+            <Button color="red" className="flex-grow">Cancel</Button>
+          </div>
+
+        </ShowSegment>
+
+        <ShowSegment>
           <Premium />
-        </div>
+        </ShowSegment>
       </div>
-
-      <div className="sub-nav-wrapper">
-        <div className={`sub-nav ${availabilityRequestExtra === 'matches' && 'sub-nav-active'}`}>
-          <span onClick={() => setAvailabilityRequestExtra('matches')}>Availabilities</span>
-        </div>
-        <div className={`sub-nav ${availabilityRequestExtra === 'calendar' && 'sub-nav-active'}`}>
-          <span onClick={() => setAvailabilityRequestExtra('calendar')}>Calendar</span>
-        </div>
-        <div className={`sub-nav ${availabilityRequestExtra === 'notifications' && 'sub-nav-active'}`}>
-          <span onClick={() => setAvailabilityRequestExtra('notifications')}>Notifications</span>
-        </div>
-      </div>
-
-      {availabilityRequestExtra === 'matches' && <AvailabilityMatches uuid={match.params.uuid} />}
-      {availabilityRequestExtra === 'calendar' && <Calendar />}
-      {availabilityRequestExtra === 'notifications' && <Notifications />}
+      {/* <Content uuid={match.params.uuid} /> */}
     </>
   )
 }

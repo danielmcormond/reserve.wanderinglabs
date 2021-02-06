@@ -1,4 +1,4 @@
-import React, { } from 'react'
+import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { Link } from 'react-router-dom'
@@ -8,8 +8,9 @@ import Sites from '../Sites'
 import Status from './Status'
 
 const MetaWrapper = ({ children }) => <div className="">{children}</div>
-const MetaHeader = ({ children }) => <div className="font-bold font-sans">{children}</div>
-const MetaDetail = ({ children }) => <div className="text-sm text-gray-600">{children}</div>
+const MetaHeader = ({ children }) => <div className="tracking-wide text-sm text-gray-400">{children}</div>
+const MetaDetail = ({ children }) => <div className="text-xl">{children}</div>
+const StatsValue = ({ children }) => <div className="text-xl md:text-3xl">{children}</div>
 
 const Show = ({ match }) => {
   const dispatch = useDispatch()
@@ -17,7 +18,12 @@ const Show = ({ match }) => {
   const facility = useSelector(store => store.availabilityRequests.request.facility)
 
   return (
-    <div className="grid grid-rows-4 grid-flow-col gap-y-4 ">
+    <div className="grid grid-rows-3 grid-flow-col gap-y-2">
+      <MetaWrapper>
+        <MetaHeader>Checked Count</MetaHeader>
+        <StatsValue>{ar.checkedCount}</StatsValue>
+      </MetaWrapper>
+
       <MetaWrapper>
         <MetaHeader>Arriving between</MetaHeader>
         <MetaDetail>
@@ -31,6 +37,11 @@ const Show = ({ match }) => {
       </MetaWrapper>
 
       <MetaWrapper>
+        <MetaHeader>Last Checked</MetaHeader>
+        <StatsValue>{ar.checkedAt && <DateFormat format="M/D/YYYY hh:mm" date={ar.checkedAt} />}</StatsValue>
+      </MetaWrapper>
+
+      <MetaWrapper>
         <MetaHeader>Filters</MetaHeader>
         <MetaDetail>{ar.summary}</MetaDetail>
       </MetaWrapper>
@@ -41,30 +52,32 @@ const Show = ({ match }) => {
           {ar.siteCount} {ar.siteCount > 0 && <Sites />}
         </MetaDetail>
       </MetaWrapper>
-
-      <MetaWrapper>
-        <MetaHeader>Status</MetaHeader>
-        <MetaDetail>
-          <span className="capitalize">{ar.status}</span>
-        </MetaDetail>
-      </MetaWrapper>
-
-      <MetaWrapper>
-        <MetaHeader>Checked Count</MetaHeader>
-        <MetaDetail>{ar.checkedCount}</MetaDetail>
-      </MetaWrapper>
-
-      <MetaWrapper>
-        <MetaHeader>Last Checked</MetaHeader>
-        <MetaDetail>
-          {ar.checked_at && <DateFormat format="M/D/YYYY hh:mm" date={ar.checkedAt} />} (
-          <Link to={`/logs/${facility.id}`}>Log</Link>)
-        </MetaDetail>
-      </MetaWrapper>
-
-      <Status />
     </div>
   )
 }
 
 export default Show
+
+{
+  /* <MetaWrapper>
+<MetaHeader>Status</MetaHeader>
+<MetaDetail>
+  <span className="capitalize">{ar.status}</span>
+</MetaDetail>
+</MetaWrapper>
+
+<Status /> */
+}
+
+// <MetaWrapper>
+// <MetaHeader>Checked Count</MetaHeader>
+// <MetaDetail>{ar.checkedCount}</MetaDetail>
+// </MetaWrapper>
+
+// <MetaWrapper>
+// <MetaHeader>Last Checked</MetaHeader>
+// <MetaDetail>
+//   {ar.checked_at && <DateFormat format="M/D/YYYY hh:mm" date={ar.checkedAt} />} (
+//   <Link to={`/logs/${facility.id}`}>Log</Link>)
+// </MetaDetail>
+// </MetaWrapper>
