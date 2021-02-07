@@ -46,7 +46,7 @@ export class RequestShow extends Component {
     this.props.dispatch(updateAvailabilityRequest(uuid, { notify_sms: !this.props.ar.notify_sms }))
   }
 
-  setExtra = (extra) => {
+  setExtra = extra => {
     this.props.dispatch({ type: 'SET_AR_EXTRA', payload: extra })
   }
 
@@ -178,6 +178,15 @@ export class RequestShow extends Component {
                     </Grid.Column>
                     <Grid.Column {...halfGridProps}>
                       <Button as={Link} fluid size="medium" {...this.statusButtonProps} />
+
+                      <Button
+                        as={Link}
+                        fluid
+                        size="medium"
+                        content="Edit"
+                        to={`/edit/${this.props.ar.uuid}`}
+                        color="orange"
+                      />
                     </Grid.Column>
                   </>
                 )}
@@ -191,20 +200,20 @@ export class RequestShow extends Component {
         </Grid>
 
         <div className="sub-nav-wrapper">
-            <div className={`sub-nav ${availabilityRequestExtra === 'matches' && 'sub-nav-active'}`}>
-              <span onClick={() => this.setExtra('matches')}>Availabilities</span>
-            </div>
-            <div className={`sub-nav ${availabilityRequestExtra === 'calendar' && 'sub-nav-active'}`}>
-              <span onClick={() => this.setExtra('calendar')}>Calendar</span>
-            </div>
-            <div className={`sub-nav ${availabilityRequestExtra === 'notifications' && 'sub-nav-active'}`}>
-              <span onClick={() => this.setExtra('notifications')}>Notifications</span>
-            </div>
+          <div className={`sub-nav ${availabilityRequestExtra === 'matches' && 'sub-nav-active'}`}>
+            <span onClick={() => this.setExtra('matches')}>Availabilities</span>
+          </div>
+          <div className={`sub-nav ${availabilityRequestExtra === 'calendar' && 'sub-nav-active'}`}>
+            <span onClick={() => this.setExtra('calendar')}>Calendar</span>
+          </div>
+          <div className={`sub-nav ${availabilityRequestExtra === 'notifications' && 'sub-nav-active'}`}>
+            <span onClick={() => this.setExtra('notifications')}>Notifications</span>
+          </div>
         </div>
 
-        {availabilityRequestExtra === 'matches' && <AvailabilityMatches {...this.props} /> }
-        {availabilityRequestExtra === 'calendar' && <Calendar /> }
-        {availabilityRequestExtra === 'notifications' && <Notifications /> }
+        {availabilityRequestExtra === 'matches' && <AvailabilityMatches {...this.props} />}
+        {availabilityRequestExtra === 'calendar' && <Calendar />}
+        {availabilityRequestExtra === 'notifications' && <Notifications />}
       </div>
     )
   }

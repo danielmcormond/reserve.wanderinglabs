@@ -37,6 +37,8 @@ const RequestEdit = ({ dispatch, match, ar }) => {
       dispatch(actions.change('availabilityRequestForm.stayLength', ar.stayLength))
       dispatch(actions.change('availabilityRequestForm.specificSiteIds', ar.specificSiteIds))
 
+      dispatch(actions.change('availabilityRequestForm.length', ar.minLength))
+
       // dispatch(matchingSiteCount())
       dispatch(formStepGo(2))
     }
