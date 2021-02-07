@@ -22,8 +22,7 @@ class AvailabilityRequestsController < ApplicationController
   end
 
   def update
-    availability_request = AvailabilityRequest.find_by_uuid(params[:id])
-    availability_request.update_attributes(availability_request_params)
+    availability_request = AvailabilityRequests::Updater.new(params[:id], availability_request_params, current_user).update
     Rails.logger.debug "Errors #{availability_request.errors.to_json}"
     render json: availability_request
   end
