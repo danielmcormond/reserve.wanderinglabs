@@ -2,7 +2,7 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons'
-import { push } from "connected-react-router";
+import { push } from 'connected-react-router'
 
 import { formStepInc, formStepDec, formUpdate } from '../../../actions/requestFormActions'
 import Button from '../../utils/Button'
@@ -34,11 +34,9 @@ const RequestFormSteps = ({ match }) => {
 
   return (
     <div className="flex items-center mb-12 mt-4 space-x-12">
-      <FontAwesomeIcon
-        icon={faAngleLeft}
-        onClick={() => prevStep()}
-        className="flex text-4xl sm:text-6xl text-gray-500 cursor-pointer"
-      />
+      <button onClick={() => prevStep()} className="flex disabled:opacity-30 cursor-point disabled:cursor-not-allowed" disabled={isUpdate && currentStep === 2}>
+        <FontAwesomeIcon icon={faAngleLeft} className="text-4xl sm:text-6xl text-gray-500  " />
+      </button>
       <div className="flex-grow">
         <h2 className="text-lg sm:text-3xl">
           Step {currentStep} of {isAuthenticated ? '3' : '4'}: {step_titles[currentStep]}

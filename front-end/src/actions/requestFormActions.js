@@ -172,6 +172,13 @@ export function formStepGo(step) {
       return
     }
     const uuid = store.getState().availabilityRequestForm.uuid
+    if (uuid && step === 1) {
+      return
+    }
+    if (uuid && step === 4) {
+      dispatch(formUpdate(true))
+      return
+    }
 
     if (step > currentStep) {
       dispatch({ type: 'FORM_STEP_GO', payload: step }) && dispatch(matchingSiteCount())

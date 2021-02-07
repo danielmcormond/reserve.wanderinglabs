@@ -44,7 +44,7 @@ const RequestEdit = ({ match }) => {
       dispatch(actions.change('availabilityRequestForm.water', ar.water))
       dispatch(actions.change('availabilityRequestForm.sewer', ar.sewer))
       dispatch(actions.change('availabilityRequestForm.pullthru', ar.pullthru))
-      dispatch(actions.change('availabilityRequestForm.electric', ar.minElectric.toString()))
+      dispatch(actions.change('availabilityRequestForm.electric', ar.minElectric && ar.minElectric.toString()))
       dispatch(actions.change('availabilityRequestForm.sitePremium', ar.sitePremium))
       dispatch(actions.change('availabilityRequestForm.ignoreAda', ar.ignoreAda))
       dispatch(actions.change('availabilityRequestForm.arrivalDays', ar.arrivalDays))

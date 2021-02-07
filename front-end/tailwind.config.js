@@ -46,6 +46,11 @@ module.exports = {
       ]
     }
   },
-  variants: {},
+  variants: {
+    extend: {
+      opacity: ['disabled'],
+      cursor: ['disabled']
+    }
+  },
   plugins: [require('@tailwindcss/typography')]
 }

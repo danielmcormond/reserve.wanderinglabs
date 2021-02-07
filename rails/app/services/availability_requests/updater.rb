@@ -14,7 +14,7 @@ class AvailabilityRequests::Updater
     object.attributes = merged_params
     object.date_end ||= object.date_start
     object.cache_site_ids
-    object.status = :active
+    object.status = :active unless merged_params[:status]
 
     if object.save
       # object.reload # so we have uuid
@@ -30,12 +30,6 @@ class AvailabilityRequests::Updater
     new_params.delete(:user)
     new_params.delete(:user_id)
     new_params.delete(:email)
-    { facility: facility }.merge(new_params)
-  end
-
-  private
-
-  def facility
-    @_facility = Facility.find(params[:facility_id])
+    new_params
   end
 end
