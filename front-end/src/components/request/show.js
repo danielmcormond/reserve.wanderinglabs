@@ -15,6 +15,7 @@ import OutOfOrder from './OutOfOrder'
 import Sites from './Sites'
 import Calendar from '../Calendar/Calendar'
 import Notifications from '../Notifications/Index'
+import Show from './show/Index'
 
 const connected = connect(store => {
   return {
@@ -67,6 +68,12 @@ export class RequestShow extends Component {
   }
 
   render() {
+  //   return(
+  //     <Show/>
+  //   )
+  // }
+
+  // renderOld() {
     const { ar, availabilityRequestExtra } = this.props
 
     const halfGridProps = {

@@ -17,7 +17,7 @@ const Show = ({ match }) => {
   const facility = useSelector(store => store.availabilityRequests.request.facility)
 
   return (
-    <div className="grid grid-rows-3 grid-flow-col gap-y-2">
+    <div className="grid grid-rows-3 grid-flow-col gap-y-2 gap-x-4">
       <MetaWrapper>
         <MetaHeader>Checked Count</MetaHeader>
         <StatsValue>{ar.checkedCount}</StatsValue>

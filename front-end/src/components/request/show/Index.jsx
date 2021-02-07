@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { push } from 'connected-react-router'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons'
 import clsx from 'clsx'
@@ -23,9 +24,9 @@ const Show = ({ match, ...props }) => {
   const ar = useSelector(store => store.availabilityRequests.request)
   const facility = useSelector(store => store.availabilityRequests.request.facility)
 
-  useEffect(() => {
-    dispatch(fetchAvailabilityRequest(match.params.uuid))
-  }, [match.params.uuid])
+  // useEffect(() => {
+  //   dispatch(fetchAvailabilityRequest(match.params.uuid))
+  // }, [match.params.uuid])
 
   if (fetching) {
     return <Loading />
@@ -48,8 +49,8 @@ const Show = ({ match, ...props }) => {
           </div>
 
           <div className="flex mb-12 space-x-4">
-            {/* <Button color="green">Edit</Button>
-            <Button color="green">Clone</Button> */}
+            <Button color="green" onClick={() => dispatch(push(`/edit/${ar.uuid}`))}>Edit</Button>
+            <Button color="green">Clone</Button>
             <Status />
           </div>
         </ShowSegment>
@@ -58,7 +59,7 @@ const Show = ({ match, ...props }) => {
           <Premium />
         </ShowSegment>
       </div>
-      <Content uuid={match.params.uuid} />
+      <Content uuid={ar.uuid} />
     </>
   )
 }
