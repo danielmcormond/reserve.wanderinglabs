@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { actions } from 'react-redux-form'
 import dayjs from 'dayjs'
@@ -11,8 +11,6 @@ import Loading from '../../Loading'
 import RequestForm from '../form/index'
 import RequestFormSteps from '../form/steps'
 
-
-
 const RequestEdit = ({ match }) => {
   const dispatch = useDispatch()
   const fetching = useSelector(store => store.availabilityRequests.fetching)
@@ -20,7 +18,9 @@ const RequestEdit = ({ match }) => {
   const currentStep = useSelector(store => store.requestForm.step)
 
   useEffect(() => {
-    dispatch(fetchAvailabilityRequest(match.params.uuid))
+    if (ar.uuid !== match.params.uuid) {
+      dispatch(fetchAvailabilityRequest(match.params.uuid))
+    }
   }, [match.params.uuid])
 
   useEffect(() => {

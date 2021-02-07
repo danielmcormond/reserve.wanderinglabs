@@ -179,14 +179,16 @@ export class RequestShow extends Component {
                     <Grid.Column {...halfGridProps}>
                       <Button as={Link} fluid size="medium" {...this.statusButtonProps} />
 
-                      <Button
-                        as={Link}
-                        fluid
-                        size="medium"
-                        content="Edit"
-                        to={`/edit/${this.props.ar.uuid}`}
-                        color="orange"
-                      />
+                      <div className="mt-4">
+                        <Button
+                          as={Link}
+                          fluid
+                          size="medium"
+                          content="Edit"
+                          to={`/edit/${this.props.ar.uuid}`}
+                          color="orange"
+                        />
+                      </div>
                     </Grid.Column>
                   </>
                 )}
