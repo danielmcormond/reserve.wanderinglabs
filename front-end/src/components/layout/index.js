@@ -35,6 +35,7 @@ import PageAbout from '../pages/about'
 
 import LayoutV2 from '../layout_v2/Index'
 import SiteSelectorModal from '../request/form/SitesSelector/Modal'
+import RequestStatusUpdate from '../request/StatusUpdate'
 
 const connected = connect(store => {
   return {
@@ -88,7 +89,7 @@ export class Layout extends Component {
                   />
                   <Route
                     path="/:status([cag]{1})/:uuid([a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12})"
-                    component={RequestShow}
+                    component={RequestStatusUpdate}
                   />
 
                   <Route exact path="/:from([wet]{1})/:id" component={AvailabilityMatchClick} />

@@ -7,8 +7,7 @@ import DateFormat, { dateHasPast } from '../utils/dateFormat'
 
 import {
   fetchAvailabilityRequest,
-  updateAvailabilityRequest,
-  updateAvailabilityRequestStatus
+  updateAvailabilityRequest
 } from '../../actions/availabilityRequestsActions'
 import AvailabilityMatches from '../availabilityMatches'
 import Premium from '../user/premium.js'
@@ -25,20 +24,7 @@ const connected = connect(store => {
 })
 export class RequestShow extends Component {
   componentWillMount() {
-    if (this.props.match.params.status !== undefined) {
-      this.props.dispatch(updateAvailabilityRequestStatus(this.props.match.params.uuid, this.props.match.params.status))
-    } else {
-      this.props.dispatch(fetchAvailabilityRequest(this.props.match.params.uuid))
-    }
-  }
-
-  // TODO: refactor a better solution.. componentWillMount does not rerun when route calls same component again (click cancel button)
-  componentWillReceiveProps(newProps) {
-    if (newProps.match.params.status !== undefined && newProps.match.params.status !== this.props.match.params.status) {
-      this.props.dispatch(updateAvailabilityRequestStatus(newProps.match.params.uuid, newProps.match.params.status))
-    } else if (newProps.match.params.uuid !== this.props.match.params.uuid) {
-      this.props.dispatch(fetchAvailabilityRequest(newProps.match.params.uuid))
-    }
+    this.props.dispatch(fetchAvailabilityRequest(this.props.match.params.uuid))
   }
 
   toggleSms = () => {

@@ -1,5 +1,6 @@
 import _ from 'lodash'
 import camelcaseKeys from 'camelcase-keys'
+import { push } from 'connected-react-router'
 
 import reserveApi from '../utils/axios'
 import store from '../store'
@@ -59,14 +60,16 @@ export function updateAvailabilityRequestStatus(uuid, codedStatus) {
     } else if (codedStatus === 'a') {
       apiValues.status = 'active'
     }
-    dispatch(updateAvailabilityRequest(uuid, apiValues))
+    dispatch(updateAvailabilityRequest(uuid, apiValues)).then(() => {
+      dispatch(push(`/${uuid}`))
+    })
   }
 }
 
 export function updateAvailabilityRequest(uuid, apiValues) {
   return function (dispatch) {
     dispatch({ type: 'UPDATE_AR' })
-    reserveApi({
+    return reserveApi({
       method: 'put',
       url: `/availability_requests/${uuid}.json`,
       data: { availability_request: apiValues }
