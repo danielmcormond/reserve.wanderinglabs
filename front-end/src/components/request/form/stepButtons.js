@@ -20,7 +20,7 @@ export class RequestFormStepButtons extends Component {
   handleSubmit() {
     const availabilityRequest = this.props.availabilityRequest;
     if (availabilityRequest && availabilityRequest.uuid) {
-      this.props.dispatch(formUpdate())
+      this.props.dispatch(formUpdate(true))
     }
     else {
       this.props.dispatch(formSubmit())

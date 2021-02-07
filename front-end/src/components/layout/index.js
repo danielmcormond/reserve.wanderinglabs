@@ -1,67 +1,67 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { Container, Sidebar } from "semantic-ui-react";
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { Container, Sidebar } from 'semantic-ui-react'
 
-import { Route, Switch } from "react-router";
-import { ConnectedRouter } from "connected-react-router";
+import { Route, Switch } from 'react-router'
+import { ConnectedRouter } from 'connected-react-router'
 
-import { history } from "../../utils/history";
+import { history } from '../../utils/history'
 
-import RequestAll from "../request/all";
-import Requests from "../request/Index";
+import RequestAll from '../request/all'
+import Requests from '../request/Index'
 
-import RequestForm from "../request/form/index";
-import RequestFormSteps from "../request/form/steps";
-import RequestShow from "../request/show";
-import RequestSuccess from "../request/success";
+import RequestForm from '../request/form/index'
+import RequestFormSteps from '../request/form/steps'
+import RequestShow from '../request/show'
+import RequestSuccess from '../request/success'
 
-import Nav from "./nav";
-import MenuBar from "./menuBar";
-import FrontPage from "../frontPage";
-import Facility from "../facility/index";
+import Nav from './nav'
+import MenuBar from './menuBar'
+import FrontPage from '../frontPage'
+import Facility from '../facility/index'
 
-import FlashMessage from "../flashMessage";
+import FlashMessage from '../flashMessage'
 
-import SessionNew from "../sessions/new";
-import SessionCreate from "../sessions/create";
-import SessionDestroy from "../sessions/destroy";
+import SessionNew from '../sessions/new'
+import SessionCreate from '../sessions/create'
+import SessionDestroy from '../sessions/destroy'
 
-import UserSettings from "../user/settings";
-import requireAuth from "../sessions/authenticated";
-import AvailabilityMatchClick from "../availabilityMatchClick/index";
+import UserSettings from '../user/settings'
+import requireAuth from '../sessions/authenticated'
+import AvailabilityMatchClick from '../availabilityMatchClick/index'
 
-import PagePremium from "../pages/premium";
-import PageAbout from "../pages/about";
+import PagePremium from '../pages/premium'
+import PageAbout from '../pages/about'
 
-import LayoutV2 from "../layout_v2/Index";
-import SiteSelectorModal from "../request/form/SitesSelector/Modal";
+import LayoutV2 from '../layout_v2/Index'
+import SiteSelectorModal from '../request/form/SitesSelector/Modal'
 
-const connected = connect((store) => {
+const connected = connect(store => {
   return {
-    isAuthenticated: store.session.isAuthenticated,
-  };
-});
+    isAuthenticated: store.session.isAuthenticated
+  }
+})
 
 export class Layout extends Component {
-  state = {};
+  state = {}
   constructor(props) {
-    super(props);
-    this.handleSidebarToggle = this.handleSidebarToggle.bind(this);
+    super(props)
+    this.handleSidebarToggle = this.handleSidebarToggle.bind(this)
     this.state = {
-      visibleSidebar: false,
-    };
+      visibleSidebar: false
+    }
   }
 
   handleSidebarToggle() {
-    this.setState({ visibleSidebar: !this.state.visibleSidebar });
+    this.setState({ visibleSidebar: !this.state.visibleSidebar })
   }
 
   render() {
-    const visibleSidebar = this.state.visibleSidebar;
+    const visibleSidebar = this.state.visibleSidebar
     return (
       <ConnectedRouter history={history}>
         <Switch>
-        <Route exact path="/edit/*" component={LayoutV2} />
+          <Route exact path="/edit/*" component={LayoutV2} />
           <Route exact path="/logs/*" component={LayoutV2} />
           <Route exact path="/logs" component={LayoutV2} />
           <Route exact path="/plan" component={LayoutV2} />
@@ -100,7 +100,7 @@ export class Layout extends Component {
                   <Route
                     exact
                     path="/sign-in/:token/settings"
-                    render={(props) => <SessionCreate {...props} redirect="/settings" />}
+                    render={props => <SessionCreate {...props} redirect="/settings" />}
                   />
                   <Route exact path="/sign-out" component={SessionDestroy} />
 
@@ -114,8 +114,8 @@ export class Layout extends Component {
           </Route>
         </Switch>
       </ConnectedRouter>
-    );
+    )
   }
 }
 
-export default connected(Layout);
+export default connected(Layout)

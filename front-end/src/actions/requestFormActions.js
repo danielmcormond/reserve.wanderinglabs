@@ -93,8 +93,15 @@ export function formSubmit() {
   }
 }
 
-export function formUpdate() {
+export function formUpdate(redirect = false) {
   return function (dispatch) {
+    dispatch(formStepValidate())
+    const stepValid = store.getState().forms.availabilityRequestForm.$form.valid
+
+    if (!stepValid) {
+      return
+    }
+
     dispatch({ type: 'SUBMIT_REQUEST_FORM' })
     const availability_request = store.getState().availabilityRequestForm
     const uuid = store.getState().availabilityRequestForm.uuid
@@ -123,11 +130,13 @@ export function formUpdate() {
       .then(response => {
         dispatch({ type: 'SUBMIT_REQUEST_FORM_SUCCESS' })
         dispatch({ type: 'FETCH_AR_FULFILLED', payload: response.data })
-        dispatch(formStepGo(1))
-        dispatch({ type: 'ARS_RESET' })
+        if (redirect) {
+          dispatch(formStepGo(1))
+          dispatch({ type: 'ARS_RESET' })
 
-        dispatch(push(`/${response.data.uuid}`))
-        dispatch(setFlashMessage('Request Updated!! We will email you if a site becomes available.', 'success'))
+          dispatch(push(`/${response.data.uuid}`))
+          dispatch(setFlashMessage('Request Updated!! We will email you if a site becomes available.', 'success'))
+        }
       })
       .catch(err => {
         dispatch({ type: 'SUBMIT_REQUEST_REJECTED', payload: err })
@@ -155,13 +164,19 @@ export function formStepDec() {
 
 export function formStepGo(step) {
   return function (dispatch) {
-    let current_step = store.getState().requestForm.step
+    let currentStep = store.getState().requestForm.step
+    dispatch(formStepValidate())
+    const stepValid = store.getState().forms.availabilityRequestForm.$form.valid
 
-    if (step > current_step) {
-      dispatch(formStepValidate())
-      let stepValid = store.getState().forms.availabilityRequestForm.$form.valid
-      stepValid && dispatch({ type: 'FORM_STEP_GO', payload: step }) && dispatch(matchingSiteCount())
-      stepValid && window.scrollTo(0, 0)
+    if (!stepValid) {
+      return
+    }
+    const uuid = store.getState().availabilityRequestForm.uuid
+
+    if (step > currentStep) {
+      dispatch({ type: 'FORM_STEP_GO', payload: step }) && dispatch(matchingSiteCount())
+      window.scrollTo(0, 0)
+      uuid && dispatch(formUpdate())
     } else {
       dispatch({ type: 'FORM_STEP_GO', payload: step })
       window.scrollTo(0, 0)
