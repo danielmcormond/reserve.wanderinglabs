@@ -2,13 +2,14 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Button, Icon } from 'semantic-ui-react'
 
-import { formSubmit, formStepInc } from '../../../actions/requestFormActions'
+import { formSubmit, formUpdate, formStepInc } from '../../../actions/requestFormActions'
 
 const connected = connect(store => {
   return {
     currentStep: store.requestForm.step,
     submitting: store.requestForm.submitting,
-    isAuthenticated: store.session.isAuthenticated
+    isAuthenticated: store.session.isAuthenticated,
+    availabilityRequest: store.availabilityRequestForm,
   }
 })
 export class RequestFormStepButtons extends Component {
@@ -17,7 +18,13 @@ export class RequestFormStepButtons extends Component {
   }
 
   handleSubmit() {
-    this.props.dispatch(formSubmit())
+    const availabilityRequest = this.props.availabilityRequest;
+    if (availabilityRequest && availabilityRequest.uuid) {
+      this.props.dispatch(formUpdate())
+    }
+    else {
+      this.props.dispatch(formSubmit())
+    }
   }
   get lastStep() {
     return this.props.isAuthenticated ? 3 : 4

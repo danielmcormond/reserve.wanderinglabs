@@ -6,8 +6,9 @@ import localeData from 'dayjs/plugin/localeData'
 
 import { matchingSiteCount } from '../../../actions/requestFormActions'
 import { fetchAvailabilityRequest } from '../../../actions/availabilityRequestsActions'
-import SiteType from '../form/SiteType'
-import SitesSelector from '../form/SitesSelector/Index'
+import { formStepGo } from '../../../actions/requestFormActions'
+
+import RequestForm from '../form/index'
 
 const connected = connect(store => {
   return {
@@ -25,9 +26,10 @@ const RequestEdit = ({ dispatch, match, ar }) => {
 
   useEffect(() => {
     if (ar && ar.facilityId) {
+      dispatch(actions.change('availabilityRequestForm.uuid', ar.uuid))
       dispatch(actions.change('availabilityRequestForm.siteIds', ar.siteIds))
-      dispatch(actions.change('availabilityRequestForm.dateEnd', ar.dateEnd))
-      dispatch(actions.change('availabilityRequestForm.dateStart', ar.dateStart))
+      dispatch(actions.change('availabilityRequestForm.dateEnd', dayjs(ar.dateEnd).toDate()))
+      dispatch(actions.change('availabilityRequestForm.dateStart', dayjs(ar.dateStart).toDate()))
       dispatch(actions.change('availabilityRequestForm.facilityId', ar.facilityId))
       dispatch(actions.change('availabilityRequestForm.facility', ar.facility))
       dispatch(actions.change('availabilityRequestForm.notifySms', ar.notifySms))
@@ -35,14 +37,14 @@ const RequestEdit = ({ dispatch, match, ar }) => {
       dispatch(actions.change('availabilityRequestForm.stayLength', ar.stayLength))
       dispatch(actions.change('availabilityRequestForm.specificSiteIds', ar.specificSiteIds))
 
-      dispatch(matchingSiteCount())
+      // dispatch(matchingSiteCount())
+      dispatch(formStepGo(2))
     }
   }, [ar])
 
   return (
     <div className="">
-      <SiteType />
-      <SitesSelector />
+      <RequestForm />
     </div>
   )
 }
