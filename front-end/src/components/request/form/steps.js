@@ -2,6 +2,7 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons'
+import { push } from "connected-react-router";
 
 import { formStepInc, formStepDec, formUpdate } from '../../../actions/requestFormActions'
 import Button from '../../utils/Button'
@@ -25,6 +26,10 @@ const RequestFormSteps = ({ match }) => {
     dispatch(formUpdate(true))
   }
 
+  const quitForm = () => {
+    dispatch(push(`/${availabilityRequestForm.uuid}`))
+  }
+
   const step_titles = ['_padding_', 'Location', 'Dates', 'Options', 'Notifications']
 
   return (
@@ -40,6 +45,13 @@ const RequestFormSteps = ({ match }) => {
         </h2>
         <h5 className="text-md sm:text-xl text-gray-500">{availabilityRequestForm.facility.name}</h5>
       </div>
+      {isUpdate && (
+        <div className="flex-grow">
+          <Button className="w-full" color="gray" onClick={quitForm}>
+            Cancel
+          </Button>
+        </div>
+      )}
       {isUpdate && (
         <div className="flex-grow">
           <Button className="w-full" color="darkGreen" onClick={saveForm}>
