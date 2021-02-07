@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import { updateAvailabilityRequestStatus } from '../../../actions/availabilityRequestsActions'
 
+import { dateHasPast } from '../../utils/dateFormat'
+
 import { Button } from '../../utils/Button'
 const Status = () => {
   const dispatch = useDispatch()
@@ -13,25 +15,32 @@ const Status = () => {
   }
 
   return (
-    <div>
-      {ar.status === 'active' && (
-        <Button color="red" className="w-full" onClick={() => handleStatusChange('c')}>
+    <>
+      {dateHasPast(ar.dateEnd) && (
+        <Button color="gray" className="flex-grow" onClick={() => handleStatusChange('c')}>
+          Expired
+        </Button>
+      )}
+
+
+      {!dateHasPast(ar.dateEnd) && ar.status === 'active' && (
+        <Button color="red" className="flex-grow" onClick={() => handleStatusChange('c')}>
           Cancel
         </Button>
       )}
 
-      {ar.status === 'canceled' && (
-        <Button color="green" className="w-full" onClick={() => handleStatusChange('a')}>
+      {!dateHasPast(ar.dateEnd) && ar.status === 'canceled' && (
+        <Button color="green" className="flex-grow" onClick={() => handleStatusChange('a')}>
           Activate
         </Button>
       )}
 
-      {ar.status === 'paused' && (
-        <Button color="orange" className="w-full" onClick={() => handleStatusChange('a')}>
+      {!dateHasPast(ar.dateEnd) && ar.status === 'paused' && (
+        <Button color="orange" className="flex-grow" onClick={() => handleStatusChange('a')}>
           Unpause
         </Button>
       )}
-    </div>
+    </>
   )
 }
 

@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom'
 
 import DateFormat, { dateHasPast } from '../../utils/dateFormat'
 import Sites from '../Sites'
-import Status from './Status'
 
 const MetaWrapper = ({ children }) => <div className="">{children}</div>
 const MetaHeader = ({ children }) => <div className="tracking-wide text-sm text-gray-400">{children}</div>
@@ -33,7 +32,7 @@ const Show = ({ match }) => {
 
       <MetaWrapper>
         <MetaHeader>Stay Length</MetaHeader>
-        <MetaDetail>{ar.stayLength} nights</MetaDetail>
+        <MetaDetail>{ar.stayLength}+ nights</MetaDetail>
       </MetaWrapper>
 
       <MetaWrapper>

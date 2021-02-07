@@ -1,21 +1,19 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import dayjs from 'dayjs'
-import localeData from 'dayjs/plugin/localeData'
-import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons'
 import clsx from 'clsx'
 
-import DateFormat from '../../utils/dateFormat'
 import Loading from '../../Loading'
 import Button from '../../utils/Button'
+import { dateHasPast } from '../../utils/dateFormat'
 
 import { fetchAvailabilityRequest } from '../../../actions/availabilityRequestsActions'
 
 import Details from './Details'
 import Premium from '../../user/premium.js'
 import Content from './Content'
+import Status from './Status'
 
 const ShowSegment = ({ className, children }) => <div className={clsx(className, 'w-full')}>{children}</div>
 
@@ -50,11 +48,9 @@ const Show = ({ match, ...props }) => {
           </div>
 
           <div className="flex mb-12 space-x-4">
-            <Button color="green">Edit</Button>
-            <Button color="green">Clone</Button>
-            <Button color="red" className="flex-grow">
-              Cancel
-            </Button>
+            {/* <Button color="green">Edit</Button>
+            <Button color="green">Clone</Button> */}
+            <Status />
           </div>
         </ShowSegment>
 
@@ -62,7 +58,7 @@ const Show = ({ match, ...props }) => {
           <Premium />
         </ShowSegment>
       </div>
-      {/* <Content uuid={match.params.uuid} /> */}
+      <Content uuid={match.params.uuid} />
     </>
   )
 }

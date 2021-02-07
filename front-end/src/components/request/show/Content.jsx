@@ -7,9 +7,6 @@ import AvailabilityMatches from '../../availabilityMatches'
 import Calendar from '../../Calendar/Calendar'
 import Notifications from '../../Notifications/Index'
 
-const StatsHeader = ({ children }) => <div className="text-sm text-gray-400 tracking-wide">{children}</div>
-const StatsValue = ({ children }) => <div className="text-3xl">{children}</div>
-
 const Content = ({ uuid }) => {
   const ar = useSelector(store => store.availabilityRequests.request)
   const [availabilityRequestExtra, setAvailabilityRequestExtra] = useState('matches')
