@@ -68,12 +68,12 @@ export class RequestShow extends Component {
   }
 
   render() {
-  //   return(
-  //     <Show/>
-  //   )
-  // }
+    return(
+      <Show/>
+    )
+  }
 
-  // renderOld() {
+  renderOld() {
     const { ar, availabilityRequestExtra } = this.props
 
     const halfGridProps = {

@@ -3,8 +3,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faList } from '@fortawesome/free-solid-svg-icons'
+import clsx from 'clsx'
 
-import DateFormat, { dateHasPast } from '../../utils/dateFormat'
+import DateFormat from '../../utils/dateFormat'
 import Sites from '../Sites'
 import CheckboxToggle from '../../utils/CheckboxToggleRemix'
 import { updateAvailabilityRequest } from '../../../actions/availabilityRequestsActions'
@@ -17,12 +18,11 @@ const StatsValue = ({ children }) => <div className="text-xl md:text-3xl lg:text
 const Show = ({ match }) => {
   const dispatch = useDispatch()
   const ar = useSelector(store => store.availabilityRequests.request)
-  const facility = useSelector(store => store.availabilityRequests.request.facility)
 
-  const toggleSms = () =>  dispatch(updateAvailabilityRequest(ar.uuid, { notify_sms: !ar.notifySms }))
+  const toggleSms = () => dispatch(updateAvailabilityRequest(ar.uuid, { notify_sms: !ar.notifySms }))
 
   return (
-    <div className="grid grid-rows-4 grid-flow-col gap-y-2 gap-x-4">
+    <div className={clsx('grid grid-flow-col gap-y-2 gap-x-4 grid-rows-4')}>
       <MetaWrapper>
         <MetaHeader>Checked Count</MetaHeader>
         <StatsValue>{ar.checkedCount}</StatsValue>
@@ -43,8 +43,7 @@ const Show = ({ match }) => {
       <MetaWrapper>
         <MetaHeader>Preferences</MetaHeader>
         <MetaDetail>
-          {' '}
-          <CheckboxToggle label="SMS" checked={ar.notifySms} onChange={toggleSms} />
+          {ar.premium && <CheckboxToggle label="SMS Notifications" checked={ar.notifySms} onChange={toggleSms} />}
         </MetaDetail>
       </MetaWrapper>
 
@@ -69,6 +68,13 @@ const Show = ({ match }) => {
         <MetaHeader>Matching Sites Count</MetaHeader>
         <MetaDetail>
           {ar.siteCount} {ar.siteCount > 0 && <Sites />}
+        </MetaDetail>
+      </MetaWrapper>
+
+      <MetaWrapper>
+        <MetaHeader>Status</MetaHeader>
+        <MetaDetail>
+          <span className="capitalize">{ar.status}</span>
         </MetaDetail>
       </MetaWrapper>
     </div>

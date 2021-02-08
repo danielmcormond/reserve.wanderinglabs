@@ -63,12 +63,16 @@ const Show = ({ match, ...props }) => {
           </div>
 
           <div className="flex mt-12 space-x-4">
-            {!dateHasPast(ar.dateEnd) && (
+            {ar.premium && !dateHasPast(ar.dateEnd) && (
               <Button color="green" onClick={() => dispatch(push(`/edit/${ar.uuid}`))}>
                 Edit
               </Button>
             )}
-            <Button color="green" onClick={() => dispatch(formClone())}>Clone</Button>
+            {ar.premium && (
+              <Button color="green" onClick={() => dispatch(formClone())}>
+                Clone
+              </Button>
+            )}
             {!dateHasPast(ar.dateEnd) && <Status />}
           </div>
         </ShowSegment>

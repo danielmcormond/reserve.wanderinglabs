@@ -32,6 +32,10 @@ class AvailabilityRequest < ApplicationRecord
     end
   end
 
+  def expired
+    Date.today >= date_end
+  end
+
   def available_matches(notified = false)
     availability_matches
       .send(notified ? 'notified' : 'notifiable')

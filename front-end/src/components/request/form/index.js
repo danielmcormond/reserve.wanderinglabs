@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Form } from "react-redux-form";
+import { actions } from 'react-redux-form'
 
 import RequestFormStep1 from "./step1";
 import RequestFormStep2 from "./step2";
@@ -15,6 +16,10 @@ const connected = connect(store => {
   };
 })
 class RequestForm extends Component {
+  componentWillMount() {
+    this.props.dispatch(actions.change('availabilityRequestForm.uuid', undefined))
+  }
+
   handleChange() {
     this.props.dispatch(matchingSiteCount());
   }
