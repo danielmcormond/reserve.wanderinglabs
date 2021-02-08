@@ -251,3 +251,11 @@ export function siteSelectorToggle() {
     dispatch({ type: 'SITE_SELECTOR', payload: !siteSelector })
   }
 }
+
+export function formClone() {
+  return function (dispatch) {
+    dispatch(actions.change('availabilityRequestForm.uuid', undefined))
+    dispatch(push('/new'))
+    dispatch(formStepGo(2))
+  }
+}
