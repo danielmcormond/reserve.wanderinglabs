@@ -28,7 +28,7 @@ import SessionDestroy from '../sessions/destroy'
 
 import UserSettings from '../user/settings'
 import requireAuth from '../sessions/authenticated'
-import AvailabilityMatchClick from '../availabilityMatchClick/index'
+import AvailabilityMatchClick from '../availabilityMatchClick/Show'
 
 import PagePremium from '../pages/premium'
 import PageAbout from '../pages/about'

@@ -1,6 +1,6 @@
 class AvailabilityMatchSerializer < ActiveModel::Serializer
   attributes :id, :avail_date, :length, :available, :unavailable_at, :notified_at, :short, :reserve, :facility,
-             :facility_type, :premium
+             :facility_type, :premium, :created_at, :facility_sub_name
   belongs_to :site
 
   def short
@@ -15,6 +15,11 @@ class AvailabilityMatchSerializer < ActiveModel::Serializer
   def facility
     return unless @instance_options[:show_reserve].present?
     object.facility.name
+  end
+
+  def facility_sub_name
+    return unless @instance_options[:show_reserve].present?
+    object.facility.sub_name
   end
 
   def facility_type

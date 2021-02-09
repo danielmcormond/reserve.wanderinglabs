@@ -15,4 +15,10 @@ export const Button = ({ children, className, color, ...props }) => (
   </button>
 )
 
+export const ButtonExt = ({ children, className, color, ...props }) => (
+  <a {...props} className={clsx(className, buttonColors[color], 'flex-initial text-center block text-lg p-2 px-8 rounded-md border-2 font-semibold tracking-wide')}>
+    {children}
+  </a>
+)
+
 export default Button
