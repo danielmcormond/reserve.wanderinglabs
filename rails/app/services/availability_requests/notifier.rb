@@ -16,6 +16,8 @@ module AvailabilityRequests
       return unless needed?
 
       notifications = availability_request.user.notification_methods.where(active: true).map do |nm|
+        next if nm.notification_type.sms? && !availability_request.notify_sms
+
         notify_for(nm) if nm.allow?
         log_notify(nm)
       end
@@ -31,12 +33,10 @@ module AvailabilityRequests
 
     def notify_for(nm)
       if nm.notification_type.sms?
-        if availability_request.notify_sms
-          begin
-            Sms.new(availability_request, nm).send
-          rescue Twilio::REST::RestError => e
-            Rails.logger.fatal(e)
-          end
+        begin
+          Sms.send(availability_request, nm)
+        rescue Twilio::REST::RestError => e
+          Rails.logger.fatal(e)
         end
       elsif nm.notification_type.web?
         Notifiers::Web.new(availability_request, nm).send

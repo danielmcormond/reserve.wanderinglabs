@@ -33,7 +33,7 @@ RSpec.describe AvailabilityRequests::Notifier do
     end
   end
 
-  describe '#notifier' do
+  describe '#notify' do
     before do
       allow(NotifierMailer).to receive(:new_availabilities).and_return(double('NotifierMailer', deliver: true))
     end
@@ -54,6 +54,26 @@ RSpec.describe AvailabilityRequests::Notifier do
 
     it 'updates the notified_at timestamp' do
       expect { notifier.notify }.to(change { availability_match.reload.notified_at })
+    end
+
+    context 'when sending sms' do
+      let!(:sms_nm) { create(:notification_method, notification_type: :sms, param: '5555555555', user: availability_request.user) }
+
+      before do
+        allow(Sms).to receive(:send).and_return(double('Sms', deliver: true))
+      end
+
+      it 'sends the sms' do
+        expect { notifier.notify }.to change { sms_nm.reload.availability_notifications.count }.by(1)
+      end
+
+      context 'when notify_sms is off on the request' do
+        let(:availability_request) { FactoryGirl.create(:availability_request, notify_sms: false) }
+
+        it 'sends the sms' do
+          expect { notifier.notify }.to change { sms_nm.reload.availability_notifications.count }.by(0)
+        end
+      end
     end
   end
 end

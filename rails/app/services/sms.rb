@@ -8,6 +8,10 @@ class Sms
     @notification_method = notification_method
   end
 
+  def self.send(availability_request, notification_method)
+    new(availability_request, notification_method).send
+  end
+
   def client
     @_client ||= Twilio::REST::Client.new(ENV['TWILIO_SID'], ENV['TWILIO_TOK'])
   end
