@@ -35,7 +35,7 @@ const RequestEdit = ({ match }) => {
   return (
     <div className="">
       <RequestFormSteps />
-      <RequestForm />
+      <RequestForm edit />
     </div>
   )
 }

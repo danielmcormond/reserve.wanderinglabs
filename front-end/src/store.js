@@ -11,7 +11,10 @@ import { history } from "./utils/history";
 const middlewares = [];
 
 if (process.env.NODE_ENV === "development") {
-  const { logger } = require("redux-logger");
+  const { createLogger } = require("redux-logger");
+  const logger = createLogger({
+    diff: false
+  });
 
   middlewares.push(logger);
 }

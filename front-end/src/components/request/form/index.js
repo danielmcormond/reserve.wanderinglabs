@@ -17,7 +17,9 @@ const connected = connect(store => {
 })
 class RequestForm extends Component {
   componentWillMount() {
-    this.props.dispatch(actions.change('availabilityRequestForm.uuid', undefined))
+    if (!this.props.edit) {
+      this.props.dispatch(actions.change('availabilityRequestForm.uuid', undefined))
+    }
   }
 
   handleChange() {
