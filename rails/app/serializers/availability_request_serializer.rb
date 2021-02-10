@@ -25,7 +25,7 @@ class AvailabilityRequestSerializer < ActiveModel::Serializer
     params.push('Water') if object.water?
     params.push('Sewer') if object.sewer?
     params.push("#{object.min_electric} amps or more") if object.min_electric?
-    params.push("Minumum #{object.min_length}'") if object.min_length?
+    params.push("Minimum #{object.min_length}'") if object.min_length?
     params.push('Pull Thru') if object.pullthru?
     params.push('Premium sites') if object.site_premium?
     params.push('Skip ADA') if object.ignore_ada? && object.facility.sites_details[:ada]
