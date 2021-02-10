@@ -23,7 +23,8 @@ const RequestEdit = ({ match }) => {
   useEffect(() => {
     if (ar && ar.facilityId) {
       if (currentStep === 1) {
-        dispatch(formStepGo(2))
+        // dispatch(formStepGo(2))
+        dispatch({ type: 'FORM_STEP_GO', payload: 2 })
       }
     }
   }, [ar])
