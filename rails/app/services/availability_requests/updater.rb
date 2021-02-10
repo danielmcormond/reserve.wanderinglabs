@@ -17,8 +17,8 @@ class AvailabilityRequests::Updater
     object.status = :active unless merged_params[:status]
 
     if object.save
-      # object.reload # so we have uuid
-      # object.availability_matcher # initial run
+      object.reload # so we have uuid
+      object.availability_matcher # initial run
     else
       Rails.logger.fatal object.errors.to_json
     end
