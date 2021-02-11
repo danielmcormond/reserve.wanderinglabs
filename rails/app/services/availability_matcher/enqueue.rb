@@ -17,7 +17,7 @@ module AvailabilityMatcher
           enqueue_delayed_count += 1
         end
       end
-      Rails.logger.info "ENQ #{[import.facility_id, enqueue_count, enqueue_delayed_count, enqueue_already_count].join(" :: ")} // #{ar.facility.name}"
+      Rails.logger.info "ENQ #{[import.facility_id, enqueue_count, enqueue_delayed_count, enqueue_already_count].join(" :: ")} // #{import.facility.name}"
       nil
     end
   end
