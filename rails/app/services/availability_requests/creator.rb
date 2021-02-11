@@ -38,6 +38,10 @@ class AvailabilityRequests::Creator
   end
 
   def user
-    @user ||= current_user || User.find_or_create_by(email: params[:email])
+    return @user if @user
+    return current_user if current_user
+    return @user = User.find_or_create_by(email: params[:email]) if params[:email]
+
+    User.new
   end
 end

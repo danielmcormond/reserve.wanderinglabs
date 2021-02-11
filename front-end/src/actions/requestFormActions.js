@@ -17,7 +17,6 @@ export function matchingSiteCount() {
       date_start: availabilityRequest.dateStart,
       date_end: availabilityRequest.dateEnd,
       stay_length: availabilityRequest.stayLength,
-      email: availabilityRequest.email,
       sewer: availabilityRequest.sewer,
       water: availabilityRequest.water,
       pullthru: availabilityRequest.pullthru,
