@@ -6,3 +6,5 @@ StatsMonth:
   every: '1d'
 Payments::Sync:
   every: '1h'
+StatsQueues:
+  every: '5m'

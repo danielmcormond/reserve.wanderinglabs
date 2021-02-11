@@ -1,5 +1,5 @@
 class Stats
-  @queue = :other
+  @queue = :stats
 
   Time.zone = 'MST'
 
