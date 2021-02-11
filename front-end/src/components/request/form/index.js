@@ -23,7 +23,9 @@ class RequestForm extends Component {
   }
 
   handleChange() {
-    this.props.dispatch(matchingSiteCount());
+    if (this.props.currentStep < 4) {
+      this.props.dispatch(matchingSiteCount());
+    }
   }
   render() {
     const { currentStep } = this.props;
