@@ -4,9 +4,9 @@ module AvailabilityMatcher
     include Resque::Plugins::UniqueJob
 
     @queue = :matcher
-    attr_reader :availability_request
+    attr_reader :availability_request, :enqueued_at
 
-    def initialize(availability_request)
+    def initialize(availability_request, enqueued_at = nil)
       @availability_request = availability_request
     end
 
@@ -14,9 +14,9 @@ module AvailabilityMatcher
       new(availability_request).call
     end
 
-    def self.perform(availability_request_id)
+    def self.perform(availability_request_id, enqueued_at = nil)
       availability_request = AvailabilityRequest.find(availability_request_id)
-      new(availability_request).call
+      new(availability_request, enqueued_at).call
     end
 
     def call
