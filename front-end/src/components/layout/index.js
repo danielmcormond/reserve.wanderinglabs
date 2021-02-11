@@ -37,6 +37,8 @@ import LayoutV2 from '../layout_v2/Index'
 import SiteSelectorModal from '../request/form/SitesSelector/Modal'
 import RequestStatusUpdate from '../request/StatusUpdate'
 
+import Admin from '../Admin/Index'
+
 const connected = connect(store => {
   return {
     isAuthenticated: store.session.isAuthenticated
@@ -62,6 +64,7 @@ export class Layout extends Component {
     return (
       <ConnectedRouter history={history}>
         <Switch>
+          <Route exact path="/admin/*" component={Admin} />
           <Route exact path="/edit/*" component={LayoutV2} />
           <Route exact path="/logs/*" component={LayoutV2} />
           <Route exact path="/logs" component={LayoutV2} />

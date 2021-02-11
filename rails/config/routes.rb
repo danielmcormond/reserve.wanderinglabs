@@ -51,4 +51,8 @@ Rails.application.routes.draw do
   end
 
   resources :sites, only: %i[show]
+
+  namespace :admin do
+    get '/availability_requests', to: 'availability_requests#index'
+  end
 end

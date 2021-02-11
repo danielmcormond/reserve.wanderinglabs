@@ -17,6 +17,7 @@ import session from './sessionReducer'
 import user from './userReducer'
 import availabilityRequestForm from './availabilityRequestFormReducer'
 import calendar from './calendarReducer'
+import admin from './adminReducer'
 
 export default history =>
   combineReducers({
@@ -35,5 +36,6 @@ export default history =>
     session,
     user,
     notifications,
-    calendar
+    calendar,
+    admin
   })
