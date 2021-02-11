@@ -36,6 +36,8 @@ class Payments::Creator
     else
       Rails.logger.fatal("CREATE PAYMENT: #{payment.to_json}")
     end
+
+    Resque.enqueue(Stats)
     payment
   end
 
