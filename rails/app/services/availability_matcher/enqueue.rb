@@ -1,7 +1,7 @@
 module AvailabilityMatcher
   class Enqueue
     def self.perform(import, premium = false)
-      already_enqueued = enqueued
+      already_enqueued = AvailabilityMatcher::Enqueue.enqueued
 
       enqueue_already_count = 0
       enqueue_count = 0
