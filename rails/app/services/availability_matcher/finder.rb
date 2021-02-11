@@ -1,9 +1,8 @@
 module AvailabilityMatcher
   class Finder
-    attr_reader :availability_request, :import
+    attr_reader :availability_request
 
-    def initialize(import, availability_request)
-      @import = import
+    def initialize(availability_request)
       @availability_request = availability_request
     end
 

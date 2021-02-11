@@ -55,13 +55,11 @@ class AvailabilityRequest < ApplicationRecord
   end
 
   def availability_matcher
-    last_import = facility.availability_imports.last
-    return if last_import.nil?
-    AvailabilityMatcher::Index.call(last_import, self)
+    AvailabilityMatcher::Index.call(self)
   end
 
   def availability_finder
-    AvailabilityMatcher::Finder.new(nil, self).matching_availabilities
+    AvailabilityMatcher::Finder.new(self).matching_availabilities
   end
 
   def welcome_email

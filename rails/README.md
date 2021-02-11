@@ -48,3 +48,20 @@ AvailabilityImport.where(facility_id: 3509).order(id: :desc).limit(100).all.each
 
 
 AvailabilityImport.order(id: :desc).limit(100).all.each { |a| puts [a.run_id.split("_").last, a.created_at.min, a.run_id, a.created_at].join(" :: ") }; nil
+
+---------
+
+AvailabilityRequest.where(notify_sms: false).find_each do |ar|
+  user = ar.user
+  nms = ar.user.notification_methods.where(notification_type: :sms).map(&:id)
+  count = ar.availability_notifications.where(notification_method_id: nms, throttled: false).count
+
+  if count > 0
+    puts "#{user.sms_count}/#{user.sms_limit} -#{count} :: #{user.email} "
+    ar.availability_notifications.where(notification_method_id: nms).update_all(throttled: true)
+    user.sms_cache
+    user.reload
+    puts "\t#{user.sms_count}/#{user.sms_limit}"
+  end
+
+end; nil

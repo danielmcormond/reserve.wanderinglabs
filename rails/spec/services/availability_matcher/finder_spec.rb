@@ -5,7 +5,7 @@ RSpec.describe AvailabilityMatcher::Finder do
   let(:availability_request) { FactoryGirl.create(:availability_request, facility: import.facility) }
   let!(:site) { FactoryGirl.create(:site, facility: import.facility) }
   let!(:site1) { FactoryGirl.create(:site, facility: import.facility) }
-  let(:finder) { AvailabilityMatcher::Finder.new(import, availability_request) }
+  let(:finder) { AvailabilityMatcher::Finder.new(availability_request) }
   let!(:am) { FactoryGirl.create(:availability_match, availability_request: availability_request, site: site, length: 3, avail_date: Date.today, available: true) }
 
   describe '#matching_availabilities' do

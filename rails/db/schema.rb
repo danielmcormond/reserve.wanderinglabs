@@ -10,12 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_23_210446) do
+ActiveRecord::Schema.define(version: 2021_02_10_232728) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "btree_gist"
   enable_extension "citext"
-  enable_extension "pgcrypto"
   enable_extension "plpgsql"
   enable_extension "uuid-ossp"
 
@@ -85,6 +84,7 @@ ActiveRecord::Schema.define(version: 2021_01_23_210446) do
     t.datetime "updated_at", null: false
     t.boolean "throttled", default: false
     t.index ["availability_request_id"], name: "index_availability_notifications_on_availability_request_id"
+    t.index ["notification_method_id", "throttled"], name: "avail_notif_method_throttled"
     t.index ["notification_method_id"], name: "index_availability_notifications_on_notification_method_id"
   end
 
@@ -161,20 +161,6 @@ ActiveRecord::Schema.define(version: 2021_01_23_210446) do
     t.index ["agency_id"], name: "index_facility_groups_on_agency_id"
   end
 
-  create_table "good_jobs", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.text "queue_name"
-    t.integer "priority"
-    t.jsonb "serialized_params"
-    t.datetime "scheduled_at"
-    t.datetime "performed_at"
-    t.datetime "finished_at"
-    t.text "error"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["queue_name", "scheduled_at"], name: "index_good_jobs_on_queue_name_and_scheduled_at", where: "(finished_at IS NULL)"
-    t.index ["scheduled_at"], name: "index_good_jobs_on_scheduled_at", where: "(finished_at IS NULL)"
-  end
-
   create_table "notification_methods", force: :cascade do |t|
     t.bigint "user_id"
     t.string "param"
@@ -229,8 +215,8 @@ ActiveRecord::Schema.define(version: 2021_01_23_210446) do
     t.boolean "premium", default: false, null: false
     t.boolean "ada", default: false, null: false
     t.boolean "active", default: true, null: false
-    t.string "loop"
     t.integer "site_group_id"
+    t.string "loop"
     t.index ["active"], name: "index_sites_on_active"
     t.index ["facility_id"], name: "index_sites_on_facility_id"
   end

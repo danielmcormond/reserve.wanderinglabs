@@ -41,7 +41,7 @@ RSpec.describe AvailabilityImports::Index do
   describe '#parse_and_match' do
     it 'calls AvailabilityImports::FromJson service' do
       expect(AvailabilityImports::FromJson).to receive(:perform).with(import.import)
-      expect(AvailabilityMatcher::Index).to receive(:perform).with(import.import.id, false)
+      expect(AvailabilityMatcher::Enqueue).to receive(:perform).with(import.import, false)
       import.parse_and_match
     end
   end

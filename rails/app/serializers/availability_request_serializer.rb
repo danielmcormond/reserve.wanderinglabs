@@ -28,7 +28,7 @@ class AvailabilityRequestSerializer < ActiveModel::Serializer
     params.push("Minimum #{object.min_length}'") if object.min_length?
     params.push('Pull Thru') if object.pullthru?
     params.push('Premium sites') if object.site_premium?
-    params.push('Skip ADA') if object.ignore_ada? && object.facility.sites_details[:ada]
+    params.push('Skip ADA') if object.ignore_ada? && object.facility&.sites_details.try(:ada)
     params.join(', ')
   end
 end

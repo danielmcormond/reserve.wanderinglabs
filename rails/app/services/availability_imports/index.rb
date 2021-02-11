@@ -27,7 +27,7 @@ class AvailabilityImports::Index
 
   def parse_and_match
     AvailabilityImports::FromJson.perform(import)
-    AvailabilityMatcher::Index.perform(import.id, facility.premium_scrape)
+    AvailabilityMatcher::Enqueue.perform(import, facility.premium_scrape)
   end
 
   def update_facility

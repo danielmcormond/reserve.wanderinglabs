@@ -75,6 +75,7 @@ class AvailabilityImports::FromJson
   end
 
   def bucket
+    return 'availabilities-prd'
     Rails.env.production? ? 'availabilities-prd' : 'availabilities-dev'
   end
 

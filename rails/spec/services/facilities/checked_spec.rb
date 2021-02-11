@@ -5,7 +5,7 @@ RSpec.describe Facilities::Checked do
   let(:user) { FactoryGirl.create(:user, premium: true) }
   let!(:availability_request) { FactoryGirl.create(:availability_request, facility: facility) }
   let!(:availability_request2) { FactoryGirl.create(:availability_request, facility: facility, checked_count: 17, user: user) }
-  let!(:availability_request3) { FactoryGirl.create(:availability_request, facility: facility, date_end: Date.yesterday) }
+  let!(:availability_request3) { FactoryGirl.create(:availability_request, facility: facility, date_end: 3.days.ago) }
 
   let(:checked) { Facilities::Checked.new(facility) }
 

@@ -2,28 +2,19 @@ module AvailabilityMatcher
   class Index
     extend Resque::Plugins::JobStats
     @queue = :matcher
-    attr_reader :availability_request, :import
+    attr_reader :availability_request
 
-    def initialize(import, availability_request)
-      @import = import
+    def initialize(availability_request)
       @availability_request = availability_request
     end
 
-    def self.call(import, ar)
-      new(import, ar).call
+    def self.call(availability_request)
+      new(availability_request).call
     end
 
-    def self.perform(import_id, premium = false)
-      import = AvailabilityImport.find(import_id)
-      AvailabilityRequest.active.where(facility_id: import.facility_id).joins(:user).order(Arel.sql('users.premium desc, RANDOM()')).each do |ar|
-        next if premium && ar.user&.premium != true
-
-        call(import, ar)
-      end
-      return nil unless premium
-
-      Resque.enqueue_in(1.minutes, AvailabilityMatcher::Index, import_id)
-      nil
+    def self.perform(availability_request_id)
+      availability_request = AvailabilityRequest.find(availability_request_id)
+      new(availability_request).call
     end
 
     def call
@@ -41,9 +32,7 @@ module AvailabilityMatcher
     end
 
     def available_matches(do_save = false)
-      @_available_matches ||= AvailabilityMatcher::Finder.new(
-        import, availability_request
-      ).matching_availabilities(do_save)
+      @available_matches ||= AvailabilityMatcher::Finder.new(availability_request).matching_availabilities(do_save)
     end
   end
 end
