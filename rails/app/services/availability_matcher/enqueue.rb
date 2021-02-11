@@ -1,7 +1,7 @@
 module AvailabilityMatcher
   class Enqueue
     def self.perform(import, premium = false)
-      already_enqueued = AvailabilityMatcher::Enqueue.enqueued
+      already_enqueued = Resque.peek('matcher', 0, 10_000).map { |job| job['args'][0] }
 
       enqueue_already_count = 0
       enqueue_count = 0
