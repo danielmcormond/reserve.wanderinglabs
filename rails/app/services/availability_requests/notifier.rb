@@ -34,14 +34,14 @@ module AvailabilityRequests
     def notify_for(nm)
       if nm.notification_type.sms?
         begin
-          # Sms.send(availability_request, nm)
+          Sms.send(availability_request, nm)
         rescue Twilio::REST::RestError => e
           Rails.logger.fatal(e)
         end
       elsif nm.notification_type.web?
-        # Notifiers::Web.new(availability_request, nm).send
+        Notifiers::Web.new(availability_request, nm).send
       else
-        # NotifierMailer.new_availabilities(availability_request, nm).deliver
+        NotifierMailer.new_availabilities(availability_request, nm).deliver
       end
     end
 
