@@ -1,7 +1,6 @@
 module AvailabilityMatcher
   class Index
     extend Resque::Plugins::JobStats
-    include Resque::Plugins::UniqueJob
 
     @queue = :matcher
     attr_reader :availability_request, :enqueued_at
