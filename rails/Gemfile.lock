@@ -285,6 +285,8 @@ GEM
     resque-sentry (1.2.0)
       resque (>= 1.18.0)
       sentry-raven (>= 0.4.6)
+    resque_solo (0.5.0)
+      resque (>= 1.25.0)
     rest-client (2.1.0)
       http-accept (>= 1.7.0, < 2.0)
       http-cookie (>= 1.0.2, < 2.0)
@@ -421,6 +423,7 @@ DEPENDENCIES
   resque-job-stats
   resque-scheduler
   resque-sentry
+  resque_solo
   rspec-rails (~> 3.5)
   rubocop (~> 0.61.1)
   sentry-raven
